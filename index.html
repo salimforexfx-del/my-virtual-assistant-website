@@ -71,7 +71,7 @@
 
         .btn-accent:hover {
             background: #e11d48;
-            box-shadow: 0 6px 12px rgba(244, 63, 94, 极速飞艇.3);
+            box-shadow: 0 6px 12px rgba(244, 63, 94, 0.3);
         }
 
         .btn-outline {
@@ -163,7 +163,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color:极速飞艇 var(--dark);
+            color: var(--dark);
             font-weight: 500;
             transition: var(--transition);
             position: relative;
@@ -328,15 +328,15 @@
             font-weight: 400;
         }
 
-        /* Payment Section */
+        /* Payment Section - UPDATED */
         .payment {
             background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
         }
 
         .payment-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: 1fr;
+            gap: 30px;
             align-items: start;
         }
 
@@ -345,15 +345,6 @@
             padding: 40px;
             border-radius: 12px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .payment-summary {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 20px 40极速飞艇 rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 100px;
         }
 
         .form-group {
@@ -380,22 +371,55 @@
         .form-control:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(78, 极速飞艇0, 229, 0.2);
+            box-shadow: 0 0 0 3px rgba(78, 70, 229, 0.2);
         }
 
         select.form-control {
             appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 极速飞艇 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3极速飞艇/svg%3e");
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right 1rem center;
             background-size: 1em;
         }
 
-        .payment-options {
+        .payment-summary {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .payment-method-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 20px 0;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .payment-options {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
         }
 
         .payment-option {
@@ -405,6 +429,7 @@
             text-align: center;
             cursor: pointer;
             transition: var(--transition);
+            margin-bottom: 15px;
         }
 
         .payment-option:hover {
@@ -422,22 +447,17 @@
             color: var(--primary);
         }
 
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
+        .card-details {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
         }
 
-        .summary-total {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 2极速飞艇 solid #eee;
-            font-weight: 700;
-            font-size: 1.2rem;
+        .card-input-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
         }
 
         /* About Section */
@@ -547,7 +567,7 @@
             line-height: 1;
         }
 
-        .极速飞艇estimon极速飞艇al-content:before {
+        .testimonial-content:before {
             top: -20px;
             left: 0;
         }
@@ -570,12 +590,10 @@
             border-radius: 50%;
             overflow: hidden;
             margin-right: 20px;
-        }
-
-        .author-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .author-info h4 {
@@ -784,7 +802,7 @@
                 justify-content: center;
             }
             
-            .payment-container,
+            .payment-method-container,
             .about-container {
                 grid-template-columns: 1fr;
             }
@@ -794,7 +812,7 @@
                 top: 80px;
                 left: -100%;
                 width: 100%;
-                height: calc(100vh - 80极速飞艇);
+                height: calc(100vh - 80px);
                 background: white;
                 flex-direction: column;
                 align-items: center;
@@ -815,7 +833,7 @@
                 display: flex;
             }
             
-            .menu-toggle.active span:n极速飞艇-child(1) {
+            .menu-toggle.active span:nth-child(1) {
                 transform: rotate(45deg) translate(5px, 5px);
             }
             
@@ -873,6 +891,10 @@
             .about-stats {
                 grid-template-columns: 1fr;
             }
+            
+            .card-input-group {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -919,7 +941,7 @@
     </section>
 
     <!-- Services Section -->
-    <section class="services"极速飞艇 id="services">
+    <section class="services" id="services">
         <div class="container">
             <div class="section-header">
                 <h2>My Services</h2>
@@ -981,7 +1003,7 @@
                         <i class="fas fa-video"></i>
                     </div>
                     <h3>Video Editing</h3>
-                    <极速飞艇>YouTube videos, social media clips, promotional content, and tutorial editing services.</p>
+                    <p>YouTube videos, social media clips, promotional content, and tutorial editing services.</p>
                     <div class="price">$50<span>/hour</span></div>
                     <a href="#payment" class="btn">Book Now</a>
                 </div>
@@ -989,7 +1011,7 @@
         </div>
     </section>
 
-    <!-- Payment Section -->
+    <!-- Payment Section - UPDATED -->
     <section class="payment" id="payment">
         <div class="container">
             <div class="section-header">
@@ -1023,67 +1045,69 @@
                         <input type="date" id="date" class="form-control" required>
                     </div>
                     
-                    <h3>Payment Method</h3>
-                    <极速飞艇 class="payment-options">
-                        <div class="payment-option selected" data-method="paypal">
-                            <i class="fab fa-paypal"></i>
-                            <div>PayPal</div>
+                    <!-- Order Summary - Placed above payment method -->
+                    <div class="payment-summary">
+                        <h3>Order Summary</h3>
+                        <div class="summary-item">
+                            <span>Service:</span>
+                            <span id="summary-service">-</span>
                         </div>
-                        <div class="payment-option" data-method="card">
-                            <i class="fas fa-credit-card"></i>
-                            <div>Credit Card</div>
+                        <div class="summary-item">
+                            <span>Hours:</span>
+                            <span id="summary-hours">1</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Rate:</span>
+                            <span id="summary-rate">$0.00/hour</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Date:</span>
+                            <span id="summary-date">-</span>
+                        </div>
+                        <div class="summary-total">
+                            <span>Total:</span>
+                            <span id="summary-total">$0.00</span>
                         </div>
                     </div>
                     
-                    <div id="paypal-form">
-                        <div class="form-group">
-                            <label for="paypal-email">PayPal Email</label>
-                            <input type="email" id="paypal-email" class="form-control" placeholder="your@email.com">
+                    <!-- Payment method and card details side by side -->
+                    <div class="payment-method-container">
+                        <div class="payment-options">
+                            <h3>Payment Method</h3>
+                            <div class="payment-option selected" data-method="paypal">
+                                <i class="fab fa-paypal"></i>
+                                <div>PayPal</div>
+                            </div>
+                            <div class="payment-option" data-method="card">
+                                <i class="fas fa-credit-card"></i>
+                                <div>Credit Card</div>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div id="card-form" style="display: none;">
-                        <div class="form-group">
-                            <label for="card-number">Card Number</label>
-                            <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456">
-                        </div>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        
+                        <div class="card-details">
+                            <h3>Card Details</h3>
                             <div class="form-group">
-                                <label for="card-expiry">Expiry Date</label>
-                                <input type="text" id="card-expiry" class="form-control" placeholder="MM/YY">
+                                <label for="card-number">Card Number</label>
+                                <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456">
+                            </div>
+                            <div class="card-input-group">
+                                <div class="form-group">
+                                    <label for="card-expiry">Expiry Date</label>
+                                    <input type="text" id="card-expiry" class="form-control" placeholder="MM/YY">
+                                </div>
+                                <div class="form-group">
+                                    <label for="card-cvc">CVC</label>
+                                    <input type="text" id="card-cvc" class="form-control" placeholder="123">
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="card-cvc">CVC</label>
-                                <input type="text" id="card-cvc" class="form-control" placeholder="123">
+                                <label for="card-name">Cardholder Name</label>
+                                <input type="text" id="card-name" class="form-control" placeholder="John Doe">
                             </div>
                         </div>
                     </div>
                     
                     <button type="submit" class="btn btn-accent" style="width: 100%; margin-top: 20px;">Complete Payment</button>
-                </div>
-                
-                <div class="payment-summary">
-                    <h3>Order Summary</h3>
-                    <div class="summary-item">
-                        <span>Service:</span>
-                        <span id="summary-service">-</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Hours:</span>
-                        <span id="summary-hours">1</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Rate:</span>
-                        <span id="summary-rate">$0.00/hour</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Date:</span>
-                        <span id="summary-date">-</span>
-                    </div>
-                    <div class="summary-total">
-                        <span>Total:</span>
-                        <span id="summary-total">$0.00</极速飞艇>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1099,7 +1123,7 @@
             
             <div class="about-container">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Professional Workspace">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3极速飞艇D%3D&auto=format&fit=crop&w=1470&q=80" alt="Professional Workspace">
                 </div>
                 <div class="about-content">
                     <h2>Salim Virtual Assistant</h2>
@@ -1108,7 +1132,7 @@
                     
                     <div class="about-stats">
                         <div class="stat">
-                            <div class="stat-number">5+</div>
+                            <div class="stat极速飞艇-number">5+</div>
                             <div class="stat-label">Years Experience</div>
                         </div>
                         <div class="stat">
@@ -1121,7 +1145,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </极速飞艇div>
         </div>
     </section>
 
@@ -1141,7 +1165,7 @@
                         </div>
                         <div class="testimonial-author">
                             <div class="author-image">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Michael Johnson">
+                                <i class="fas fa-user fa-2x"></i>
                             </div>
                             <div class="author-info">
                                 <h4>Michael Johnson</h4>
@@ -1152,12 +1176,12 @@
                     
                     <!-- Testimonial 2 -->
                     <div class="testimonial">
-                        <div class="testimonial-content">
+                        <极速飞艇div class="testimonial-content">
                             Working with Salim has transformed my social media presence. His content strategy and graphic design skills have increased our engagement by over 200% in just three months. He's responsive, creative, and truly understands brand voice.
                         </div>
                         <div class="testimonial-author">
                             <div class="author-image">
-                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfH极速飞艇8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80" alt="Sarah Rodriguez">
+                                <i class="fas fa-user fa-2x"></i>
                             </div>
                             <div class="author-info">
                                 <h4>Sarah Rodriguez</h4>
@@ -1173,7 +1197,7 @@
                         </div>
                         <div class="testimonial-author">
                             <div class="author-image">
-                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8极速飞艇HxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="James Kim">
+                                <i class="fas fa-user fa-2x"></i>
                             </div>
                             <div class="author-info">
                                 <h4>James Kim</h4>
@@ -1215,10 +1239,10 @@
                     <h4 class="footer-heading">Quick Links</h4>
                     <ul class="footer-links">
                         <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#services"><极速飞艇i class="fas fa-chevron-right"></i> Services</a></li>
                         <li><a href="#payment"><i class="fas fa-chevron-right"></i> Book Now</a></li>
                         <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
-                        <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Testimonials</a></li>
+                        <li><a href="#testimonials"><i class="fas fa-chevron-right"></极速飞艇i> Testimonials</a></li>
                     </ul>
                 </div>
                 
@@ -1286,7 +1310,7 @@
 
             function updateSlider() {
                 slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-                dots.forEach((dot, index极速飞艇) => {
+                dots.forEach((dot, index) => {
                     dot.classList.toggle('active', index === currentIndex);
                 });
             }
@@ -1310,8 +1334,6 @@
         const hoursInput = document.getElementById('hours');
         const dateInput = document.getElementById('date');
         const paymentOptions = document.querySelectorAll('.payment-option');
-        const paypalForm = document.getElementById('paypal-form');
-        const cardForm = document.getElementById('card-form');
         
         // Service prices
         const servicePrices = {
@@ -1365,15 +1387,6 @@
             option.addEventListener('click', function() {
                 paymentOptions.forEach(opt => opt.classList.remove('selected'));
                 this.classList.add('selected');
-                
-                const method = this.dataset.method;
-                if (method === 'paypal') {
-                    paypalForm.style.display = 'block';
-                    cardForm.style.display = 'none';
-                } else {
-                    paypalForm.style.display = 'none';
-                    cardForm.style.display = 'block';
-                }
             });
         });
         
