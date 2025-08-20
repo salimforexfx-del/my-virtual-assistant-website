@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salim-VirtualAssistant | Professional Virtual Assistant Services</title>
+    <meta name="description" content="Professional virtual assistant services including administrative support, graphic design, content creation, social media management, and more. Boost your productivity today.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://salim-virtualassistant.com/">
+    <meta property="og:title" content="Salim-VirtualAssistant | Professional Virtual Assistant Services">
+    <meta property="og:description" content="Professional virtual assistant services to help your business grow. Administrative support, graphic design, content creation, and more.">
+    <meta property="og:image" content="https://salim-virtualassistant.com/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://salim-virtualassistant.com/">
+    <meta property="twitter:title" content="Salim-VirtualAssistant | Professional Virtual Assistant Services">
+    <meta property="twitter:description" content="Professional virtual assistant services to help your business grow.">
+    <meta property="twitter:image" content="https://salim-virtualassistant.com/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💼</text></svg>">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -193,6 +212,21 @@
             color: var(--primary);
         }
 
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+
         /* Hero Section */
         .hero {
             padding: 180px 0 100px;
@@ -249,7 +283,7 @@
             right: 0;
             width: 60%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 极速飞艇 100 100"><rect width="100" height="100" fill="none" stroke="white" stroke-width="2" stroke-opacity="0.1" stroke-dasharray="5,5"/></svg>');
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="white" stroke-width="2" stroke-opacity="0.1" stroke-dasharray="5,5"/></svg>');
             background-size: 20px;
             opacity: 0.1;
         }
@@ -272,12 +306,12 @@
             text-align: center;
             transition: var(--transition);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 极速飞艇.03);
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(78, 70, 229, 0.15);
+            box-shadow: 0 20极速飞艇 40px rgba(78, 70, 229, 0.15);
         }
 
         .service-icon {
@@ -370,7 +404,7 @@
 
         .portfolio-overlay h3 {
             color: white;
-            margin-bottom: 10px;
+            margin-bottom: 10极速飞艇;
             font-size: 1.4rem;
         }
 
@@ -563,7 +597,7 @@
             padding: 14px 20px;
             border: 1px solid #ddd;
             border-radius: 8px;
-            font-family: 'P极速飞艇ppins', sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-size: 1rem;
             transition: var(--transition);
         }
@@ -577,6 +611,26 @@
         textarea.form-control {
             min-height: 150px;
             resize: vertical;
+        }
+
+        .form-message {
+            display: none;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .form-message.success {
+            background: #d1fae5;
+            color: #065f46;
+            display: block;
+        }
+
+        .form-message.error {
+            background: #fee2e2;
+            color: #b91c1c;
+            display: block;
         }
 
         /* Footer */
@@ -663,7 +717,7 @@
             align-items: center;
         }
 
-        .footer极速飞艇links a:hover {
+        .footer-links a:hover {
             color: var(--accent);
             transform: translateX(5px);
         }
@@ -681,6 +735,48 @@
             font-size: 0.9rem;
         }
 
+        /* Cookie Consent */
+        .cookie-consent {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: var(--secondary);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+            max-width: 500px;
+        }
+
+        .cookie-consent p {
+            margin-bottom: 15px;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Loading animation */
+        .loader {
+            display: none;
+            width: 48px;
+            height: 48px;
+            border: 5px solid var(--primary);
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            animation: rotation 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         /* Responsive */
         @media (max-width: 992px) {
             .hero-image {
@@ -695,13 +791,47 @@
             .hero-buttons {
                 justify-content: center;
             }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
             .section-header h2 {
                 font-size: 2.2rem;
             }
@@ -738,6 +868,16 @@
                 max-width: 250px;
                 text-align: center;
             }
+            
+            .cookie-consent {
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
+            }
+            
+            .cookie-buttons {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -756,6 +896,11 @@
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
 
@@ -780,7 +925,7 @@
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
-            <div class极速飞艇="section-header">
+            <div class="section-header">
                 <h2>My Services</h2>
                 <p>Comprehensive virtual assistance solutions designed to streamline your workflow and enhance productivity.</p>
             </div>
@@ -807,10 +952,10 @@
                 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-file-alt"></i>
+                        <极速飞艇 class="fas fa-file-alt"></i>
                     </div>
                     <h3>Content Creation</h3>
-                    <p>Blog posts, social media content, newsletters, website copy, and email marketing campaigns.</极速飞艇>
+                    <p>Blog posts, social media content, newsletters, website copy, and email marketing campaigns.</p>
                     <div class="price">$35<span>/hour</span></div>
                     <a href="#contact" class="btn">Get Started</a>
                 </div>
@@ -819,9 +964,9 @@
                     <div class="service-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <极速飞艇>Social Media Management</h3>
+                    <h3>Social Media Management</h3>
                     <p>Strategy development, content planning, community engagement, and performance analytics.</p>
-                    <div class="price">$40<span>/hour</span></div>
+                    <div class="price">$极速飞艇<span>/hour</span></div>
                     <a href="#contact" class="btn">Get Started</a>
                 </div>
                 
@@ -857,24 +1002,24 @@
             </div>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8f极速飞艇8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Social Media Marketing">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlf极速飞艇8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Social Media Marketing">
                     <div class="portfolio-overlay">
                         <h3>Social Media Marketing</h3>
                         <p>Strategic social media campaigns to grow your online presence</p>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80" alt="Marketing Materials">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&极速飞艇it=crop&w=1415&q=80" alt="Marketing Materials">
                     <div class="portfolio-overlay">
                         <h3>Marketing Materials</h3>
                         <p>Professional brochures, flyers, and promotional content</p>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1634942536746-46b9a6de9231?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Logo Design">
+                    <img src="https://images.unsplash.com/photo-1634942536746-46b9a6de9231?ixlib=rb-4.0.3&ixid=M3wxMjA3f极速飞艇B8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Logo Design">
                     <div class="portfolio-overlay">
                         <h3>Logo Design</h3>
-                        <p>Creative and memorable logo designs for your brand</p>
+                        <p>Creative and memorable logo designs for your brand</极速飞艇>
                     </div>
                 </div>
                 <div class="portfolio-item">
@@ -885,14 +1030,14 @@
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Lead Generation">
+                    <img src="https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1w极速飞艇YWdlfHx8fGVuf极速飞艇B8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Lead Generation">
                     <div class="portfolio-overlay">
                         <h3>Lead Generation</h3>
                         <p>Targeted lead generation and enrichment services</p>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&ixid=M3wxMjA3极速飞艇DB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3极速飞艇D%3D&auto=format&fit=crop&w=1471&q=80" alt="Email Marketing">
+                    <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Email Marketing">
                     <div class="portfolio-overlay">
                         <h3>Email Marketing</h3>
                         <p>Effective email campaigns to engage your audience</p>
@@ -947,7 +1092,7 @@
                         <div class="testimonial-author">
                             <div class="author-image">JK</div>
                             <div class="author-info">
-                                <h4>James Kim</h4>
+                                <极速飞艇>James Kim</h4>
                                 <p>Owner, Handmade Crafts Store</p>
                             </div>
                         </div>
@@ -957,7 +1102,7 @@
                     <div class="testimonial">
                         <div class="testimonial-content">
                             Salim's video editing skills are exceptional. He took my raw tutorial footage and turned it into engaging, professional content that my audience loves. His turnaround time is impressive, and he's always open to feedback and revisions.
-                        </极速飞艇>
+                        </div>
                         <div class="testimonial-author">
                             <div class="author-image">ED</div>
                             <div class="author-info">
@@ -970,9 +1115,9 @@
                 
                 <div class="testimonial-controls">
                     <div class="testimonial-dot active" data-index="0"></div>
-                    <div class="testimonial-dot" data极速飞艇index="1"></div>
+                    <div class="testimonial-dot" data-index="1"></div>
                     <div class="testimonial-dot" data-index="2"></div>
-                    <div class="testimonial-dot" data-index="3"></极速飞艇div>
+                    <div class="testimonial-dot" data-index="3"></div>
                 </div>
             </div>
         </div>
@@ -983,7 +1128,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Get In Touch</h2>
-                <p>Ready to boost your productivity? Let's discuss how I can support your business.</p>
+                <p>Ready to boost your productivity? Let's discuss how I can support your business.</极速飞艇>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
@@ -1016,23 +1161,23 @@
                             <div class="contact-text">
                                 <h4>Location</h4>
                                 <p>Remote - Serving Clients Worldwide</p>
-                            </div>
+                            </极速飞艇>
                         </div>
                     </div>
                 </div>
                 
                 <div class="contact-form">
-                    <form netlify>
+                    <form id="contactForm" netlify>
                         <div class="form-group">
-                            <label for="name">Full Name</label>
+                            <label for="name">Full Name *</label>
                             <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email Address</label>
+                            <label for="email">Email Address *</label>
                             <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
                         </div>
                         <div class="form-group">
-                            <label for="service">Service Interested In</label>
+                            <label for="service">Service Interested In *</label>
                             <select id="service" class="form-control" required>
                                 <option value="">Select a service</option>
                                 <option value="admin">Administrative Support</option>
@@ -1044,9 +1189,12 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="message">Your Message</label>
+                            <label for="message">Your Message *</label>
                             <textarea id="message" class="form-control" placeholder="Tell me about your project" required></textarea>
                         </div>
+                        <div class="loader" id="formLoader"></div>
+                        <div class="form-message success" id="successMessage">Thank you! Your message has been sent successfully.</div>
+                        <div class="form-message error" id="errorMessage">Sorry, there was an error sending your message. Please try again.</div>
                         <button type="submit" class="btn btn-accent">Send Message</button>
                     </form>
                 </div>
@@ -1074,7 +1222,7 @@
                         <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
                         <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
                         <li><a href="#portfolio"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
-                        <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Testimonials</a></li>
+                        <li><a href="#testimonials"><i class="fas fa-chevron-right"></极速飞艇> Testimonials</a></li>
                         <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
                     </ul>
                 </div>
@@ -1092,10 +1240,21 @@
             </div>
             
             <div class="copyright">
-                &copy; 2023 Salim-VirtualAssistant Services. All rights reserved.
+                &copy; 2023 Salim-VirtualAssistant Services. All rights reserved. | 
+                <a href="#" style="color: rgba(255,255,255,0.6);">Privacy Policy</a> | 
+                <a href="#" style="color: rgba(255,255,255,0.6);">Terms of Service</a>
             </div>
         </div>
     </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-consent" id="cookieConsent">
+        <p>This website uses cookies to ensure you get the best experience on our website. <a href="#" style="color: #4e46e5;">Learn more</a></p>
+        <div class="cookie-buttons">
+            <button class="btn" id="acceptCookies">Accept</button>
+            <button class="btn btn-outline" id="rejectCookies">Reject</button>
+        </div>
+    </div>
 
     <script>
         // Header scroll effect
@@ -1108,10 +1267,22 @@
             }
         });
 
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+                
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
@@ -1144,7 +1315,80 @@
                 updateSlider();
             }, 5000);
         });
+
+        // Form validation and submission
+        const contactForm = document.getElementById('contactForm');
+        const formLoader = document.getElementById('formLoader');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !email || !service || !message) {
+                errorMessage.textContent = 'Please fill in all required fields.';
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                errorMessage.textContent = 'Please enter a valid email address.';
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                return;
+            }
+            
+            // Show loader and hide messages
+            formLoader.style.display = 'block';
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Simulate form submission (replace with actual form submission code)
+            setTimeout(() => {
+                formLoader.style.display = 'none';
+                successMessage.style.display = 'block';
+                contactForm.reset();
+            }, 1500);
+        });
+
+        // Cookie consent
+        const cookieConsent = document.getElementById('cookieConsent');
+        const acceptCookies = document.getElementById('acceptCookies');
+        const rejectCookies = document.getElementById('rejectCookies');
+        
+        // Check if user has already made a choice
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                cookieConsent.style.display = 'block';
+            }, 2000);
+        }
+        
+        acceptCookies.addEventListener('click', function() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieConsent.style.display = 'none';
+        });
+        
+        rejectCookies.addEventListener('click', function() {
+            localStorage.setItem('cookiesAccepted', 'false');
+            cookieConsent.style.display = 'none';
+        });
+
+        // Google Analytics (replace with your tracking ID)
+        /*
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'YOUR_GA_TRACKING_ID');
+        */
     </script>
 </body>
 </html>
-
