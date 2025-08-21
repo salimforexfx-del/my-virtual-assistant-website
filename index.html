@@ -1292,45 +1292,51 @@
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Get In Touch</h2>
-                <p>Have questions or want to discuss a custom project? Reach out to me today.</p>
+    <div class="container">
+        <div class="section-header">
+            <h2>Get In Touch</h2>
+            <p>Have questions or want to discuss a custom project? Reach out to me today.</p>
+        </div>
+        
+        <div class="footer-content">
+            <div class="footer-about">
+                ...
             </div>
             
-            <div class="footer-content">
-                <div class="footer-about">
-                    <a href="#" class="footer-logo">Salim-VA</a>
-                    <p>Professional virtual assistant and graphic designer dedicated to helping businesses thrive through efficient support and creative solutions.</p>
-                    <div class="social-links">
-                        <a href="mailto:salim.virtualassistant@gmail.com" title="Email Salim">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
+            <div class="footer-links-section">
+                ...
+            </div>
+            
+            <div class="footer-links-section">
+                ...
+            </div>
+
+            <!-- ✅ Inserted Netlify contact form here -->
+            <div class="contact-form">
+              <form name="contact" method="POST" data-netlify="true" action="/thank-you" class="contact-form">
+                <input type="hidden" name="form-name" value="contact">
                 
-                <div class="footer-links-section">
-                    <h4 class="footer-heading">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
-                        <li><a href="#payment"><i class="fas fa-chevron-right"></i> Book Now</a></li>
-                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
-                        <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Testimonials</a></li>
-                    </ul>
+                <div class="form-group">
+                  <label for="name">Your Name</label>
+                  <input id="name" name="name" type="text" class="form-control" required>
                 </div>
-                
-                <div class="footer-links-section">
-                    <h4 class="footer-heading">Contact Info</h4>
-                    <ul class="footer-links">
-                        <li><a href="mailto:salim.virtualassistant@gmail.com"><i class="fas fa-envelope"></i> salim.virtualassistant@gmail.com</a></li>
-                        <li><a href="tel:+15551234567"><i class="fas fa-phone"></i> +1 (555) 123-4567</a></li>
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Remote - Worldwide</a></li>
-                    </ul>
+
+                <div class="form-group">
+                  <label for="email">Your Email</label>
+                  <input id="email" name="email" type="email" class="form-control" required>
                 </div>
+
+                <div class="form-group">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-accent">Send Message</button>
+              </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer>
@@ -1504,5 +1510,6 @@
     </script>
 </body>
 </html>
+
 
 
