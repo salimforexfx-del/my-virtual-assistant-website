@@ -5,14 +5,163 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Salim Virtual Assistant Services</title>
 
-  <!-- ✅ Only one CSS link -->
-  <link rel="stylesheet" href="styles.css">
-
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@600&display=swap" rel="stylesheet">
 
-  <!-- FontAwesome (replace with your kit for full icons) -->
+  <!-- FontAwesome -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- ✅ Embedded CSS -->
+  <style>
+    /* General */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f9f9f9;
+    }
+    h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* Header */
+    header {
+      background: #222;
+      color: #fff;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header .logo { font-size: 1.5rem; font-weight: 600; }
+    nav ul { list-style: none; display: flex; gap: 1.5rem; }
+    nav a { color: #fff; font-weight: 500; transition: color .3s; }
+    nav a:hover { color: #00bfa6; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(to right, rgba(0,0,0,.6), rgba(0,0,0,.6)), url("https://source.unsplash.com/1600x700/?office,workspace") no-repeat center/cover;
+      color: #fff;
+      text-align: center;
+      padding: 6rem 1rem;
+    }
+    .hero h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      background: #00bfa6;
+      color: #fff;
+      margin-top: 1rem;
+      transition: background .3s;
+    }
+    .btn:hover { background: #009f8a; }
+
+    /* Section Titles */
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin: 2rem 0;
+      color: #222;
+    }
+
+    /* Services */
+    .services { padding: 3rem 0; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: transform .3s;
+    }
+    .service-card:hover { transform: translateY(-5px); }
+    .service-icon { font-size: 2rem; color: #00bfa6; margin-bottom: 1rem; }
+
+    /* About */
+    .about { padding: 3rem 0; display: flex; gap: 2rem; flex-wrap: wrap; align-items: center; }
+    .about img { width: 100%; border-radius: 10px; }
+    .about-text { flex: 1; }
+
+    /* Testimonials */
+    .testimonials {
+      background: #f0f0f0;
+      padding: 3rem 0;
+      text-align: center;
+    }
+    .testimonials-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .testimonial-card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      flex: 1 1 280px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .testimonial-card i { color: #00bfa6; margin-bottom: 1rem; }
+
+    /* Contact */
+    .contact {
+      background: #222;
+      color: #fff;
+      padding: 3rem 0;
+    }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .footer-heading { font-size: 1.2rem; margin-bottom: 1rem; }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: .5rem; }
+    .footer-links a { color: #ccc; transition: color .3s; }
+    .footer-links a:hover { color: #00bfa6; }
+
+    /* Contact Form */
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 5px;
+    }
+    .contact-form button {
+      width: 100%;
+      padding: 0.75rem;
+      background: #00bfa6;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background .3s;
+    }
+    .contact-form button:hover { background: #009f8a; }
+
+    /* Footer */
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 1rem;
+      color: #aaa;
+    }
+  </style>
 </head>
 <body>
 
@@ -37,7 +186,7 @@
     <div class="container">
       <h2>Your Professional Virtual Assistant</h2>
       <p>Helping businesses and entrepreneurs save time, stay organized, and grow.</p>
-      <a href="#contact" class="btn btn-accent">Get in Touch</a>
+      <a href="#contact" class="btn">Get in Touch</a>
     </div>
   </section>
 
@@ -46,46 +195,39 @@
     <div class="container">
       <h2 class="section-title">Services</h2>
       <div class="services-grid">
-
         <div class="service-card">
           <div class="service-icon"><i class="fas fa-envelope"></i></div>
           <h3>Email Management</h3>
           <p>Keep your inbox organized, respond promptly, and never miss important communication.</p>
         </div>
-
         <div class="service-card">
           <div class="service-icon"><i class="fas fa-calendar-alt"></i></div>
           <h3>Scheduling</h3>
           <p>Efficient management of appointments, meetings, and reminders to keep you on track.</p>
         </div>
-
         <div class="service-card">
           <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
           <h3>Content Writing</h3>
           <p>Engaging blog posts, website copy, and marketing content tailored to your audience.</p>
         </div>
-
         <div class="service-card">
           <div class="service-icon"><i class="fas fa-search"></i></div>
           <h3>Research</h3>
           <p>Accurate and timely research to support your business decisions and strategies.</p>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- About -->
-  <section id="about" class="about">
-    <div class="container about-grid">
-      <div class="about-image">
-        <img src="https://source.unsplash.com/500x400/?assistant" alt="Virtual Assistant at work">
-      </div>
-      <div class="about-text">
-        <h2>About Me</h2>
-        <p>Hello, I’m Salim, a dedicated Virtual Assistant with experience in supporting businesses and entrepreneurs. My mission is to help you save time, stay organized, and focus on what matters most—growing your business.</p>
-        <a href="#contact" class="btn">Let’s Work Together</a>
-      </div>
+  <section id="about" class="about container">
+    <div class="about-image">
+      <img src="https://source.unsplash.com/500x400/?assistant" alt="Virtual Assistant at work">
+    </div>
+    <div class="about-text">
+      <h2>About Me</h2>
+      <p>Hello, I’m Salim, a dedicated Virtual Assistant with experience in supporting businesses and entrepreneurs. My mission is to help you save time, stay organized, and focus on what matters most—growing your business.</p>
+      <a href="#contact" class="btn">Let’s Work Together</a>
     </div>
   </section>
 
@@ -94,25 +236,21 @@
     <div class="container">
       <h2 class="section-title">What Clients Say</h2>
       <div class="testimonials-grid">
-
         <div class="testimonial-card">
           <i class="fas fa-user fa-2x"></i>
           <p>"Salim has been a game-changer for my business. Highly organized and professional!"</p>
           <h4>- Client A</h4>
         </div>
-
         <div class="testimonial-card">
           <i class="fas fa-user fa-2x"></i>
           <p>"I can now focus on growth while Salim handles the admin work efficiently."</p>
           <h4>- Client B</h4>
         </div>
-
         <div class="testimonial-card">
           <i class="fas fa-user fa-2x"></i>
           <p>"Great communication, reliable, and skilled at managing multiple tasks."</p>
           <h4>- Client C</h4>
         </div>
-
       </div>
     </div>
   </section>
@@ -130,33 +268,28 @@
         <div class="footer-about">
           <a href="#" class="footer-logo">Salim Virtual Assistant</a>
           <p>Professional virtual assistant and graphic designer dedicated to helping businesses thrive through efficient support and creative solutions.</p>
-          <div class="social-links">
-            <a href="mailto:salim.virtualassistant@gmail.com" title="Email Salim">
-              <i class="fas fa-envelope"></i>
-            </a>
-          </div>
         </div>
         
         <!-- Quick Links -->
-        <div class="footer-links-section">
+        <div>
           <h4 class="footer-heading">Quick Links</h4>
           <ul class="footer-links">
-            <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-            <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
-            <li><a href="#payment"><i class="fas fa-chevron-right"></i> Book Now</a></li>
-            <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
-            <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Testimonials</a></li>
-            <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#payment">Book Now</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
         
         <!-- Contact Info -->
-        <div class="footer-links-section">
+        <div>
           <h4 class="footer-heading">Contact Info</h4>
           <ul class="footer-links">
             <li><a href="mailto:salim.virtualassistant@gmail.com"><i class="fas fa-envelope"></i> salim.virtualassistant@gmail.com</a></li>
             <li><a href="tel:+15551234567"><i class="fas fa-phone"></i> +1 (555) 123-4567</a></li>
-            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Remote - Worldwide</a></li>
+            <li><i class="fas fa-map-marker-alt"></i> Remote - Worldwide</li>
           </ul>
         </div>
 
@@ -164,23 +297,10 @@
         <div class="contact-form">
           <form name="contact" method="POST" data-netlify="true" action="/thank-you">
             <input type="hidden" name="form-name" value="contact">
-            
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input id="name" name="name" type="text" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-              <label for="email">Your Email</label>
-              <input id="email" name="email" type="email" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-accent">Send Your Message</button>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Your Message</button>
           </form>
         </div>
       </div>
@@ -189,9 +309,7 @@
 
   <!-- Footer -->
   <footer>
-    <div class="container">
-      <p>&copy; 2025 Salim Virtual Assistant. All Rights Reserved.</p>
-    </div>
+    <p>&copy; 2025 Salim Virtual Assistant. All Rights Reserved.</p>
   </footer>
 
 </body>
