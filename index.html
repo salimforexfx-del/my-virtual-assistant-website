@@ -1639,7 +1639,7 @@ function openPaystack() {
     const emailField = document.getElementById('paypal-email');
     const email = (emailField && emailField.value) ? emailField.value : 'customer@example.com';
     const handler = PaystackPop.setup({
-        key: 'pk_test_aeb92b1876c92b249172fd6453de18614cbd5381',
+        key: 'pk_live_4842a6f67cbfb6c50efc62c39d25c65c18c09577',
         email: email,
         amount: Math.round(kesTotal * 100), // KES subunits
         currency: 'KES',
@@ -1668,3 +1668,4 @@ fetchRate();
     </script>
 </body>
 </html>
+
