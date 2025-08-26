@@ -278,7 +278,7 @@
             right: 0;
             width: 60%;
             height: 100%;
-            background-image: 
+            background-image:
                 radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
             background-size: 20px 20px;
             opacity: 0.1;
@@ -723,6 +723,10 @@
             color: white;
         }
 
+        .contact-text p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
         .contact-form {
             background: white;
             padding: 40px;
@@ -966,7 +970,7 @@
             .menu-toggle.active span:nth-child(3) {
                 transform: rotate(-45deg) translate(7px, -6px);
             }
-
+            
             .footer-contact-form {
                 min-width: auto;
             }
@@ -1053,9 +1057,11 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Professional Virtual Assistant Services</h1>
-                <p>Boost your productivity with expert administrative, creative, and technical support tailored to your business needs. Let me handle the details while you focus on growth.</p>
+                <p>Boost your productivity with expert administrative, creative,
+ and technical support tailored to your business needs. Let me handle the details while you focus on growth.</p>
                 <div class="hero-buttons">
                     <a href="#services" class="btn btn-accent">View Services</a>
+
                     <a href="#payment" class="btn btn-outline">Book Now</a>
                 </div>
             </div>
@@ -1137,7 +1143,6 @@
         </div>
     </section>
 
-    
     <!-- Payment Section -->
     <section class="payment" id="payment">
         <div class="container">
@@ -1393,7 +1398,7 @@
                     </ul>
                 </div>
 
-                <!-- NEW: Footer contact form (Netlify) - placed lower-right in the footer content grid -->
+                <!-- Quick Contact Form -->
                 <div class="footer-contact-form">
                     <h4>Quick Contact</h4>
 
@@ -1401,7 +1406,7 @@
                     <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/thank-you">
                         <!-- Hidden input required for Netlify -->
                         <input type="hidden" name="form-name" value="contact">
-                        <!-- Honeypot field (bots will fill this; humans won't) -->
+                        <!-- Honeypot field -->
                         <p class="hidden-field">
                             <label>Don’t fill this out if you're human: <input name="bot-field"></label>
                         </p>
@@ -1422,15 +1427,15 @@
     <footer>
         <div class="container">
             <div class="copyright">
-                &copy; 2023 Salim-VirtualAssistant Services. All rights reserved. | 
-                <a href="#" style="color: rgba(255,255,255,0.6);">Privacy Policy</a> | 
+                &copy; 2023 Salim-VirtualAssistant Services. All rights reserved. |
+                <a href="#" style="color: rgba(255,255,255,0.6);">Privacy Policy</a> |
                 <a href="#" style="color: rgba(255,255,255,0.6);">Terms of Service</a>
             </div>
         </div>
     </footer>
 
     <script src="https://js.paystack.co/v1/inline.js"></script>
-<script>
+    <script>
         // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
@@ -1444,7 +1449,7 @@
         // Mobile menu toggle
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
-        
+
         menuToggle.addEventListener('click', function() {
             navLinks.classList.toggle('active');
             menuToggle.classList.toggle('active');
@@ -1456,7 +1461,6 @@
                 e.preventDefault();
                 navLinks.classList.remove('active');
                 menuToggle.classList.remove('active');
-                
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
@@ -1500,7 +1504,6 @@
 // Live rate + amounts
 let latestRate = 0, usdTotal = 0, kesTotal = 0;
 const conversionNote = document.getElementById('conversion-note');
-const paystackButton = document.getElementById('paystack-button');
 const completePaymentBtn = document.getElementById('complete-payment');
 
 async function fetchRate() {
@@ -1514,132 +1517,138 @@ async function fetchRate() {
   }
 }
 
+// Service prices
+const servicePrices = {
+    'admin': 25,
+    'design': 45,
+    'content': 35,
+    'social': 40,
+    'ecommerce': 30,
+    'video': 50
+};
+
+// Service names
+const serviceNames = {
+    'admin': 'Administrative Support',
+    'design': 'Graphic Design',
+    'content': 'Content Creation',
+    'social': 'Social Media Management',
+    'ecommerce': 'E-commerce Support',
+    'video': 'Video Editing'
+};
+
+// Update order summary
+function updateSummary() {
+    const service = serviceSelect.value;
+    const hours = parseInt(hoursInput.value) || 1;
+    const date = dateInput.value;
+    
+    if (service) {
+        const rate = servicePrices[service];
+        const total = rate * hours;
         
-        // Service prices
-        const servicePrices = {
-            'admin': 25,
-            'design': 45,
-            'content': 35,
-            'social': 40,
-            'ecommerce': 30,
-            'video': 50
-        };
+        document.getElementById('summary-service').textContent = serviceNames[service];
+        document.getElementById('summary-hours').textContent = hours;
+        document.getElementById('summary-rate').textContent = `$${rate.toFixed(2)}/hour`;
+        document.getElementById('summary-date').textContent = date || '-';
+        document.getElementById('summary-total').textContent = `$${total.toFixed(2)}`;
+        usdTotal = total;
+        kesTotal = total * latestRate;
+        if (conversionNote) conversionNote.textContent = `Equivalent in KES: KES ${kesTotal.toFixed(2)}`;
+    } else {
+        document.getElementById('summary-service').textContent = '-';
+        document.getElementById('summary-rate').textContent = '$0.00/hour';
+        document.getElementById('summary-total').textContent = '$0.00';
+        usdTotal = 0;
+        kesTotal = 0;
+        if (conversionNote) conversionNote.textContent = 'Select a service to see the converted total in KES.';
+    }
+}
+
+// Event listeners for payment form
+serviceSelect.addEventListener('change', updateSummary);
+hoursInput.addEventListener('input', updateSummary);
+dateInput.addEventListener('change', updateSummary);
+
+// Payment method selection
+paymentOptions.forEach(option => {
+    option.addEventListener('click', function() {
+        paymentOptions.forEach(opt => opt.classList.remove('selected'));
+
+        this.classList.add('selected');
         
-        // Service names
-        const serviceNames = {
-            'admin': 'Administrative Support',
-            'design': 'Graphic Design',
-            'content': 'Content Creation',
-            'social': 'Social Media Management',
-            'ecommerce': 'E-commerce Support',
-            'video': 'Video Editing'
-        };
-        
-        // Update order summary
-        function updateSummary() {
-            const service = serviceSelect.value;
-            const hours = parseInt(hoursInput.value) || 1;
-            const date = dateInput.value;
-            
-            if (service) {
-                const rate = servicePrices[service];
-                const total = rate * hours;
-                
-                document.getElementById('summary-service').textContent = serviceNames[service];
-                document.getElementById('summary-hours').textContent = hours;
-                document.getElementById('summary-rate').textContent = `$${rate.toFixed(2)}/hour`;
-                document.getElementById('summary-date').textContent = date || '-';
-                document.getElementById('summary-total').textContent = `$${total.toFixed(2)}`;
-            } else {
-                document.getElementById('summary-service').textContent = '-';
-                document.getElementById('summary-rate').textContent = '$0.00/hour';
-                document.getElementById('summary-total').textContent = '$0.00';
-            }
+        const method = this.dataset.method;
+        if (method === 'paypal') {
+            paypalForm.classList.add('active-form');
+            cardForm.classList.remove('active-form');
+        } else {
+            paypalForm.classList.remove('active-form');
+            cardForm.classList.add('active-form');
         }
-        
-        // Event listeners for payment form
-        serviceSelect.addEventListener('change', updateSummary);
-        hoursInput.addEventListener('input', updateSummary);
-        dateInput.addEventListener('change', updateSummary);
-        
-        // Payment method selection
-        paymentOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                paymentOptions.forEach(opt => opt.classList.remove('selected'));
-                this.classList.add('selected');
-                
-                const method = this.dataset.method;
-                if (method === 'paypal') {
-                    paypalForm.classList.add('active-form');
-                    cardForm.classList.remove('active-form');
-                } else {
-                    paypalForm.classList.remove('active-form');
-                    cardForm.classList.add('active-form');
-                }
-            });
-        });
-        
-        // Initialize summary
-        updateSummary();
-        
-        // Set minimum date to today
-        const today = new Date().toISOString().split('T')[0];
-        dateInput.min = today;
+    });
+});
 
-        // Intersection Observer for section animations
-        const sections = document.querySelectorAll('section');
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+// Initialize summary
+updateSummary();
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+// Set minimum date to today
+const today = new Date().toISOString().split('T')[0];
+dateInput.min = today;
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
+// Intersection Observer for section animations
+const sections = document.querySelectorAll('section');
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+sections.forEach(section => {
+    observer.observe(section);
+});
+
 // Determine selected method helper
 function getSelectedMethod() {
-  const selected = document.querySelector('.payment-option.selected');
-  return selected ? selected.dataset.method : 'paypal';
+    const selected = document.querySelector('.payment-option.selected');
+    return selected ? selected.dataset.method : 'paypal';
 }
 
 // Open Paystack inline
 function openPaystack() {
-  if (!usdTotal || !kesTotal) { alert('Please select a service first.'); return; }
-  const emailField = document.getElementById('paypal-email');
-  const email = (emailField && emailField.value) ? emailField.value : 'customer@example.com';
-  const handler = PaystackPop.setup({
-    key: 'pk_test_aeb92b1876c92b249172fd6453de18614cbd5381',
-    email: email,
-    amount: Math.round(kesTotal * 100), // KES subunits
-    currency: 'KES',
-    metadata: { custom_fields: [{ display_name: 'Service', variable_name: 'service', value: serviceSelect.value }, { display_name: 'Hours', value: parseInt(hoursInput.value)||1 }]},
-    callback: function(response){ alert('Payment successful! Reference: ' + response.reference); },
-    onClose: function(){ /* optional: toast */ }
-  });
-  handler.openIframe();
+    if (!usdTotal || !kesTotal) { alert('Please select a service first.'); return; }
+    const emailField = document.getElementById('paypal-email');
+    const email = (emailField && emailField.value) ? emailField.value : 'customer@example.com';
+    const handler = PaystackPop.setup({
+        key: 'pk_test_aeb92b1876c92b249172fd6453de18614cbd5381',
+        email: email,
+        amount: Math.round(kesTotal * 100), // KES subunits
+        currency: 'KES',
+        metadata: { custom_fields: [{ display_name: 'Service', variable_name: 'service', value: serviceSelect.value }, { display_name: 'Hours', value: parseInt(hoursInput.value)||1 }]},
+        callback: function(response){ alert('Payment successful! Reference: ' + response.reference); },
+        onClose: function(){ /* optional: toast */ }
+    });
+    handler.openIframe();
 }
-
 
 // Wire Complete Payment button
 if (completePaymentBtn) {
-  completePaymentBtn.addEventListener('click', function(){
-    const method = getSelectedMethod();
-    if (method === 'paypal') {
-      alert('Redirecting to PayPal (stub).');
-      // TODO: integrate real PayPal checkout
-    } else {
-      openPaystack();
-    }
-  });
+    completePaymentBtn.addEventListener('click', function(){
+        const method = getSelectedMethod();
+        if (method === 'paypal') {
+            alert('Redirecting to PayPal (stub).');
+            // TODO: integrate real PayPal checkout
+        } else {
+            openPaystack();
+        }
+    });
 }
 
 // Fetch rate on load
