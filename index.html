@@ -1137,6 +1137,7 @@
         </div>
     </section>
 
+    
     <!-- Payment Section -->
     <section class="payment" id="payment">
         <div class="container">
@@ -1171,7 +1172,7 @@
                         <input type="date" id="date" class="form-control" required>
                     </div>
                     
-                    <!-- Order Summary - Placed above payment method -->
+                    <!-- Order Summary -->
                     <div class="payment-summary">
                         <h3>Order Summary</h3>
                         <div class="summary-item">
@@ -1196,7 +1197,7 @@
                         </div>
                     </div>
                     
-                    <!-- Payment method and payment details side by side -->
+                    <!-- Payment method --> 
                     <div class="payment-method-container">
                         <div class="payment-options">
                             <h3>Payment Method</h3>
@@ -1222,14 +1223,10 @@
                             
                             <!-- Credit Card Form -->
                             <div id="card-form" class="card-form">
-    <h3>Credit Card Payment</h3>
-    <p id="conversion-note" style="margin-bottom:15px; color:#64748b;">
-        Select a service to see the converted total in KES.
-    </p>
-    <button type="button" id="paystack-button" class="btn btn-outline" style="width:100%">
-        Pay with Card via Paystack
-    </button>
-</div>
+                                <h3>Credit Card Payment</h3>
+                                <p id="conversion-note" style="margin-bottom:15px; color:#64748b;">
+                                    Select a service to see the converted total in KES.
+                                </p>
                                 <div class="card-input-group">
                                     <div class="form-group">
                                         <label for="card-expiry">Expiry Date</label>
@@ -1631,16 +1628,14 @@ function openPaystack() {
   handler.openIframe();
 }
 
-// Wire buttons
-if (paystackButton) {
-  paystackButton.addEventListener('click', openPaystack);
-}
+
+// Wire Complete Payment button
 if (completePaymentBtn) {
   completePaymentBtn.addEventListener('click', function(){
     const method = getSelectedMethod();
     if (method === 'paypal') {
       alert('Redirecting to PayPal (stub).');
-      // TODO: integrate real PayPal checkout if needed.
+      // TODO: integrate real PayPal checkout
     } else {
       openPaystack();
     }
