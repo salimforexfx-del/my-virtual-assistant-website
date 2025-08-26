@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salim-VA | Professional Virtual Assistant Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #4e46e5;
@@ -14,164 +14,89 @@
             --accent: #f43f5e;
             --light: #f8fafc;
             --dark: #1e293b;
-            --gray: #64748b;
-            --transition: all 0.3s ease;
+            --muted: #64748b;
+            --gray: #94a3b8;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+            --radius: 14px;
+            --radius-sm: 10px;
+            --transition: all 0.25s ease;
         }
 
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
             background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.7;
-            overflow-x: hidden;
+            color: var(--secondary);
             scroll-behavior: smooth;
         }
 
-        h1, h2, h3, h4, h5 {
-            font-family: 'Montserrat', 'Inter', sans-serif;
-            font-weight: 700;
-            line-height: 1.3;
-            color: var(--secondary);
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            background: var(--primary);
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            box-shadow: 0 4px 6px rgba(78, 70, 229, 0.2);
-        }
-
-        .btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(78, 70, 229, 0.3);
-        }
-
-        .btn-accent {
-            background: var(--accent);
-            box-shadow: 0 4px 6px rgba(244, 63, 94, 0.2);
-        }
-
-        .btn-accent:hover {
-            background: #e11d48;
-            box-shadow: 0 6px 12px rgba(244, 63, 94, 0.3);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        section {
-            padding: 100px 0;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 60px;
-        }
-
-        .section-header h2 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-header h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-
-        .section-header p {
-            color: var(--gray);
-            font-size: 1.1rem;
+            width: min(1200px, 92%);
+            margin-inline: auto;
         }
 
         /* Header */
         header {
-            position: fixed;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
             z-index: 1000;
-            padding: 20px 0;
-            transition: var(--transition);
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background: rgba(255,255,255,0.85);
             backdrop-filter: blur(10px);
+            box-shadow: 0 6px 24px rgba(2, 8, 23, 0.06);
         }
 
-        header.scrolled {
-            padding: 15px 0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar {
+        .nav {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
+            padding: 18px 0;
         }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-decoration: none;
+        .brand {
             display: flex;
             align-items: center;
+            gap: 12px;
         }
 
-        .logo i {
-            margin-right: 10px;
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #4e46e5, #7c3aed);
+            color: #fff;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 10px 18px rgba(78, 70, 229, 0.25);
+        }
+
+        .brand-name {
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
         }
 
         .nav-links {
-            display: flex;
             list-style: none;
+            display: flex;
+            gap: 24px;
+            padding: 0;
+            margin: 0;
         }
 
         .nav-links li {
@@ -190,160 +115,174 @@
         .nav-links a:after {
             content: '';
             position: absolute;
-            bottom: 0;
             left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover:after {
-            width: 100%;
+            bottom: -6px;
+            width: 0%;
+            height: 3px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--primary), #7c3aed);
+            transition: width 0.25s ease;
         }
 
         .nav-links a:hover {
             color: var(--primary);
         }
 
-        /* Mobile menu */
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
         .menu-toggle {
             display: none;
-            flex-direction: column;
+            font-size: 24px;
             cursor: pointer;
+            color: var(--dark);
         }
 
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary);
-            margin: 3px 0;
-            transition: var(--transition);
-        }
-
-        /* Hero Section */
+        /* Hero */
         .hero {
-            padding: 180px 0 100px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
             position: relative;
+            padding: 80px 0 40px 0;
             overflow: hidden;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 650px;
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1.06fr 0.94fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #eef2ff;
+            color: #3730a3;
+            padding: 10px 14px;
+            border-radius: 999px;
+            font-weight: 600;
+            border: 1px solid rgba(78, 70, 229, 0.15);
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: clamp(28px, 5vw, 48px);
+            line-height: 1.1;
+            margin: 14px 0 12px 0;
+            color: var(--secondary);
         }
 
         .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 35px;
-            opacity: 0.9;
+            color: var(--muted);
+            font-size: 1.075rem;
+            margin: 0 0 20px 0;
         }
 
-        .hero-buttons {
+        .hero-cta {
             display: flex;
-            gap: 20px;
-            margin-top: 10px;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 8px;
         }
 
-        .hero-image {
-            position: absolute;
-            right: 5%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40%;
-            max-width: 500px;
-            z-index: 1;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 6px rgba(78, 70, 229, 0.2);
         }
 
-        .hero-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
         }
 
-        .hero-pattern {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 60%;
+        .btn-outline {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: #eef2ff;
+        }
+
+        .hero-card {
+            position: relative;
+            background: #ffffff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .hero-card img {
+            object-fit: cover;
             height: 100%;
-            background-image:
-                radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
-            opacity: 0.1;
+            width: 100%;
         }
 
-        /* Services Section */
-        .services {
-            background-color: white;
+        /* Services */
+        .section {
+            padding: 70px 0;
+        }
+
+        .section .section-header {
+            text-align: center;
+            margin-bottom: 42px;
+        }
+
+        .section .section-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .section .section-header p {
+            color: var(--muted);
+            margin: 0;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
         }
 
         .service-card {
             background: white;
-            border-radius: 12px;
-            padding: 40px 30px;
-            text-align: center;
-            transition: var(--transition);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 0, 0, 0.03);
+            border: 1px solid #e5e7eb;
+            border-radius: var(--radius);
+            padding: 22px;
+            box-shadow: var(--shadow);
         }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(78, 70, 229, 0.15);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            color: white;
-            font-size: 30px;
+        .service-card i {
+            font-size: 26px;
+            color: var(--primary);
+            margin-bottom: 10px;
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            margin: 0 0 8px 0;
+            font-size: 20px;
         }
 
         .service-card p {
-            color: var(--gray);
-            margin-bottom: 25px;
-        }
-
-        .price {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .price span {
-            font-size: 1rem;
-            color: var(--gray);
-            font-weight: 400;
+            margin: 0;
+            color: var(--muted);
         }
 
         /* Payment Section */
@@ -362,789 +301,400 @@
             background: white;
             padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            box-shadow: var(--shadow);
+        }
+
+        .payment-form h3 {
+            margin: 0 0 14px 0;
+            font-size: 22px;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 16px;
         }
 
         .form-group label {
             display: block;
+            font-weight: 600;
             margin-bottom: 8px;
-            color: var(--dark);
-            font-weight: 500;
+            color: var(--secondary);
         }
 
         .form-control {
             width: 100%;
-            padding: 14px 20px;
-            border: 1px solid #ddd;
+            display: block;
+            padding: 12px 14px;
+            border: 1px solid #d1d5db;
             border-radius: 8px;
-            font-family: 'Inter', sans-serif;
+            outline: none;
             font-size: 1rem;
-            transition: var(--transition);
         }
 
         .form-control:focus {
-            outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(78, 70, 229, 0.2);
-        }
-
-        select.form-control {
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            background-size: 1em;
+            box-shadow: 0 0 0 4px rgba(78, 70, 229, 0.12);
         }
 
         .payment-summary {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
+            background: #ffffff;
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            margin: 20px 0;
         }
 
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-
+        .summary-item,
         .summary-total {
             display: flex;
             justify-content: space-between;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 2px solid #eee;
-            font-weight: 700;
-            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .summary-total {
+            font-weight: 800;
+            font-size: 18px;
         }
 
         .payment-method-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         .payment-options {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: stretch;
+            gap: 14px;
+            margin: 20px 0;
         }
 
         .payment-option {
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
+            flex: 1;
+            background: #fff;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 18px 14px;
             text-align: center;
             cursor: pointer;
+            user-select: none;
             transition: var(--transition);
-            margin-bottom: 15px;
         }
 
-        .payment-option:hover {
-            border-color: var(--primary);
+        .payment-option i {
+            display: block;
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: var(--primary);
         }
 
         .payment-option.selected {
             border-color: var(--primary);
-            background: rgba(78, 70, 229, 0.05);
+            box-shadow: 0 10px 20px rgba(78, 70, 229, 0.12);
         }
 
-        .payment-option i {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-
-        .payment-details {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        }
-
-        .card-input-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .paypal-form {
-            display: none;
-        }
-
-        .card-form {
+        .payment-details .paypal-form,
+        .payment-details .card-form {
             display: none;
         }
 
         .payment-details .active-form {
             display: block;
-            animation: fadeIn 0.5s ease;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* About Section */
-        .about {
-            background-color: white;
-        }
-
-        .about-container {
+        .card-input-group {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 14px;
+        }
+
+        .hint {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        /* About */
+        .about {
+            background: #ffffff;
+        }
+
+        .about .container {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 38px;
             align-items: center;
         }
 
-        .about-image {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        .about h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            margin: 0 0 12px 0;
         }
 
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .about p {
+            margin: 0 0 12px 0;
+            color: var(--muted);
         }
 
-        .about-content h2 {
-            margin-bottom: 20px;
-        }
-
-        .about-content p {
-            margin-bottom: 20px;
-            color: var(--gray);
-        }
-
-        .about-stats {
+        .about .bullets {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 30px;
-            perspective: 1000px;
+            gap: 8px;
+            margin-top: 8px;
         }
 
-        .stat {
-            text-align: center;
-            padding: 20px;
-            background: var(--light);
-            border-radius: 8px;
-            transition: transform 0.3s ease;
+        .about .bullets div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .stat:hover {
-            transform: translateY(-5px);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            color: var(--gray);
-            font-size: 0.9rem;
+        .about .bullets i {
+            color: var(--success);
         }
 
         /* Testimonials */
         .testimonials {
-            background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+            background: linear-gradient(180deg, #ffffff, #fafafa);
             position: relative;
-        }
-
-        .testimonial-container {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
         }
 
         .testimonial-slider {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .testimonial {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            text-align: center;
-            margin: 0 20px;
-            min-width: 100%;
-            box-sizing: border-box;
-        }
-
-        .testimonial-content {
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-bottom: 30px;
-            color: var(--dark);
+            overflow: hidden;
             position: relative;
-            padding: 0 30px;
         }
 
-        .testimonial-content:before,
-        .testimonial-content:after {
-            content: '"';
-            font-size: 4rem;
-            color: var(--primary);
-            opacity: 0.2;
-            position: absolute;
-            line-height: 1;
+        .testimonial-track {
+            display: flex;
+            transition: transform .5s ease;
         }
 
-        .testimonial-content:before {
-            top: -20px;
-            left: 0;
-        }
-
-        .testimonial-content:after {
-            bottom: -60px;
-            right: 0;
+        .testimonial-card {
+            min-width: 100%;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--shadow);
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 14px;
         }
 
-        .author-image {
-            width: 70px;
-            height: 70px;
+        .testimonial-author img {
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            overflow: hidden;
-            margin-right: 20px;
-            background: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        .author-info h4 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            text-align: left;
-            color: var(--secondary);
-        }
-
-        .author-info p {
-            color: var(--gray);
-            text-align: left;
-        }
-
-        .testimonial-controls {
+        .testimonial-dots {
             display: flex;
             justify-content: center;
-            margin-top: 30px;
-            gap: 15px;
+            gap: 8px;
+            margin-top: 12px;
         }
 
         .testimonial-dot {
-            width: 12px;
-            height: 12px;
+            width: 8px;
+            height: 8px;
+            background: #d1d5db;
             border-radius: 50%;
-            background: #ddd;
             cursor: pointer;
-            transition: var(--transition);
         }
 
         .testimonial-dot.active {
             background: var(--primary);
-            transform: scale(1.2);
         }
 
-        /* Contact Section */
+        /* Contact */
         .contact {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
+            background: #ffffff;
         }
 
-        .contact-container {
+        .contact form {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 24px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .contact .row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-        }
-
-        .contact-info h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .contact-info p {
-            opacity: 0.9;
-            margin-bottom: 30px;
-        }
-
-        .contact-details {
-            margin-top: 30px;
-        }
-
-        .contact-item {
-            display: flex;
-            margin-bottom: 25px;
-            align-items: flex-start;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .contact-text h4 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            color: white;
-        }
-
-        .contact-text p {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .contact-form {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
         }
 
         /* Footer */
         footer {
-            background: var(--secondary);
-            color: white;
-            padding: 60px 0 30px;
+            background: #0b1220;
+            color: #cbd5e1;
+            padding: 30px 0;
+            margin-top: 40px;
         }
 
-        .footer-content {
+        .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
+            grid-template-columns: 1.2fr 0.8fr 0.8fr 1fr;
+            gap: 22px;
         }
 
         .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-
-        .footer-about p {
-            opacity: 0.7;
-            margin-bottom: 25px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-links a {
             display: flex;
             align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            transition: var(--transition);
-            text-decoration: none;
-            font-size: 1.2rem;
+            gap: 12px;
+            color: #fff;
+            font-weight: 800;
         }
 
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .footer-heading {
-            font-size: 1.3rem;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 10px;
-            color: white;
-        }
-
-        .footer-heading:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
+        .footer-logo .brand-logo {
+            box-shadow: none;
         }
 
         .footer-links {
             list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 15px;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 8px;
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
+            color: #cbd5e1;
             text-decoration: none;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
         }
 
         .footer-links a:hover {
-            color: var(--accent);
-            transform: translateX(5px);
-        }
-
-        .footer-links i {
-            margin-right: 10px;
-            font-size: 0.8rem;
+            color: #fff;
         }
 
         .copyright {
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-        }
-
-        /* Styling for the new footer contact form (lower-right) */
-        .footer-contact-form {
-            background: rgba(255,255,255,0.06);
-            padding: 20px;
-            border-radius: 10px;
-            min-width: 260px;
-        }
-
-        .footer-contact-form h4 {
-            color: #fff;
-            margin-bottom: 12px;
-            font-size: 1.1rem;
-        }
-
-        .footer-contact-form .fc-input,
-        .footer-contact-form .fc-textarea {
-            width: 100%;
-            padding: 10px 12px;
-            margin-bottom: 10px;
-            border-radius: 6px;
-            border: none;
-            font-size: 0.95rem;
-        }
-
-        /* white inputs with dark text so they stand out on footer */
-        .footer-contact-form .fc-input,
-        .footer-contact-form .fc-textarea {
-            background: #fff;
-            color: #111;
-        }
-
-        .footer-contact-form .fc-textarea {
-            min-height: 80px;
-            resize: vertical;
-        }
-
-        .footer-contact-form .fc-btn {
-            width: 100%;
-            padding: 10px 12px;
-            border-radius: 6px;
-            border: none;
-            background: var(--accent);
-            color: #fff;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .footer-contact-form .fc-btn:hover {
-            background: #e11d48;
-        }
-
-        /* Hide honeypot field visually */
-        .hidden-field {
-            display: none !important;
-            visibility: hidden !important;
-            height: 0 !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease forwards;
+            color: #94a3b8;
+            margin-top: 18px;
         }
 
         /* Responsive */
-        @media (max-width: 992px) {
-            .hero-image {
-                display: none;
-            }
-            
-            .hero-content {
-                max-width: 100%;
-                text-align: center;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-            
-            .payment-method-container,
-            .about-container {
+        @media (max-width: 980px) {
+            .hero .container {
                 grid-template-columns: 1fr;
             }
-            
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: white;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                transition: var(--transition);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            .about .container {
+                grid-template-columns: 1fr;
             }
-            
-            .nav-links.active {
-                left: 0;
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
-            
-            .nav-links li {
-                margin: 20px 0;
-            }
-            
-            .menu-toggle {
-                display: flex;
-            }
-            
-            .menu-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-            
-            .menu-toggle.active span:nth-child(2) {
-                opacity: 0;
-            }
-            
-            .menu-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -6px);
-            }
-            
-            .footer-contact-form {
-                min-width: auto;
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
 
-        @media (max-width: 768px) {
-            .section-header h2 {
-                font-size: 2.2rem;
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
             }
-            
-            section {
-                padding: 80px 0;
+            .menu-toggle {
+                display: block;
             }
-            
-            .hero {
-                padding: 150px 0 80px;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .testimonial {
-                padding: 30px 20px;
-            }
-            
-            .testimonial-content {
-                font-size: 1rem;
-                padding: 0 15px;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .hero-buttons .btn {
-                margin-bottom: 15px;
-                width: 100%;
-                max-width: 250px;
-                text-align: center;
-            }
-            
-            .payment-options {
+            .services-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .about-stats {
-                grid-template-columns: 1fr;
-            }
-            
-            .card-input-group {
+            .contact .row {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+
     <!-- Header -->
     <header>
-        <div class="container navbar">
-            <a href="#" class="logo">
-                <i class="fas fa-headset"></i>
-                Salim-VA
-            </a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#payment">Book Now</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+        <div class="container">
+            <div class="nav">
+                <div class="brand">
+                    <div class="brand-logo">SV</div>
+                    <div class="brand-name">Salim-VA</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#payment">Payment</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-toggle"><i class="fa fa-bars"></i></div>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+    <!-- Hero -->
+    <section class="hero" id="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>Professional Virtual Assistant Services</h1>
-                <p>Boost your productivity with expert administrative, creative,
- and technical support tailored to your business needs. Let me handle the details while you focus on growth.</p>
-                <div class="hero-buttons">
-                    <a href="#services" class="btn btn-accent">View Services</a>
-
-                    <a href="#payment" class="btn btn-outline">Book Now</a>
+            <div>
+                <div class="hero-badge"><i class="fa fa-bolt"></i> Professional Virtual Assistant</div>
+                <h1>Save Time. Get More Done.</h1>
+                <p>I help businesses and busy professionals with admin tasks, social media, content, design, and more — efficiently and reliably.</p>
+                <div class="hero-cta">
+                    <a href="#services" class="btn"><i class="fa fa-list-check"></i> Explore Services</a>
+                    <a href="#payment" class="btn btn-outline"><i class="fa fa-credit-card"></i> Book & Pay</a>
                 </div>
             </div>
-        </div>
-        <div class="hero-pattern"></div>
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Virtual Assistant Workspace">
+            <div class="hero-card">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop" alt="Virtual Assistant">
+            </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
+    <!-- Services -->
+    <section class="section" id="services">
         <div class="container">
             <div class="section-header">
                 <h2>My Services</h2>
-                <p>Comprehensive virtual assistance solutions designed to streamline your workflow and enhance productivity.</p>
+                <p>Flexible, high-quality support tailored to your needs.</p>
             </div>
+
             <div class="services-grid">
-                <div class="service-card fade-in-up" style="animation-delay: 0.1s;">
-                    <div class="service-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
+                <div class="service-card">
+                    <i class="fas fa-briefcase"></i>
                     <h3>Administrative Support</h3>
-                    <p>Email management, calendar scheduling, data entry, travel arrangements, and document preparation.</p>
-                    <div class="price">$25<span>/hour</span></div>
-                    <a href="#payment" class="btn">Book Now</a>
+                    <p>Email handling, scheduling, research, data entry, and docs.</p>
                 </div>
-                
-                <div class="service-card fade-in-up" style="animation-delay: 0.2s;">
-                    <div class="service-icon">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
+                <div class="service-card">
+                    <i class="fas fa-paint-brush"></i>
                     <h3>Graphic Design</h3>
-                    <p>Logo design, social media graphics, presentations, marketing materials, and branding packages.</p>
-                    <div class="price">$45<span>/hour</span></div>
-                    <a href="#payment" class="btn">Book Now</a>
+                    <p>Logos, social media creatives, flyers, and brand assets.</p>
                 </div>
-                
-                <div class="service-card fade-in-up" style="animation-delay: 0.3s;">
-                    <div class="service-icon">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
+                <div class="service-card">
+                    <i class="fas fa-pen-nib"></i>
                     <h3>Content Creation</h3>
-                    <p>Blog posts, social media content, newsletters, website copy, and email marketing campaigns.</p>
-                    <div class="price">$35<span>/hour</span></div>
-                    <a href="#payment" class="btn">Book Now</a>
+                    <p>Blog posts, articles, product descriptions, and copy.</p>
                 </div>
-                
-                <div class="service-card fade-in-up" style="animation-delay: 0.4s;">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
+                <div class="service-card">
+                    <i class="fas fa-share-alt"></i>
                     <h3>Social Media Management</h3>
-                    <p>Strategy development, content planning, community engagement, and performance analytics.</p>
-                    <div class="price">$40<span>/hour</span></div>
-                    <a href="#payment" class="btn">Book Now</a>
+                    <p>Content calendars, scheduling, community management.</p>
                 </div>
-                
-                <div class="service-card fade-in-up" style="animation-delay: 0.5s;">
-                    <div class="service-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
+                <div class="service-card">
+                    <i class="fas fa-shopping-cart"></i>
                     <h3>E-commerce Support</h3>
-                    <p>Product listing, inventory management, customer service, and order processing assistance.</p>
-                    <div class="price">$30<span>/hour</span></div>
-                    <a href="#payment" class="btn">Book Now</a>
+                    <p>Listings, order management, support, and optimization.</p>
                 </div>
-                
-                <div class="service-card fade-in-up" style="animation-delay: 0.6s;">
-                    <div class="service-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
+                <div class="service-card">
+                    <i class="fas fa-video"></i>
                     <h3>Video Editing</h3>
-                    <p>YouTube videos, social media clips, promotional content, and tutorial editing services.</p>
-                    <div class="price">$50<span>/hour</span></div>
-                    <a href="#payment" class="btn">Book Now</a>
+                    <p>Clips, reels, intros, and polished story-driven edits.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Payment Section -->
-    <section class="payment" id="payment">
+    <!-- Payment -->
+    <section class="section payment" id="payment">
         <div class="container">
             <div class="section-header">
                 <h2>Book Your Service</h2>
@@ -1200,6 +750,7 @@
                             <span>Total:</span>
                             <span id="summary-total">$0.00</span>
                         </div>
+                        <div class="hint" id="conversion-note">Select a service to see the converted total in KES.</div>
                     </div>
                     
                     <!-- Payment method --> 
@@ -1229,9 +780,7 @@
                             <!-- Credit Card Form -->
                             <div id="card-form" class="card-form">
                                 <h3>Credit Card Payment</h3>
-                                <p id="conversion-note" style="margin-bottom:15px; color:#64748b;">
-                                    Select a service to see the converted total in KES.
-                                </p>
+                                <p class="hint" style="margin-bottom:15px;">You will enter card details securely in the Paystack popup. No card number is entered here.</p>
                                 <div class="card-input-group">
                                     <div class="form-group">
                                         <label for="card-expiry">Expiry Date</label>
@@ -1250,107 +799,73 @@
                         </div>
                     </div>
                     
-                    <button type="button" id="complete-payment" class="btn btn-accent" style="width: 100%; margin-top: 20px;">Complete Payment</button>
+                    <button type="button" id="complete-payment" class="btn" style="width: 100%; margin-top: 20px;">
+                        Complete Payment
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
+    <!-- About -->
+    <section class="section about" id="about">
         <div class="container">
-            <div class="section-header">
+            <div>
                 <h2>About Me</h2>
-                <p>Learn more about my background and expertise in virtual assistance.</p>
+                <p>I am a professional Virtual Assistant with years of experience supporting businesses across the globe. I provide efficient, reliable, and high-quality services tailored to your needs.</p>
+                <div class="bullets">
+                    <div><i class="fa fa-check-circle"></i> On-time delivery</div>
+                    <div><i class="fa fa-check-circle"></i> Clear communication</div>
+                    <div><i class="fa fa-check-circle"></i> Quality-driven output</div>
+                </div>
             </div>
-            
-            <div class="about-container">
-                <div class="about-image fade-in-up">
-                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Professional Workspace">
-                </div>
-                <div class="about-content">
-                    <h2>Salim Virtual Assistant</h2>
-                    <p>With over 5 years of experience in providing top-notch virtual assistance services, I have helped numerous businesses streamline their operations and increase productivity. My expertise spans across administrative support, graphic design, content creation, and social media management.</p>
-                    <p>I am committed to delivering exceptional service tailored to each client's unique needs. My goal is to help you focus on growing your business by handling the time-consuming tasks that often get in the way.</p>
-                    
-                    <div class="about-stats">
-                        <div class="stat fade-in-up" style="animation-delay: 0.1s;">
-                            <div class="stat-number">5+</div>
-                            <div class="stat-label">Years Experience</div>
-                        </div>
-                        <div class="stat fade-in-up" style="animation-delay: 0.2s;">
-                            <div class="stat-number">200+</div>
-                            <div class="stat-label">Happy Clients</div>
-                        </div>
-                        <div class="stat fade-in-up" style="animation-delay: 0.3s;">
-                            <div class="stat-number">500+</div>
-                            <div class="stat-label">Projects Completed</div>
-                        </div>
-                    </div>
-                </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" alt="About Salim VA">
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
+    <!-- Testimonials -->
+    <section class="section testimonials" id="testimonials">
         <div class="container">
             <div class="section-header">
-                <h2>Client Testimonials</h2>
-                <p>Don't just take my word for it - see what my clients have to say about working with me.</p>
+                <h2>What Clients Say</h2>
+                <p>Real feedback from real clients.</p>
             </div>
-            <div class="testimonial-container">
-                <div class="testimonial-slider">
-                    <!-- Testimonial 1 -->
-                    <div class="testimonial">
-                        <div class="testimonial-content">
-                            Salim has been an invaluable asset to my business. His attention to detail and proactive approach to administrative tasks has saved me countless hours. The graphic design work he produced for our rebranding exceeded all expectations!
-                        </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-track">
+                    <div class="testimonial-card">
+                        <p>"Salim has been a lifesaver! His attention to detail is unmatched."</p>
                         <div class="testimonial-author">
-                            <div class="author-image">
-                                <i class="fas fa-user fa-2x"></i>
-                            </div>
-                            <div class="author-info">
-                                <h4>Michael Johnson</h4>
-                                <p>CEO, TechStart Inc.</p>
+                            <img src="https://i.pravatar.cc/100?img=10" alt="Client A">
+                            <div>
+                                <strong>Client A</strong>
+                                <div class="hint">Startup Founder</div>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Testimonial 2 -->
-                    <div class="testimonial">
-                        <div class="testimonial-content">
-                            Working with Salim has transformed my social media presence. His content strategy and graphic design skills have increased our engagement by over 200% in just three months. He's responsive, creative, and truly understands brand voice.
-                        </div>
+                    <div class="testimonial-card">
+                        <p>"Amazing work! Very reliable and efficient. Highly recommended!"</p>
                         <div class="testimonial-author">
-                            <div class="author-image">
-                                <i class="fas fa-user fa-2x"></i>
-                            </div>
-                            <div class="author-info">
-                                <h4>Sarah Rodriguez</h4>
-                                <p>Marketing Director, Fashion Boutique</p>
+                            <img src="https://i.pravatar.cc/100?img=22" alt="Client B">
+                            <div>
+                                <strong>Client B</strong>
+                                <div class="hint">Marketing Lead</div>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Testimonial 3 -->
-                    <div class="testimonial">
-                        <div class="testimonial-content">
-                            As a small business owner, hiring Salim was one of the best decisions I've made. He handles my customer inquiries, order processing, and inventory management efficiently. His e-commerce support has allowed me to focus on product development.
-                        </div>
+                    <div class="testimonial-card">
+                        <p>"Fast turnaround, great communication, and excellent results."</p>
                         <div class="testimonial-author">
-                            <div class="author-image">
-                                <i class="fas fa-user fa-2x"></i>
-                            </div>
-                            <div class="author-info">
-                                <h4>James Kim</h4>
-                                <p>Owner, Handmade Crafts Store</p>
+                            <img src="https://i.pravatar.cc/100?img=5" alt="Client C">
+                            <div>
+                                <strong>Client C</strong>
+                                <div class="hint">E-commerce Owner</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="testimonial-controls">
+                <div class="testimonial-dots">
                     <div class="testimonial-dot active" data-index="0"></div>
                     <div class="testimonial-dot" data-index="1"></div>
                     <div class="testimonial-dot" data-index="2"></div>
@@ -1359,76 +874,71 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <!-- Contact -->
+    <section class="section contact" id="contact">
         <div class="container">
             <div class="section-header">
-                <h2>Get In Touch</h2>
-                <p>Have questions or want to discuss a custom project? Reach out to me today.</p>
+                <h2>Contact Me</h2>
+                <p>Tell me about your project and how I can help.</p>
             </div>
-            
-            <div class="footer-content">
-                <div class="footer-about">
-                    <a href="#" class="footer-logo">Salim-VA</a>
-                    <p>Professional virtual assistant and graphic designer dedicated to helping businesses thrive through efficient support and creative solutions.</p>
-                    <div class="social-links">
-                        <a href="mailto:salim.virtualassistant@gmail.com" title="Email Salim">
-                            <i class="fas fa-envelope"></i>
-                        </a>
+
+            <form>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input id="name" class="form-control" type="text" placeholder="Jane Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input id="email" class="form-control" type="email" placeholder="you@example.com" required>
                     </div>
                 </div>
-                
-                <div class="footer-links-section">
-                    <h4 class="footer-heading">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
-                        <li><a href="#payment"><i class="fas fa-chevron-right"></i> Book Now</a></li>
-                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
-                        <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Testimonials</a></li>
-                    </ul>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control" rows="5" placeholder="How can I help?" required></textarea>
                 </div>
-                
-                <div class="footer-links-section">
-                    <h4 class="footer-heading">Contact Info</h4>
-                    <ul class="footer-links">
-                        <li><a href="mailto:salim.virtualassistant@gmail.com"><i class="fas fa-envelope"></i> salim.virtualassistant@gmail.com</a></li>
-                        <li><a href="tel:+15551234567"><i class="fas fa-phone"></i> +1 (555) 123-4567</a></li>
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Remote - Worldwide</a></li>
-                    </ul>
-                </div>
-
-                <!-- Quick Contact Form -->
-                <div class="footer-contact-form">
-                    <h4>Quick Contact</h4>
-
-                    <!-- Netlify form: data-netlify + honeypot -->
-                    <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/thank-you">
-                        <!-- Hidden input required for Netlify -->
-                        <input type="hidden" name="form-name" value="contact">
-                        <!-- Honeypot field -->
-                        <p class="hidden-field">
-                            <label>Don’t fill this out if you're human: <input name="bot-field"></label>
-                        </p>
-
-                        <input class="fc-input" type="text" name="name" placeholder="Your name" required>
-                        <input class="fc-input" type="email" name="email" placeholder="Your email" required>
-                        <textarea class="fc-textarea" name="message" placeholder="Your message" required></textarea>
-
-                        <button class="fc-btn" type="submit">Send Message</button>
-                    </form>
-                </div>
-
-            </div>
+                <button class="btn" type="submit"><i class="fa fa-paper-plane"></i> Send Message</button>
+            </form>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <div class="brand-logo">SV</div>
+                    Salim-VA
+                </div>
+                <p class="hint" style="margin-top:10px;">Professional virtual assistance to help you move faster and focus on what matters.</p>
+            </div>
+            <div>
+                <h4 style="margin:0 0 10px 0;color:#fff;">Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#payment">Payment</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin:0 0 10px 0;color:#fff;">Support</h4>
+                <ul class="footer-links">
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin:0 0 10px 0;color:#fff;">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+        </div>
         <div class="container">
             <div class="copyright">
-                &copy; 2023 Salim-VirtualAssistant Services. All rights reserved. |
-                <a href="#" style="color: rgba(255,255,255,0.6);">Privacy Policy</a> |
+                &copy; 2023 Salim-VirtualAssistant Services. All rights reserved. | 
+                <a href="#" style="color: rgba(255,255,255,0.6);">Privacy Policy</a> | 
                 <a href="#" style="color: rgba(255,255,255,0.6);">Terms of Service</a>
             </div>
         </div>
@@ -1449,18 +959,32 @@
         // Mobile menu toggle
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
-
+        
         menuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            menuToggle.classList.toggle('active');
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.gap = '14px';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '58px';
+                navLinks.style.right = '4%';
+                navLinks.style.background = 'white';
+                navLinks.style.padding = '16px';
+                navLinks.style.border = '1px solid #e5e7eb';
+                navLinks.style.borderRadius = '10px';
+                navLinks.style.boxShadow = '0 10px 20px rgba(2,8,23,0.08)';
+            }
         });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+        // Smooth scroll
+        document.querySelectorAll('.nav-links a').forEach(a => {
+            a.addEventListener('click', function(e) {
                 e.preventDefault();
-                navLinks.classList.remove('active');
+                navLinks.style.display = '';
                 menuToggle.classList.remove('active');
+                
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
@@ -1473,186 +997,194 @@
             const dots = document.querySelectorAll('.testimonial-dot');
             let currentIndex = 0;
 
-            function updateSlider() {
-                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex);
-                });
+            function goToSlide(index) {
+                const track = document.querySelector('.testimonial-track');
+                track.style.transform = 'translateX(' + (-index * 100) + '%)';
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index].classList.add('active');
+                currentIndex = index;
             }
 
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    currentIndex = index;
-                    updateSlider();
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    goToSlide(parseInt(this.dataset.index));
                 });
             });
 
-            // Auto-advance testimonials
             setInterval(() => {
-                currentIndex = (currentIndex < dots.length - 1) ? currentIndex + 1 : 0;
-                updateSlider();
+                goToSlide((currentIndex + 1) % dots.length);
             }, 5000);
         });
 
-        // Payment system functionality
+        // Payment logic
         const serviceSelect = document.getElementById('service');
         const hoursInput = document.getElementById('hours');
         const dateInput = document.getElementById('date');
+        const summaryService = document.getElementById('summary-service');
+        const summaryHours = document.getElementById('summary-hours');
+        const summaryRate = document.getElementById('summary-rate');
+        const summaryDate = document.getElementById('summary-date');
+        const summaryTotal = document.getElementById('summary-total');
+        const conversionNote = document.getElementById('conversion-note');
+
+        // Payment method elements
         const paymentOptions = document.querySelectorAll('.payment-option');
         const paypalForm = document.getElementById('paypal-form');
         const cardForm = document.getElementById('card-form');
-// Live rate + amounts
-let latestRate = 0, usdTotal = 0, kesTotal = 0;
-const conversionNote = document.getElementById('conversion-note');
-const completePaymentBtn = document.getElementById('complete-payment');
 
-async function fetchRate() {
-  try {
-    const res = await fetch('https://api.exchangerate.host/latest?base=USD&symbols=KES');
-    const data = await res.json();
-    latestRate = data && data.rates && data.rates.KES ? data.rates.KES : 0;
-    updateSummary();
-  } catch (e) {
-    if (conversionNote) conversionNote.textContent = 'Unable to fetch live exchange rate.';
-  }
-}
+        // Hidden (removed) standalone Paystack button reference (kept harmlessly)
+        const paystackButton = document.getElementById('paystack-button');
+        const completePaymentBtn = document.getElementById('complete-payment');
 
-// Service prices
-const servicePrices = {
-    'admin': 25,
-    'design': 45,
-    'content': 35,
-    'social': 40,
-    'ecommerce': 30,
-    'video': 50
-};
+        let usdTotal = 0;
+        let kesTotal = 0;
+        let latestRate = 0;
 
-// Service names
-const serviceNames = {
-    'admin': 'Administrative Support',
-    'design': 'Graphic Design',
-    'content': 'Content Creation',
-    'social': 'Social Media Management',
-    'ecommerce': 'E-commerce Support',
-    'video': 'Video Editing'
-};
+        // Live USD→KES rate (reliable API)
+        async function fetchRate() {
+            try {
+                const res = await fetch('https://api.exchangerate.host/latest?base=USD&symbols=KES');
+                const data = await res.json();
+                latestRate = data && data.rates && data.rates.KES ? data.rates.KES : 0;
+                updateSummary();
+            } catch (e) {
+                if (conversionNote) conversionNote.textContent = 'Unable to fetch live exchange rate.';
+            }
+        }
 
-// Update order summary
-function updateSummary() {
-    const service = serviceSelect.value;
-    const hours = parseInt(hoursInput.value) || 1;
-    const date = dateInput.value;
-    
-    if (service) {
-        const rate = servicePrices[service];
-        const total = rate * hours;
+        // Service prices
+        const servicePrices = {
+            'admin': 25,
+            'design': 45,
+            'content': 35,
+            'social': 40,
+            'ecommerce': 30,
+            'video': 50
+        };
         
-        document.getElementById('summary-service').textContent = serviceNames[service];
-        document.getElementById('summary-hours').textContent = hours;
-        document.getElementById('summary-rate').textContent = `$${rate.toFixed(2)}/hour`;
-        document.getElementById('summary-date').textContent = date || '-';
-        document.getElementById('summary-total').textContent = `$${total.toFixed(2)}`;
-        usdTotal = total;
-        kesTotal = total * latestRate;
-        if (conversionNote) conversionNote.textContent = `Equivalent in KES: KES ${kesTotal.toFixed(2)}`;
-    } else {
-        document.getElementById('summary-service').textContent = '-';
-        document.getElementById('summary-rate').textContent = '$0.00/hour';
-        document.getElementById('summary-total').textContent = '$0.00';
-        usdTotal = 0;
-        kesTotal = 0;
-        if (conversionNote) conversionNote.textContent = 'Select a service to see the converted total in KES.';
-    }
-}
-
-// Event listeners for payment form
-serviceSelect.addEventListener('change', updateSummary);
-hoursInput.addEventListener('input', updateSummary);
-dateInput.addEventListener('change', updateSummary);
-
-// Payment method selection
-paymentOptions.forEach(option => {
-    option.addEventListener('click', function() {
-        paymentOptions.forEach(opt => opt.classList.remove('selected'));
-
-        this.classList.add('selected');
+        // Service names
+        const serviceNames = {
+            'admin': 'Administrative Support',
+            'design': 'Graphic Design',
+            'content': 'Content Creation',
+            'social': 'Social Media Management',
+            'ecommerce': 'E-commerce Support',
+            'video': 'Video Editing'
+        };
         
-        const method = this.dataset.method;
-        if (method === 'paypal') {
-            paypalForm.classList.add('active-form');
-            cardForm.classList.remove('active-form');
-        } else {
-            paypalForm.classList.remove('active-form');
-            cardForm.classList.add('active-form');
+        // Update order summary (fixed)
+        function updateSummary() {
+            const service = serviceSelect.value;
+            const hours = parseInt(hoursInput.value) || 1;
+            const date = dateInput.value;
+            
+            if (service) {
+                const rate = servicePrices[service];
+                usdTotal = rate * hours;
+                kesTotal = latestRate ? usdTotal * latestRate : 0;
+
+                summaryService.textContent = serviceNames[service];
+                summaryHours.textContent = hours;
+                summaryRate.textContent = '$' + rate.toFixed(2) + '/hour';
+                summaryDate.textContent = date || '-';
+                summaryTotal.textContent = '$' + usdTotal.toFixed(2);
+
+                if (conversionNote) {
+                    if (kesTotal) {
+                        conversionNote.textContent = 'Total: ' + kesTotal.toFixed(2) + ' KES (live rate)';
+                    } else {
+                        conversionNote.textContent = 'Waiting for exchange rate...';
+                    }
+                }
+            } else {
+                usdTotal = 0;
+                kesTotal = 0;
+                summaryService.textContent = '-';
+                summaryHours.textContent = hours;
+                summaryRate.textContent = '$0.00/hour';
+                summaryDate.textContent = '-';
+                summaryTotal.textContent = '$0.00';
+                if (conversionNote) conversionNote.textContent = 'Select a service to see the converted total in KES.';
+            }
         }
-    });
-});
+        
+        // Event listeners for payment form
+        serviceSelect.addEventListener('change', updateSummary);
+        hoursInput.addEventListener('input', updateSummary);
+        dateInput.addEventListener('change', updateSummary);
+        
+        // Payment method selection (PayPal shows only PayPal fields; Card shows only card fields)
+        paymentOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                paymentOptions.forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                const method = this.dataset.method;
+                if (method === 'paypal') {
+                    paypalForm.classList.add('active-form');
+                    cardForm.classList.remove('active-form');
+                } else {
+                    paypalForm.classList.remove('active-form');
+                    cardForm.classList.add('active-form');
+                }
+            });
+        });
+        
+        // Initialize summary
+        updateSummary();
 
-// Initialize summary
-updateSummary();
-
-// Set minimum date to today
-const today = new Date().toISOString().split('T')[0];
-dateInput.min = today;
-
-// Intersection Observer for section animations
-const sections = document.querySelectorAll('section');
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+        // Which method is selected
+        function getSelectedMethod() {
+            const selected = document.querySelector('.payment-option.selected');
+            return selected ? selected.dataset.method : 'paypal';
         }
-    });
-}, observerOptions);
 
-sections.forEach(section => {
-    observer.observe(section);
-});
+        // Open Paystack inline (integrated with "Complete Payment")
+        function openPaystack() {
+            if (!usdTotal || !kesTotal) { 
+                alert('Please select a service first.');
+                return; 
+            }
+            const emailField = document.getElementById('paypal-email'); // reuse email input
+            const email = (emailField && emailField.value) ? emailField.value : 'customer@example.com';
 
-// Determine selected method helper
-function getSelectedMethod() {
-    const selected = document.querySelector('.payment-option.selected');
-    return selected ? selected.dataset.method : 'paypal';
-}
-
-// Open Paystack inline
-function openPaystack() {
-    if (!usdTotal || !kesTotal) { alert('Please select a service first.'); return; }
-    const emailField = document.getElementById('paypal-email');
-    const email = (emailField && emailField.value) ? emailField.value : 'customer@example.com';
-    const handler = PaystackPop.setup({
-        key: 'pk_test_aeb92b1876c92b249172fd6453de18614cbd5381',
-        email: email,
-        amount: Math.round(kesTotal * 100), // KES subunits
-        currency: 'KES',
-        metadata: { custom_fields: [{ display_name: 'Service', variable_name: 'service', value: serviceSelect.value }, { display_name: 'Hours', value: parseInt(hoursInput.value)||1 }]},
-        callback: function(response){ alert('Payment successful! Reference: ' + response.reference); },
-        onClose: function(){ /* optional: toast */ }
-    });
-    handler.openIframe();
-}
-
-// Wire Complete Payment button
-if (completePaymentBtn) {
-    completePaymentBtn.addEventListener('click', function(){
-        const method = getSelectedMethod();
-        if (method === 'paypal') {
-            alert('Redirecting to PayPal (stub).');
-            // TODO: integrate real PayPal checkout
-        } else {
-            openPaystack();
+            const handler = PaystackPop.setup({
+                key: 'pk_test_aeb92b1876c92b249172fd6453de18614cbd5381',
+                email: email,
+                amount: Math.round(kesTotal * 100), // KES in subunits
+                currency: 'KES',
+                metadata: {
+                    custom_fields: [
+                        { display_name: 'Service', variable_name: 'service', value: serviceNames[serviceSelect.value] || '-' },
+                        { display_name: 'Hours', variable_name: 'hours', value: parseInt(hoursInput.value) || 1 },
+                        { display_name: 'USD Total', variable_name: 'usd_total', value: usdTotal.toFixed(2) }
+                    ]
+                },
+                callback: function(response) {
+                    alert('Payment successful! Reference: ' + response.reference);
+                },
+                onClose: function() {
+                    // optional: you could show a toast here
+                }
+            });
+            handler.openIframe();
         }
-    });
-}
 
-// Fetch rate on load
-fetchRate();
+        // Wire Complete Payment button
+        if (completePaymentBtn) {
+            completePaymentBtn.addEventListener('click', function() {
+                const method = getSelectedMethod();
+                if (method === 'paypal') {
+                    alert('Redirecting to PayPal (stub).');
+                    // replace this with real PayPal integration when ready
+                } else {
+                    openPaystack();
+                }
+            });
+        }
+
+        // Fetch rate on load
+        fetchRate();
     </script>
 </body>
 </html>
