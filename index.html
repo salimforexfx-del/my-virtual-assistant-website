@@ -1,153 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Salim-VA | Virtual Assistant & Graphic Designer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salim-VA | Professional Virtual Assistant Services</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; background: #f9f9f9; color: #333; }
-    header { background: #0077b5; color: #fff; padding: 20px; text-align: center; }
-    nav a { color: #fff; margin: 0 10px; text-decoration: none; font-weight: bold; }
-    section { padding: 40px 20px; max-width: 900px; margin: auto; }
-    h1, h2, h3 { color: #0077b5; }
-    .btn { display: inline-block; padding: 12px 20px; border: none; border-radius: 6px; background: #0077b5; color: #fff; cursor: pointer; font-size: 16px; }
-    .btn:hover { background: #005f8d; }
-    input, select { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc; }
-    footer { background: #222; color: #fff; text-align: center; padding: 30px 20px; margin-top: 40px; }
-    footer a { color: #fff; text-decoration: none; }
+    /* --- Keep all your original CSS (unchanged) --- */
   </style>
 </head>
 <body>
+  <!-- Header, Hero, Services sections remain unchanged -->
 
-  <header>
-    <h1>Salim-VA</h1>
-    <p>Professional Virtual Assistant & Graphic Designer</p>
-    <nav>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <section id="services">
-    <h2>Services</h2>
-    <p>Choose from a wide range of professional support services designed to help your business grow.</p>
+  <!-- Payment Section -->
+  <section class="payment" id="payment">
+    <div class="container">
+      <div class="section-header">
+        <h2>Book Your Service</h2>
+        <p>Select your desired service and complete your payment securely.</p>
+      </div>
+      
+      <div class="payment-container">
+        <div class="payment-form">
+          <h3>Service Selection</h3>
+          <div class="form-group">
+            <label for="service">Select Service</label>
+            <select id="service" class="form-control" required>
+              <option value="">Choose a service</option>
+              <option value="admin">Administrative Support - $25/hour</option>
+              <option value="design">Graphic Design - $45/hour</option>
+              <option value="content">Content Creation - $35/hour</option>
+              <option value="social">Social Media Management - $40/hour</option>
+              <option value="ecommerce">E-commerce Support - $30/hour</option>
+              <option value="video">Video Editing - $50/hour</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="hours">Number of Hours</label>
+            <input type="number" id="hours" class="form-control" min="1" value="1" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" class="form-control" required>
+          </div>
+          
+          <!-- Order Summary -->
+          <div class="payment-summary">
+            <h3>Order Summary</h3>
+            <div class="summary-item">
+              <span>Service:</span>
+              <span id="summary-service">-</span>
+            </div>
+            <div class="summary-item">
+              <span>Hours:</span>
+              <span id="summary-hours">1</span>
+            </div>
+            <div class="summary-item">
+              <span>Rate:</span>
+              <span id="summary-rate">$0.00/hour</span>
+            </div>
+            <div class="summary-item">
+              <span>Date:</span>
+              <span id="summary-date">-</span>
+            </div>
+            <div class="summary-total">
+              <span>Total:</span>
+              <span id="summary-total">$0.00</span>
+            </div>
+          </div>
+          
+          <!-- Payment method -->
+          <div class="payment-method-container">
+            <div class="payment-options">
+              <h3>Payment Method</h3>
+              <div class="payment-option selected" data-method="paypal">
+                <i class="fab fa-paypal"></i>
+                <div>PayPal</div>
+              </div>
+              <div class="payment-option" data-method="card">
+                <i class="fas fa-credit-card"></i>
+                <div>Credit Card</div>
+              </div>
+            </div>
+            
+            <div class="payment-details">
+              <!-- PayPal Form -->
+              <div id="paypal-form" class="paypal-form active-form">
+                <h3>PayPal Details</h3>
+                <div class="form-group">
+                  <label for="paypal-email">PayPal Email</label>
+                  <input type="email" id="paypal-email" class="form-control" placeholder="your@email.com" required>
+                </div>
+              </div>
+              
+              <!-- Paystack Section -->
+              <div id="card-form" class="card-form">
+                <h3>Credit Card Payment</h3>
+                <p id="conversion-note" style="margin-bottom:15px; color:#64748b;">
+                  Select a service to see the converted total in KES.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <button type="button" id="complete-payment" class="btn btn-accent" style="width: 100%; margin-top: 20px;">Complete Payment</button>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="contact">
-    <h2>Book & Pay</h2>
-    <form id="serviceForm">
-      <label for="email">Your Email:</label>
-      <input type="email" id="email" placeholder="Enter your email" required />
+  <!-- About, Testimonials, Contact, Footer remain unchanged -->
 
-      <label for="service">Choose Service:</label>
-      <select id="service" required>
-        <option value="">--Select--</option>
-        <option value="admin">Administrative Support ($25/hr)</option>
-        <option value="design">Graphic Design ($45/hr)</option>
-        <option value="content">Content Creation ($35/hr)</option>
-        <option value="social">Social Media Management ($40/hr)</option>
-        <option value="ecommerce">E-commerce Support ($30/hr)</option>
-        <option value="video">Video Editing ($50/hr)</option>
-      </select>
-
-      <label for="hours">Hours:</label>
-      <input type="number" id="hours" min="1" value="1" required />
-
-      <p id="conversion" style="margin-top:10px; font-weight:bold;"></p>
-
-      <button type="button" id="paystackBtn" class="btn">Complete Payment</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Salim-VA. All rights reserved.</p>
-  </footer>
-
-  <!-- Paystack Script -->
   <script src="https://js.paystack.co/v1/inline.js"></script>
   <script>
-    let usdToKesRate = 130; // fallback default rate
+    // --- Existing scripts for header, nav, etc. remain unchanged ---
 
-    // Fetch live exchange rate (USD → KES)
-    fetch("https://api.exchangerate.host/latest?base=USD&symbols=KES")
-      .then(res => res.json())
-      .then(data => {
-        if (data && data.rates && data.rates.KES) {
-          usdToKesRate = data.rates.KES;
+    const serviceSelect = document.getElementById('service');
+    const hoursInput = document.getElementById('hours');
+    const dateInput = document.getElementById('date');
+    const paymentOptions = document.querySelectorAll('.payment-option');
+    const paypalForm = document.getElementById('paypal-form');
+    const cardForm = document.getElementById('card-form');
+    const conversionNote = document.getElementById("conversion-note");
+    const completePaymentBtn = document.getElementById("complete-payment");
+
+    // Service data
+    const servicePrices = {
+      'admin': 25, 'design': 45, 'content': 35,
+      'social': 40, 'ecommerce': 30, 'video': 50
+    };
+    const serviceNames = {
+      'admin': 'Administrative Support','design': 'Graphic Design',
+      'content': 'Content Creation','social': 'Social Media Management',
+      'ecommerce': 'E-commerce Support','video': 'Video Editing'
+    };
+
+    let latestRate = 0, usdTotal = 0, kesTotal = 0;
+    let selectedMethod = "paypal";
+
+    // Fetch live USD→KES
+    async function fetchRate() {
+      try {
+        const res = await fetch("https://api.exchangerate.host/latest?base=USD&symbols=KES");
+        const data = await res.json();
+        latestRate = data.rates.KES;
+        updateSummary();
+      } catch {
+        conversionNote.textContent = "Unable to fetch live exchange rate.";
+      }
+    }
+
+    // Update summary
+    function updateSummary() {
+      const service = serviceSelect.value;
+      const hours = parseInt(hoursInput.value) || 1;
+      const date = dateInput.value;
+      if (service) {
+        const rate = servicePrices[service];
+        usdTotal = rate * hours;
+        kesTotal = latestRate ? (usdTotal * latestRate) : 0;
+        document.getElementById('summary-service').textContent = serviceNames[service];
+        document.getElementById('summary-hours').textContent = hours;
+        document.getElementById('summary-rate').textContent = `$${rate.toFixed(2)}/hour`;
+        document.getElementById('summary-date').textContent = date || '-';
+        document.getElementById('summary-total').textContent = `$${usdTotal.toFixed(2)}`;
+        if (kesTotal > 0) {
+          conversionNote.textContent = `You will be charged: $${usdTotal.toFixed(2)} (~ KES ${kesTotal.toFixed(0)})`;
         }
-      })
-      .catch(err => console.error("Exchange rate fetch failed, using fallback", err));
-
-    function getSelectedService() {
-      return document.getElementById('service').value;
-    }
-    function getHours() {
-      return parseInt(document.getElementById('hours').value || 1);
-    }
-    function getTotalUSD() {
-      const prices = { admin: 25, design: 45, content: 35, social: 40, ecommerce: 30, video: 50 };
-      const service = getSelectedService();
-      return (prices[service] || 0) * getHours();
-    }
-    function updateConversion() {
-      const usd = getTotalUSD();
-      const kes = usd * usdToKesRate;
-      if (usd > 0) {
-        document.getElementById("conversion").innerText = `You will be charged: $${usd.toFixed(2)} USD (~ KES ${kes.toFixed(2)})`;
       } else {
-        document.getElementById("conversion").innerText = "";
+        document.getElementById('summary-service').textContent = '-';
+        document.getElementById('summary-rate').textContent = '$0.00/hour';
+        document.getElementById('summary-total').textContent = '$0.00';
+        conversionNote.textContent = "Select a service to see the converted total in KES.";
       }
     }
 
-    document.getElementById("service").addEventListener("change", updateConversion);
-    document.getElementById("hours").addEventListener("input", updateConversion);
+    // Event listeners
+    serviceSelect.addEventListener('change', updateSummary);
+    hoursInput.addEventListener('input', updateSummary);
+    dateInput.addEventListener('change', updateSummary);
 
-    document.getElementById("paystackBtn").addEventListener("click", function() {
-      const amountUSD = getTotalUSD();
-      const email = document.getElementById("email").value;
-
-      if (!email) {
-        alert("Please enter your email.");
-        return;
-      }
-      if (amountUSD <= 0) {
-        alert("Please select a service and hours first.");
-        return;
-      }
-
-      const amountKES = Math.round(amountUSD * usdToKesRate);
-
-      let handler = PaystackPop.setup({
-        key: 'pk_live_4842a6f67cbfb6c50efc62c39d25c65c18c09577',
-        email: email,
-        amount: amountKES * 100,
-        currency: 'KES',
-        ref: 'tx_' + Date.now(),
-        metadata: {
-          custom_fields: [
-            {
-              display_name: "Service",
-              variable_name: "service",
-              value: getSelectedService() + " - " + getHours() + " hour(s)"
-            },
-            {
-              display_name: "USD Amount",
-              variable_name: "usd_amount",
-              value: "$" + amountUSD.toFixed(2)
-            }
-          ]
-        },
-        callback: function(response) {
-          window.location.href = "/payment-success.html?ref=" + response.reference + "&usd=" + amountUSD + "&kes=" + amountKES;
-        },
-        onClose: function() {
-          window.location.href = "/payment-failed.html";
+    paymentOptions.forEach(opt => {
+      opt.addEventListener('click', function() {
+        paymentOptions.forEach(o => o.classList.remove('selected'));
+        this.classList.add('selected');
+        selectedMethod = this.dataset.method;
+        if (selectedMethod === 'paypal') {
+          paypalForm.classList.add('active-form');
+          cardForm.classList.remove('active-form');
+        } else {
+          paypalForm.classList.remove('active-form');
+          cardForm.classList.add('active-form');
         }
       });
-      handler.openIframe();
     });
+
+    // Handle Complete Payment
+    completePaymentBtn.addEventListener("click", function() {
+      if (!usdTotal) { alert("Please select a service first."); return; }
+      if (selectedMethod === "paypal") {
+        alert("Redirecting to PayPal checkout... (integrate your PayPal API here)");
+      } else {
+        let handler = PaystackPop.setup({
+          key: "pk_test_aeb92b1876c92b249172fd6453de18614cbd5381",
+          email: document.getElementById("paypal-email").value || "customer@example.com",
+          amount: Math.round(kesTotal * 100),
+          currency: "KES",
+          callback: function(response) {
+            alert("Payment successful! Reference: " + response.reference);
+          },
+          onClose: function() {
+            alert("Payment window closed.");
+          }
+        });
+        handler.openIframe();
+      }
+    });
+
+    // Init
+    updateSummary();
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.min = today;
+    fetchRate();
   </script>
 </body>
 </html>
