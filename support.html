@@ -3,10 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Privacy Policy | Salim-VA</title>
+  <title>Support | Salim-VA</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css"> <!-- reuse the same styles -->
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Support Page Styles */
+    .support-container { max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
+    .support h1 { font-size: 36px; margin-bottom: 20px; }
+    .support p.intro { color: #555; margin-bottom: 40px; }
+    .support-form { display: flex; flex-direction: column; gap: 15px; margin-bottom: 60px; }
+    .support-form input, .support-form textarea, .support-form select { padding: 12px; border: 1px solid #ddd; border-radius: 5px; width: 100%; font-size: 16px; }
+    .support-form button { padding: 12px 20px; border: none; border-radius: 5px; background-color: #007BFF; color: #fff; font-size: 16px; cursor: pointer; transition: background 0.3s; }
+    .support-form button:hover { background-color: #0056b3; }
+    .support-faq { margin-top: 60px; }
+    .support-faq h2 { margin-bottom: 20px; }
+    .faq-item { border-bottom: 1px solid #ddd; }
+    .faq-question { cursor: pointer; padding: 15px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
+    .faq-question:hover { background: #f5f5f5; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; padding: 0 15px; }
+    .faq-answer p { margin: 15px 0; }
+    .faq-question i { transition: transform 0.3s; }
+    .faq-question.active i { transform: rotate(45deg); }
+    .faq-answer.show { max-height: 500px; padding-bottom: 15px; }
+  </style>
 </head>
 <body>
   <!-- Header -->
@@ -24,19 +44,66 @@
     </div>
   </header>
 
-  <!-- Page Content -->
-  <section style="padding:120px 0 60px" class="container">
-    <h1>Privacy Policy</h1>
-    <p>Last updated: January 2025</p>
-    <p>Your privacy is important. This page explains how I collect, use, and safeguard your personal data when you use my services.</p>
-    <h2>1. Information I Collect</h2>
-    <p>Details like your name, email address, and payment information when you engage with my services.</p>
-    <h2>2. How I Use Information</h2>
-    <p>To deliver services, communicate with you, and improve the experience.</p>
-    <h2>3. Data Security</h2>
-    <p>I use reasonable measures to protect your information but cannot guarantee 100% security.</p>
-    <h2>4. Contact</h2>
-    <p>If you have questions, email me at <a href="mailto:salim.virtualassistant@gmail.com">salim.virtualassistant@gmail.com</a>.</p>
+  <!-- Support Section -->
+  <section class="support-container support">
+    <h1>Customer Support</h1>
+    <p class="intro">Need help? Reach out to our support team by filling out the form below or browse our common FAQs to find answers quickly.</p>
+
+    <!-- Contact Form -->
+    <form class="support-form" action="mailto:salim.virtualassistant@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <select name="topic" required>
+        <option value="" disabled selected>Select Topic</option>
+        <option value="general">General Inquiry</option>
+        <option value="billing">Billing</option>
+        <option value="services">Services</option>
+        <option value="technical">Technical Support</option>
+      </select>
+      <textarea name="message" rows="6" placeholder="Type your message here..." required></textarea>
+      <button type="submit">Submit Request</button>
+    </form>
+
+    <!-- FAQs Section -->
+    <div class="support-faq">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">How can I contact my virtual assistant? <i class="fas fa-plus"></i></div>
+        <div class="faq-answer">
+          <p>You can contact your virtual assistant directly via the email or messaging platform we provide once you are onboarded.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What is your response time for support requests? <i class="fas fa-plus"></i></div>
+        <div class="faq-answer">
+          <p>Our team responds to all support requests within 24 hours on business days. Urgent issues are prioritized immediately.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Can I upgrade my service package through support? <i class="fas fa-plus"></i></div>
+        <div class="faq-answer">
+          <p>Yes, our support team can help you upgrade or modify your service package as per your needs. Changes are processed promptly.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">How do you handle billing issues? <i class="fas fa-plus"></i></div>
+        <div class="faq-answer">
+          <p>Billing concerns such as invoices, payment updates, or refunds can be resolved by contacting our support team via the form or email.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What should I do if my assistant is unavailable? <i class="fas fa-plus"></i></div>
+        <div class="faq-answer">
+          <p>If your assistant is unavailable, our support team will provide immediate assistance or assign a temporary replacement to ensure continuity.</p>
+        </div>
+      </div>
+
+    </div>
   </section>
 
   <!-- Footer -->
@@ -67,6 +134,17 @@
     </div>
     <div class="copyright-bar">© 2025 Salim-VA • Built with care</div>
   </footer>
+
+  <!-- FAQ Toggle Script -->
+  <script>
+    const questions = document.querySelectorAll('.faq-question');
+    questions.forEach(q => {
+      q.addEventListener('click', () => {
+        q.classList.toggle('active');
+        const answer = q.nextElementSibling;
+        answer.classList.toggle('show');
+      });
+    });
+  </script>
 </body>
 </html>
-
