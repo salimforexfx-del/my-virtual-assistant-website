@@ -6,16 +6,20 @@
   <title>FAQ | Salim-VA</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css"> <!-- reuse the same styles -->
+  <link rel="stylesheet" href="style.css">
   <style>
+    /* FAQ Styles */
     .faq-container { max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
     .faq h1 { font-size: 36px; margin-bottom: 20px; }
-    .faq p.intro { margin-bottom: 40px; color: #555; }
-    .faq-item { border-bottom: 1px solid #ddd; }
+    .faq p.intro { margin-bottom: 30px; color: #555; }
+    .tabs { display: flex; flex-wrap: wrap; margin-bottom: 20px; border-bottom: 2px solid #eee; }
+    .tab { padding: 10px 20px; cursor: pointer; margin-right: 10px; font-weight: 600; border-radius: 5px 5px 0 0; background: #f9f9f9; transition: background 0.3s; }
+    .tab.active { background: #fff; border: 1px solid #ddd; border-bottom: none; }
+    .faq-item { border-bottom: 1px solid #ddd; display: none; }
     .faq-question { cursor: pointer; padding: 15px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
     .faq-question:hover { background: #f5f5f5; }
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; padding: 0 15px; }
-    .faq-answer p { margin: 15px 0; }
+    .faq-answer p, .faq-answer ul { margin: 15px 0; }
     .faq-question i { transition: transform 0.3s; }
     .faq-question.active i { transform: rotate(45deg); }
     .faq-answer.show { max-height: 500px; padding-bottom: 15px; }
@@ -42,7 +46,19 @@
     <h1>Frequently Asked Questions</h1>
     <p class="intro">Find answers to common questions about our virtual assistant services and support.</p>
 
-    <div class="faq-item">
+    <!-- Tabs -->
+    <div class="tabs">
+      <div class="tab active" data-category="all">All</div>
+      <div class="tab" data-category="services">Services</div>
+      <div class="tab" data-category="pricing">Pricing</div>
+      <div class="tab" data-category="getting-started">Getting Started</div>
+      <div class="tab" data-category="security">Security</div>
+      <div class="tab" data-category="billing">Billing</div>
+    </div>
+
+    <!-- FAQ Items -->
+    <!-- Services -->
+    <div class="faq-item" data-category="services">
       <div class="faq-question">What services do you offer? <i class="fas fa-plus"></i></div>
       <div class="faq-answer">
         <p>We provide a wide range of virtual assistant services including:</p>
@@ -57,76 +73,81 @@
       </div>
     </div>
 
-    <div class="faq-item">
-      <div class="faq-question">How do I get started? <i class="fas fa-plus"></i></div>
+    <div class="faq-item" data-category="services">
+      <div class="faq-question">Do you offer dedicated virtual assistants? <i class="fas fa-plus"></i></div>
       <div class="faq-answer">
-        <p>Getting started is simple! Choose a service package that fits your needs, complete the onboarding process, and your assistant will reach out within 48 hours to discuss your requirements and start working on your tasks.</p>
+        <p>Yes, all plans include dedicated assistants who work exclusively on your account.</p>
       </div>
     </div>
 
-    <div class="faq-item">
+    <div class="faq-item" data-category="services">
+      <div class="faq-question">How quickly can tasks be completed? <i class="fas fa-plus"></i></div>
+      <div class="faq-answer">
+        <p>Simple tasks: 24–48 hours. Complex tasks: 3–5 business days. Timelines are always provided upfront.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-category="services">
+      <div class="faq-question">Do you provide training for virtual assistants? <i class="fas fa-plus"></i></div>
+      <div class="faq-answer">
+        <p>Yes, all assistants undergo technical, communication, and security training. Ongoing training ensures best practices.</p>
+      </div>
+    </div>
+
+    <!-- Getting Started -->
+    <div class="faq-item" data-category="getting-started">
+      <div class="faq-question">How do I get started? <i class="fas fa-plus"></i></div>
+      <div class="faq-answer">
+        <p>Choose a service package that fits your needs, complete the onboarding process, and your assistant will reach out within 48 hours to start working on your tasks.</p>
+      </div>
+    </div>
+
+    <!-- Pricing -->
+    <div class="faq-item" data-category="pricing">
       <div class="faq-question">What are your pricing plans? <i class="fas fa-plus"></i></div>
       <div class="faq-answer">
         <p>We offer hourly and monthly packages:</p>
         <ul>
           <li><strong>Hourly:</strong> $25–50/hr depending on service type.</li>
-          <li><strong>Monthly Retainers:</strong></li>
-          <ul>
-            <li>Starter: $400/month – 20 hours</li>
-            <li>Standard: $750/month – 40 hours</li>
-            <li>Premium: $1,400/month – 80 hours</li>
-          </ul>
+          <li><strong>Monthly Retainers:</strong>
+            <ul>
+              <li>Starter: $400/month – 20 hours</li>
+              <li>Standard: $750/month – 40 hours</li>
+              <li>Premium: $1,400/month – 80 hours</li>
+            </ul>
+          </li>
         </ul>
-        <p>Yearly plans offer a 20% discount. Custom packages are available for large-scale requirements.</p>
+        <p>Yearly plans offer a 20% discount. Custom packages are available for larger requirements.</p>
       </div>
     </div>
 
-    <div class="faq-item">
+    <div class="faq-item" data-category="pricing">
       <div class="faq-question">Can I change my service plan later? <i class="fas fa-plus"></i></div>
       <div class="faq-answer">
-        <p>Yes! You can upgrade or downgrade your plan anytime. Changes take effect at the start of your next billing cycle. Mid-cycle upgrades are prorated so you can start using additional hours immediately.</p>
+        <p>You can upgrade or downgrade your plan anytime. Changes take effect at the start of your next billing cycle. Mid-cycle upgrades are prorated.</p>
       </div>
     </div>
 
-    <div class="faq-item">
+    <!-- Security -->
+    <div class="faq-item" data-category="security">
       <div class="faq-question">How do you ensure the security of my business data? <i class="fas fa-plus"></i></div>
       <div class="faq-answer">
-        <p>All assistants sign NDAs, and we use encrypted communication channels, secure file sharing, and follow industry best practices. Our systems are regularly audited to ensure compliance.</p>
+        <p>All assistants sign NDAs. We use encrypted communication channels, secure file sharing, and follow industry best practices. Systems are regularly audited.</p>
       </div>
     </div>
 
-    <div class="faq-item">
+    <!-- Billing -->
+    <div class="faq-item" data-category="billing">
       <div class="faq-question">How do you handle billing and payments? <i class="fas fa-plus"></i></div>
       <div class="faq-answer">
-        <p>We bill monthly in advance via secure processing. Invoices are emailed, and payment methods can be updated anytime. Major credit cards are accepted, and ACH is available for enterprise clients.</p>
+        <p>We bill monthly in advance via secure processing. Invoices are emailed. Major credit cards are accepted, and ACH is available for enterprise clients.</p>
       </div>
     </div>
 
-    <div class="faq-item">
+    <div class="faq-item" data-category="billing">
       <div class="faq-question">What happens to unused hours? <i class="fas fa-plus"></i></div>
       <div class="faq-answer">
-        <p>Unused hours roll over for up to 60 days, allowing flexibility. After 60 days, unused hours expire to ensure fairness and availability.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">Do you offer dedicated virtual assistants? <i class="fas fa-plus"></i></div>
-      <div class="faq-answer">
-        <p>Yes, all plans include dedicated assistants who work exclusively on your account, ensuring consistency and a strong working relationship.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">How quickly can tasks be completed? <i class="fas fa-plus"></i></div>
-      <div class="faq-answer">
-        <p>Simple tasks typically complete within 24–48 hours, while complex projects may take 3–5 business days. Estimated timelines are always provided upfront.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">Do you provide training for virtual assistants? <i class="fas fa-plus"></i></div>
-      <div class="faq-answer">
-        <p>Yes. All assistants undergo comprehensive training in technical skills, communication, security protocols, and industry knowledge. Ongoing training ensures best practices are followed.</p>
+        <p>Unused hours roll over for up to 60 days. After that, they expire to maintain fairness and availability.</p>
       </div>
     </div>
 
@@ -162,8 +183,9 @@
     <div class="copyright-bar">© 2025 Salim-VA • Built with care</div>
   </footer>
 
-  <!-- FAQ Toggle Script -->
+  <!-- FAQ Script -->
   <script>
+    // Collapsible FAQ
     const questions = document.querySelectorAll('.faq-question');
     questions.forEach(q => {
       q.addEventListener('click', () => {
@@ -172,6 +194,31 @@
         answer.classList.toggle('show');
       });
     });
+
+    // Tabs Filter
+    const tabs = document.querySelectorAll('.tab');
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    function showCategory(category) {
+      faqItems.forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        showCategory(tab.dataset.category);
+      });
+    });
+
+    // Initialize all FAQs visible
+    showCategory('all');
   </script>
 </body>
 </html>
