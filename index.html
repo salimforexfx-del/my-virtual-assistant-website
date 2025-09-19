@@ -465,48 +465,71 @@
   </section>
 
   <!-- Testimonials -->
-  <section id="testimonials" class="testimonials" aria-labelledby="testimonialsHeading">
-    <div class="container">
-      <div class="section-header">
-        <h2 id="testimonialsHeading">Client Testimonials</h2>
-        <p>Real feedback from real clients who hired me for virtual assistance and creative projects.</p>
-      </div>
-
-      <div style="max-width:980px;margin:0 auto;">
-        <div id="testimonialSlider" style="display:flex;transition:transform .5s ease-in-out;overflow:hidden">
-          <div style="min-width:100%;padding:16px;border-radius:10px;background:#fff;box-shadow:0 14px 40px rgba(16,24,40,0.06);margin-right:14px">
-            <div>"Salim has been an invaluable asset to my business. His attention to detail and proactive approach to administrative tasks saved me countless hours. The design work exceeded expectations."</div>
-            <div style="display:flex;gap:12px;align-items:center;margin-top:12px">
-              <div style="width:56px;height:56px;border-radius:50%;background:#e6e9ef;display:flex;align-items:center;justify-content:center"><i class="fas fa-user"></i></div>
-              <div><strong>Michael Johnson</strong><div style="color:var(--muted);">CEO, TechStart Inc.</div></div>
+  <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Client Testimonials</h2>
+                <p>Don't just take my word for it - see what my clients have to say about working with me.</p>
             </div>
-          </div>
-
-          <div style="min-width:100%;padding:16px;border-radius:10px;background:#fff;box-shadow:0 14px 40px rgba(16,24,40,0.06);margin-right:14px">
-            <div>"Working with Salim transformed our social media presence. Engagement rose quickly thanks to a clear content plan and on-brand visuals."</div>
-            <div style="display:flex;gap:12px;align-items:center;margin-top:12px">
-              <div style="width:56px;height:56px;border-radius:50%;background:#e6e9ef;display:flex;align-items:center;justify-content:center"><i class="fas fa-user"></i></div>
-              <div><strong>Sarah Rodriguez</strong><div style="color:var(--muted);">Marketing Director, Fashion Boutique</div></div>
+            <div class="testimonial-container">
+                <div class="testimonial-slider">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            Salim has been an invaluable asset to my business. His attention to detail and proactive approach to administrative tasks has saved me countless hours. The graphic design work he produced for our rebranding exceeded all expectations!
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <i class="fas fa-user fa-2x"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Michael Johnson</h4>
+                                <p>CEO, TechStart Inc.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            Working with Salim has transformed my social media presence. His content strategy and graphic design skills have increased our engagement by over 200% in just three months. He's responsive, creative, and truly understands brand voice.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <i class="fas fa-user fa-2x"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Sarah Rodriguez</h4>
+                                <p>Marketing Director, Fashion Boutique</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            As a small business owner, hiring Salim was one of the best decisions I've made. He handles my customer inquiries, order processing, and inventory management efficiently. His e-commerce support has allowed me to focus on product development.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <i class="fas fa-user fa-2x"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>James Kim</h4>
+                                <p>Owner, Handmade Crafts Store</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-controls">
+                    <div class="testimonial-dot active" data-index="0"></div>
+                    <div class="testimonial-dot" data-index="1"></div>
+                    <div class="testimonial-dot" data-index="2"></div>
+                </div>
             </div>
-          </div>
-
-          <div style="min-width:100%;padding:16px;border-radius:10px;background:#fff;box-shadow:0 14px 40px rgba(16,24,40,0.06);margin-right:14px">
-            <div>"For our e-commerce store, Salim handled customer messages and inventory updates reliably — a huge relief that let me focus on product development."</div>
-            <div style="display:flex;gap:12px;align-items:center;margin-top:12px">
-              <div style="width:56px;height:56px;border-radius:50%;background:#e6e9ef;display:flex;align-items:center;justify-content:center"><i class="fas fa-user"></i></div>
-              <div><strong>James Kim</strong><div style="color:var(--muted);">Owner, Handmade Crafts Store</div></div>
-            </div>
-          </div>
         </div>
-
-        <div style="display:flex;justify-content:center;gap:10px;margin-top:12px">
-          <button class="btn-small" id="prevTestimonial">Prev</button>
-          <button class="btn-small" id="nextTestimonial">Next</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
+    </section>
   <!-- Get In Touch (full-width light gray block, two-column layout) -->
   <section id="contact" class="contact-section" aria-labelledby="contactHeading">
     <div class="container">
@@ -895,3 +918,4 @@
   </script>
 </body>
 </html>
+
