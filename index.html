@@ -4,150 +4,165 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Salim-VA | Professional Virtual Assistant Services</title>
-  <meta name="description" content="Salim-VA — virtual assistant services: admin support, design, content, social media, e-commerce, video editing, and retainers." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Salim-VA — professional virtual assistant: admin support, design, content, social media, e-commerce, video editing, and retainers." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    /* ---------- Brand & Base ---------- */
     :root{
-      --primary: #4e46e5;
+      --primary: #4e46e5;      /* main blue */
       --primary-dark: #3730a3;
-      --accent: #f43f5e;
+      --accent: #f43f5e;       /* pink accent */
       --bg: #f8fafc;
       --muted: #64748b;
       --text: #0f172a;
-      --card-shadow: 0 16px 48px rgba(16,24,40,0.08);
+      --card-shadow: 0 18px 50px rgba(16,24,40,0.08);
       --radius: 12px;
-      --transition: all .28s cubic-bezier(.2,.9,.2,1);
+      --gap: 20px;
+      --transition: all .26s cubic-bezier(.2,.9,.2,1);
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Arial;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
-    .container{width:92%;max-width:1200px;margin:0 auto;padding:0 18px}
-    h1,h2,h3,h4{font-family:Montserrat,Inter,sans-serif}
-    p{color:var(--muted)}
 
-    /* Buttons */
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:10px 18px;border-radius:10px;border:none;cursor:pointer;font-weight:700;transition:var(--transition);text-decoration:none}
-    .btn-primary{background:var(--primary);color:#fff}
-    .btn-primary:hover{background:var(--primary-dark);transform:translateY(-3px)}
-    .btn-accent{background:var(--accent);color:#fff}
-    .btn-outline{background:transparent;color:var(--primary);border:2px solid var(--primary)}
-    .btn-ghost{background:transparent;border:1px solid rgba(16,24,40,0.06);padding:8px 12px;border-radius:9px}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
 
-    /* Header */
-    header{position:fixed;top:0;left:0;width:100%;z-index:1200;background:rgba(255,255,255,0.98);backdrop-filter:blur(6px);box-shadow:0 6px 20px rgba(13,17,26,0.06);padding:14px 0}
-    .navbar{display:flex;gap:12px;align-items:center;justify-content:space-between}
-    .logo{font-weight:800;color:var(--primary);font-size:1.1rem;text-decoration:none;display:flex;align-items:center;gap:10px}
-    .nav-links{display:flex;list-style:none;gap:18px}
-    .nav-links a{font-weight:600;color:var(--text);text-decoration:none;position:relative;padding:6px 0}
-    .nav-links a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--accent);transition:var(--transition)}
-    .nav-links a:hover::after{width:100%}
-    .menu-toggle{display:none}
+    .container { width: 92%; max-width: 1200px; margin: 0 auto; padding: 0 18px; }
 
-    /* Hero */
-    .hero{padding:150px 0 110px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;overflow:hidden}
-    .hero-inner{display:flex;gap:28px;align-items:center}
-    .hero h1{font-size:2.6rem;margin-bottom:8px}
-    .hero p{opacity:0.95;margin-bottom:12px}
-    .hero-visual{margin-left:auto;max-width:480px;border-radius:12px;box-shadow:0 20px 60px rgba(13,17,26,0.16);overflow:hidden}
-    .hero-visual img{width:100%;display:block}
+    h1,h2,h3,h4 { font-family: "Montserrat", Inter, sans-serif; color: var(--text); }
+    p { color: var(--muted); }
 
-    /* Section header */
-    section{padding:78px 0}
-    .section-header{text-align:center;margin-bottom:32px}
-    .section-header h2{font-size:1.95rem;display:inline-block;position:relative}
-    .section-header h2::after{content:'';position:absolute;left:50%;transform:translateX(-50%);bottom:-10px;width:80px;height:4px;background:var(--accent);border-radius:4px}
-    .section-header p{color:var(--muted);margin-top:10px}
+    /* ---------- Buttons ---------- */
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:.6rem; padding:10px 18px; border-radius:10px; font-weight:700; cursor:pointer; border:none; transition:var(--transition); text-decoration:none; }
+    .btn-primary { background:var(--primary); color:#fff; }
+    .btn-primary:hover { transform:translateY(-3px); box-shadow:0 12px 36px rgba(78,70,229,0.12); }
+    .btn-accent { background:var(--accent); color:#fff; }
+    .btn-outline { background:transparent; border:2px solid var(--primary); color:var(--primary); padding:8px 16px; border-radius:10px; }
+    .btn-ghost { background:transparent; border:1px solid rgba(16,24,40,0.06); padding:8px 12px; border-radius:10px; }
 
-    /* Services */
-    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .service-card{background:#fff;border-radius:12px;padding:22px;text-align:center;box-shadow:var(--card-shadow);border:1px solid rgba(16,24,40,0.03);transition:var(--transition)}
-    .service-card:hover{transform:translateY(-8px);box-shadow:0 30px 80px rgba(16,24,40,0.12)}
-    .service-icon{width:70px;height:70px;border-radius:14px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;align-items:center;justify-content:center;color:#fff;margin:0 auto 16px;font-size:20px}
-    .service-card h3{margin-bottom:10px}
-    .service-card p{color:var(--muted);margin-bottom:12px}
-    .service-card .price{font-weight:800;color:var(--primary);font-size:1.18rem;margin-bottom:10px}
+    /* ---------- Header ---------- */
+    header {
+      position: fixed; top:0; left:0; width:100%; z-index:1200;
+      background: rgba(255,255,255,0.98); backdrop-filter: blur(6px);
+      box-shadow: 0 8px 30px rgba(13,17,26,0.06); padding:14px 0;
+    }
+    .navbar { display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .logo { font-weight:800; color:var(--primary); font-size:1.1rem; text-decoration:none; display:flex; gap:10px; align-items:center; }
+    .nav-links { display:flex; list-style:none; gap:18px; }
+    .nav-links a { font-weight:600; color:var(--text); text-decoration:none; position:relative; padding:6px 0; }
+    .nav-links a::after { content:''; position:absolute; left:0; bottom:-6px; width:0; height:2px; background:var(--accent); transition:var(--transition); }
+    .nav-links a:hover::after{ width:100%; }
+    .menu-toggle { display:none; cursor:pointer; }
 
-    /* Unified Pricing & Payment */
-    .pricing-section{background:#f6f8fb;padding:28px;border-radius:12px}
-    .pricing-controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
-    .pricing-toggle{display:flex;background:#fff;border-radius:12px;padding:6px;border:1px solid rgba(16,24,40,0.04);box-shadow:var(--card-shadow)}
-    .pricing-toggle button{background:transparent;border:none;padding:10px 18px;border-radius:10px;font-weight:700;cursor:pointer}
-    .pricing-toggle button.active{background:linear-gradient(90deg,var(--primary),var(--primary-dark));color:#fff;box-shadow:0 10px 30px rgba(78,70,229,0.08)}
-    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:12px}
-    .pack-card{background:#fff;border-radius:12px;padding:18px;box-shadow:var(--card-shadow);border:1px solid rgba(16,24,40,0.03);transition:var(--transition)}
-    .pack-card:hover{transform:translateY(-8px)}
-    .pack-card.popular{border:2px solid var(--accent);transform:scale(1.03)}
-    .pack-badge{display:inline-block;background:var(--accent);color:#fff;padding:6px 12px;border-radius:999px;font-weight:800;margin-bottom:10px}
+    /* ---------- Hero ---------- */
+    .hero { padding:150px 0 100px; background: linear-gradient(135deg,var(--primary),var(--primary-dark)); color:#fff; overflow:hidden; border-bottom-left-radius:18px; border-bottom-right-radius:18px; }
+    .hero-inner { display:flex; gap:28px; align-items:center; }
+    .hero h1 { font-size:2.6rem; line-height:1.02; margin-bottom:8px; }
+    .hero p { margin-bottom:14px; opacity:0.95; max-width:640px; }
+    .hero-visual { margin-left:auto; max-width:480px; border-radius:12px; box-shadow:0 20px 60px rgba(13,17,26,0.16); overflow:hidden; }
+    .hero-visual img { width:100%; height:auto; display:block; }
 
-    /* Hourly grid (within pricing) */
-    .hourly-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .hourly-card{background:#fff;border-radius:12px;padding:16px;box-shadow:var(--card-shadow);border:1px solid rgba(16,24,40,0.03);transition:var(--transition)}
-    .hourly-card:hover{transform:translateY(-6px)}
+    /* ---------- Sections ---------- */
+    section { padding:84px 0; }
+    .section-header { text-align:center; margin-bottom:34px; }
+    .section-header h2 { font-size:1.9rem; display:inline-block; position:relative; }
+    .section-header h2::after { content:''; position:absolute; left:50%; transform:translateX(-50%); bottom:-10px; width:74px; height:4px; background:var(--accent); border-radius:4px; }
+    .section-header p { color: var(--muted); margin-top:10px; }
 
-    /* Payment mini summary */
-    .mini-summary{background:#fff;padding:12px;border-radius:10px;border:1px solid rgba(16,24,40,0.04);margin-top:14px}
+    /* ---------- Services (Hourly) ---------- */
+    .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .service-card { background:#fff; border-radius:12px; padding:22px; text-align:center; box-shadow:var(--card-shadow); border:1px solid rgba(16,24,40,0.03); transition:var(--transition); }
+    .service-card:hover { transform:translateY(-8px); box-shadow:0 30px 80px rgba(16,24,40,0.12); }
+    .service-icon { width:72px; height:72px; border-radius:14px; background: linear-gradient(135deg,var(--primary),var(--primary-dark)); display:flex; align-items:center; justify-content:center; color:#fff; margin:0 auto 16px; font-size:20px; }
+    .service-card h3 { margin-bottom:8px; font-size:1.05rem; }
+    .service-card p { color:var(--muted); margin-bottom:12px; font-size:0.95rem; }
+    .service-card .price { font-weight:800; color:var(--primary); font-size:1.15rem; }
 
-    /* Testimonials grid 3x2 */
-    .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .testimonial-card{background:#fff;border-radius:12px;padding:18px;box-shadow:var(--card-shadow);border:1px solid rgba(16,24,40,0.03);transition:var(--transition)}
-    .testimonial-card:hover{transform:translateY(-8px)}
-    .testimonial-quote{margin-bottom:12px;color:var(--text)}
-    .testimonial-meta{display:flex;gap:12px;align-items:center}
-    .avatar{width:56px;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
-    .avatar.bg1{background:#f97316}
-    .avatar.bg2{background:#06b6d4}
-    .avatar.bg3{background:#7c3aed}
-    .avatar.bg4{background:#ea580c}
-    .avatar.bg5{background:#0ea5a4}
-    .avatar.bg6{background:#ef4444}
+    /* ---------- Pricing Table (Packages) ---------- */
+    .pricing-wrap { max-width:1100px; margin:0 auto; }
+    .pricing-controls { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:18px; }
+    .pricing-toggle { display:flex; background:#fff; border-radius:12px; padding:6px; border:1px solid rgba(16,24,40,0.04); box-shadow:0 8px 24px rgba(16,24,40,0.04); }
+    .pricing-toggle button { background:transparent; border:none; padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; }
+    .pricing-toggle button.active { background: linear-gradient(90deg,var(--primary),var(--primary-dark)); color:#fff; box-shadow:0 12px 36px rgba(78,70,229,0.08); }
+    .pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:12px; align-items:stretch; }
 
-    /* Get in touch 50/50 */
-    .contact-wrap{background:transparent;padding:24px 0}
-    .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
-    .info-cards{display:grid;gap:14px}
-    .info-card{background:#fff;border-radius:12px;padding:14px;display:flex;gap:12px;align-items:flex-start;box-shadow:var(--card-shadow);border:1px solid rgba(16,24,40,0.03)}
-    .info-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--primary);background:linear-gradient(180deg,rgba(78,70,229,0.08),rgba(78,70,229,0.04))}
-    .form-panel{background:#fff;border-radius:12px;padding:20px;box-shadow:var(--card-shadow);border:1px solid rgba(16,24,40,0.03)}
-    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .form-control{width:100%;padding:10px;border-radius:10px;border:1px solid #e7eaf0}
-    .form-control.full{grid-column:1/-1}
-    .char-counter{font-size:13px;color:var(--muted);text-align:right;margin-top:6px}
+    .pack-card { background:#fff; border-radius:12px; padding:20px; box-shadow:var(--card-shadow); border:1px solid rgba(16,24,40,0.03); transition:var(--transition); display:flex; flex-direction:column; justify-content:space-between; }
+    .pack-card:hover { transform:translateY(-8px); }
+    .pack-card.popular { border:2px solid var(--accent); transform: scale(1.03); }
+    .pack-badge { display:inline-block; background:var(--accent); color:#fff; padding:6px 12px; border-radius:999px; font-weight:800; margin-bottom:10px; font-size:0.85rem; }
 
-    /* Footer */
-    .site-footer{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:48px 0;border-top-left-radius:12px;border-top-right-radius:12px;margin-top:40px}
-    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:20px;max-width:1100px;margin:0 auto}
-    .footer a{color:rgba(255,255,255,0.95);text-decoration:none;display:block;margin-bottom:8px}
-    .footer a:hover{color:var(--accent)}
-    .socials{display:flex;gap:10px;margin-top:12px}
-    .socials a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.08);color:#fff}
-    .copyright-bar{background:rgba(10,13,30,0.12);text-align:center;padding:12px 0;margin-top:18px;color:rgba(255,255,255,0.95);font-weight:700}
+    .pack-card h3 { margin-bottom:8px; font-size:1.15rem; }
+    .pack-tagline { color:var(--muted); margin-bottom:12px; }
+    .pack-price { font-weight:900; font-size:1.5rem; color:var(--primary); margin:12px 0; }
+    .pack-sub { color:var(--muted); font-weight:700; margin-bottom:6px; }
+    .pack-features { text-align:left; color:var(--muted); list-style:none; padding-left:0; margin-top:10px; line-height:1.5; }
+    .pack-features li { margin-bottom:8px; }
 
-    /* Responsive */
+    /* emphasize center CTA */
+    .pack-cta { margin-top:14px; }
+
+    /* ---------- Testimonials 3x2 ---------- */
+    .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .testimonial-card { background:#fff; border-radius:12px; padding:18px; box-shadow:var(--card-shadow); border:1px solid rgba(16,24,40,0.03); transition:var(--transition); }
+    .testimonial-card:hover { transform:translateY(-8px); }
+    .testimonial-quote { margin-bottom:12px; color:var(--text); font-style:normal; }
+    .testimonial-meta { display:flex; gap:12px; align-items:center; }
+    .avatar { width:56px; height:56px; border-radius:999px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; }
+
+    .avatar.bg1 { background:#f97316; } .avatar.bg2 { background:#06b6d4; } .avatar.bg3 { background:#7c3aed; }
+    .avatar.bg4 { background:#ea580c; } .avatar.bg5 { background:#0ea5a4; } .avatar.bg6 { background:#ef4444; }
+
+    /* ---------- Contact (50/50) ---------- */
+    .contact-wrap { background: transparent; padding: 22px 0; }
+    .contact-inner { display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:start; max-width:1100px; margin:0 auto; }
+    .info-cards { display:grid; gap:14px; }
+    .info-card { background:#fff; border-radius:12px; padding:14px; display:flex; gap:12px; align-items:flex-start; box-shadow:var(--card-shadow); border:1px solid rgba(16,24,40,0.03); }
+    .info-icon { width:48px; height:48px; border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--primary); background: linear-gradient(180deg, rgba(78,70,229,0.08), rgba(78,70,229,0.04)); font-size:18px; }
+    .form-panel { background:#fff; border-radius:12px; padding:20px; box-shadow:var(--card-shadow); border:1px solid rgba(16,24,40,0.03); }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .form-control { width:100%; padding:10px; border-radius:10px; border:1px solid #e7eaf0; }
+    .form-control.full { grid-column: 1/-1; }
+    .char-counter { font-size:13px; color:var(--muted); text-align:right; margin-top:6px; }
+
+    /* ---------- Footer ---------- */
+    .site-footer { background: linear-gradient(135deg,var(--primary),var(--primary-dark)); color:#fff; padding:48px 0; border-top-left-radius:12px; border-top-right-radius:12px; margin-top:40px; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:20px; max-width:1100px; margin:0 auto; }
+    .footer a { color: rgba(255,255,255,0.95); text-decoration:none; display:block; margin-bottom:8px; }
+    .footer a:hover { color: var(--accent); }
+    .socials { display:flex; gap:10px; margin-top:12px; }
+    .socials a { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:10px; background: rgba(255,255,255,0.08); color:#fff; }
+    .copyright-bar { background: rgba(10,13,30,0.12); text-align:center; padding:12px 0; margin-top:18px; color: rgba(255,255,255,0.95); font-weight:700; }
+
+    /* ---------- Responsive ---------- */
     @media (max-width:1100px){
-      .services-grid{grid-template-columns:repeat(2,1fr)}
-      .pricing-grid{grid-template-columns:repeat(2,1fr)}
-      .testimonials-grid{grid-template-columns:repeat(2,1fr)}
-      .footer-grid{grid-template-columns:1fr 1fr}
-      .hourly-grid{grid-template-columns:repeat(2,1fr)}
+      .services-grid { grid-template-columns: repeat(2,1fr); }
+      .pricing-grid { grid-template-columns: repeat(2,1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width:820px){
-      .hero-inner{flex-direction:column}
-      .services-grid{grid-template-columns:1fr}
-      .pricing-grid{grid-template-columns:1fr}
-      .hourly-grid{grid-template-columns:1fr}
-      .contact-inner{grid-template-columns:1fr}
-      .nav-links{display:none}
-      .menu-toggle{display:block}
+      .hero-inner { flex-direction:column; }
+      .services-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .nav-links { display:none; }
+      .menu-toggle { display:block; }
     }
     @media (max-width:520px){
-      .testimonials-grid{grid-template-columns:1fr}
-      .form-grid{grid-template-columns:1fr}
+      .form-grid { grid-template-columns: 1fr; }
     }
 
     /* small reveal animation */
-    .reveal{opacity:0;transform:translateY(18px);transition:var(--transition)}
-    .reveal.visible{opacity:1;transform:none}
+    .reveal { opacity:0; transform:translateY(16px); transition:var(--transition); }
+    .reveal.visible { opacity:1; transform:none; }
   </style>
 </head>
 <body>
@@ -178,271 +193,163 @@
     <div class="container hero-inner reveal">
       <div>
         <h1>Professional Virtual Assistant Services</h1>
-        <p>Boost productivity with administrative, creative and technical support—so you can focus on growth.</p>
+        <p>Boost your productivity with expert administrative, creative, and technical support tailored to your business needs. Let me handle the details while you focus on growth.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
           <a class="btn btn-primary" href="#pricing">View Pricing</a>
           <a class="btn btn-outline" href="#contact">Get in Touch</a>
         </div>
       </div>
+
       <div class="hero-visual" aria-hidden="true">
         <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Workspace">
       </div>
     </div>
   </section>
 
-  <!-- Services -->
+  <!-- Services (Hourly) -->
   <section id="services" class="reveal">
     <div class="container">
       <div class="section-header">
-        <h2>Services</h2>
-        <p>Core services I offer — pick hourly or hire a monthly retainer below.</p>
+        <h2>Hourly Services</h2>
+        <p>Choose any of these services on an hourly basis — perfect for one-off tasks or short projects.</p>
       </div>
 
       <div class="services-grid" role="list">
-        <div class="service-card">
+        <div class="service-card" role="listitem">
           <div class="service-icon"><i class="fas fa-calendar-alt"></i></div>
           <h3>Administrative Support</h3>
-          <p>Email management, calendar scheduling, travel arrangements, and documents.</p>
+          <p>Email management, calendar scheduling, travel arrangements, and document prep.</p>
           <div class="price">$25 <small style="color:var(--muted)">/ hour</small></div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" role="listitem">
           <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
           <h3>Graphic Design</h3>
-          <p>Logos, social graphics, presentations, and brand assets.</p>
+          <p>Logo concepts, social graphics, slides and marketing assets.</p>
           <div class="price">$45 <small style="color:var(--muted)">/ hour</small></div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" role="listitem">
           <div class="service-icon"><i class="fas fa-file-alt"></i></div>
           <h3>Content Creation</h3>
-          <p>Blog posts, newsletters, website copy and email campaigns.</p>
+          <p>Blog posts, web copy, newsletters and email campaigns that convert.</p>
           <div class="price">$35 <small style="color:var(--muted)">/ hour</small></div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" role="listitem">
           <div class="service-icon"><i class="fas fa-chart-line"></i></div>
           <h3>Social Media Management</h3>
-          <p>Strategy, content calendars, posting and engagement.</p>
+          <p>Content calendars, post scheduling, engagement and basic reporting.</p>
           <div class="price">$40 <small style="color:var(--muted)">/ hour</small></div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" role="listitem">
           <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
           <h3>E-commerce Support</h3>
-          <p>Product listings, inventory updates, order handling and CS.</p>
+          <p>Product listings, inventory updates, order handling and customer messages.</p>
           <div class="price">$30 <small style="color:var(--muted)">/ hour</small></div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" role="listitem">
           <div class="service-icon"><i class="fas fa-video"></i></div>
           <h3>Video Editing</h3>
-          <p>Short-form edits, YouTube videos, captioning and promos.</p>
+          <p>Short-form edits, captions, YouTube & promotional video edits.</p>
           <div class="price">$50 <small style="color:var(--muted)">/ hour</small></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Unified Pricing & Payment -->
+  <!-- Pricing Table (Packages) -->
   <section id="pricing" class="reveal">
-    <div class="container">
+    <div class="container pricing-wrap">
       <div class="section-header">
-        <h2>Pricing & Payment</h2>
-        <p>Choose hourly services for one-off work or pick a monthly/yearly package for ongoing support (Yearly saves 20%).</p>
+        <h2>Packages</h2>
+        <p>Choose a monthly retainer for predictable support — or pick yearly and save 20%.</p>
       </div>
 
-      <div class="pricing-section">
-        <div class="pricing-controls">
-          <div class="pricing-toggle" role="tablist" aria-label="Pricing toggle">
-            <button class="active" data-mode="hourly" aria-pressed="true">Hourly</button>
-            <button data-mode="monthly" aria-pressed="false">Monthly</button>
-            <button data-mode="yearly" aria-pressed="false">Yearly (Save 20%)</button>
+      <div class="pricing-controls">
+        <div class="pricing-toggle" role="tablist" aria-label="Pricing options">
+          <button class="active" data-mode="monthly" aria-pressed="true">Monthly</button>
+          <button data-mode="yearly" aria-pressed="false">Yearly (Save 20%)</button>
+        </div>
+
+        <div style="margin-left:auto;display:flex;gap:10px;align-items:center">
+          <div style="font-weight:700;color:var(--muted)">Currency</div>
+          <div style="background:#fff;padding:6px 10px;border-radius:8px;border:1px solid rgba(16,24,40,0.04)">USD</div>
+        </div>
+      </div>
+
+      <div id="pricingGrid" class="pricing-grid" role="list">
+        <!-- Starter -->
+        <div class="pack-card" data-plan="starter" role="listitem">
+          <div>
+            <h3>Starter</h3>
+            <div class="pack-tagline">Perfect for small businesses and entrepreneurs getting started</div>
+
+            <div class="pack-price" data-monthly="400" data-yearly="3840">$400 <small style="color:var(--muted);font-weight:700">/ month</small></div>
+            <div class="pack-sub">What’s included</div>
+            <ul class="pack-features">
+              <li>20 hours of virtual assistance</li>
+              <li>Email and chat support</li>
+              <li>Basic administrative tasks</li>
+              <li>Social media posting (5 posts/week)</li>
+              <li>Data entry and research</li>
+              <li>48-hour response time</li>
+            </ul>
           </div>
 
-          <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
-            <div style="font-weight:700;color:var(--muted)">Currency:</div>
-            <div style="background:#fff;padding:6px 10px;border-radius:8px;border:1px solid rgba(16,24,40,0.04)">USD</div>
+          <div class="pack-cta">
+            <button class="btn btn-primary pack-book" data-plan="starter" data-monthly="400" data-yearly-total="3840">Hire Now</button>
           </div>
         </div>
 
-        <!-- Hourly mode: show services grid with book buttons -->
-        <div id="mode-hourly" class="mode-panel">
-          <div class="hourly-grid">
-            <!-- Administrative Support -->
-            <div class="hourly-card">
-              <h4>Administrative Support</h4>
-              <p style="color:var(--muted);margin:8px 0">Email triage, calendar & document prep.</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
-                <div style="font-weight:800;color:var(--primary)">$25<span style="font-weight:600;color:var(--muted)">/hr</span></div>
-                <button class="btn btn-primary book-now" data-type="hourly" data-key="service_admin" data-usd="25">Book Now</button>
-              </div>
-            </div>
+        <!-- Standard (highlighted) -->
+        <div class="pack-card popular" data-plan="standard" role="listitem">
+          <div>
+            <div class="pack-badge">Most Popular</div>
+            <h3>Standard</h3>
+            <div class="pack-tagline">For growing teams needing reliable weekly support</div>
 
-            <!-- Graphic Design -->
-            <div class="hourly-card">
-              <h4>Graphic Design</h4>
-              <p style="color:var(--muted);margin:8px 0">Social graphics, logos, presentations.</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
-                <div style="font-weight:800;color:var(--primary)">$45<span style="font-weight:600;color:var(--muted)">/hr</span></div>
-                <button class="btn btn-primary book-now" data-type="hourly" data-key="service_design" data-usd="45">Book Now</button>
-              </div>
-            </div>
-
-            <!-- Content Creation -->
-            <div class="hourly-card">
-              <h4>Content Creation</h4>
-              <p style="color:var(--muted);margin:8px 0">Blog posts, copywriting & email campaigns.</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
-                <div style="font-weight:800;color:var(--primary)">$35<span style="font-weight:600;color:var(--muted)">/hr</span></div>
-                <button class="btn btn-primary book-now" data-type="hourly" data-key="service_content" data-usd="35">Book Now</button>
-              </div>
-            </div>
-
-            <!-- Social Media -->
-            <div class="hourly-card">
-              <h4>Social Media Management</h4>
-              <p style="color:var(--muted);margin:8px 0">Post scheduling, community engagement.</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
-                <div style="font-weight:800;color:var(--primary)">$40<span style="font-weight:600;color:var(--muted)">/hr</span></div>
-                <button class="btn btn-primary book-now" data-type="hourly" data-key="service_social" data-usd="40">Book Now</button>
-              </div>
-            </div>
-
-            <!-- E-commerce Support -->
-            <div class="hourly-card">
-              <h4>E-commerce Support</h4>
-              <p style="color:var(--muted);margin:8px 0">Product listings, inventory, orders.</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
-                <div style="font-weight:800;color:var(--primary)">$30<span style="font-weight:600;color:var(--muted)">/hr</span></div>
-                <button class="btn btn-primary book-now" data-type="hourly" data-key="service_ecommerce" data-usd="30">Book Now</button>
-              </div>
-            </div>
-
-            <!-- Video Editing -->
-            <div class="hourly-card">
-              <h4>Video Editing</h4>
-              <p style="color:var(--muted);margin:8px 0">Short-form & YouTube editing.</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
-                <div style="font-weight:800;color:var(--primary)">$50<span style="font-weight:600;color:var(--muted)">/hr</span></div>
-                <button class="btn btn-primary book-now" data-type="hourly" data-key="service_video" data-usd="50">Book Now</button>
-              </div>
-            </div>
+            <div class="pack-price" data-monthly="750" data-yearly="7200">$750 <small style="color:var(--muted);font-weight:700">/ month</small></div>
+            <div class="pack-sub">What’s included</div>
+            <ul class="pack-features">
+              <li>40 hours of virtual assistance</li>
+              <li>Admin + creative services</li>
+              <li>Social media management & content support</li>
+              <li>Priority support & weekly check-ins</li>
+              <li>Content creation & design support</li>
+              <li>24–48 hour response time</li>
+            </ul>
           </div>
 
-          <div class="mini-summary" style="margin-top:14px">
-            <div style="display:flex;justify-content:space-between"><strong>Selected</strong><span id="selectedLabel">None</span></div>
-            <div style="display:flex;justify-content:space-between;margin-top:8px"><strong>Total (example)</strong><span id="selectedTotal">—</span></div>
-            <div style="margin-top:10px;color:var(--muted);font-size:.95rem">Click "Book Now" on a service to choose hours and proceed to payment.</div>
+          <div class="pack-cta">
+            <button class="btn btn-accent pack-book" data-plan="standard" data-monthly="750" data-yearly-total="7200">Hire Now</button>
           </div>
         </div>
 
-        <!-- Monthly & Yearly: pricing cards -->
-        <div id="mode-monthly" class="mode-panel" style="display:none">
-          <div class="pricing-grid">
-            <!-- Starter -->
-            <div class="pack-card" data-plan="starter" aria-label="Starter">
-              <h3>Starter</h3>
-              <div style="color:var(--muted);margin-bottom:8px">Perfect for small businesses and entrepreneurs getting started</div>
-              <div style="font-weight:900;font-size:1.4rem;color:var(--primary)">$400 <small style="color:var(--muted);font-weight:700">/month</small></div>
-              <ul style="text-align:left;color:var(--muted);margin-top:12px">
-                <li>• 20 hours of virtual assistance</li>
-                <li>• Email and chat support</li>
-                <li>• Basic administrative tasks</li>
-                <li>• Social media posting (5 posts/week)</li>
-                <li>• Data entry and research</li>
-                <li>• 48-hour response time</li>
-              </ul>
-              <div style="margin-top:14px"><button class="btn btn-primary pack-book" data-plan="starter" data-usd="400">Hire Now</button></div>
-            </div>
+        <!-- Premium -->
+        <div class="pack-card" data-plan="premium" role="listitem">
+          <div>
+            <h3>Premium</h3>
+            <div class="pack-tagline">Dedicated support for high-volume operations and scaling businesses</div>
 
-            <!-- Standard (highlighted) -->
-            <div class="pack-card popular" data-plan="standard" aria-label="Standard">
-              <div class="pack-badge">Most Popular</div>
-              <h3>Standard</h3>
-              <div style="color:var(--muted);margin-bottom:8px">For growing teams needing reliable weekly support</div>
-              <div style="font-weight:900;font-size:1.4rem;color:var(--primary)">$750 <small style="color:var(--muted);font-weight:700">/month</small></div>
-              <ul style="text-align:left;color:var(--muted);margin-top:12px">
-                <li>• 40 hours of virtual assistance</li>
-                <li>• Admin + creative services</li>
-                <li>• Social media management</li>
-                <li>• Priority support & weekly check-ins</li>
-                <li>• Content support & design</li>
-                <li>• 24-48 hour response time</li>
-              </ul>
-              <div style="margin-top:14px"><button class="btn btn-accent pack-book" data-plan="standard" data-usd="750">Hire Now</button></div>
-            </div>
+            <div class="pack-price" data-monthly="1400" data-yearly="13440">$1,400 <small style="color:var(--muted);font-weight:700">/ month</small></div>
+            <div class="pack-sub">What’s included</div>
+            <ul class="pack-features">
+              <li>80 hours of virtual assistance</li>
+              <li>Full-service coverage (admin, content, design)</li>
+              <li>Graphic & video editing</li>
+              <li>Dedicated weekly calls & priority turnaround</li>
+              <li>Advanced reporting & workflow support</li>
+              <li>&lt; 24-hour response time</li>
+            </ul>
+          </div>
 
-            <!-- Premium -->
-            <div class="pack-card" data-plan="premium" aria-label="Premium">
-              <h3>Premium</h3>
-              <div style="color:var(--muted);margin-bottom:8px">Dedicated support for high-volume operations and scaling businesses</div>
-              <div style="font-weight:900;font-size:1.4rem;color:var(--primary)">$1400 <small style="color:var(--muted);font-weight:700">/month</small></div>
-              <ul style="text-align:left;color:var(--muted);margin-top:12px">
-                <li>• 80 hours of virtual assistance</li>
-                <li>• Full-service coverage</li>
-                <li>• Graphic & video editing</li>
-                <li>• Dedicated weekly calls</li>
-                <li>• Priority turnaround</li>
-                <li>• < 24-hour response time</li>
-              </ul>
-              <div style="margin-top:14px"><button class="btn btn-primary pack-book" data-plan="premium" data-usd="1400">Hire Now</button></div>
-            </div>
+          <div class="pack-cta">
+            <button class="btn btn-primary pack-book" data-plan="premium" data-monthly="1400" data-yearly-total="13440">Hire Now</button>
           </div>
         </div>
-
-        <!-- Yearly: same cards but with 20% off prices -->
-        <div id="mode-yearly" class="mode-panel" style="display:none">
-          <div class="pricing-grid">
-            <!-- Starter Yearly -->
-            <div class="pack-card" data-plan="starter">
-              <h3>Starter <small style="font-weight:700;color:var(--muted)">(billed yearly)</small></h3>
-              <div style="color:var(--muted);margin-bottom:8px">Perfect for small businesses and entrepreneurs getting started</div>
-              <div style="font-weight:900;font-size:1.25rem;color:var(--primary)">$384 <small style="color:var(--muted);font-weight:700">/month (billed yearly)</small></div>
-              <div style="color:var(--muted);margin-top:6px">Equivalent to $3,840 / year (20% off applied)</div>
-              <ul style="text-align:left;color:var(--muted);margin-top:12px">
-                <li>• 20 hours/month equivalent</li>
-                <li>• Email & chat support</li>
-                <li>• Social media posting (5 posts/week)</li>
-                <li>• Data entry and research</li>
-                <li>• 48-hour response time</li>
-              </ul>
-              <div style="margin-top:14px"><button class="btn btn-primary pack-book" data-plan="starter" data-usd="384">Hire Now</button></div>
-            </div>
-
-            <!-- Standard Yearly -->
-            <div class="pack-card popular">
-              <div class="pack-badge">Most Popular</div>
-              <h3>Standard <small style="font-weight:700;color:var(--muted)">(billed yearly)</small></h3>
-              <div style="color:var(--muted);margin-bottom:8px">For growing teams needing reliable weekly support</div>
-              <div style="font-weight:900;font-size:1.25rem;color:var(--primary)">$600 <small style="color:var(--muted);font-weight:700">/month (billed yearly)</small></div>
-              <div style="color:var(--muted);margin-top:6px">Equivalent to $7,200 / year (20% off applied)</div>
-              <ul style="text-align:left;color:var(--muted);margin-top:12px">
-                <li>• 40 hours/month equivalent</li>
-                <li>• Admin + creative services</li>
-                <li>• Weekly check-ins</li>
-                <li>• Priority support</li>
-              </ul>
-              <div style="margin-top:14px"><button class="btn btn-accent pack-book" data-plan="standard" data-usd="600">Hire Now</button></div>
-            </div>
-
-            <!-- Premium Yearly -->
-            <div class="pack-card">
-              <h3>Premium <small style="font-weight:700;color:var(--muted)">(billed yearly)</small></h3>
-              <div style="color:var(--muted);margin-bottom:8px">Dedicated support for high-volume operations</div>
-              <div style="font-weight:900;font-size:1.25rem;color:var(--primary)">$1120 <small style="color:var(--muted);font-weight:700">/month (billed yearly)</small></div>
-              <div style="color:var(--muted);margin-top:6px">Equivalent to $13,440 / year (20% off applied)</div>
-              <ul style="text-align:left;color:var(--muted);margin-top:12px">
-                <li>• 80 hours/month equivalent</li>
-                <li>• Full-service coverage</li>
-                <li>• Graphic & video editing</li>
-                <li>• Dedicated weekly calls</li>
-              </ul>
-              <div style="margin-top:14px"><button class="btn btn-primary pack-book" data-plan="premium" data-usd="1120">Hire Now</button></div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -450,14 +357,20 @@
   <!-- About -->
   <section id="about" class="reveal">
     <div class="container">
-      <div class="section-header"><h2>About Me</h2><p>I’m Salim — a results-driven virtual assistant who helps small businesses and founders reclaim time. I combine administrative efficiency with creative skills to deliver polished work and clear communication.</p></div>
+      <div class="section-header">
+        <h2>About Me</h2>
+        <p>I’m Salim — a results-driven virtual assistant who helps small businesses and founders reclaim time. I combine administrative efficiency with creative skills so you get polished deliverables and clear communication.</p>
+      </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center">
-        <div><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Workspace" style="width:100%;border-radius:12px;box-shadow:var(--card-shadow)"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center;">
         <div>
-          <h3>What I do</h3>
-          <p>I provide reliable, prompt virtual assistance across administration, content, design and digital operations — freeing up founders to focus on growth.</p>
-          <div style="display:flex;gap:10px;margin-top:12px">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Workspace" style="width:100%;border-radius:12px;box-shadow:var(--card-shadow)">
+        </div>
+        <div>
+          <h3 style="margin-bottom:8px">What I do</h3>
+          <p>I provide end-to-end support across administration, content, design and digital operations. My focus is on responsiveness, predictable delivery, and helping your business run smoother.</p>
+
+          <div style="display:flex;gap:12px;margin-top:14px">
             <div style="background:#fff;padding:12px;border-radius:10px;text-align:center;flex:1;box-shadow:0 8px 24px rgba(16,24,40,0.04)"><div style="font-weight:800;color:var(--primary);font-size:1.1rem">5+</div><div style="color:var(--muted)">Years Experience</div></div>
             <div style="background:#fff;padding:12px;border-radius:10px;text-align:center;flex:1;box-shadow:0 8px 24px rgba(16,24,40,0.04)"><div style="font-weight:800;color:var(--primary);font-size:1.1rem">200+</div><div style="color:var(--muted)">Happy Clients</div></div>
             <div style="background:#fff;padding:12px;border-radius:10px;text-align:center;flex:1;box-shadow:0 8px 24px rgba(16,24,40,0.04)"><div style="font-weight:800;color:var(--primary);font-size:1.1rem">500+</div><div style="color:var(--muted)">Projects Completed</div></div>
@@ -467,40 +380,43 @@
     </div>
   </section>
 
-  <!-- Testimonials 3x2 -->
+  <!-- Testimonials (3x2 grid) -->
   <section id="testimonials" class="reveal">
     <div class="container">
-      <div class="section-header"><h2>What Clients Say</h2><p>Real feedback from businesses I’ve supported.</p></div>
+      <div class="section-header">
+        <h2>What Clients Say</h2>
+        <p>Real feedback from businesses and founders I’ve supported.</p>
+      </div>
 
       <div class="testimonials-grid" role="list">
-        <div class="testimonial-card">
-          <div class="testimonial-quote">"Salim was a lifesaver during our launch week—managed client emails and scheduling so I could focus on closing deals."</div>
-          <div class="testimonial-meta"><div class="avatar bg1">LM</div><div class="meta-text"><strong>Laura M.</strong><small style="color:var(--muted)">Founder, SaaS Startup</small></div></div>
+        <div class="testimonial-card" role="listitem">
+          <div class="testimonial-quote">"Salim was a lifesaver during our launch week — handled client emails and scheduling so I could focus on closing deals."</div>
+          <div class="testimonial-meta"><div class="avatar bg1">LM</div><div><strong>Laura M.</strong><div style="color:var(--muted)">Founder, SaaS Startup</div></div></div>
         </div>
 
-        <div class="testimonial-card">
-          <div class="testimonial-quote">"Handled our Instagram and content calendar. Engagement and clarity improved within two weeks."</div>
-          <div class="testimonial-meta"><div class="avatar bg2">DK</div><div class="meta-text"><strong>Daniel K.</strong><small style="color:var(--muted)">Owner, Online Retail</small></div></div>
+        <div class="testimonial-card" role="listitem">
+          <div class="testimonial-quote">"Handled our Instagram and content calendar with clarity — engagement improved within weeks."</div>
+          <div class="testimonial-meta"><div class="avatar bg2">DK</div><div><strong>Daniel K.</strong><div style="color:var(--muted)">Owner, Online Retail</div></div></div>
         </div>
 
-        <div class="testimonial-card">
-          <div class="testimonial-quote">"Very reliable — edited training videos for our team and delivered clean, professional edits on schedule."</div>
-          <div class="testimonial-meta"><div class="avatar bg3">SR</div><div class="meta-text"><strong>Sophia R.</strong><small style="color:var(--muted)">HR Manager, Consulting</small></div></div>
+        <div class="testimonial-card" role="listitem">
+          <div class="testimonial-quote">"Very reliable — edited training videos and delivered clean, professional edits on schedule."</div>
+          <div class="testimonial-meta"><div class="avatar bg3">SR</div><div><strong>Sophia R.</strong><div style="color:var(--muted)">HR Manager, Consulting</div></div></div>
         </div>
 
-        <div class="testimonial-card">
-          <div class="testimonial-quote">"Optimized product listings and improved descriptions — we saw a measurable uptick in conversions."</div>
-          <div class="testimonial-meta"><div class="avatar bg4">KT</div><div class="meta-text"><strong>Kevin T.</strong><small style="color:var(--muted)">E-commerce Entrepreneur</small></div></div>
+        <div class="testimonial-card" role="listitem">
+          <div class="testimonial-quote">"Optimized product listings and improved descriptions — we saw better conversions."</div>
+          <div class="testimonial-meta"><div class="avatar bg4">KT</div><div><strong>Kevin T.</strong><div style="color:var(--muted)">E-commerce Entrepreneur</div></div></div>
         </div>
 
-        <div class="testimonial-card">
-          <div class="testimonial-quote">"Attention to detail: invoices, billing and calendar management were handled weekly — saved me hours."</div>
-          <div class="testimonial-meta"><div class="avatar bg5">AM</div><div class="meta-text"><strong>Amina M.</strong><small style="color:var(--muted)">Operations Lead</small></div></div>
+        <div class="testimonial-card" role="listitem">
+          <div class="testimonial-quote">"Attention to detail: invoices and calendar management were handled weekly — saved me hours."</div>
+          <div class="testimonial-meta"><div class="avatar bg5">AM</div><div><strong>Amina M.</strong><div style="color:var(--muted)">Operations Lead</div></div></div>
         </div>
 
-        <div class="testimonial-card">
+        <div class="testimonial-card" role="listitem">
           <div class="testimonial-quote">"Consistent communication and reliable delivery across admin + creative tasks. Highly recommended."</div>
-          <div class="testimonial-meta"><div class="avatar bg6">JR</div><div class="meta-text"><strong>James R.</strong><small style="color:var(--muted)">Founder, Creative Studio</small></div></div>
+          <div class="testimonial-meta"><div class="avatar bg6">JR</div><div><strong>James R.</strong><div style="color:var(--muted)">Founder, Creative Studio</div></div></div>
         </div>
       </div>
     </div>
@@ -509,39 +425,58 @@
   <!-- Get in Touch (50/50) -->
   <section id="contact" class="contact-wrap reveal">
     <div class="container">
-      <div class="section-header"><h2>Get In Touch</h2><p>Questions, custom proposals or monthly retainers — send a message and I’ll respond within 24 hours.</p></div>
+      <div class="section-header">
+        <h2>Get In Touch</h2>
+        <p>Questions, custom proposals or monthly retainers — send a message and I’ll respond within 24 hours.</p>
+      </div>
 
       <div class="contact-inner">
         <!-- Left: info -->
         <div class="info-cards" aria-hidden="false">
           <div class="info-card">
             <div class="info-icon"><i class="fas fa-phone"></i></div>
-            <div><h4>Phone</h4><p style="font-weight:700">+1 (555) 123-4567</p><p class="muted" style="margin-top:6px">Mon–Fri • 9AM–6PM EST</p></div>
+            <div>
+              <h4>Phone</h4>
+              <p style="font-weight:700">+1 (555) 123-4567</p>
+              <p class="muted" style="margin-top:8px">Mon–Fri • 9AM–6PM EST</p>
+            </div>
           </div>
 
           <div class="info-card">
             <div class="info-icon"><i class="fas fa-envelope"></i></div>
-            <div><h4>Email</h4><p style="font-weight:700">salim.virtualassistant@gmail.com</p><p class="muted" style="margin-top:6px">We respond within 24 hours</p></div>
+            <div>
+              <h4>Email</h4>
+              <p style="font-weight:700">salim.virtualassistant@gmail.com</p>
+              <p class="muted" style="margin-top:8px">We respond within 24 hours</p>
+            </div>
           </div>
 
           <div class="info-card">
             <div class="info-icon"><i class="fas fa-stopwatch"></i></div>
-            <div><h4>Response Time</h4><p style="font-weight:700">< 2 Hours</p><p class="muted" style="margin-top:6px">Average response time</p></div>
+            <div>
+              <h4>Response Time</h4>
+              <p style="font-weight:700">&lt; 2 Hours</p>
+              <p class="muted" style="margin-top:8px">Average response time</p>
+            </div>
           </div>
 
           <div class="info-card">
             <div class="info-icon"><i class="fas fa-handshake"></i></div>
-            <div><h4>Free Consultation</h4><p class="muted">Schedule a 30-minute session to scope your needs and options.</p><div style="margin-top:8px"><a href="#" class="btn btn-ghost">Schedule Now</a></div></div>
+            <div>
+              <h4>Free Consultation</h4>
+              <p class="muted">Schedule a 30-minute session to scope your needs and options.</p>
+              <div style="margin-top:8px"><a href="#" class="btn btn-ghost">Schedule Now</a></div>
+            </div>
           </div>
         </div>
 
-        <!-- Right: form -->
+        <!-- Right: Netlify form -->
         <div class="form-panel" role="form" aria-label="Contact form">
           <h3 style="margin-bottom:8px">Send us a Message</h3>
 
           <form name="get-in-touch" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="contactForm" novalidate>
             <input type="hidden" name="form-name" value="get-in-touch">
-            <p style="display:none"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
+            <p style="display:none"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
 
             <div class="form-grid">
               <input class="form-control" type="text" name="fullname" placeholder="Full Name *" required>
@@ -557,6 +492,7 @@
                 <option value="ecommerce">E-commerce Support</option>
                 <option value="video">Video Editing</option>
               </select>
+
               <textarea name="message" id="messageField" class="form-control full" placeholder="Message * — Tell us about your business needs and how we can help..." maxlength="500" rows="6" required></textarea>
             </div>
 
@@ -572,11 +508,11 @@
 
   <!-- Footer -->
   <footer class="site-footer" role="contentinfo">
-    <div class="container footer-grid footer">
+    <div class="container footer-grid footer" style="gap:22px">
       <div>
         <a class="logo" href="#home" style="color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:10px"><i class="fas fa-headset"></i> Salim-VA</a>
-        <p style="margin-top:12px;color:rgba(255,255,255,0.95)">Professional virtual assistant & creative support — helping businesses scale with reliable, high-quality remote work.</p>
-        <div class="socials" style="margin-top:12px">
+        <p style="margin-top:12px;color:rgba(255,255,255,0.95)">Professional virtual assistant & creative support — helping businesses scale with reliable work.</p>
+        <div class="socials">
           <a href="https://www.linkedin.com/in/salim-omar-56b98a277" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
           <a href="mailto:salim.virtualassistant@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
@@ -595,7 +531,7 @@
         <a href="#services">Administrative Support</a>
         <a href="#services">Graphic Design</a>
         <a href="#services">Content Creation</a>
-        <a href="#services">Social Media Management</a>
+        <a href="#services">Social Media</a>
         <a href="#services">E-commerce Support</a>
         <a href="#services">Video Editing</a>
       </div>
@@ -612,143 +548,202 @@
     <div class="copyright-bar">© 2025 Salim-VA  •  Built with care • Designed to convert leads into clients</div>
   </footer>
 
-  <!-- Paystack SDK -->
+  <!-- Paystack SDK (for USD inline) -->
   <script src="https://js.paystack.co/v1/inline.js"></script>
 
   <script>
-    // Utilities
-    const $ = s => document.querySelector(s);
-    const $$ = s => Array.from(document.querySelectorAll(s));
+    /* ============================
+       Client-side interactions
+       ============================ */
+
+    // Simple helpers
+    const $ = (s) => document.querySelector(s);
+    const $$ = (s) => Array.from(document.querySelectorAll(s));
 
     // Mobile nav toggle
     (function(){
       const toggle = document.getElementById('menuToggle');
       const nav = document.getElementById('navLinks');
-      if(toggle && nav) toggle.addEventListener('click', ()=> nav.classList.toggle('active'));
+      if(toggle && nav){
+        toggle.addEventListener('click', ()=> nav.classList.toggle('active'));
+      }
     })();
 
-    // Header scroll class
-    (function(){ const header=document.querySelector('header'); window.addEventListener('scroll', ()=> header.classList.toggle('scrolled', window.scrollY>70)); })();
+    // Header shrink on scroll
+    (function(){
+      const header = document.querySelector('header');
+      window.addEventListener('scroll', ()=> header.classList.toggle('scrolled', window.scrollY > 60));
+    })();
 
     // Reveal on scroll
     (function(){
       const items = document.querySelectorAll('.reveal');
-      const obs = new IntersectionObserver((entries, o) => {
-        entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); o.unobserve(e.target); } });
-      }, {threshold:0.08});
-      items.forEach(i=>obs.observe(i));
+      const obs = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      items.forEach(i => obs.observe(i));
     })();
 
-    // Char counter for contact
+    // Char counter
     (function(){
       const msg = document.getElementById('messageField');
-      const count = document.getElementById('charCount');
-      if(msg && count) msg.addEventListener('input', e => count.textContent = e.target.value.length);
+      const cnt = document.getElementById('charCount');
+      if(msg && cnt){
+        msg.addEventListener('input', e => cnt.textContent = e.target.value.length);
+      }
     })();
 
-    /* ------------------ Pricing & Booking logic ------------------ */
+    /* -------------------------
+       Pricing toggle (monthly/yearly)
+       ------------------------- */
     (function(){
-      // Mode toggle (hourly, monthly, yearly)
-      const toggleBtns = Array.from(document.querySelectorAll('.pricing-toggle button'));
-      const panels = { hourly: $('#mode-hourly'), monthly: $('#mode-monthly'), yearly: $('#mode-yearly') };
-      function setMode(mode){
-        toggleBtns.forEach(b=>{ b.classList.toggle('active', b.dataset.mode===mode); b.setAttribute('aria-pressed', b.dataset.mode===mode ? 'true' : 'false'); });
-        Object.keys(panels).forEach(k => panels[k].style.display = (k===mode ? '' : 'none'));
-      }
-      // init button data-mode attributes
-      document.querySelectorAll('.pricing-toggle button').forEach(b=>{ if(!b.dataset.mode) b.dataset.mode = b.textContent.trim().toLowerCase(); });
-      toggleBtns.forEach(b => b.addEventListener('click', ()=> setMode(b.dataset.mode)));
-      setMode('hourly');
+      const toggleButtons = Array.from(document.querySelectorAll('.pricing-toggle button'));
+      const packCards = Array.from(document.querySelectorAll('.pack-card'));
 
-      // Book Now button behavior:
-      // - For hourly: open small prompt to ask for number of hours & email then trigger Paystack
-      // - For package: open small prompt to confirm start date & email then trigger Paystack
-      const PAYSTACK_KEY = 'pk_test_REPLACE_WITH_YOUR_KEY'; // <-- REPLACE with your Paystack public key
-      function openPaystackUSD(amountUSD, customerEmail, meta){
-        if(!amountUSD || amountUSD <= 0){ alert('Invalid amount'); return; }
-        if(!PAYSTACK_KEY || PAYSTACK_KEY.includes('REPLACE_WITH')) { alert('Paystack public key not set. Replace the placeholder key in the HTML with your Paystack public key.'); return; }
+      function setMode(mode){
+        toggleButtons.forEach(btn => {
+          const isActive = btn.dataset.mode === mode || (!btn.dataset.mode && btn.textContent.trim().toLowerCase() === mode);
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+
+        // update visible price text
+        packCards.forEach(card => {
+          const priceEl = card.querySelector('.pack-price');
+          const monthly = Number(priceEl.dataset.monthly || 0);
+          const yearlyTotal = Number(priceEl.dataset.yearly || 0);
+          if(mode === 'monthly'){
+            // show monthly
+            priceEl.innerHTML = `$${monthly.toLocaleString(undefined, {minimumFractionDigits:0})} <small style="color:var(--muted);font-weight:700">/ month</small>`;
+          } else {
+            // show yearly total with Save 20%
+            // priceEl.dataset.yearly already set to yearly total (e.g. 3840)
+            priceEl.innerHTML = `$${yearlyTotal.toLocaleString(undefined, {minimumFractionDigits:0})} <small style="color:var(--muted);font-weight:700">/ year <span style="color:var(--accent);font-weight:800">(Save 20%)</span></small>`;
+          }
+        });
+      }
+
+      // ensure dataset.mode for buttons
+      document.querySelectorAll('.pricing-toggle button').forEach(b => {
+        if(!b.dataset.mode) b.dataset.mode = b.textContent.trim().toLowerCase().includes('year') ? 'yearly' : (b.textContent.trim().toLowerCase().includes('month') ? 'monthly' : 'monthly');
+      });
+
+      toggleButtons.forEach(b => b.addEventListener('click', () => setMode(b.dataset.mode)));
+      setMode('monthly');
+    })();
+
+    /* -------------------------
+       Booking & Paystack flow
+       ------------------------- */
+    (function(){
+      // IMPORTANT: Replace with your real Paystack public key (test or live)
+      const PAYSTACK_PUBLIC_KEY = 'pk_test_REPLACE_WITH_YOUR_KEY';
+
+      function openPaystackUSD(amountUSD, customerEmail, metaFields = []){
+        if(!PAYSTACK_PUBLIC_KEY || PAYSTACK_PUBLIC_KEY.includes('REPLACE_WITH')){
+          alert('Paystack public key is not set. Replace the placeholder key in the HTML with your Paystack public key to accept payments.');
+          return;
+        }
+        if(!amountUSD || amountUSD <= 0){
+          alert('Invalid amount. Please try again.');
+          return;
+        }
         const handler = PaystackPop.setup({
-          key: PAYSTACK_KEY,
+          key: PAYSTACK_PUBLIC_KEY,
           email: customerEmail || 'customer@example.com',
           amount: Math.round(amountUSD * 100), // USD -> cents
           currency: 'USD',
-          metadata: { custom_fields: meta || [] },
+          metadata: { custom_fields: metaFields },
           callback: function(response){
+            // response.reference
             alert('Payment successful! Reference: ' + response.reference);
-            // You should verify payment server-side (best practice)
+            // Note: verify payment server-side for security.
           },
           onClose: function(){
-            // closed by user
+            // user closed
           }
         });
         handler.openIframe();
       }
 
-      // Hourly book buttons
-      $$('.book-now').forEach(btn => {
-        btn.addEventListener('click', async (e) => {
-          const usd = Number(btn.dataset.usd || 0);
-          const key = btn.dataset.key || '';
-          const name = btn.closest('.hourly-card').querySelector('h4') ? btn.closest('.hourly-card').querySelector('h4').textContent : 'Service';
-          // Ask customer for hours and email using a friendly prompt UI
-          let hours = prompt(`How many hours of "${name}" would you like to purchase? (enter a number)`, '1');
-          if(hours === null) return;
-          hours = Math.max(1, parseInt(hours) || 1);
-          const email = prompt('Please provide your email for the invoice/receipt', '');
-          if(email === null || email.trim()===''){ alert('Email is required to proceed.'); return; }
-          const totalUSD = usd * hours;
-          const confirmMsg = `You will be charged USD ${totalUSD.toFixed(2)} for ${hours} hour(s) of ${name}. Proceed to payment?`;
-          if(!confirm(confirmMsg)) return;
-          openPaystackUSD(totalUSD, email, [
-            { display_name: 'Service', variable_name: 'service', value: key || name },
-            { display_name: 'Hours', variable_name: 'hours', value: String(hours) }
-          ]);
+      // Hourly booking buttons (in Services or you might keep to hourly-grid if you add a Book button)
+      // For clarity we use the pack-book buttons for packages, and we'll support hourly via prompt.
+      // Package booking:
+      $$('.pack-book').forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Determine current mode (monthly or yearly)
+          const activeToggle = document.querySelector('.pricing-toggle button.active');
+          const mode = activeToggle ? activeToggle.dataset.mode : 'monthly';
+          const plan = btn.dataset.plan;
+          const monthly = Number(btn.dataset.monthly || 0);
+          const yearlyTotal = Number(btn.dataset.yearlyTotal || btn.dataset.yearly || 0);
+
+          // Ask for email & start date
+          const email = prompt('Please enter your email for receipt and onboarding:', '');
+          if(email === null || email.trim() === '') { alert('Email is required.'); return; }
+          const startDate = prompt('Preferred start date (YYYY-MM-DD), or leave blank:', '');
+          if(mode === 'monthly'){
+            const confirmMsg = `You will be charged USD ${monthly.toFixed(2)} now for the ${plan} plan (monthly). Proceed to payment?`;
+            if(!confirm(confirmMsg)) return;
+            openPaystackUSD(monthly, email, [
+              { display_name: 'Plan', variable_name: 'plan', value: plan },
+              { display_name: 'Billing', variable_name: 'billing', value: 'monthly' },
+              { display_name: 'Start Date', variable_name: 'start_date', value: startDate || '' }
+            ]);
+          } else {
+            // Yearly: charge yearly total (yearlyTotal dataset is total for the year after 20% discount)
+            // Ask whether to charge upfront for full year or charge per-month equivalent (we'll default to full-year upfront)
+            const confirmMsg = `Yearly billing: you will be charged USD ${yearlyTotal.toFixed(2)} now (this is the full year at 20% off). Proceed to payment?`;
+            if(!confirm(confirmMsg)) return;
+            openPaystackUSD(yearlyTotal, email, [
+              { display_name: 'Plan', variable_name: 'plan', value: plan },
+              { display_name: 'Billing', variable_name: 'billing', value: 'yearly_upfront' },
+              { display_name: 'Start Date', variable_name: 'start_date', value: startDate || '' }
+            ]);
+          }
         });
       });
 
-      // Package book buttons (monthly & yearly)
-      $$('.pack-book').forEach(btn => {
-        btn.addEventListener('click', async (e) => {
-          const usd = Number(btn.dataset.usd || 0);
-          const plan = btn.dataset.plan || 'package';
-          // For yearly panels, the dataset.usd already reflects per month (billed yearly) value used above
-          // We will charge monthly amount (but you can change billing model as needed). For yearly billing we used the monthly-equivalent discounted values in the markup.
-          const billingMode = (() => {
-            const parent = btn.closest('#mode-yearly');
-            return parent ? 'yearly' : 'monthly';
-          })();
+      // Option: allow hourly Book Now from services area (prompt for hours)
+      document.querySelectorAll('.service-card').forEach(card => {
+        // create a small Book button inside card footer for user convenience
+        const priceText = card.querySelector('.price') ? card.querySelector('.price').textContent.trim() : '';
+        const title = card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : 'Service';
+        const usdMatch = priceText.match(/\$([0-9,.]+)/);
+        const usdRate = usdMatch ? Number(usdMatch[1].replace(/,/g,'')) : null;
 
-          // Ask start date and email
-          const startDate = prompt('Preferred start date (YYYY-MM-DD)', '');
-          if(startDate === null) return;
-          const email = prompt('Please provide your email for the invoice/receipt', '');
-          if(email === null || email.trim()===''){ alert('Email is required to proceed.'); return; }
+        // append button if rate found
+        if(usdRate){
+          const footer = document.createElement('div');
+          footer.style.marginTop = '10px';
+          footer.style.display = 'flex';
+          footer.style.justifyContent = 'flex-end';
+          const b = document.createElement('button');
+          b.className = 'btn btn-primary';
+          b.textContent = 'Book';
+          footer.appendChild(b);
+          card.appendChild(footer);
 
-          // If yearly, charge the yearly *total* or monthly-equivalent? We'll charge yearly total for clarity:
-          let amountToChargeUSD = usd;
-          let meta = [
-            { display_name: 'Plan', variable_name: 'plan', value: plan },
-            { display_name: 'Billing Mode', variable_name: 'billing_mode', value: billingMode },
-            { display_name: 'Start Date', variable_name: 'start_date', value: startDate }
-          ];
-
-          // For the yearly panels we set the USD to monthly-equivalent with discount; the user wanted Yearly = 20% off,
-          // so we also include a note. If you prefer charging the entire year upfront, replace the amount here accordingly.
-          if(billingMode === 'yearly') {
-            // We set btn.dataset.usd for yearly cards as the monthly-equivalent after discount (e.g. $384 for Starter monthly-equivalent).
-            // To charge yearly upfront you could do: amountToChargeUSD = usd * 12;
-            // Here we'll ask whether to charge monthly-equivalent or yearly upfront:
-            const chargeWhole = confirm('Charge yearly upfront? (OK = charge full year now, Cancel = charge monthly-equivalent now)');
-            if(chargeWhole) {
-              amountToChargeUSD = (usd * 12); // charge 12 months (you can change this behavior)
-              meta.push({ display_name: 'Yearly Upfront', variable_name: 'yearly_upfront', value: 'true' });
-            }
-          }
-
-          const confirmMsg = `You will be charged USD ${amountToChargeUSD.toFixed(2)} for ${plan} (${billingMode}). Proceed to payment?`;
-          if(!confirm(confirmMsg)) return;
-          openPaystackUSD(amountToChargeUSD, email, meta);
-        });
+          b.addEventListener('click', () => {
+            // ask for hours and email
+            let hours = prompt(`How many hours of "${title}" would you like to purchase?`, '1');
+            if(hours === null) return;
+            hours = Math.max(1, parseInt(hours) || 1);
+            const email = prompt('Please provide your email for the receipt:', '');
+            if(email === null || email.trim() === '') { alert('Email required.'); return; }
+            const total = usdRate * hours;
+            if(!confirm(`You will be charged USD ${total.toFixed(2)} for ${hours} hour(s) of ${title}. Proceed?`)) return;
+            openPaystackUSD(total, email, [
+              { display_name: 'Service', variable_name: 'service', value: title },
+              { display_name: 'Hours', variable_name: 'hours', value: String(hours) }
+            ]);
+          });
+        }
       });
 
     })();
