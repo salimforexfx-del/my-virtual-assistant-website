@@ -1,55 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Support | Salim-VA</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* Support Page Styles */
-    .support-container { max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
-    .support h1 { font-size: 36px; margin-bottom: 20px; }
-    .support p.intro { color: #555; margin-bottom: 40px; }
-    .support-form { display: flex; flex-direction: column; gap: 15px; margin-bottom: 60px; }
-    .support-form input, .support-form textarea, .support-form select { padding: 12px; border: 1px solid #ddd; border-radius: 5px; width: 100%; font-size: 16px; }
-    .support-form button { padding: 12px 20px; border: none; border-radius: 5px; background-color: #007BFF; color: #fff; font-size: 16px; cursor: pointer; transition: background 0.3s; }
-    .support-form button:hover { background-color: #0056b3; }
-    .support-faq { margin-top: 60px; }
-    .support-faq h2 { margin-bottom: 20px; }
-    .faq-item { border-bottom: 1px solid #ddd; }
-    .faq-question { cursor: pointer; padding: 15px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
-    .faq-question:hover { background: #f5f5f5; }
-    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; padding: 0 15px; }
-    .faq-answer p { margin: 15px 0; }
-    .faq-question i { transition: transform 0.3s; }
-    .faq-question.active i { transform: rotate(45deg); }
-    .faq-answer.show { max-height: 500px; padding-bottom: 15px; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support | Salim-VA</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
+body { font-family: 'Inter', sans-serif; margin:0; background:#f9f9f9; color:#333; line-height:1.6; }
+
+/* Animated gradient background */
+@keyframes gradientMove {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+
+/* Support section */
+.support-section {
+  max-width:1200px;
+  margin:120px auto 60px;
+  padding:50px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:40px;
+  border-radius:15px;
+  background: linear-gradient(135deg, #f0f8ff, #e6f2ff, #d0e8ff);
+  background-size:600% 600%;
+  animation: gradientMove 25s ease infinite;
+}
+
+/* Form container */
+.support-form-container {
+  flex:1;
+  min-width:300px;
+  background:#fff;
+  padding:40px 30px;
+  border-radius:15px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s, opacity 1s;
+  opacity:0;
+  animation: fadeIn 1s forwards;
+}
+.support-form-container:hover {transform:translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,0.12);}
+.support-form-container h2 {font-size:28px;color:#007BFF;margin-bottom:25px;font-weight:700;}
+@keyframes fadeIn {to {opacity:1;}}
+
+/* Form styling */
+.support-form {display:flex; flex-direction:column; gap:18px;}
+.support-form input, .support-form textarea, .support-form select {
+  padding:12px; font-size:16px; border:1px solid #ddd; border-radius:8px; width:100%;
+  transition:border-color 0.3s, box-shadow 0.3s;
+}
+.support-form input:focus, .support-form textarea:focus, .support-form select:focus {
+  border-color:#007BFF;
+  outline:none;
+  box-shadow:0 0 8px rgba(0,123,255,0.3);
+}
+.support-form button {
+  padding:14px 0; background:#007BFF; color:#fff; border:none; border-radius:8px;
+  font-size:16px; font-weight:600; cursor:pointer; transition:background 0.3s, transform 0.2s;
+}
+.support-form button:hover {background:#0056b3; transform:translateY(-2px);}
+
+/* Quick help container */
+.support-help {
+  flex:1;
+  min-width:300px;
+  background:#fff;
+  padding:40px 30px;
+  border-radius:15px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.1);
+  transition:opacity 1s;
+  opacity:0;
+  animation: fadeIn 1s forwards 0.5s;
+}
+.support-help h2 {font-size:28px;color:#007BFF;margin-bottom:25px;font-weight:700;}
+.support-help ul {list-style:none;padding:0;margin:0;}
+.support-help ul li {
+  padding:15px 0; border-bottom:1px solid #eee;
+  font-size:16px; display:flex; align-items:center;
+  transition: background 0.3s, transform 0.3s;
+  cursor:pointer;
+}
+.support-help ul li i {
+  margin-right:12px; color:#007BFF; font-size:18px;
+  transition: transform 0.3s, color 0.3s;
+}
+.support-help ul li:hover {background:#f5f5f5; transform:translateX(5px);}
+.support-help ul li:hover i {transform:rotate(15deg) scale(1.2); color:#0056b3;}
+
+.support-help .cta {margin-top:30px; text-align:center;}
+.support-help .cta a {
+  display:inline-block; padding:12px 25px; background:#007BFF; color:#fff;
+  border-radius:8px; font-weight:600; text-decoration:none;
+  transition: background 0.3s, transform 0.2s;
+}
+.support-help .cta a:hover {background:#0056b3; transform:translateY(-2px);}
+
+/* Scroll to top */
+#scrollTopBtn {
+  position:fixed; bottom:30px; right:30px; display:none;
+  background:#007BFF; color:#fff; border:none; border-radius:50%;
+  padding:12px 16px; font-size:18px; cursor:pointer;
+  box-shadow:0 2px 6px rgba(0,0,0,0.3); transition:background 0.3s, transform 0.3s;
+}
+#scrollTopBtn:hover {background:#0056b3; transform:translateY(-2px);}
+
+@media(max-width:900px){.support-section{flex-direction:column;}}
+</style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="container navbar">
-      <a href="index.html" class="logo"><i class="fas fa-headset"></i> Salim-VA</a>
-      <ul class="nav-links">
-        <li><a href="index.html#home">Home</a></li>
-        <li><a href="index.html#services">Services</a></li>
-        <li><a href="index.html#pricing">Pricing</a></li>
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#testimonials">Testimonials</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
-    </div>
-  </header>
 
-  <!-- Support Section -->
-  <section class="support-container support">
-    <h1>Customer Support</h1>
-    <p class="intro">Need help? Reach out to our support team by filling out the form below or browse our common FAQs to find answers quickly.</p>
+<header>
+  <div class="container navbar">
+    <a href="index.html" class="logo"><i class="fas fa-headset"></i> Salim-VA</a>
+    <ul class="nav-links">
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#testimonials">Testimonials</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-    <!-- Contact Form -->
+<section class="support-section">
+  <!-- Form -->
+  <div class="support-form-container">
+    <h2>Submit a Request</h2>
     <form class="support-form" action="mailto:salim.virtualassistant@gmail.com" method="post" enctype="text/plain">
       <input type="text" name="name" placeholder="Full Name" required>
       <input type="email" name="email" placeholder="Email Address" required>
@@ -63,88 +144,60 @@
       <textarea name="message" rows="6" placeholder="Type your message here..." required></textarea>
       <button type="submit">Submit Request</button>
     </form>
+  </div>
 
-    <!-- FAQs Section -->
-    <div class="support-faq">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <div class="faq-question">How can I contact my virtual assistant? <i class="fas fa-plus"></i></div>
-        <div class="faq-answer">
-          <p>You can contact your virtual assistant directly via the email or messaging platform we provide once you are onboarded.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">What is your response time for support requests? <i class="fas fa-plus"></i></div>
-        <div class="faq-answer">
-          <p>Our team responds to all support requests within 24 hours on business days. Urgent issues are prioritized immediately.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Can I upgrade my service package through support? <i class="fas fa-plus"></i></div>
-        <div class="faq-answer">
-          <p>Yes, our support team can help you upgrade or modify your service package as per your needs. Changes are processed promptly.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">How do you handle billing issues? <i class="fas fa-plus"></i></div>
-        <div class="faq-answer">
-          <p>Billing concerns such as invoices, payment updates, or refunds can be resolved by contacting our support team via the form or email.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">What should I do if my assistant is unavailable? <i class="fas fa-plus"></i></div>
-        <div class="faq-answer">
-          <p>If your assistant is unavailable, our support team will provide immediate assistance or assign a temporary replacement to ensure continuity.</p>
-        </div>
-      </div>
-
+  <!-- Quick Help -->
+  <div class="support-help">
+    <h2>Quick Help</h2>
+    <ul>
+      <li><i class="fas fa-question-circle"></i> Visit our <a href="faq.html" style="color:#007BFF;text-decoration:underline;">FAQ page</a></li>
+      <li><i class="fas fa-credit-card"></i> Billing & payments</li>
+      <li><i class="fas fa-cogs"></i> Services & tasks</li>
+      <li><i class="fas fa-envelope"></i> Contact your assistant</li>
+      <li><i class="fas fa-headset"></i> Technical support</li>
+    </ul>
+    <div class="cta">
+      <a href="mailto:salim.virtualassistant@gmail.com">Contact Support</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer-grid footer">
-      <div>
-        <a class="logo" href="index.html"><i class="fas fa-headset"></i> Salim-VA</a>
-        <p style="margin-top:12px;color:rgba(255,255,255,0.95)">Professional virtual assistant & creative support.</p>
-        <div class="socials">
-          <a href="https://www.linkedin.com/in/salim-omar-56b98a277" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="mailto:salim.virtualassistant@gmail.com"><i class="fas fa-envelope"></i></a>
-        </div>
-      </div>
-      <div>
-        <h4>Company</h4>
-        <a href="index.html#about">About Us</a>
-        <a href="index.html#pricing">Pricing</a>
-        <a href="index.html#testimonials">Testimonials</a>
-        <a href="index.html#contact">Contact</a>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="faq.html">FAQ</a>
-        <a href="support.html">Support</a>
+<button id="scrollTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+<footer class="site-footer">
+  <div class="container footer-grid footer">
+    <div>
+      <a class="logo" href="index.html"><i class="fas fa-headset"></i> Salim-VA</a>
+      <p style="margin-top:12px;color:rgba(255,255,255,0.95)">Professional virtual assistant & creative support.</p>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/salim-omar-56b98a277" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:salim.virtualassistant@gmail.com"><i class="fas fa-envelope"></i></a>
       </div>
     </div>
-    <div class="copyright-bar">© 2025 Salim-VA • Built with care</div>
-  </footer>
+    <div>
+      <h4>Company</h4>
+      <a href="index.html#about">About Us</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="index.html#testimonials">Testimonials</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="faq.html">FAQ</a>
+      <a href="support.html">Support</a>
+    </div>
+  </div>
+  <div class="copyright-bar">© 2025 Salim-VA • Built with care</div>
+</footer>
 
-  <!-- FAQ Toggle Script -->
-  <script>
-    const questions = document.querySelectorAll('.faq-question');
-    questions.forEach(q => {
-      q.addEventListener('click', () => {
-        q.classList.toggle('active');
-        const answer = q.nextElementSibling;
-        answer.classList.toggle('show');
-      });
-    });
-  </script>
+<script>
+const scrollBtn = document.getElementById("scrollTopBtn");
+window.onscroll = () => {
+  scrollBtn.style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none";
+};
+scrollBtn.addEventListener('click', () => { window.scrollTo({ top:0, behavior:'smooth' }); });
+</script>
 </body>
 </html>
