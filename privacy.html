@@ -1,63 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Privacy Policy | Salim-VA</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet"/>
   <style>
-    body { background: #f9fafb; color: #1e293b; margin: 0; font-family: 'Inter', sans-serif; }
-    header {
-      position: fixed; top: 0; left: 0; width: 100%;
-      background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      z-index: 1000; padding: 18px 0;
-    }
-    .navbar { width: 90%; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-size: 1.5rem; font-weight: 700; color: #4e46e5; text-decoration: none; display: flex; align-items: center; }
-    .logo i { margin-right: 8px; }
-    .nav-links { display: flex; list-style: none; }
-    .nav-links li { margin-left: 28px; }
-    .nav-links a { text-decoration: none; color: #1e293b; font-weight: 500; }
-
-    section { padding: 140px 0 80px; width: 90%; max-width: 900px; margin: 0 auto; }
-    .section-header { text-align: center; margin-bottom: 50px; }
-    .section-header h1 { font-size: 2.6rem; font-family: 'Montserrat', sans-serif; margin-bottom: 15px; position: relative; display: inline-block; }
-    .section-header h1:after {
-      content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
-      width: 80px; height: 4px; background: #f43f5e; border-radius: 2px;
-    }
-    .section-header p { color: #475569; font-size: 1.05rem; }
-
-    section h2 { font-size: 1.6rem; margin-top: 40px; margin-bottom: 15px; color: #4e46e5; }
-    section p, section li { color: #475569; font-size: 1.05rem; margin-bottom: 12px; line-height: 1.7; }
-    section ul { margin-left: 20px; list-style: disc; }
-
-    .contact-info {
-      margin-top: 30px; padding: 25px;
-      background: #eef2ff; border-radius: 10px; border-left: 4px solid #4e46e5;
-    }
-    .contact-info p { margin-bottom: 8px; }
-
-    /* Footer */
-    footer { background: #4e46e5; color: #fff; padding: 60px 0 30px; margin-top: 60px; }
-    .footer-grid { width: 90%; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 40px; }
-    .footer-grid h4 { margin-bottom: 15px; font-size: 1.1rem; }
-    .footer-grid a { display: block; margin-bottom: 8px; color: #e2e8f0; text-decoration: none; font-size: 0.95rem; }
-    .footer-grid a:hover { color: #fff; }
-    .socials a { color: #fff; font-size: 1.2rem; margin-right: 15px; }
-    .copyright-bar { text-align: center; margin-top: 40px; color: #cbd5e1; font-size: 0.9rem; }
+    :root {--primary:#4e46e5;--accent:#f43f5e;--dark:#1e293b;--gray:#64748b;--light:#f9fafb;}
+    body{font-family:'Inter',sans-serif;color:var(--dark);line-height:1.7;margin:0;}
+    h1,h2,h3{font-family:'Montserrat',sans-serif;}
+    header{background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.08);padding:20px 0;position:sticky;top:0;z-index:999;}
+    .navbar{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:0 20px;}
+    .logo{font-size:1.5rem;font-weight:700;color:var(--primary);}
+    .nav-links{list-style:none;display:flex;gap:25px;}
+    .nav-links a{color:var(--dark);font-weight:500;position:relative;text-decoration:none;}
+    .nav-links a:hover{color:var(--primary);}
+    .section-header{text-align:center;max-width:700px;margin:60px auto;}
+    .section-header h1{font-size:2.5rem;margin-bottom:15px;position:relative;display:inline-block;}
+    .section-header h1:after{content:'';position:absolute;width:80px;height:3px;background:var(--accent);bottom:-8px;left:50%;transform:translateX(-50%);}
+    section{max-width:900px;margin:auto;padding:40px 20px;}
+    h2{margin-top:30px;color:var(--primary);}
+    footer{background:var(--primary);color:#fff;padding:60px 20px 30px;}
+    .footer-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;}
+    .footer-grid h4{margin-bottom:15px;}
+    .footer-grid a{display:block;margin-bottom:10px;color:#e2e8f0;}
+    .footer-grid a:hover{color:#fff;}
+    .socials a{font-size:1.3rem;margin-right:15px;color:#fff;}
+    .copyright-bar{text-align:center;margin-top:30px;font-size:.9rem;color:#e2e8f0;}
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
-    <div class="container navbar">
+    <div class="navbar">
       <a href="index.html" class="logo"><i class="fas fa-headset"></i> Salim-VA</a>
       <ul class="nav-links">
         <li><a href="index.html#home">Home</a></li>
         <li><a href="index.html#services">Services</a></li>
-        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="index.html#packages">Packages</a></li>
         <li><a href="index.html#about">About</a></li>
         <li><a href="index.html#testimonials">Testimonials</a></li>
         <li><a href="index.html#contact">Contact</a></li>
@@ -65,80 +45,47 @@
     </div>
   </header>
 
-  <!-- Privacy Content -->
+  <div class="section-header">
+    <h1>Privacy Policy</h1>
+    <p>Last updated: December 2024</p>
+  </div>
+
   <section>
-    <div class="section-header">
-      <h1>Privacy Policy</h1>
-      <p><em>Last updated: December 2024</em></p>
-    </div>
     <p>At Salim-VA, we take your privacy seriously. This policy explains how we collect, use, and protect your information.</p>
 
     <h2>Information We Collect</h2>
     <ul>
-      <li><strong>Personal Information:</strong> Name, email address, phone number, company name when you contact us or sign up for services.</li>
-      <li><strong>Usage Data:</strong> Information about how you use our website, including IP address, browser type, pages visited, and time spent.</li>
-      <li><strong>Communication Data:</strong> Records of communications between you and our team, including emails, chat messages, and support tickets.</li>
-      <li><strong>Payment Information:</strong> Billing details and payment method information (processed securely through third-party providers).</li>
+      <li><strong>Personal Information:</strong> Name, email address, phone number, company name.</li>
+      <li><strong>Usage Data:</strong> IP address, browser type, pages visited, time spent.</li>
+      <li><strong>Communication Data:</strong> Emails, chat messages, support tickets.</li>
+      <li><strong>Payment Information:</strong> Billing details processed securely through third-party providers.</li>
     </ul>
 
     <h2>How We Use Your Information</h2>
     <ul>
-      <li>Provide and improve our virtual assistant services</li>
-      <li>Communicate with you about services, updates, and support</li>
-      <li>Process payments and manage billing</li>
-      <li>Analyze website usage to improve user experience</li>
-      <li>Send marketing communications (with your consent)</li>
-      <li>Comply with legal obligations and protect our rights</li>
+      <li>Provide and improve our services</li>
+      <li>Communicate updates and support</li>
+      <li>Process payments</li>
+      <li>Analyze website usage</li>
+      <li>Send marketing (with consent)</li>
     </ul>
 
     <h2>Information Sharing</h2>
-    <p>We may share information in the following cases:</p>
-    <ul>
-      <li><strong>Service Providers:</strong> With trusted third parties who help us operate (payment processors, cloud storage, analytics).</li>
-      <li><strong>Virtual Assistants:</strong> Relevant project information is shared with assigned assistants to complete your tasks.</li>
-      <li><strong>Legal Requirements:</strong> When required by law or to protect our rights.</li>
-      <li><strong>Business Transfers:</strong> In case of mergers, acquisitions, or asset sales.</li>
-    </ul>
-    <p>We never sell your personal information to third parties.</p>
+    <p>We may share with trusted service providers, assigned virtual assistants, or as required by law. We never sell your information.</p>
 
     <h2>Data Security</h2>
-    <ul>
-      <li>Industry-standard encryption for data transmission and storage</li>
-      <li>Regular security audits and vulnerability assessments</li>
-      <li>Access controls limiting who can view your information</li>
-      <li>Secure data centers with physical and digital protection</li>
-      <li>Employee training on data protection best practices</li>
-      <li>Incident response procedures for potential breaches</li>
-    </ul>
+    <p>We use encryption, secure servers, and strict access controls to safeguard your information.</p>
 
     <h2>Your Rights</h2>
-    <ul>
-      <li><strong>Access:</strong> Request copies of your personal information</li>
-      <li><strong>Correction:</strong> Request correction of inaccurate information</li>
-      <li><strong>Deletion:</strong> Request deletion of your personal information</li>
-      <li><strong>Portability:</strong> Request transfer of your data in a portable format</li>
-      <li><strong>Opt-out:</strong> Unsubscribe from marketing communications</li>
-      <li><strong>Restriction:</strong> Request limitation of processing your data</li>
-    </ul>
+    <p>You may request access, correction, deletion, or opt-out from marketing at any time.</p>
 
-    <h2>Cookies and Tracking</h2>
-    <p>We use cookies to improve your experience:</p>
-    <ul>
-      <li><strong>Essential Cookies:</strong> Required for website functionality</li>
-      <li><strong>Analytics Cookies:</strong> Help us understand website usage</li>
-      <li><strong>Marketing Cookies:</strong> Used for targeted advertising (with consent)</li>
-    </ul>
-    <p>You can control cookie preferences through your browser. Some features may not work properly if cookies are disabled.</p>
+    <h2>Cookies</h2>
+    <p>We use essential and analytics cookies. You can manage them via browser settings.</p>
 
-    <h2>Contact Us About Privacy</h2>
-    <div class="contact-info">
-      <p><strong>Email:</strong> <a href="mailto:salim.virtualassistant@gmail.com">salim.virtualassistant@gmail.com</a></p>
-      <p><strong>Phone:</strong> +1 (555) 123-4567</p>
-      <p><strong>Address:</strong> 123 Business Ave, Suite 100, New York, NY 10001</p>
-    </div>
+    <h2>Contact Us</h2>
+    <p>Email: privacy@salimva.com<br>Phone: +1 (555) 123-4567<br>Address: 123 Business Ave, Suite 100, New York, NY 10001</p>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-grid">
       <div>
@@ -146,7 +93,7 @@
           <i class="fas fa-headset"></i> Salim-VA
         </a>
         <p style="margin-top:12px;color:#e2e8f0">Professional virtual assistant & creative support.</p>
-        <div class="socials" style="margin-top:15px;">
+        <div class="socials">
           <a href="https://www.linkedin.com/in/salim-omar-56b98a277" target="_blank"><i class="fab fa-linkedin"></i></a>
           <a href="mailto:salim.virtualassistant@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
