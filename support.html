@@ -6,10 +6,8 @@
   <title>Salim-VA | Support & Knowledge Base</title>
   <meta name="description" content="Need help or have a question? Reach out to Salim-VA's support team or explore our knowledge base for quick answers." />
   
-  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- AOS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
   <style>
     :root{
@@ -30,13 +28,11 @@
     h1,h2,h3,h4 { font-family:"Montserrat",Inter,sans-serif; }
     p { color:var(--muted); }
 
-    /* Buttons */
     .btn { display:inline-flex; align-items:center; justify-content:center; gap:.6rem; padding:10px 18px; border-radius:10px; font-weight:700; cursor:pointer; border:none; transition:var(--transition); text-decoration:none; }
     .btn-primary { background:var(--primary); color:#fff; }
     .btn-primary:hover { transform:translateY(-3px); box-shadow:0 12px 36px rgba(78,70,229,0.12); }
     .btn-outline { background:transparent; border:2px solid var(--primary); color:var(--primary); padding:8px 16px; border-radius:10px; }
 
-    /* Header */
     header { position:fixed; top:0; left:0; width:100%; z-index:1200; background:rgba(255,255,255,0.98); backdrop-filter:blur(6px); box-shadow:0 8px 30px rgba(13,17,26,0.06); padding:14px 0; }
     .navbar { display:flex; align-items:center; justify-content:space-between; gap:18px; }
     .logo { font-weight:800; color:var(--primary); font-size:1.1rem; text-decoration:none; display:flex; gap:10px; align-items:center; }
@@ -46,39 +42,35 @@
     .nav-links a:hover::after { width:100%; }
     .menu-toggle { display:none; cursor:pointer; }
 
-    /* Hero */
     .hero { padding:150px 0 100px; text-align:center; }
     .hero h1 { font-size:2.5rem; color:var(--primary-dark); margin-bottom:12px; }
     .hero p { font-size:1.1rem; }
 
-    /* Knowledge Base Cards */
     .kb-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:40px; }
-    .kb-card { background:#fff; border-radius:12px; padding:20px; box-shadow:var(--card-shadow); text-align:left; transition:var(--transition); cursor:pointer; text-decoration:none; color:var(--text); }
+    .kb-card { background:#fff; border-radius:var(--radius); padding:20px; box-shadow:var(--card-shadow); text-align:left; transition:var(--transition); cursor:pointer; text-decoration:none; color:var(--text); }
     .kb-card:hover { transform:translateY(-6px); box-shadow:0 30px 60px rgba(16,24,40,0.12); }
     .kb-card h3 { margin-bottom:10px; font-size:1.1rem; }
     .kb-card p { color:var(--muted); font-size:0.95rem; }
 
-    /* Contact Info */
     .contact-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; margin-top:40px; }
-    .contact-card { background:#fff; border-radius:12px; padding:18px; text-align:center; box-shadow:var(--card-shadow); transition:var(--transition); }
+    .contact-card { background:#fff; border-radius:var(--radius); padding:18px; text-align:center; box-shadow:var(--card-shadow); transition:var(--transition); }
     .contact-card:hover { transform:translateY(-6px); }
     .contact-card i { font-size:28px; color:var(--primary); margin-bottom:12px; }
 
-    /* Footer */
-    .site-footer { background: linear-gradient(135deg,var(--primary),var(--primary-dark)); color:#fff; padding:48px 0; border-top-left-radius:12px; border-top-right-radius:12px; margin-top:40px; }
+    .site-footer { background:#0f172a; color:#fff; padding:60px 0 20px; border-top-left-radius:0; border-top-right-radius:0; }
     .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:20px; max-width:1100px; margin:0 auto; }
     .footer a { color: rgba(255,255,255,0.95); text-decoration:none; display:block; margin-bottom:8px; }
     .footer a:hover { color: var(--accent); }
     .socials { display:flex; gap:10px; margin-top:12px; }
     .socials a { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:10px; background: rgba(255,255,255,0.08); color:#fff; }
-    .copyright-bar { background: rgba(10,13,30,0.12); text-align:center; padding:12px 0; margin-top:18px; color: rgba(255,255,255,0.95); font-weight:700; }
+
+    .copyright-bar { text-align:center; padding:16px 0; margin-top:18px; color: rgba(255,255,255,0.85); font-weight:500; border-top:1px solid rgba(255,255,255,0.12); }
 
     @media (max-width:1024px) { .kb-grid { grid-template-columns:1fr 1fr; } }
     @media (max-width:680px) { .kb-grid { grid-template-columns:1fr; } .contact-grid { grid-template-columns:1fr; } .nav-links { display:none; } .menu-toggle { display:block; } }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <div class="container navbar">
       <a href="index.html" class="logo"><i class="fas fa-headset"></i> Salim-VA</a>
@@ -96,7 +88,6 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero" data-aos="fade-down">
     <div class="container">
       <h1>Need Help? We're Here for You</h1>
@@ -104,52 +95,50 @@
     </div>
   </section>
 
-  <!-- Knowledge Base -->
   <section class="container" style="margin-top:60px;">
     <h2 data-aos="fade-up">Knowledge Base</h2>
     <div class="kb-grid" data-aos="fade-up" data-aos-delay="100">
-      <a href="faq.html#getting-started" class="kb-card">
+      <a href="faq.html#getting-started" class="kb-card" data-aos="fade-up" data-aos-delay="150">
         <h3>Getting Started</h3>
         <p>Everything you need to know to begin using our services quickly and efficiently.</p>
       </a>
-      <a href="faq.html#services" class="kb-card">
+      <a href="faq.html#services" class="kb-card" data-aos="fade-up" data-aos-delay="200">
         <h3>Our Services</h3>
         <p>Learn more about what we offer and how it can benefit your business.</p>
       </a>
-      <a href="faq.html#pricing" class="kb-card">
+      <a href="faq.html#pricing" class="kb-card" data-aos="fade-up" data-aos-delay="250">
         <h3>Pricing & Plans</h3>
         <p>Find details about our packages and which plan suits your needs.</p>
       </a>
-      <a href="faq.html#troubleshooting" class="kb-card">
+      <a href="faq.html#troubleshooting" class="kb-card" data-aos="fade-up" data-aos-delay="300">
         <h3>Troubleshooting</h3>
         <p>Quick fixes and common solutions for issues you may encounter.</p>
       </a>
-      <a href="faq.html#account" class="kb-card">
+      <a href="faq.html#account" class="kb-card" data-aos="fade-up" data-aos-delay="350">
         <h3>Account Management</h3>
         <p>How to manage your account, update info, and secure your profile.</p>
       </a>
-      <a href="faq.html#contact" class="kb-card">
+      <a href="faq.html#contact" class="kb-card" data-aos="fade-up" data-aos-delay="400">
         <h3>Contact & Support</h3>
         <p>Reach out to us for questions, feedback, or additional assistance.</p>
       </a>
     </div>
   </section>
 
-  <!-- Contact Section -->
   <section class="container" style="margin-top:60px; margin-bottom:60px;">
     <h2 data-aos="fade-up">Contact Us</h2>
     <div class="contact-grid" data-aos="fade-up" data-aos-delay="100">
-      <div class="contact-card">
+      <div class="contact-card" data-aos="zoom-in" data-aos-delay="150">
         <i class="fas fa-phone"></i>
         <h3>Phone</h3>
         <p>+254 7XX XXX XXX</p>
       </div>
-      <div class="contact-card">
+      <div class="contact-card" data-aos="zoom-in" data-aos-delay="200">
         <i class="fas fa-envelope"></i>
         <h3>Email</h3>
         <p>omarsalim7507@gmail.com</p>
       </div>
-      <div class="contact-card">
+      <div class="contact-card" data-aos="zoom-in" data-aos-delay="250">
         <i class="fas fa-comments"></i>
         <h3>Live Chat</h3>
         <p>Reach out through our website chat anytime</p>
@@ -157,7 +146,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-grid footer container">
       <div>
