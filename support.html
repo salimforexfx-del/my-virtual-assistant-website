@@ -1,194 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support - Salim-VA</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Support Center | Salim-VA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet"/>
   <style>
-    body {
-      margin:0;
-      font-family: 'Inter', sans-serif;
-      background-color:#f8f8f8;
-      color:#111;
+    :root {
+      --primary: #4e46e5;
+      --primary-dark: #3730a3;
+      --accent: #f43f5e;
+      --light: #f9fafb;
+      --dark: #1e293b;
+      --gray: #64748b;
     }
-    a { text-decoration:none; color:inherit; }
+    * {margin:0;padding:0;box-sizing:border-box;}
+    body {
+      font-family: 'Inter', sans-serif;
+      background:#fff;
+      color:var(--dark);
+      line-height:1.6;
+    }
+    h1,h2,h3,h4 {font-family:'Montserrat',sans-serif;color:var(--dark);}
+    a{text-decoration:none;color:inherit;}
+
+    /* Header */
     header {
       background:#fff;
-      padding:20px 40px;
+      padding:20px 0;
+      box-shadow:0 2px 6px rgba(0,0,0,0.08);
+      position:sticky;top:0;z-index:999;
+    }
+    .navbar {
+      max-width:1200px;
+      margin:auto;
       display:flex;
       justify-content:space-between;
       align-items:center;
-      box-shadow:0 2px 6px rgba(0,0,0,0.05);
-      position:sticky;
-      top:0;
-      z-index:1000;
+      padding:0 20px;
     }
-    header a.logo { font-weight:700; font-size:1.5rem; color:#4e46e5; }
-    nav a { margin-left:20px; font-weight:500; color:#111; transition:0.3s; }
-    nav a:hover { color:#4e46e5; }
-    .hero {
-      display:flex;
-      flex-direction:row;
-      align-items:center;
-      justify-content:center;
-      padding:80px 20px;
-      background:#eef2ff;
-      gap:50px;
-      flex-wrap:wrap;
+    .logo {font-size:1.5rem;font-weight:700;color:var(--primary);}
+    .nav-links {list-style:none;display:flex;gap:25px;}
+    .nav-links a {color:var(--dark);font-weight:500;position:relative;}
+    .nav-links a:hover{color:var(--primary);}
+    .nav-links a:after {
+      content:'';position:absolute;left:0;bottom:-4px;width:0;height:2px;
+      background:var(--accent);transition:.3s;
     }
-    .hero img { max-width:400px; width:100%; border-radius:10px; }
-    .hero-text { max-width:600px; }
-    .hero-text h1 { font-size:2.5rem; margin-bottom:20px; color:#4e46e5; }
-    .hero-text p { font-size:1.1rem; margin-bottom:30px; line-height:1.6; }
-    .hero-text a.button {
-      background:#4e46e5;
-      color:#fff;
-      padding:15px 30px;
-      border-radius:8px;
-      font-weight:600;
-      transition:0.3s;
-    }
-    .hero-text a.button:hover { background:#3730a3; }
+    .nav-links a:hover:after{width:100%;}
 
-    .cards-section {
-      padding:60px 20px;
-      max-width:1200px;
-      margin:0 auto;
+    /* Hero */
+    .hero {
+      background:url('https://images.unsplash.com/photo-1581091215367-59ab6f69b2b0?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      color:#fff;
+      text-align:center;
+      padding:120px 20px;
     }
-    .cards-section h2 { text-align:center; font-size:2rem; margin-bottom:50px; color:#4e46e5; }
-    .cards-container {
+    .hero h1 {font-size:3rem;margin-bottom:15px;}
+    .hero p {font-size:1.2rem;max-width:700px;margin:auto;opacity:.9;}
+
+    /* Support Options */
+    .support-options {
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:30px;
+      gap:25px;
+      max-width:1200px;
+      margin:60px auto;
+      padding:0 20px;
     }
-    .card {
+    .support-card {
       background:#fff;
       padding:30px;
       border-radius:12px;
-      box-shadow:0 8px 20px rgba(0,0,0,0.08);
-      transition:0.3s;
-      cursor:pointer;
       text-align:center;
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+      transition:.3s;
     }
-    .card:hover { transform:translateY(-10px); box-shadow:0 12px 30px rgba(0,0,0,0.12); }
-    .card h3 { font-size:1.3rem; margin-bottom:15px; color:#4e46e5; }
-    .card p { font-size:1rem; color:#555; }
-
-    .contact-section {
-      background:#fff;
-      padding:60px 20px;
-      max-width:800px;
-      margin:0 auto 60px;
-      border-radius:12px;
-      box-shadow:0 8px 20px rgba(0,0,0,0.05);
-    }
-    .contact-section h2 { text-align:center; font-size:2rem; margin-bottom:40px; color:#4e46e5; }
-    .contact-section form { display:flex; flex-direction:column; gap:20px; }
-    .contact-section input, .contact-section textarea {
-      padding:15px;
-      border-radius:8px;
-      border:1px solid #ccc;
-      font-size:1rem;
-      width:100%;
-      resize:none;
-    }
-    .contact-section button {
-      background:#4e46e5;
+    .support-card:hover{transform:translateY(-6px);box-shadow:0 8px 18px rgba(0,0,0,0.12);}
+    .support-card i {font-size:32px;color:var(--primary);margin-bottom:15px;}
+    .support-card h3 {margin-bottom:10px;}
+    .support-card p {color:var(--gray);margin-bottom:15px;}
+    .btn {
+      display:inline-block;
+      background:var(--primary);
       color:#fff;
-      padding:15px;
-      font-size:1rem;
+      padding:10px 20px;
+      border-radius:6px;
       font-weight:600;
-      border:none;
-      border-radius:8px;
-      cursor:pointer;
-      transition:0.3s;
+      transition:.3s;
     }
-    .contact-section button:hover { background:#3730a3; }
+    .btn:hover{background:var(--primary-dark);}
+    .btn-outline {
+      background:#fff;color:var(--primary);border:2px solid var(--primary);
+    }
+    .btn-outline:hover{background:var(--primary);color:#fff;}
 
-    footer {
-      background: linear-gradient(90deg, #4e46e5, #3730a3);
-      color:#fff;
-      padding:40px 0;
-      text-align:center;
+    /* Form + Knowledge */
+    .support-main {
+      max-width:1200px;
+      margin:60px auto;
+      display:grid;
+      grid-template-columns:2fr 1fr;
+      gap:30px;
+      padding:0 20px;
     }
-    footer div { margin-bottom:20px; }
-    footer a { color:#fff; margin:0 10px; font-weight:500; }
-    footer a:hover { text-decoration:underline; }
-    footer p { margin:5px 0; }
+    form {
+      background:#fff;
+      padding:30px;
+      border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    }
+    form h2 {margin-bottom:20px;}
+    .form-group {margin-bottom:15px;}
+    label {display:block;margin-bottom:6px;font-weight:500;}
+    input,textarea,select {
+      width:100%;
+      padding:12px;
+      border:1px solid #d1d5db;
+      border-radius:6px;
+      font-size:1rem;
+    }
+    textarea {resize:vertical;min-height:120px;}
+    .submit-btn {margin-top:15px;width:100%;}
+
+    .knowledge {
+      background:#fff;
+      padding:30px;
+      border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+      height:fit-content;
+    }
+    .knowledge h3 {margin-bottom:15px;}
+    .knowledge a {
+      display:block;
+      margin-bottom:12px;
+      color:var(--primary);
+      font-weight:500;
+    }
+    .knowledge a:hover{color:var(--accent);}
+
+    /* Quick Stats */
+    .stats {
+      max-width:1200px;
+      margin:60px auto;
+      padding:0 20px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:25px;
+    }
+    .stat-card {
+      background:#fff;
+      padding:30px;
+      border-radius:12px;
+      text-align:center;
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    }
+    .stat-card h3 {font-size:2rem;color:var(--primary);}
+    .stat-card p {color:var(--gray);margin-top:6px;}
+
+    /* Footer */
+    footer {background:var(--primary);color:#fff;padding:60px 20px 30px;}
+    .footer-grid {
+      max-width:1200px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:30px;
+    }
+    .footer-grid h4 {margin-bottom:15px;}
+    .footer-grid a {display:block;margin-bottom:10px;color:#e2e8f0;}
+    .footer-grid a:hover{color:#fff;}
+    .socials a {font-size:1.3rem;margin-right:15px;color:#fff;}
+    .copyright-bar {
+      text-align:center;
+      margin-top:30px;
+      font-size:.9rem;
+      color:#e2e8f0;
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <a href="index.html" class="logo">Salim-VA</a>
-  <nav>
-    <a href="index.html#services">Services</a>
-    <a href="index.html#pricing">Pricing</a>
-    <a href="index.html#about">About</a>
-    <a href="support.html">Support</a>
-  </nav>
-</header>
+  <!-- Header -->
+  <header>
+    <div class="navbar">
+      <a href="index.html" class="logo"><i class="fas fa-headset"></i> Salim-VA</a>
+      <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#packages">Packages</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#testimonials">Testimonials</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
 
-<section class="hero">
-  <div class="hero-text">
-    <h1>Need Help? We’re Here!</h1>
-    <p>Our support center is here to answer your queries, provide guidance, and help resolve any issues you might face. Reach out and we’ll respond promptly.</p>
-    <a href="#contact-form" class="button">Request Support</a>
-  </div>
-  <img src="https://i.imgur.com/9B8jFhG.png" alt="Customer Support Illustration">
-</section>
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Support Center</h1>
+    <p>We’re here to help you succeed with your virtual assistant services.</p>
+  </section>
 
-<section class="cards-section">
-  <h2>Knowledge Base</h2>
-  <div class="cards-container">
-    <a href="faq.html#getting-started" class="card">
-      <h3>Getting Started</h3>
-      <p>Everything you need to know to start using our services effectively.</p>
-    </a>
-    <a href="faq.html#account-issues" class="card">
-      <h3>Account Issues</h3>
-      <p>How to manage your account, reset password, and fix login problems.</p>
-    </a>
-    <a href="faq.html#services" class="card">
-      <h3>Our Services</h3>
-      <p>Detailed guides about the services we offer and how to use them.</p>
-    </a>
-    <a href="faq.html#troubleshooting" class="card">
-      <h3>Troubleshooting</h3>
-      <p>Quick solutions to common technical problems and errors.</p>
-    </a>
-  </div>
-</section>
+  <!-- Support Options -->
+  <section class="support-options">
+    <div class="support-card">
+      <i class="fas fa-comments"></i>
+      <h3>Live Chat Support</h3>
+      <p>Get instant help from our support team<br/>24/7 Available</p>
+      <a href="#" class="btn">Start Chat</a>
+    </div>
+    <div class="support-card">
+      <i class="fas fa-phone"></i>
+      <h3>Phone Support</h3>
+      <p>+1 (555) 123-4567<br/>Mon-Fri 9AM-6PM EST</p>
+      <a href="tel:+15551234567" class="btn">Call Now</a>
+    </div>
+    <div class="support-card">
+      <i class="fas fa-envelope"></i>
+      <h3>Email Support</h3>
+      <p>salim.virtualassistant@gmail.com<br/>Response within 2 hours</p>
+      <a href="mailto:salim.virtualassistant@gmail.com" class="btn">Send Email</a>
+    </div>
+    <div class="support-card">
+      <i class="fas fa-calendar-alt"></i>
+      <h3>Schedule a Call</h3>
+      <p>Book a consultation with our team<br/>Available slots daily</p>
+      <a href="index.html#contact" class="btn">Book Now</a>
+    </div>
+  </section>
 
-<section class="contact-section" id="contact-form">
-  <h2>Contact Us</h2>
-  <form>
-    <input type="text" placeholder="Full Name" required>
-    <input type="email" placeholder="Email Address" required>
-    <input type="text" placeholder="Phone (Optional)">
-    <textarea rows="6" placeholder="Your Query or Complaint" required></textarea>
-    <button type="submit">Send Request</button>
-  </form>
-</section>
+  <!-- Support Main -->
+  <section class="support-main">
+    <!-- Form -->
+    <form name="support" method="POST" data-netlify="true">
+      <h2>Submit a Support Request</h2>
+      <div class="form-group">
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" name="name" required/>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required/>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject *</label>
+        <input type="text" id="subject" name="subject" required/>
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select id="category" name="category">
+          <option>General</option>
+          <option>Account</option>
+          <option>Billing</option>
+          <option>Technical</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="priority">Priority</label>
+        <select id="priority" name="priority">
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Message *</label>
+        <textarea id="message" name="message" maxlength="500" required></textarea>
+      </div>
+      <button type="submit" class="btn submit-btn">Submit Support Request</button>
+    </form>
 
-<footer>
-  <div>
-    <a href="index.html" style="font-weight:700; font-size:1.3rem;">Salim-VA</a>
-  </div>
-  <div>
-    <a href="index.html#services">Services</a> |
-    <a href="index.html#pricing">Pricing</a> |
-    <a href="index.html#about">About</a> |
-    <a href="support.html">Support</a>
-  </div>
-  <div>
-    <p>Email: omarsalim7507@gmail.com | Phone: +254 7XX XXX XXX</p>
-  </div>
-  <div style="font-size:0.85rem; opacity:0.8;">
-    &copy; 2025 Salim-VA. All rights reserved.
-  </div>
-</footer>
+    <!-- Knowledge Base -->
+    <div class="knowledge">
+      <h3>Knowledge Base</h3>
+      <a href="faq.html">Getting Started Guide (12 articles)</a>
+      <a href="#">Account Management (8 articles)</a>
+      <a href="terms.html">Billing & Payments (6 articles)</a>
+      <a href="privacy.html">Security & Privacy (5 articles)</a>
+    </div>
+  </section>
+
+  <!-- Quick Stats -->
+  <section class="stats">
+    <div class="stat-card">
+      <h3>&lt; 2 hours</h3>
+      <p>Average Response Time</p>
+    </div>
+    <div class="stat-card">
+      <h3>98.5%</h3>
+      <p>Resolution Rate</p>
+    </div>
+    <div class="stat-card">
+      <h3>4.9/5</h3>
+      <p>Customer Satisfaction</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="index.html" style="color:#fff;font-size:1.5rem;font-weight:700;text-decoration:none;">
+          <i class="fas fa-headset"></i> Salim-VA
+        </a>
+        <p style="margin-top:12px;color:#e2e8f0">Professional virtual assistant & creative support.</p>
+        <div class="socials" style="margin-top:15px;">
+          <a href="https://www.linkedin.com/in/salim-omar-56b98a277" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:salim.virtualassistant@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="index.html#about">About Us</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#testimonials">Testimonials</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <a href="index.html#services">Administrative Support</a>
+        <a href="index.html#services">Graphic Design</a>
+        <a href="index.html#services">Content Creation</a>
+        <a href="index.html#services">Social Media</a>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="faq.html">FAQ</a>
+        <a href="support.html">Support</a>
+      </div>
+    </div>
+    <div class="copyright-bar">
+      © 2025 Salim-VA • Built with care • Designed to convert leads into clients
+    </div>
+  </footer>
 
 </body>
 </html>
