@@ -20,9 +20,14 @@
     .nav-links li { margin-left: 28px; }
     .nav-links a { text-decoration: none; color: #1e293b; font-weight: 500; }
 
-    .page-section { padding: 140px 0 80px; width: 90%; max-width: 900px; margin: 0 auto; }
-    .page-section h1 { font-size: 2.6rem; margin-bottom: 20px; color: #1e293b; font-family: 'Montserrat', sans-serif; text-align: center; }
-    .page-section p.subtitle { text-align: center; color: #475569; margin-bottom: 40px; }
+    section { padding: 140px 0 80px; width: 90%; max-width: 900px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 50px; }
+    .section-header h1 { font-size: 2.6rem; font-family: 'Montserrat', sans-serif; margin-bottom: 15px; position: relative; display: inline-block; }
+    .section-header h1:after {
+      content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
+      width: 80px; height: 4px; background: #f43f5e; border-radius: 2px;
+    }
+    .section-header p { color: #475569; font-size: 1.05rem; }
 
     .faq-item { background: #fff; border-radius: 8px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
     .faq-question {
@@ -72,10 +77,12 @@
     </div>
   </header>
 
-  <!-- FAQ Section -->
-  <section class="page-section">
-    <h1>Frequently Asked Questions</h1>
-    <p class="subtitle">Find answers to common questions about our virtual assistant services.</p>
+  <!-- FAQ Content -->
+  <section>
+    <div class="section-header">
+      <h1>Frequently Asked Questions</h1>
+      <p>Find answers to common questions about our virtual assistant services.</p>
+    </div>
 
     <div class="faq-item">
       <div class="faq-question">What services do your virtual assistants provide? <i class="fas fa-chevron-down"></i></div>
