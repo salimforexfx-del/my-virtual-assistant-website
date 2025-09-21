@@ -1,3 +1,6 @@
+<!-- ============================
+     FILE: support.html
+     ============================ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,37 +96,37 @@
   <section class="section-hero" role="banner" data-aos="fade-up">
     <div class="container">
       <h1>Support Center</h1>
-      <p>We're here to help you succeed with your virtual assistant services — quick support, clear answers, and human help when you need it.</p>
+      <p>Questions, help articles, and a direct contact form — get in touch with Salim-VA for fast, personal support.</p>
     </div>
   </section>
 
-  <!-- Support options (cards) -->
+  <!-- Support cards -->
   <section class="support-options" aria-label="support options" data-aos="fade-up" data-aos-delay="80">
     <div class="support-card">
       <i class="fas fa-comments"></i>
-      <h3>Live Chat Support</h3>
-      <p class="muted">Get instant help from our support team • 24/7 available</p>
+      <h3>Live Chat</h3>
+      <p class="muted">Quick answers for simple questions — start a chat.</p>
       <a href="#" class="btn">Start Chat</a>
     </div>
 
     <div class="support-card">
       <i class="fas fa-phone"></i>
-      <h3>Phone Support</h3>
+      <h3>Phone</h3>
       <p class="muted">+1 (555) 123-4567 • Mon–Fri 9AM–6PM EST</p>
       <a href="tel:+15551234567" class="btn">Call Now</a>
     </div>
 
     <div class="support-card">
       <i class="fas fa-envelope"></i>
-      <h3>Email Support</h3>
-      <p class="muted">salim.virtualassistant@gmail.com • Response within 2 hours</p>
+      <h3>Email</h3>
+      <p class="muted">salim.virtualassistant@gmail.com • Response within 24 hours</p>
       <a href="mailto:salim.virtualassistant@gmail.com" class="btn">Send Email</a>
     </div>
 
     <div class="support-card">
       <i class="fas fa-calendar-alt"></i>
       <h3>Schedule a Call</h3>
-      <p class="muted">Book a consultation with our team • Available slots daily</p>
+      <p class="muted">Book a consultation with me to scope your needs.</p>
       <a href="index.html#contact" class="btn">Book Now</a>
     </div>
   </section>
@@ -181,35 +184,36 @@
       </div>
     </form>
 
-    <aside class="knowledge" aria-label="knowledge base">
+    <aside class="knowledge" aria-label="knowledge base" data-aos="fade-up" data-aos-delay="180">
       <h3>Knowledge Base</h3>
-      <a class="kb-card" href="faq.html">
-        <strong>Getting Started Guide</strong>
-        <small>12 articles • Learn how to set up your virtual assistant</small>
+
+      <a class="kb-card" href="faq.html#getting-started">
+        <strong>Getting Started</strong>
+        <small>12 articles • How to begin and onboard with Salim-VA</small>
       </a>
 
-      <a class="kb-card" href="#" aria-disabled="true">
+      <a class="kb-card" href="faq.html#account-management">
         <strong>Account Management</strong>
-        <small>8 articles • Manage your account settings and preferences</small>
+        <small>8 articles • How I handle accounts, access and updates</small>
       </a>
 
-      <a class="kb-card" href="terms.html">
+      <a class="kb-card" href="faq.html#billing-payments">
         <strong>Billing & Payments</strong>
-        <small>6 articles • Understand pricing, billing, and payment options</small>
+        <small>6 articles • Invoices, refunds and payment options</small>
       </a>
 
-      <a class="kb-card" href="privacy.html">
+      <a class="kb-card" href="faq.html#security-privacy">
         <strong>Security & Privacy</strong>
-        <small>5 articles • Learn about our security measures and policies</small>
+        <small>5 articles • My practices for keeping your data safe</small>
       </a>
     </aside>
   </section>
 
-  <!-- Quick stats -->
-  <section class="stats" data-aos="fade-up" data-aos-delay="180">
+  <!-- Stats -->
+  <section class="stats" data-aos="fade-up" data-aos-delay="200">
     <div class="stat-card">
-      <h3>&lt; 2 hours</h3>
-      <p>Average Response Time</p>
+      <h3>&lt; 24 hours</h3>
+      <p>Typical Response Time</p>
     </div>
     <div class="stat-card">
       <h3>98.5%</h3>
@@ -217,12 +221,12 @@
     </div>
     <div class="stat-card">
       <h3>4.9/5</h3>
-      <p>Customer Satisfaction</p>
+      <p>Client Satisfaction</p>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="site-footer" role="contentinfo" data-aos="fade-up" data-aos-delay="220">
+  <footer class="site-footer" role="contentinfo" data-aos="fade-up" data-aos-delay="240">
     <div class="container footer-grid footer">
       <div>
         <a class="logo" href="#home" style="color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:10px"><i class="fas fa-headset"></i> Salim-VA</a>
@@ -263,10 +267,11 @@
 
   <!-- AOS JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
   <script>
     AOS.init({ duration:700, offset:80, once:true });
 
-    // simple mobile nav toggle
+    // mobile nav toggle
     (function(){
       const toggle = document.getElementById('menuToggle');
       const nav = document.getElementById('navLinks');
@@ -277,15 +282,9 @@
     (function(){
       const ta = document.getElementById('message');
       const counter = document.getElementById('supportCharCount');
-      if(!ta){
-        // fallback to id used in markup (#message)
-        const ta2 = document.querySelector('#message') || document.querySelector('textarea[name="message"]');
-        const c2 = document.getElementById('supportCharCount');
-        if(ta2 && c2){
-          ta2.addEventListener('input', (e)=> c2.textContent = e.target.value.length);
-        }
-      } else {
-        ta.addEventListener('input', (e)=> counter.textContent = e.target.value.length);
+      const ta2 = document.querySelector('textarea[name="message"]');
+      if(ta2 && counter){
+        ta2.addEventListener('input', (e)=> counter.textContent = e.target.value.length);
       }
     })();
   </script>
