@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>FAQ | Salim-VA</title>
-  <meta name="description" content="Frequently asked questions — Salim-VA virtual assistant services." />
+  <meta name="description" content="Frequently asked questions for Salim-VA." />
 
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
@@ -29,12 +29,14 @@
     .section-header h1::after{content:'';position:absolute;left:50%;transform:translateX(-50%);bottom:-10px;width:74px;height:4px;background:var(--accent);border-radius:4px}
     .section-header p{color:var(--muted);margin-top:8px}
 
-    main{max-width:900px;margin:0 auto;padding:18px}
+    main{max-width:1100px;margin:0 auto;padding:18px}
     .category-bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:16px 0}
     .category{background:#fff;padding:8px 12px;border-radius:999px;box-shadow:0 6px 20px rgba(16,24,40,0.04);font-weight:700;color:var(--muted);cursor:pointer}
     .category.active{background:var(--primary);color:#fff}
-    .faq-list{margin-top:8px}
-    .faq-item{background:#fff;border-radius:12px;padding:14px 16px;margin-bottom:12px;box-shadow:0 8px 24px rgba(16,24,40,0.04);overflow:hidden}
+    .faq-list{margin-top:8px;display:grid;gap:12px}
+    .faq-section{margin-top:18px}
+    .faq-section h3{background:#fff;padding:12px;border-radius:10px;box-shadow:0 8px 24px rgba(16,24,40,0.04);display:inline-block}
+    .faq-item{background:#fff;border-radius:12px;padding:14px 16px;margin-top:10px;box-shadow:0 8px 24px rgba(16,24,40,0.04);overflow:hidden}
     .faq-q{display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;color:var(--text)}
     .faq-q i{transition:transform .28s}
     .faq-a{max-height:0;overflow:hidden;transition:max-height .28s,padding .28s}
@@ -79,71 +81,244 @@
 
   <div class="section-header" data-aos="fade-up">
     <h1>Frequently Asked Questions</h1>
-    <p>Find answers to common questions about our virtual assistant services</p>
+    <p>Grouped by topic — click any question to expand the answer. If you still need help, contact me directly.</p>
   </div>
 
   <main class="container" data-aos="fade-up" data-aos-delay="80">
+    <!-- Category navigation (visual) -->
     <div class="category-bar" aria-hidden="true">
-      <div class="category active">All Questions</div>
-      <div class="category">Services</div>
-      <div class="category">Pricing</div>
-      <div class="category">Getting Started</div>
-      <div class="category">Security</div>
-      <div class="category">Billing</div>
+      <a class="category active" href="#all">All Questions</a>
+      <a class="category" href="#getting-started">Getting Started</a>
+      <a class="category" href="#account-management">Account Management</a>
+      <a class="category" href="#billing-payments">Billing & Payments</a>
+      <a class="category" href="#security-privacy">Security & Privacy</a>
+      <a class="category" href="#services">Services</a>
     </div>
 
-    <section class="faq-list" aria-labelledby="faq-heading">
-      <article class="faq-item" data-aos="fade-up" data-aos-delay="100">
-        <div class="faq-q">What services do your virtual assistants provide? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-a"><p>Administrative support, calendar & email management, content creation, social media management, data entry and research, customer service support, and more. Everything is tailored to your business needs.</p></div>
-      </article>
+    <!-- GETTING STARTED (12 questions) -->
+    <section id="getting-started" class="faq-section" data-aos="fade-up" data-aos-delay="120">
+      <h3>Getting Started — 12 articles</h3>
 
-      <article class="faq-item" data-aos="fade-up" data-aos-delay="140">
-        <div class="faq-q">How do I get started with Salim-VA? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-a"><p>Choose an hourly or monthly package in Pricing, then book a free consultation. We'll match you with a suitable assistant and set up tools & communication preferences.</p></div>
-      </article>
+      <div class="faq-list">
+        <!-- 1 -->
+        <div class="faq-item">
+          <div class="faq-q">How do I start working with Salim-VA? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Start by choosing an hourly or monthly package on the Pricing section, then use the Get In Touch form to schedule a free consultation. I’ll assess your needs and propose a plan.</p></div>
+        </div>
 
-      <article class="faq-item" data-aos="fade-up" data-aos-delay="180">
-        <div class="faq-q">What are your pricing plans? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-a"><p>We offer hourly services and monthly packages (Starter, Standard, Premium). Monthly plans provide predictable hours and cost savings; yearly billed upfront saves 20%.</p></div>
-      </article>
+        <!-- 2 -->
+        <div class="faq-item">
+          <div class="faq-q">Do you offer a free consultation? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Yes — I offer a free 30-minute consultation to scope your needs and confirm the best package or hourly plan.</p></div>
+        </div>
 
-      <article class="faq-item" data-aos="fade-up" data-aos-delay="220">
-        <div class="faq-q">How do you ensure security of my data? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-a"><p>We use encryption, secure cloud storage, role-based access, and NDAs. Assistants only access what’s necessary for task completion and receive regular security training.</p></div>
-      </article>
+        <!-- 3 -->
+        <div class="faq-item">
+          <div class="faq-q">What information should I prepare for the consultation? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Have a list of tasks, expected hours per week/month, access details (tools/accounts), and any existing processes. This helps me estimate onboarding effort and timelines.</p></div>
+        </div>
 
-      <article class="faq-item" data-aos="fade-up" data-aos-delay="260">
-        <div class="faq-q">Can I change my service plan later? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-a"><p>Yes — upgrade or downgrade anytime. Changes typically take effect from the next billing cycle. Contact Support to coordinate migration and scheduling.</p></div>
-      </article>
+        <!-- 4 -->
+        <div class="faq-item">
+          <div class="faq-q">How long does onboarding take? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Onboarding typically takes 2–7 days depending on task complexity and access required. I’ll provide a clear timeline during the consultation.</p></div>
+        </div>
 
-      <article class="faq-item" data-aos="fade-up" data-aos-delay="300">
-        <div class="faq-q">What if I'm not satisfied with my virtual assistant? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-a"><p>If you’re not satisfied, we’ll reassign you to a different assistant and aim to resolve the issue quickly. Refunds for unused hours are available within 7 days subject to our policy.</p></div>
-      </article>
+        <!-- 5 -->
+        <div class="faq-item">
+          <div class="faq-q">Which tools do you work with? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>I work with common tools like Google Workspace, Microsoft Office, Trello, Asana, Slack, Notion, Canva, and basic e-commerce platforms. If you use a specific tool, tell me during onboarding.</p></div>
+        </div>
 
-      <article class="faq-item" data-aos="fade-up" data-aos-delay="340">
-        <div class="faq-q">How quickly can tasks be completed? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-a"><p>Turnaround depends on complexity. Routine tasks are often completed within 24–48 hours. We provide estimated timelines for larger projects during onboarding.</p></div>
-      </article>
+        <!-- 6 -->
+        <div class="faq-item">
+          <div class="faq-q">Can I try hourly work before committing to a monthly package? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Yes — hourly work is a good way to test fit before taking a monthly retainer.</p></div>
+        </div>
 
-      <article class="faq-item" data-aos="fade-up" data-aos-delay="380">
-        <div class="faq-q">Do you provide training for virtual assistants? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-a"><p>Yes, our assistants receive ongoing training in tools, communication, and security to ensure consistent high-quality delivery.</p></div>
-      </article>
+        <!-- 7 -->
+        <div class="faq-item">
+          <div class="faq-q">How do you bill for time and deliverables? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>For hourly work I invoice per hour; for monthly packages, you pay the set monthly fee. Specific billing terms will be provided with each proposal.</p></div>
+        </div>
+
+        <!-- 8 -->
+        <div class="faq-item">
+          <div class="faq-q">Do you offer refunds? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>I offer refunds for unused prepaid hours within 7 days of service start, subject to agreement. Contact me to discuss refunds.</p></div>
+        </div>
+
+        <!-- 9 -->
+        <div class="faq-item">
+          <div class="faq-q">Can I change plans later? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Yes — you can upgrade or downgrade plans. Plan changes typically take effect at the next billing cycle.</p></div>
+        </div>
+
+        <!-- 10 -->
+        <div class="faq-item">
+          <div class="faq-q">What if I need extra hours this month? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Extra hours are billed at the hourly rate specified in your plan or at a mutually agreed rate. I’ll notify you beforehand if additional hours are needed.</p></div>
+        </div>
+
+        <!-- 11 -->
+        <div class="faq-item">
+          <div class="faq-q">How do we communicate (phone, email, Slack)? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>I use email and optional tools like Slack, Trello or Asana depending on client preference. We’ll agree on the primary channel during onboarding.</p></div>
+        </div>
+
+        <!-- 12 -->
+        <div class="faq-item">
+          <div class="faq-q">Do you sign NDAs? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Yes — I sign NDAs where required and take confidentiality seriously. I will not share your data with unauthorized parties.</p></div>
+        </div>
+      </div>
     </section>
 
-    <div class="cta" data-aos="fade-up" data-aos-delay="420">
+    <!-- ACCOUNT MANAGEMENT (8 questions) -->
+    <section id="account-management" class="faq-section" data-aos="fade-up" data-aos-delay="160">
+      <h3>Account Management — 8 articles</h3>
+
+      <div class="faq-list">
+        <!-- 1 -->
+        <div class="faq-item">
+          <div class="faq-q">How do I create an account? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>There is no formal account sign-up. Use the Get In Touch form or email me directly. I’ll follow up with next steps and any onboarding paperwork.</p></div>
+        </div>
+
+        <!-- 2 -->
+        <div class="faq-item">
+          <div class="faq-q">How do you track hours? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>I track hours using a simple time-tracking tool and provide regular summaries. If you prefer a specific time-tracker, we can adopt it.</p></div>
+        </div>
+
+        <!-- 3 -->
+        <div class="faq-item">
+          <div class="faq-q">How will I receive progress updates? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>I provide weekly summaries and regular updates for ongoing projects. For urgent items, email or the agreed chat channel works best.</p></div>
+        </div>
+
+        <!-- 4 -->
+        <div class="faq-item">
+          <div class="faq-q">Can I give access to accounts/tools? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Yes — I will request only the access necessary to complete tasks. Where possible, use limited-permission accounts or temporary access and revoke when not required.</p></div>
+        </div>
+
+        <!-- 5 -->
+        <div class="faq-item">
+          <div class="faq-q">Will you work with my team? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Yes — I can coordinate directly with your team members when needed, respecting confidentiality and your communication preferences.</p></div>
+        </div>
+
+        <!-- 6 -->
+        <div class="faq-item">
+          <div class="faq-q">Do you manage client files and documents? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>I can manage documents, organize folders, and maintain shared resources in Google Drive or other platforms you use.</p></div>
+        </div>
+
+        <!-- 7 -->
+        <div class="faq-item">
+          <div class="faq-q">How do you handle sensitive credentials? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>I recommend using password managers and granting limited access. I never store credentials insecurely; follow best practices during onboarding.</p></div>
+        </div>
+
+        <!-- 8 -->
+        <div class="faq-item">
+          <div class="faq-q">What if I need a temporary surge in support? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>For month-to-month clients, it’s usually straightforward to increase hours for a short period. I’ll confirm availability and pricing before accepting extra work.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BILLING & PAYMENTS (6 questions) -->
+    <section id="billing-payments" class="faq-section" data-aos="fade-up" data-aos-delay="200">
+      <h3>Billing & Payments — 6 articles</h3>
+
+      <div class="faq-list">
+        <!-- 1 -->
+        <div class="faq-item">
+          <div class="faq-q">What payment methods do you accept? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>I accept common online payment methods as listed on the Pricing/Checkout flow. Payments are processed through secure third-party providers.</p></div>
+        </div>
+
+        <!-- 2 -->
+        <div class="faq-item">
+          <div class="faq-q">When am I billed for monthly packages? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Monthly packages are billed upfront on the agreed recurring date. Yearly plans are billed as a single upfront payment at the discounted rate.</p></div>
+        </div>
+
+        <!-- 3 -->
+        <div class="faq-item">
+          <div class="faq-q">Do unused hours roll over? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>By default, unused monthly hours do not roll over. If you expect variable needs, contact me to discuss a custom arrangement.</p></div>
+        </div>
+
+        <!-- 4 -->
+        <div class="faq-item">
+          <div class="faq-q">How are additional hours billed? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Additional hours beyond a package are billed at the agreed hourly rate or a pre-agreed add-on rate. I will notify you before exceeding package hours.</p></div>
+        </div>
+
+        <!-- 5 -->
+        <div class="faq-item">
+          <div class="faq-q">What is your refund policy? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Refunds for unused prepaid hours are available within 7 days of service start, subject to terms agreed at purchase.</p></div>
+        </div>
+
+        <!-- 6 -->
+        <div class="faq-item">
+          <div class="faq-q">Can I get an invoice? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Yes — invoices are provided for all purchases and can be emailed to you for accounting purposes.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECURITY & PRIVACY (5 questions) -->
+    <section id="security-privacy" class="faq-section" data-aos="fade-up" data-aos-delay="240">
+      <h3>Security & Privacy — 5 articles</h3>
+
+      <div class="faq-list">
+        <!-- 1 -->
+        <div class="faq-item">
+          <div class="faq-q">How do you protect my data? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>I use secure storage, limit access to only what’s required for tasks, and follow encryption and password best practices. I also recommend using password managers and temporary access where possible.</p></div>
+        </div>
+
+        <!-- 2 -->
+        <div class="faq-item">
+          <div class="faq-q">Do you sign NDAs? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Yes. I am happy to sign NDAs when requested to protect sensitive information.</p></div>
+        </div>
+
+        <!-- 3 -->
+        <div class="faq-item">
+          <div class="faq-q">Where is data stored? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Files and data are stored on secure third-party platforms (e.g., Google Drive, secure hosting). I will follow your preference when feasible.</p></div>
+        </div>
+
+        <!-- 4 -->
+        <div class="faq-item">
+          <div class="faq-q">What happens if there is a security incident? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>I will notify you promptly, contain the issue, and take steps to remediate. I follow standard incident response best practices.</p></div>
+        </div>
+
+        <!-- 5 -->
+        <div class="faq-item">
+          <div class="faq-q">Can you delete my data on request? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Yes — you can request deletion of your personal data. I will comply with reasonable deletion requests and confirm when the data is removed.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta" data-aos="fade-up" data-aos-delay="280">
       <h3 style="margin-bottom:8px">Still Have Questions?</h3>
-      <p style="color:var(--muted);margin-bottom:12px">Can't find the answer you're looking for? Our support team is here to help.</p>
+      <p style="color:var(--muted);margin-bottom:12px">If you can’t find the answer above, contact me directly for a quick response.</p>
       <a class="btn" href="support.html">Contact Support</a>
       <a class="btn-outline" href="index.html#contact">Schedule a Call</a>
     </div>
   </main>
 
   <!-- Footer -->
-  <footer class="site-footer" role="contentinfo" data-aos="fade-up" data-aos-delay="460">
+  <footer class="site-footer" role="contentinfo" data-aos="fade-up" data-aos-delay="320">
     <div class="container footer-grid footer">
       <div>
         <a class="logo" href="#home" style="color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:10px"><i class="fas fa-headset"></i> Salim-VA</a>
@@ -178,22 +353,23 @@
         <a href="support.html">Support</a>
       </div>
     </div>
+
     <div class="copyright-bar">© 2025 Salim-VA  •  Built with care • Designed to convert leads into clients</div>
   </footer>
 
-  <!-- AOS JS + simple accordion script -->
+  <!-- AOS & small scripts (accordion + nav) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init({ duration:700, offset:80, once:true });
 
-    // Mobile nav toggle
+    // mobile nav toggle
     (function(){
       const toggle = document.getElementById('menuToggle');
       const nav = document.getElementById('navLinks');
       if(toggle && nav) toggle.addEventListener('click', ()=> nav.classList.toggle('active'));
     })();
 
-    // FAQ accordion
+    // Simple accordion functionality
     document.querySelectorAll('.faq-q').forEach(q => {
       q.addEventListener('click', () => {
         const item = q.parentElement;
@@ -201,12 +377,20 @@
       });
     });
 
-    // category UI
-    document.querySelectorAll('.category').forEach(c => {
-      c.addEventListener('click', () => {
-        document.querySelectorAll('.category').forEach(x => x.classList.remove('active'));
-        c.classList.add('active');
-      });
+    // Anchor deep-links from Support KB: if URL hash present, open that section
+    window.addEventListener('load', () => {
+      const hash = location.hash;
+      if(hash){
+        try {
+          const target = document.querySelector(hash);
+          if(target){
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // open first FAQ item in section
+            const firstFaq = target.querySelector('.faq-item');
+            if(firstFaq) firstFaq.classList.add('open');
+          }
+        } catch(e){}
+      }
     });
   </script>
 </body>
