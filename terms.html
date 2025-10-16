@@ -1,10 +1,14 @@
+<!-- ============================
+     FILE: terms.html
+     ============================ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Terms of Service | Salim-VA</title>
-  <meta name="description" content="Terms of Service — Salim-VA virtual assistant services." />
+  <meta name="description" content="Terms of Service for Salim-VA — professional virtual assistant services run by Salim." />
+  <link rel="canonical" href="https://starlit-phoenix-e8920e.netlify.app/terms.html" />
 
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
@@ -14,99 +18,155 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 
   <style>
-    :root{--primary:#4e46e5;--primary-dark:#3730a3;--accent:#f43f5e;--bg:#f8fafc;--muted:#64748b;--text:#0f172a;--container:1200px}
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{font-family:"Inter",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-    .container{width:92%;max-width:var(--container);margin:0 auto;padding:0 18px}
-    header{position:fixed;top:0;left:0;width:100%;background:rgba(255,255,255,.98);backdrop-filter:blur(6px);box-shadow:0 8px 30px rgba(13,17,26,0.06);padding:14px 0;z-index:1200}
-    .navbar{display:flex;align-items:center;justify-content:space-between;width:90%;max-width:var(--container);margin:0 auto}
-    .logo{font-weight:800;color:var(--primary);font-size:1.1rem;text-decoration:none}
-    .nav-links{display:flex;gap:18px;list-style:none}
-    .nav-links a{font-weight:600;color:var(--text);text-decoration:none}
-    .section-header{text-align:center;margin:120px auto 18px;max-width:900px}
-    .section-header h1{font-size:2.2rem;display:inline-block;position:relative}
-    .section-header h1::after{content:'';position:absolute;left:50%;transform:translateX(-50%);bottom:-10px;width:74px;height:4px;background:var(--accent);border-radius:4px}
-    .section-header p{color:var(--muted);margin-top:8px}
+    :root{
+      --primary: #4e46e5;
+      --primary-dark: #3730a3;
+      --accent: #f43f5e;
+      --bg: #f8fafc;
+      --muted: #64748b;
+      --text: #0f172a;
+      --container: 1200px;
+      --card-shadow: 0 18px 50px rgba(16,24,40,0.08);
+      --radius: 12px;
+      --transition: all .26s cubic-bezier(.2,.9,.2,1);
+    }
+    * { box-sizing: border-box; }
+    html,body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .container { width: 92%; max-width: var(--container); margin: 0 auto; padding: 0 18px; }
 
-    main{max-width:900px;margin:0 auto;padding:28px 18px 90px}
-    h2{color:var(--primary);margin-top:18px;margin-bottom:10px}
-    p,li{color:var(--muted);margin-bottom:12px}
-    ul{margin-left:18px}
-    .site-footer{background: linear-gradient(135deg,var(--primary),var(--primary-dark)); color:#fff; padding:48px 0; border-top-left-radius:12px; border-top-right-radius:12px; margin-top:40px}
-    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:20px;max-width:1100px;margin:0 auto}
-    .footer-grid a{color:rgba(255,255,255,0.95);text-decoration:none;display:block;margin-bottom:8px}
-    .socials{display:flex;gap:10px;margin-top:12px}
-    .copyright-bar{background: rgba(10,13,30,0.12);text-align:center;padding:12px 0;margin-top:18px;color: rgba(255,255,255,0.95);font-weight:700}
+    h1,h2,h3 { font-family: "Montserrat", Inter, sans-serif; color: var(--text); margin: 0 0 12px 0; }
+    p { color: var(--muted); margin: 0 0 14px 0; }
 
-    @media (max-width:820px){.nav-links{display:none}}
+    /* Header */
+    header {
+      position: fixed; top:0; left:0; width:100%; z-index:1200;
+      background: rgba(255,255,255,0.98); backdrop-filter: blur(6px);
+      box-shadow: 0 8px 30px rgba(13,17,26,0.06); padding:14px 0;
+    }
+    .navbar { display:flex; align-items:center; justify-content:space-between; gap:18px; width:92%; max-width:var(--container); margin:0 auto; padding:0 18px; }
+    .logo { font-weight:800; color:var(--primary); font-size:1.05rem; display:flex; align-items:center; gap:10px; }
+    .nav-links { display:flex; gap:14px; list-style:none; }
+    .nav-links a { color:var(--text); font-weight:600; text-decoration:none; }
+
+    /* Page header */
+    .page-head { padding:120px 0 24px; text-align:center; }
+    .page-head h1 { color:var(--primary); font-size:2rem; }
+    .page-head p { max-width:880px; margin: 8px auto 0; }
+
+    /* Content */
+    main { flex: 1 0 auto; }
+    .policy { max-width:1000px; margin: 18px auto 40px; padding: 18px; background: #fff; border-radius: 12px; box-shadow: var(--card-shadow); border:1px solid rgba(16,24,40,0.03); }
+    .policy h2 { color: var(--primary); margin-top: 12px; }
+    .policy ul { margin-left: 18px; color: var(--muted); }
+    .policy li { margin-bottom: 8px; }
+
+    /* Footer */
+    .site-footer { background: linear-gradient(135deg,var(--primary),var(--primary-dark)); color: #fff; padding: 40px 0; margin-top: 24px; flex-shrink: 0; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:20px; max-width:1100px; margin:0 auto; padding:0 18px; }
+    .footer-grid a { color: rgba(255,255,255,0.95); text-decoration:none; display:block; margin-bottom:8px; }
+    .footer-grid a:hover { color: var(--accent); }
+    .socials { display:flex; gap:10px; margin-top:12px; }
+    .copyright-bar { background: rgba(10,13,30,0.12); text-align:center; padding:12px 0; margin-top:18px; font-weight:700; color: rgba(255,255,255,0.95); }
+
+    /* Cookie banner */
+    .cookie-banner { position: fixed; left: 18px; right: 18px; bottom: 18px; z-index: 1400; background:#fff; color:var(--text); padding:14px 16px; border-radius:12px; box-shadow: 0 14px 40px rgba(16,24,40,0.12); display:flex; gap:12px; align-items:center; justify-content:space-between; max-width:1200px; margin: 0 auto; }
+    .cookie-banner p { margin: 0; color: var(--muted); }
+    .cookie-actions { display:flex; gap:8px; }
+    .cookie-actions button { padding:10px 14px; border-radius:10px; border:none; cursor:pointer; font-weight:700; }
+    .btn-primary { background: var(--primary); color:#fff; border-radius:10px; padding:10px 14px; border:none; cursor:pointer; font-weight:700; }
+    .btn-ghost { background:transparent; border:1px solid rgba(16,24,40,0.06); padding:10px 12px; border-radius:10px; cursor:pointer; }
+
+    @media (max-width: 820px) {
+      .nav-links { display:none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .cookie-banner { left: 12px; right: 12px; bottom: 12px; }
+    }
   </style>
 </head>
 <body>
   <!-- Header -->
   <header>
-    <div class="container navbar">
-      <a href="index.html" class="logo"><i class="fas fa-headset"></i> Salim-VA</a>
+    <div class="container navbar" role="navigation" aria-label="Main navigation">
+      <a class="logo" href="index.html"><i class="fas fa-headset"></i> Salim-VA</a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="index.html#home">Home</a></li>
         <li><a href="index.html#services">Services</a></li>
         <li><a href="index.html#pricing">Pricing</a></li>
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#testimonials">Testimonials</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="support.html">Support</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
-      <div class="menu-toggle" id="menuToggle" aria-label="Toggle menu" role="button">
-        <span style="display:block;width:26px;height:3px;background:var(--primary);margin:4px 0;border-radius:3px"></span>
-        <span style="display:block;width:20px;height:3px;background:var(--primary);margin:4px 0;border-radius:3px"></span>
-        <span style="display:block;width:16px;height:3px;background:var(--primary);margin:4px 0;border-radius:3px"></span>
-      </div>
     </div>
   </header>
 
-  <div class="section-header" data-aos="fade-up">
-    <h1>Terms of Service</h1>
-    <p>Last updated: December 2024 — professional terms for Salim-VA services provided by Salim.</p>
+  <!-- Page head -->
+  <div class="page-head" data-aos="fade-up">
+    <div class="container">
+      <h1>Terms of Service</h1>
+      <p>Last updated: December 2024 — Terms governing the use of Salim-VA services provided directly by Salim.</p>
+    </div>
   </div>
 
-  <main role="main" data-aos="fade-up" data-aos-delay="80">
-    <section style="max-width:900px;margin:0 auto;padding:24px 18px 80px">
-      <h2>Acceptance of Terms</h2>
-      <p>By using Salim-VA services you agree to these Terms of Service. If you do not agree, please do not use my services. I may modify these terms from time to time; continued use after changes means you accept the updated terms.</p>
+  <main>
+    <div class="container policy" data-aos="fade-up" data-aos-delay="80" role="main">
+      <h2>1. Agreement</h2>
+      <p>These Terms of Service ("Terms") explain how Salim-VA provides virtual assistant services and what you can expect. By engaging my services, you agree to these Terms. If you do not agree, please do not use my services.</p>
 
-      <h2>Description of Services</h2>
-      <p>Salim-VA provides virtual assistant services, including administrative support, content creation, social media work, e-commerce assistance, and other business support tasks. All services are delivered by me, Salim, directly.</p>
+      <h2>2. Services</h2>
+      <p>I provide virtual assistant services including administrative support, content creation, graphic design, social media support, e-commerce assistance, and video editing. Each engagement is delivered by me — Salim — unless otherwise agreed in writing.</p>
 
-      <h2>User responsibilities</h2>
+      <h2>3. Engagement & Onboarding</h2>
       <ul>
-        <li>Provide accurate information when engaging services.</li>
-        <li>Keep account credentials and access secure.</li>
-        <li>Provide clear instructions and materials needed for task completion.</li>
-        <li>Pay fees as agreed for selected packages or hourly services.</li>
+        <li>All services start after a signed agreement and payment terms are accepted.</li>
+        <li>Onboarding includes access provisioning, timelines, and clarifying project scope.</li>
+        <li>I will provide an onboarding checklist and estimated delivery milestones where appropriate.</li>
       </ul>
 
-      <h2>Payment terms</h2>
-      <p>Fees are based on selected packages and are due as specified during purchase. Additional work beyond package limits will be billed separately. Payments are processed by secure payment providers. Refunds for unused hours may be available within 7 days of service start, subject to the refund policy communicated at purchase.</p>
+      <h2>4. Fees & Payment</h2>
+      <p>Fees are shown on the Pricing page or in custom proposals. Monthly retainers are billed in advance. Yearly plans are billed upfront at the discounted rate. Additional hours beyond package limits are billed at the agreed hourly rate.</p>
 
-      <h2>Confidentiality</h2>
-      <p>I maintain strict confidentiality of client information. I will only access project information necessary to perform your tasks and will not share your data with unauthorized parties.</p>
+      <h2>5. Refunds</h2>
+      <p>Refunds for unused prepaid hours may be available within 7 days of service start, subject to evaluation and any work already completed.</p>
 
-      <h2>Limitation of liability</h2>
-      <p>My liability is limited to the amount you have paid Salim-VA in the 12 months prior to any claim. I am not liable for indirect or consequential losses. You are responsible for backing up critical data.</p>
+      <h2>6. Confidentiality & NDAs</h2>
+      <p>I treat client information as confidential. I sign NDAs when requested. I will only access information necessary to complete tasks and will not share your data with unauthorized parties.</p>
 
-      <h2>Termination</h2>
-      <p>Either party may terminate services on 30 days’ notice. Immediate termination may occur for non-payment or breach. Upon termination, I will return or securely delete your data as requested.</p>
+      <h2>7. Intellectual Property</h2>
+      <p>Unless otherwise agreed, you retain ownership of materials you supply. For creative work I deliver (designs, content), ownership transfers upon full payment. I may retain non-exclusive rights to portfolio samples unless you request otherwise.</p>
 
-      <h2>Contact</h2>
-      <p>Questions about these terms? Email <strong>salim.virtualassistant@gmail.com</strong> or call +1 (555) 123-4567. Address: 123 Business Ave, Suite 100, New York, NY 10001.</p>
-    </section>
+      <h2>8. Limitation of Liability</h2>
+      <p>My liability for any claim related to services is limited to the amount you paid Salim-VA in the 12 months preceding the claim. I am not liable for indirect, incidental, or consequential damages.</p>
+
+      <h2>9. Termination</h2>
+      <ul>
+        <li>Either party may terminate services with 30 days' notice.</li>
+        <li>Immediate termination may occur for non-payment or breach of these Terms.</li>
+        <li>On termination, I will return or securely delete client data per your instruction.</li>
+      </ul>
+
+      <h2>10. Governing Law</h2>
+      <p>These Terms are governed by the laws applicable to where services are provided. For most clients, disputes will be handled via good-faith negotiation first.</p>
+
+      <h2>11. Contact</h2>
+      <p>If you have questions about these Terms, email <strong>legal@salim-va.com</strong> or <a href="mailto:salim.virtualassistant@gmail.com">salim.virtualassistant@gmail.com</a>.</p>
+    </div>
   </main>
 
   <!-- Footer -->
   <footer class="site-footer" role="contentinfo" data-aos="fade-up" data-aos-delay="120">
-    <div class="container footer-grid footer">
+    <div class="footer-grid container">
       <div>
-        <a class="logo" href="#home" style="color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:10px"><i class="fas fa-headset"></i> Salim-VA</a>
-        <p style="margin-top:12px;color:rgba(255,255,255,0.95)">Professional virtual assistant & creative support — helping businesses scale with reliable, high-quality remote work.</p>
+        <a class="logo" href="index.html" style="color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:10px"><i class="fas fa-headset"></i> Salim-VA</a>
+        <p style="margin-top:12px;color:rgba(255,255,255,0.95)">Professional virtual assistant & creative support — offered directly by Salim to help businesses scale with reliable remote work.</p>
         <div class="socials">
           <a href="https://www.linkedin.com/in/salim-omar-56b98a277" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
           <a href="mailto:salim.virtualassistant@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
@@ -115,7 +175,7 @@
 
       <div>
         <h4>Company</h4>
-        <a href="index.html#about">About Us</a>
+        <a href="index.html#about">About Me</a>
         <a href="index.html#pricing">Pricing</a>
         <a href="index.html#testimonials">Testimonials</a>
         <a href="index.html#contact">Contact</a>
@@ -141,10 +201,51 @@
     <div class="copyright-bar">© 2025 Salim-VA  •  Built with care • Designed to convert leads into clients</div>
   </footer>
 
-  <!-- AOS -->
+  <!-- Cookie Banner -->
+  <div id="cookieBanner" class="cookie-banner" aria-hidden="true" style="display:none">
+    <div style="display:flex;gap:12px;align-items:center">
+      <i class="fas fa-cookie-bite" style="font-size:20px;color:var(--primary)"></i>
+      <div>
+        <strong style="display:block">We use cookies</strong>
+        <p style="margin:0;color:var(--muted)">I use necessary cookies and analytics to improve site experience. By accepting you agree to cookie use.</p>
+      </div>
+    </div>
+    <div class="cookie-actions">
+      <button id="cookieReject" class="btn-ghost">Reject</button>
+      <button id="cookieAccept" class="btn-primary">Accept</button>
+    </div>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init({ duration:700, offset:80, once:true });
+
+    // Cookie banner
+    (function(){
+      const banner = document.getElementById('cookieBanner');
+      const accept = document.getElementById('cookieAccept');
+      const reject = document.getElementById('cookieReject');
+      const consent = localStorage.getItem('salimva_cookie_consent');
+
+      function show(){
+        if(!consent){
+          banner.style.display='flex';
+          banner.setAttribute('aria-hidden','false');
+        }
+      }
+      accept.addEventListener('click', ()=> {
+        localStorage.setItem('salimva_cookie_consent','accepted');
+        banner.style.display='none';
+        // init analytics if needed
+      });
+      reject.addEventListener('click', ()=> {
+        localStorage.setItem('salimva_cookie_consent','rejected');
+        banner.style.display='none';
+      });
+      window.addEventListener('load', ()=> setTimeout(show, 600));
+    })();
+
+    // mobile nav toggle
     (function(){
       const toggle = document.getElementById('menuToggle');
       const nav = document.getElementById('navLinks');
