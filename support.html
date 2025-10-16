@@ -1,3 +1,6 @@
+<!-- ============================
+     FILE: support.html
+     ============================ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,48 +69,14 @@
     .stat-card{background:#fff;padding:18px;border-radius:12px;box-shadow:var(--card-shadow);text-align:center}
     .stat-card h3{color:var(--primary);margin-bottom:8px}
 
-    /* Footer Fix: size and bottom spacing */
-    .site-footer {
-      background: linear-gradient(135deg,var(--primary),var(--primary-dark));
-      color: #fff;
-      padding: 32px 0 12px; /* compact top and bottom padding */
-      flex-shrink: 0;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns:2fr 1fr 1fr 1fr;
-      gap:20px;
-      max-width:1100px;
-      margin:0 auto;
-      padding:0 18px;
-    }
-
-    .footer-grid a {
-      color: #fff;
-      text-decoration: none;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .footer-grid a:hover {
-      text-decoration: underline;
-    }
-
-    .socials {
-      display:flex;
-      gap:12px;
-      margin-top:12px;
-    }
-
-    .copyright-bar {
-      text-align:center;
-      background: rgba(0,0,0,0.08);
-      margin-top:18px;
-      padding: 8px 0;
-      font-weight:600;
-      color: rgba(255,255,255,0.95);
-    }
+    /* Footer style matching privacy page */
+    .site-footer{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:36px 0 24px 0;flex-shrink:0;margin-top:24px;font-size:0.95rem}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:20px;max-width:1100px;margin:0 auto;padding:0 18px}
+    .footer-grid a{color:#fff;display:block;margin-bottom:8px;text-decoration:none;font-weight:500;transition:color 0.3s}
+    .footer-grid a:hover{color:var(--accent)}
+    .socials a{margin-right:10px;font-size:20px;color:#fff;transition:color 0.3s}
+    .socials a:hover{color:var(--accent)}
+    .copyright-bar{background:rgba(10,13,30,0.12);text-align:center;padding:12px 0 0 0;margin-top:12px;font-weight:500;color:rgba(255,255,255,0.95)}
 
     .cookie-banner{position:fixed;left:18px;right:18px;bottom:18px;z-index:1400;background:#fff;color:var(--text);padding:14px 16px;border-radius:12px;box-shadow:0 14px 40px rgba(16,24,40,0.12);display:flex;gap:12px;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto}
     .cookie-banner p{margin:0;color:var(--muted)}
@@ -270,12 +239,12 @@
     </div>
   </section>
 
-  <!-- Updated Footer -->
+  <!-- Footer matching privacy page -->
   <footer class="site-footer">
-    <div class="container footer-grid footer">
+    <div class="container footer-grid">
       <div>
-        <a class="logo" href="index.html#home" style="color:#fff"><i class="fas fa-headset"></i> Salim-VA</a>
-        <p style="margin-top:12px">Professional virtual assistant & creative support — helping businesses scale with reliable, high-quality remote work.</p>
+        <a class="logo" href="index.html#home"><i class="fas fa-headset"></i> Salim-VA</a>
+        <p>Professional virtual assistant & creative support — helping businesses scale with reliable, high-quality remote work.</p>
         <div class="socials">
           <a href="https://www.linkedin.com/in/salim-omar-56b98a277" target="_blank"><i class="fab fa-linkedin"></i></a>
           <a href="mailto:salim.virtualassistant@gmail.com"><i class="fas fa-envelope"></i></a>
@@ -337,23 +306,15 @@
     })();
 
     // Cookie banner logic
-    (function(){
-      const banner = document.getElementById('cookieBanner');
-      const consent = localStorage.getItem('salimva_cookie_consent');
-
-      function show(){
-        if(!consent){
-          banner.style.display = 'flex';
-          banner.setAttribute('aria-hidden','false');
-        }
+    function acceptCookies(){
+      localStorage.setItem('salimva_cookie_consent','accepted');
+      document.getElementById('cookieBanner').style.display='none';
+    }
+    window.addEventListener('load', ()=> setTimeout(()=> {
+      if(!localStorage.getItem('salimva_cookie_consent')){
+        document.getElementById('cookieBanner').style.display='flex';
       }
-      window.acceptCookies = ()=> {
-        localStorage.setItem('salimva_cookie_consent','accepted');
-        banner.style.display='none';
-      }
-
-      window.addEventListener('load', ()=> setTimeout(show, 600));
-    })();
+    },600));
   </script>
 </body>
 </html>
