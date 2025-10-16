@@ -90,16 +90,11 @@
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
-      <div class="menu-toggle" id="menuToggle" aria-hidden="true" role="button" tabindex="0">
-        <span style="display:block;width:26px;height:3px;background:var(--primary);margin:4px 0;border-radius:3px"></span>
-        <span style="display:block;width:20px;height:3px;background:var(--primary);margin:4px 0;border-radius:3px"></span>
-        <span style="display:block;width:16px;height:3px;background:var(--primary);margin:4px 0;border-radius:3px"></span>
-      </div>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="hero" role="banner" data-aos="fade-up">
+  <section class="hero">
     <div class="container">
       <h1>Support Center</h1>
       <p>I'm here to help — find guides, submit a support request, or schedule a call. Personal, fast responses from Salim.</p>
@@ -107,7 +102,7 @@
   </section>
 
   <!-- Support options -->
-  <section class="support-options" aria-label="Support options" data-aos="fade-up" data-aos-delay="80">
+  <section class="support-options">
     <div class="support-card">
       <i class="fas fa-comments"></i>
       <h3>Live Chat</h3>
@@ -135,104 +130,43 @@
   </section>
 
   <!-- Main: Form + Knowledge Base -->
-  <section class="support-main" aria-label="Support main" data-aos="fade-up" data-aos-delay="120">
-    <form name="support" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="form-panel" id="supportForm" novalidate>
+  <section class="support-main">
+    <form name="support" method="POST" data-netlify="true" class="form-panel">
       <input type="hidden" name="form-name" value="support" />
-      <p style="display:none"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
-
       <h2>Submit a Support Request</h2>
       <p style="color:var(--muted);margin-bottom:12px">Provide details and I'll respond within 24 hours.</p>
 
       <div class="form-row">
         <div>
-          <label for="name">Full Name *</label>
-          <input id="name" name="name" type="text" required>
+          <label>Full Name *</label>
+          <input type="text" required>
         </div>
         <div>
-          <label for="email">Email Address *</label>
-          <input id="email" name="email" type="email" required>
+          <label>Email Address *</label>
+          <input type="email" required>
         </div>
       </div>
 
-      <div style="margin-top:10px">
-        <label for="subject">Subject *</label>
-        <input id="subject" name="subject" type="text" required>
-      </div>
+      <label style="margin-top:10px;display:block;">Subject *</label>
+      <input type="text" required>
 
-      <div class="form-row" style="margin-top:10px">
-        <div>
-          <label for="category">Category</label>
-          <select id="category" name="category">
-            <option>General</option>
-            <option>Account</option>
-            <option>Billing</option>
-            <option>Technical</option>
-          </select>
-        </div>
-        <div>
-          <label for="priority">Priority</label>
-          <select id="priority" name="priority">
-            <option>Low</option>
-            <option>Medium</option>
-            <option>High</option>
-          </select>
-        </div>
-      </div>
-
-      <div style="margin-top:10px">
-        <label for="message">Message *</label>
-        <textarea id="message" name="message" maxlength="500" placeholder="Please describe your issue in detail..." required></textarea>
-        <div style="text-align:right;color:var(--muted);font-size:.9rem;margin-top:6px"><span id="supportCharCount">0</span>/500</div>
-      </div>
+      <label style="margin-top:10px;display:block;">Message *</label>
+      <textarea maxlength="500" placeholder="Please describe your issue in detail..." required></textarea>
 
       <div style="text-align:right;margin-top:12px">
         <button type="submit" class="btn">Submit Support Request</button>
       </div>
     </form>
 
-    <aside class="knowledge" aria-label="Knowledge base">
-      <h3 style="margin-top:0">Knowledge Base</h3>
-      <a class="kb-card" href="faq.html#getting-started">
-        <strong>Getting Started</strong>
-        <small>12 articles • Onboarding & first steps</small>
-      </a>
-      <a class="kb-card" href="faq.html#account-management">
-        <strong>Account Management</strong>
-        <small>8 articles • Access, tracking & workflows</small>
-      </a>
-      <a class="kb-card" href="faq.html#billing-payments">
-        <strong>Billing & Payments</strong>
-        <small>6 articles • Billing cycle, invoices & refunds</small>
-      </a>
-      <a class="kb-card" href="faq.html#security-privacy">
-        <strong>Security & Privacy</strong>
-        <small>5 articles • Data handling & NDAs</small>
-      </a>
-      <div style="margin-top:12px">
-        <a class="kb-card" href="faq.html#services">
-          <strong>Services</strong>
-          <small>6 articles • What I offer & deliverables</small>
-        </a>
-      </div>
+    <aside class="knowledge">
+      <h3>Knowledge Base</h3>
+      <a class="kb-card" href="faq.html#getting-started"><strong>Getting Started</strong><small>12 articles • Onboarding & first steps</small></a>
+      <a class="kb-card" href="faq.html#account-management"><strong>Account Management</strong><small>8 articles • Access, tracking & workflows</small></a>
+      <a class="kb-card" href="faq.html#billing-payments"><strong>Billing & Payments</strong><small>6 articles • Billing cycle, invoices & refunds</small></a>
     </aside>
   </section>
 
-  <section class="stats" data-aos="fade-up" data-aos-delay="160">
-    <div class="stat-card">
-      <h3>&lt; 24 hours</h3>
-      <p>Typical Response Time</p>
-    </div>
-    <div class="stat-card">
-      <h3>98.5%</h3>
-      <p>Resolution Rate</p>
-    </div>
-    <div class="stat-card">
-      <h3>4.9 / 5</h3>
-      <p>Client Satisfaction</p>
-    </div>
-  </section>
-
-  <!-- Updated Footer -->
+  <!-- Correct Footer -->
   <footer class="site-footer">
     <div class="container footer-grid footer">
       <div>
@@ -276,52 +210,17 @@
     <button onclick="acceptCookies()">Got it</button>
   </div>
 
+  <script>
+    function acceptCookies(){
+      document.getElementById('cookieBanner').style.display='none';
+      localStorage.setItem('cookiesAccepted','yes');
+    }
+    if(localStorage.getItem('cookiesAccepted')) document.getElementById('cookieBanner').style.display='none';
+  </script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
-    AOS.init({ duration:700, offset:80, once:true });
-
-    // Mobile nav toggle
-    (function(){
-      const toggle = document.getElementById('menuToggle');
-      const nav = document.getElementById('navLinks');
-      if(toggle && nav){
-        toggle.addEventListener('click', ()=> nav.classList.toggle('active'));
-      }
-    })();
-
-    // Support char counter
-    (function(){
-      const ta = document.getElementById('message');
-      const counter = document.getElementById('supportCharCount');
-      if(ta && counter){
-        ta.addEventListener('input', (e)=> counter.textContent = e.target.value.length);
-      }
-    })();
-
-    // Cookie banner logic
-    (function(){
-      const banner = document.getElementById('cookieBanner');
-      const accept = document.getElementById('cookieAccept');
-      const reject = document.getElementById('cookieReject');
-      const consent = localStorage.getItem('salimva_cookie_consent');
-
-      function show(){
-        if(!consent){
-          banner.style.display = 'flex';
-          banner.setAttribute('aria-hidden','false');
-        }
-      }
-      accept.addEventListener('click', ()=> {
-        localStorage.setItem('salimva_cookie_consent','accepted');
-        banner.style.display='none';
-      });
-      reject.addEventListener('click', ()=> {
-        localStorage.setItem('salimva_cookie_consent','rejected');
-        banner.style.display='none';
-      });
-
-      window.addEventListener('load', ()=> setTimeout(show, 600));
-    })();
+    AOS.init();
   </script>
 </body>
 </html>
