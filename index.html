@@ -1,120 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Salim-VA | Professional Virtual Assistant Services</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salim-VA | Professional Virtual Assistant</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&Montserrat:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- AOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
 <style>
 :root{
   --primary:#4e46e5;
+  --primary-dark:#3730a3;
   --accent:#f43f5e;
   --bg:#f8fafc;
   --text:#0f172a;
   --muted:#64748b;
   --radius:12px;
+  --shadow:0 18px 50px rgba(16,24,40,.08);
 }
+
 *{box-sizing:border-box}
 body{
   margin:0;
   font-family:Inter,system-ui;
   background:var(--bg);
   color:var(--text);
+  line-height:1.6;
 }
-.container{max-width:1200px;margin:auto;padding:0 20px}
-.btn{
-  background:var(--primary);
-  color:#fff;
-  padding:10px 18px;
-  border:none;
-  border-radius:10px;
-  cursor:pointer;
-  font-weight:700;
-}
-.btn:hover{opacity:.9}
+.container{max-width:1200px;margin:auto;padding:0 16px}
+h1,h2,h3{font-family:Montserrat}
+a{text-decoration:none;color:inherit}
+
+/* HEADER */
 header{
   position:fixed;top:0;width:100%;
-  background:#fff;
-  z-index:999;
-  padding:14px 0;
+  background:#fff;z-index:1000;
+  transition:.3s;
 }
-header.scrolled{
-  box-shadow:0 12px 40px rgba(0,0,0,.08);
-}
-.navbar{display:flex;justify-content:space-between;align-items:center}
-.logo{font-weight:800;color:var(--primary);text-decoration:none}
+header.scrolled{box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.logo{font-weight:800;color:var(--primary)}
 .nav-links{display:flex;gap:18px;list-style:none}
-.nav-links a{text-decoration:none;color:var(--text);font-weight:600}
+.nav-links a{font-weight:600}
 .menu-toggle{display:none;cursor:pointer}
 
-@media(max-width:820px){
-  .nav-links{display:none}
-  .nav-links.active{
-    display:flex;
-    flex-direction:column;
-    background:#fff;
-    position:absolute;
-    right:20px;
-    top:70px;
-    padding:14px;
-    border-radius:12px;
-    box-shadow:0 20px 40px rgba(0,0,0,.1);
-  }
-  .menu-toggle{display:block}
+/* MOBILE NAV FIX */
+.nav-links.active{
+  display:flex;
+  flex-direction:column;
+  position:absolute;
+  right:20px;
+  top:70px;
+  background:#fff;
+  padding:16px;
+  border-radius:12px;
+  box-shadow:var(--shadow);
 }
 
-section{padding:90px 0}
+/* HERO */
 .hero{
-  background:linear-gradient(135deg,#4e46e5,#3730a3);
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
   color:#fff;
-  padding-top:140px;
+  padding:140px 0 100px;
+  border-radius:0 0 18px 18px;
 }
-.hero h1{font-size:2.5rem}
+
+/* SECTIONS */
+section{padding:80px 0}
+.section-header{text-align:center;margin-bottom:40px}
+
+/* BUTTONS */
+.btn{
+  padding:10px 18px;
+  border-radius:10px;
+  font-weight:700;
+  border:none;
+  cursor:pointer;
+}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-outline{border:2px solid #fff;color:#fff;background:transparent}
+
+/* SERVICES */
 .services-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:20px;
 }
 .service-card{
   background:#fff;
-  padding:20px;
+  padding:22px;
   border-radius:12px;
+  box-shadow:var(--shadow);
 }
-.price{font-weight:800;color:var(--primary)}
 
-.contact-section{
+/* CHECKOUT */
+.checkout{
   background:#eef2ff;
 }
-.contact-inner{
+.checkout-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:20px;
+  gap:24px;
 }
-@media(max-width:900px){
-  .contact-inner{grid-template-columns:1fr}
+.form-panel{
+  background:#fff;
+  padding:22px;
+  border-radius:12px;
+  box-shadow:var(--shadow);
 }
-.form-control{
+label{font-weight:700;margin-top:12px;display:block}
+input,select{
   width:100%;
   padding:10px;
   border-radius:10px;
-  border:1px solid #ddd;
-  margin-bottom:10px;
+  border:1px solid #e5e7eb;
+  margin-top:6px;
 }
-label{font-weight:700;margin-top:8px;display:block}
 input:focus,select:focus,button:focus{
-  outline:3px solid rgba(78,70,229,.4)
+  outline:3px solid rgba(78,70,229,.4);
+}
+
+/* FOOTER */
+footer{
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:#fff;
+  padding:50px 0;
+}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  .menu-toggle{display:block}
+  .nav-links{display:none}
+  .checkout-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
-
 <body>
-
 <header>
   <div class="container navbar">
-    <a href="#" class="logo">Salim-VA</a>
+    <a class="logo" href="#">Salim-VA</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#services">Services</a></li>
       <li><a href="#checkout">Checkout</a></li>
@@ -127,132 +156,152 @@ input:focus,select:focus,button:focus{
 <section class="hero">
   <div class="container">
     <h1>Professional Virtual Assistant Services</h1>
-    <p>Book hourly services and pay securely online.</p>
+    <p>Reliable admin, creative & technical support.</p>
+    <a href="#services" class="btn btn-outline">View Services</a>
   </div>
 </section>
 
 <section id="services">
   <div class="container">
-    <h2>Hourly Services</h2>
+    <div class="section-header">
+      <h2>Hourly Services</h2>
+    </div>
+
     <div class="services-grid">
       <div class="service-card">
         <h3>Administrative Support</h3>
-        <p class="price">$25/hr</p>
-        <button class="btn service-book" data-service="Administrative Support">Book</button>
+        <p>$25 / hour</p>
+        <button class="btn btn-primary service-book" data-service="Administrative Support" data-rate="25">Book</button>
       </div>
+
       <div class="service-card">
         <h3>Graphic Design</h3>
-        <p class="price">$45/hr</p>
-        <button class="btn service-book" data-service="Graphic Design">Book</button>
+        <p>$45 / hour</p>
+        <button class="btn btn-primary service-book" data-service="Graphic Design" data-rate="45">Book</button>
       </div>
+
       <div class="service-card">
         <h3>Video Editing</h3>
-        <p class="price">$50/hr</p>
-        <button class="btn service-book" data-service="Video Editing">Book</button>
+        <p>$50 / hour</p>
+        <button class="btn btn-primary service-book" data-service="Video Editing" data-rate="50">Book</button>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CHECKOUT -->
-<section id="checkout" class="contact-section">
+<section id="checkout" class="checkout">
   <div class="container">
-    <h2>Checkout</h2>
+    <div class="section-header">
+      <h2>Checkout</h2>
+      <p>Review your order and complete payment</p>
+    </div>
 
-    <div class="contact-inner">
-      <form id="checkoutForm">
-        <label>Service</label>
-        <select id="serviceSelect" class="form-control" required></select>
+    <div class="checkout-grid">
+      <div class="form-panel">
+        <form id="checkoutForm">
+          <label>Service</label>
+          <select id="service"></select>
 
-        <label>Hours</label>
-        <input type="number" id="hoursInput" class="form-control" min="1" value="1" required>
+          <label>Hours</label>
+          <input type="number" id="hours" min="1" value="1">
 
-        <label>Date</label>
-        <input type="date" class="form-control" required>
+          <label>Start Date</label>
+          <input type="date" id="date">
 
-        <label>Email</label>
-        <input type="email" id="emailInput" class="form-control" required>
+          <label>Email</label>
+          <input type="email" id="email">
 
-        <label>Payment Method</label>
-        <select id="paymentMethod" class="form-control" required>
-          <option value="">Select</option>
-          <option value="card">Credit / Debit Card</option>
-          <option value="paypal">PayPal</option>
-          <option value="mpesa">M-Pesa</option>
-        </select>
+          <label>Payment Method</label>
+          <select id="payment">
+            <option value="">Select</option>
+            <option value="card">Card</option>
+            <option value="paypal">PayPal</option>
+            <option value="mpesa">M-Pesa</option>
+          </select>
 
-        <button class="btn">Complete Payment</button>
-      </form>
+          <button class="btn btn-primary" type="submit">Complete Payment</button>
+        </form>
+      </div>
 
-      <div>
+      <div class="form-panel">
         <h3>Order Summary</h3>
-        <p>Service: <strong id="sumService">—</strong></p>
-        <p>Hours: <strong id="sumHours">0</strong></p>
-        <p>Rate: $<strong id="sumRate">0</strong>/hr</p>
-        <hr>
-        <p>Total USD: <strong>$<span id="sumUSD">0</span></strong></p>
-        <p>Total KES: <strong>KES <span id="sumKES">0</span></strong></p>
+        <p><strong>Service:</strong> <span id="sumService">—</span></p>
+        <p><strong>Hours:</strong> <span id="sumHours">0</span></p>
+        <p><strong>Total USD:</strong> $<span id="sumUSD">0</span></p>
+        <p><strong>Total KES:</strong> KES <span id="sumKES">0</span></p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contact">
+<footer>
   <div class="container">
-    <h2>Contact</h2>
-    <p>Email: salim.virtualassistant@gmail.com</p>
+    <p>© 2025 Salim-VA</p>
   </div>
-</section>
+</footer>
 
 <script src="https://js.paystack.co/v1/inline.js"></script>
+
 <script>
-const USD_TO_KES = 160;
-const services = {
+/* NAV */
+menuToggle.onclick=()=>navLinks.classList.toggle('active');
+window.addEventListener('scroll',()=>document.querySelector('header')
+.classList.toggle('scrolled',scrollY>60));
+
+/* STATE */
+const USD_KES=160;
+const order={service:'',rate:0,hours:1};
+
+/* SERVICES */
+const services={
   "Administrative Support":25,
   "Graphic Design":45,
   "Video Editing":50
 };
-const order = {service:'',rate:0,hours:1};
 
-const serviceSelect = document.getElementById('serviceSelect');
+const serviceSelect=document.getElementById('service');
 Object.keys(services).forEach(s=>{
-  let o=document.createElement('option');
-  o.value=s;o.textContent=s;
-  serviceSelect.appendChild(o);
+  serviceSelect.innerHTML+=`<option value="${s}">${s}</option>`;
 });
-
-function update(){
-  order.service=serviceSelect.value;
-  order.rate=services[order.service]||0;
-  order.hours=+hoursInput.value;
-  let usd=order.rate*order.hours;
-  document.getElementById('sumService').textContent=order.service;
-  document.getElementById('sumHours').textContent=order.hours;
-  document.getElementById('sumRate').textContent=order.rate;
-  document.getElementById('sumUSD').textContent=usd.toFixed(2);
-  document.getElementById('sumKES').textContent=(usd*USD_TO_KES).toLocaleString();
-}
 
 document.querySelectorAll('.service-book').forEach(b=>{
   b.onclick=()=>{
     serviceSelect.value=b.dataset.service;
+    order.rate=b.dataset.rate;
     document.getElementById('checkout').scrollIntoView({behavior:'smooth'});
     update();
-  }
+  };
 });
-serviceSelect.onchange=update;
-hoursInput.oninput=update;
 
-document.getElementById('checkoutForm').onsubmit=e=>{
+/* UPDATE */
+function update(){
+  order.service=serviceSelect.value;
+  order.rate=services[order.service];
+  order.hours=+hours.value;
+  const total=order.rate*order.hours;
+  sumService.textContent=order.service;
+  sumHours.textContent=order.hours;
+  sumUSD.textContent=total.toFixed(2);
+  sumKES.textContent=(total*USD_KES).toLocaleString();
+}
+serviceSelect.onchange=hours.oninput=update;
+
+/* PAY */
+checkoutForm.onsubmit=e=>{
   e.preventDefault();
-  if(!order.service)return alert('Select service');
-  alert('Payment integration ready');
+  if(!email.value||!payment.value)return alert("Fill all fields");
+
+  if(payment.value==="card"){
+    PaystackPop.setup({
+      key:"pk_test_REPLACE",
+      email:email.value,
+      amount:(order.rate*order.hours)*100,
+      currency:"USD",
+      callback:()=>location.href="/thank-you.html"
+    }).openIframe();
+  }
 };
-
-menuToggle.onclick=()=>navLinks.classList.toggle('active');
-window.onscroll=()=>document.querySelector('header')
-  .classList.toggle('scrolled',scrollY>60);
 </script>
-
 </body>
 </html>
