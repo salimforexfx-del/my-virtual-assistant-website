@@ -43,27 +43,6 @@
     h1,h2,h3,h4 { font-family: "Montserrat", Inter, sans-serif; color: var(--text); }
     p { color: var(--muted); }
 
-    /* Skip link (accessibility) */
-    .skip-link {
-      position: absolute;
-      left: -999px;
-      top: auto;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-    }
-    .skip-link:focus {
-      left: 18px;
-      top: 12px;
-      width: auto;
-      height: auto;
-      padding: 8px 12px;
-      background: #fff;
-      border-radius: 6px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-      z-index: 9999;
-    }
-
     /* ---------- Buttons ---------- */
     .btn { display:inline-flex; align-items:center; justify-content:center; gap:.6rem; padding:10px 18px; border-radius:10px; font-weight:700; cursor:pointer; border:none; transition:var(--transition); text-decoration:none; }
     .btn-primary { background:var(--primary); color:#fff; }
@@ -84,28 +63,7 @@
     .nav-links a { font-weight:600; color:var(--text); text-decoration:none; position:relative; padding:6px 0; }
     .nav-links a::after { content:''; position:absolute; left:0; bottom:-6px; width:0; height:2px; background:var(--accent); transition:var(--transition); }
     .nav-links a:hover::after{ width:100%; }
-    .menu-toggle { display:none; cursor:pointer; background:transparent; border:none; padding:8px; border-radius:8px; }
-
-    /* mobile nav active overlay */
-    .nav-overlay {
-      display:none;
-    }
-    .nav-links.mobile {
-      display:flex;
-      flex-direction:column;
-      position: absolute;
-      top:64px;
-      right:18px;
-      width:220px;
-      background:#fff;
-      padding:12px;
-      border-radius:10px;
-      box-shadow:0 20px 48px rgba(13,17,26,0.14);
-      border:1px solid rgba(16,24,40,0.04);
-      z-index:1205;
-      gap:8px;
-    }
-    .nav-links.mobile a { padding:10px 8px; }
+    .menu-toggle { display:none; cursor:pointer; }
 
     /* ---------- Hero ---------- */
     .hero { padding:150px 0 100px; background: linear-gradient(135deg,var(--primary),var(--primary-dark)); color:#fff; overflow:hidden; border-bottom-left-radius:18px; border-bottom-right-radius:18px; }
@@ -212,23 +170,15 @@
     /* small reveal helpers left for AOS fallback */
     .reveal { opacity:0; transform:translateY(16px); transition:var(--transition); }
     .reveal.visible { opacity:1; transform:none; }
-
-    /* Focus outlines for accessibility */
-    a:focus, button:focus, input:focus, select:focus, textarea:focus {
-      outline: 3px solid rgba(78,70,229,0.14);
-      outline-offset: 2px;
-    }
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
   <!-- Header -->
   <header>
     <div class="container navbar">
-      <a href="#home" class="logo"><i class="fas fa-headset" aria-hidden="true"></i> <span>Salim-VA</span></a>
+      <a href="#home" class="logo"><i class="fas fa-headset"></i> Salim-VA</a>
 
-      <ul class="nav-links" id="navLinks" role="navigation" aria-label="Main navigation">
+      <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#pricing">Pricing</a></li>
@@ -237,326 +187,554 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <div class="menu-toggle" id="menuToggle" aria-label="Toggle menu" role="button">
         <span style="display:block;width:26px;height:3px;background:var(--primary);margin:4px 0;border-radius:3px"></span>
         <span style="display:block;width:20px;height:3px;background:var(--primary);margin:4px 0;border-radius:3px"></span>
         <span style="display:block;width:16px;height:3px;background:var(--primary);margin:4px 0;border-radius:3px"></span>
-      </button>
+      </div>
     </div>
   </header>
 
-  <main id="main" tabindex="-1">
-    <!-- Hero -->
-    <section class="hero" id="home" data-aos="fade-up" data-aos-duration="700">
-      <div class="container hero-inner">
-        <div>
-          <h1 data-aos="fade-down" data-aos-duration="800" data-aos-delay="100">Professional Virtual Assistant Services</h1>
-          <p data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">Boost your productivity with expert administrative, creative, and technical support tailored to your business needs. Let me handle the details while you focus on growth.</p>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="350">
-            <a class="btn btn-primary" href="#pricing">View Pricing</a>
-            <a class="btn btn-outline" href="#contact">Get in Touch</a>
-          </div>
-        </div>
-
-        <div class="hero-visual" aria-hidden="true" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
-          <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Workspace">
+  <!-- Hero -->
+  <section class="hero" id="home" data-aos="fade-up" data-aos-duration="700">
+    <div class="container hero-inner">
+      <div>
+        <h1 data-aos="fade-down" data-aos-duration="800" data-aos-delay="100">Professional Virtual Assistant Services</h1>
+        <p data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">Boost your productivity with expert administrative, creative, and technical support tailored to your business needs. Let me handle the details while you focus on growth.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="350">
+          <a class="btn btn-primary" href="#pricing">View Pricing</a>
+          <a class="btn btn-outline" href="#contact">Get in Touch</a>
         </div>
       </div>
-    </section>
 
-    <!-- Services (Hourly) -->
-    <section id="services" class="reveal" data-aos="fade-up" data-aos-duration="700">
-      <div class="container">
-        <div class="section-header" data-aos="fade-up" data-aos-delay="80">
-          <h2>Hourly Services</h2>
-          <p>Choose any of these services on an hourly basis — perfect for one-off tasks or short projects.</p>
-        </div>
-
-        <div class="services-grid" role="list">
-          <div class="service-card" role="listitem" data-aos="fade-up" data-aos-delay="100">
-            <div>
-              <div class="service-icon" aria-hidden="true"><i class="fas fa-calendar-alt"></i></div>
-              <h3>Administrative Support</h3>
-              <p>Email management, calendar scheduling, travel arrangements, and document prep.</p>
-              <div class="price">$25 <small style="color:var(--muted)">/ hour</small></div>
-            </div>
-            <div class="service-footer"><button class="btn btn-primary service-book" data-usd="25" data-service="Administrative Support">Book</button></div>
-          </div>
-
-          <div class="service-card" role="listitem" data-aos="fade-up" data-aos-delay="140">
-            <div>
-              <div class="service-icon" aria-hidden="true"><i class="fas fa-paint-brush"></i></div>
-              <h3>Graphic Design</h3>
-              <p>Logo concepts, social graphics, slides and marketing assets.</p>
-              <div class="price">$45 <small style="color:var(--muted)">/ hour</small></div>
-            </div>
-            <div class="service-footer"><button class="btn btn-primary service-book" data-usd="45" data-service="Graphic Design">Book</button></div>
-          </div>
-
-          <div class="service-card" role="listitem" data-aos="fade-up" data-aos-delay="180">
-            <div>
-              <div class="service-icon" aria-hidden="true"><i class="fas fa-file-alt"></i></div>
-              <h3>Content Creation</h3>
-              <p>Blog posts, web copy, newsletters and email campaigns that convert.</p>
-              <div class="price">$35 <small style="color:var(--muted)">/ hour</small></div>
-            </div>
-            <div class="service-footer"><button class="btn btn-primary service-book" data-usd="35" data-service="Content Creation">Book</button></div>
-          </div>
-
-          <div class="service-card" role="listitem" data-aos="fade-up" data-aos-delay="220">
-            <div>
-              <div class="service-icon" aria-hidden="true"><i class="fas fa-chart-line"></i></div>
-              <h3>Social Media Management</h3>
-              <p>Content calendars, post scheduling, engagement and basic reporting.</p>
-              <div class="price">$40 <small style="color:var(--muted)">/ hour</small></div>
-            </div>
-            <div class="service-footer"><button class="btn btn-primary service-book" data-usd="40" data-service="Social Media Management">Book</button></div>
-          </div>
-
-          <div class="service-card" role="listitem" data-aos="fade-up" data-aos-delay="260">
-            <div>
-              <div class="service-icon" aria-hidden="true"><i class="fas fa-shopping-cart"></i></div>
-              <h3>E-commerce Support</h3>
-              <p>Product listings, inventory updates, order handling and customer messages.</p>
-              <div class="price">$30 <small style="color:var(--muted)">/ hour</small></div>
-            </div>
-            <div class="service-footer"><button class="btn btn-primary service-book" data-usd="30" data-service="E-commerce Support">Book</button></div>
-          </div>
-
-          <div class="service-card" role="listitem" data-aos="fade-up" data-aos-delay="300">
-            <div>
-              <div class="service-icon" aria-hidden="true"><i class="fas fa-video"></i></div>
-              <h3>Video Editing</h3>
-              <p>Short-form edits, captions, YouTube & promotional video edits.</p>
-              <div class="price">$50 <small style="color:var(--muted)">/ hour</small></div>
-            </div>
-            <div class="service-footer"><button class="btn btn-primary service-book" data-usd="50" data-service="Video Editing">Book</button></div>
-          </div>
-        </div>
+      <div class="hero-visual" aria-hidden="true" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
+        <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Workspace">
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Pricing Table (Packages) -->
-    <section id="pricing" class="reveal" data-aos="fade-up" data-aos-duration="700">
-      <div class="container pricing-wrap">
-        <div class="section-header" data-aos="fade-up" data-aos-delay="80">
-          <h2>Packages</h2>
-          <p>Choose a monthly retainer for predictable support — or pick yearly and save 20% (billed upfront).</p>
-        </div>
-
-        <div class="pricing-controls" data-aos="fade-up" data-aos-delay="120">
-          <div class="pricing-toggle" role="tablist" aria-label="Pricing options">
-            <button class="active" data-mode="monthly" aria-pressed="true">Monthly</button>
-            <button data-mode="yearly" aria-pressed="false">Yearly (Save 20%)</button>
-          </div>
-
-          <div style="margin-left:auto;display:flex;gap:10px;align-items:center">
-            <div style="font-weight:700;color:var(--muted)">Currency</div>
-            <div style="background:#fff;padding:6px 10px;border-radius:8px;border:1px solid rgba(16,24,40,0.04)">USD</div>
-          </div>
-        </div>
-
-        <div id="pricingGrid" class="pricing-grid" role="list">
-          <!-- Starter -->
-          <div class="pack-card" data-plan="starter" role="listitem" data-aos="fade-up" data-aos-delay="140">
-            <div>
-              <h3>Starter</h3>
-              <div class="pack-tagline">Perfect for small businesses and entrepreneurs getting started</div>
-
-              <div class="pack-price" data-monthly="400" data-yearly-total="3840">$400 <small style="color:var(--muted);font-weight:700">/ month</small></div>
-              <div class="pack-sub">What’s included</div>
-              <ul class="pack-features">
-                <li>20 hours of virtual assistance</li>
-                <li>Email and chat support</li>
-                <li>Basic administrative tasks</li>
-                <li>Social media posting (5 posts/week)</li>
-                <li>Data entry and research</li>
-                <li>48-hour response time</li>
-              </ul>
-            </div>
-
-            <div class="pack-cta">
-              <button class="btn btn-primary pack-book" data-plan="starter" data-monthly="400" data-yearly-total="3840">Hire Now</button>
-            </div>
-          </div>
-
-          <!-- Standard (highlighted) -->
-          <div class="pack-card popular" data-plan="standard" role="listitem" data-aos="fade-up" data-aos-delay="180">
-            <div>
-              <div class="pack-badge">Most Popular</div>
-              <h3>Standard</h3>
-              <div class="pack-tagline">For growing teams needing reliable weekly support</div>
-
-              <div class="pack-price" data-monthly="750" data-yearly-total="7200">$750 <small style="color:var(--muted);font-weight:700">/ month</small></div>
-              <div class="pack-sub">What’s included</div>
-              <ul class="pack-features">
-                <li>40 hours of virtual assistance</li>
-                <li>Admin + creative services</li>
-                <li>Social media management & content support</li>
-                <li>Priority support & weekly check-ins</li>
-                <li>Content creation & design support</li>
-                <li>24–48 hour response time</li>
-              </ul>
-            </div>
-
-            <div class="pack-cta">
-              <button class="btn btn-accent pack-book" data-plan="standard" data-monthly="750" data-yearly-total="7200">Hire Now</button>
-            </div>
-          </div>
-
-          <!-- Premium -->
-          <div class="pack-card" data-plan="premium" role="listitem" data-aos="fade-up" data-aos-delay="220">
-            <div>
-              <h3>Premium</h3>
-              <div class="pack-tagline">Dedicated support for high-volume operations and scaling businesses</div>
-
-              <div class="pack-price" data-monthly="1400" data-yearly-total="13440">$1,400 <small style="color:var(--muted);font-weight:700">/ month</small></div>
-              <div class="pack-sub">What’s included</div>
-              <ul class="pack-features">
-                <li>80 hours of virtual assistance</li>
-                <li>Full-service coverage (admin, content, design)</li>
-                <li>Graphic & video editing</li>
-                <li>Dedicated weekly calls & priority turnaround</li>
-                <li>Advanced reporting & workflow support</li>
-                <li>&lt; 24-hour response time</li>
-              </ul>
-            </div>
-
-            <div class="pack-cta">
-              <button class="btn btn-primary pack-book" data-plan="premium" data-monthly="1400" data-yearly-total="13440">Hire Now</button>
-            </div>
-          </div>
-        </div>
+  <!-- Services (Hourly) -->
+  <section id="services" class="reveal" data-aos="fade-up" data-aos-duration="700">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up" data-aos-delay="80">
+        <h2>Hourly Services</h2>
+        <p>Choose any of these services on an hourly basis — perfect for one-off tasks or short projects.</p>
       </div>
-    </section>
 
-    <!-- About -->
-    <section id="about" class="reveal" data-aos="fade-up" data-aos-duration="700">
-      <div class="container">
-        <div class="section-header" data-aos="fade-up" data-aos-delay="80">
-          <h2>About Me</h2>
-          <p>I’m Salim — a results-driven virtual assistant who helps small businesses and founders reclaim time. I combine administrative efficiency with creative skills so you get polished deliverables and clear communication.</p>
-        </div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center;" data-aos="fade-up" data-aos-delay="140">
-          <div><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Workspace" style="width:100%;border-radius:12px;box-shadow:var(--card-shadow)"></div>
+      <div class="services-grid" role="list">
+        <div class="service-card" role="listitem" data-aos="fade-up" data-aos-delay="100">
           <div>
-            <h3 style="margin-bottom:8px">What I do</h3>
-            <p>I provide end-to-end support across administration, content, design and digital operations. My focus is on responsiveness, predictable delivery, and helping your business run smoother.</p>
+            <div class="service-icon"><i class="fas fa-calendar-alt"></i></div>
+            <h3>Administrative Support</h3>
+            <p>Email management, calendar scheduling, travel arrangements, and document prep.</p>
+            <div class="price">$25 <small style="color:var(--muted)">/ hour</small></div>
+          </div>
+          <div class="service-footer"><button class="btn btn-primary service-book" data-usd="25" data-service="Administrative Support">Book</button></div>
+        </div>
 
-            <div style="display:flex;gap:12px;margin-top:14px">
-              <div style="background:#fff;padding:12px;border-radius:10px;text-align:center;flex:1;box-shadow:0 8px 24px rgba(16,24,40,0.04)"><div style="font-weight:800;color:var(--primary);font-size:1.1rem">5+</div><div style="color:var(--muted)">Years Experience</div></div>
-              <div style="background:#fff;padding:12px;border-radius:10px;text-align:center;flex:1;box-shadow:0 8px 24px rgba(16,24,40,0.04)"><div style="font-weight:800;color:var(--primary);font-size:1.1rem">200+</div><div style="color:var(--muted)">Happy Clients</div></div>
-              <div style="background:#fff;padding:12px;border-radius:10px;text-align:center;flex:1;box-shadow:0 8px 24px rgba(16,24,40,0.04)"><div style="font-weight:800;color:var(--primary);font-size:1.1rem">500+</div><div style="color:var(--muted)">Projects Completed</div></div>
-            </div>
+        <div class="service-card" role="listitem" data-aos="fade-up" data-aos-delay="140">
+          <div>
+            <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+            <h3>Graphic Design</h3>
+            <p>Logo concepts, social graphics, slides and marketing assets.</p>
+            <div class="price">$45 <small style="color:var(--muted)">/ hour</small></div>
+          </div>
+          <div class="service-footer"><button class="btn btn-primary service-book" data-usd="45" data-service="Graphic Design">Book</button></div>
+        </div>
+
+        <div class="service-card" role="listitem" data-aos="fade-up" data-aos-delay="180">
+          <div>
+            <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+            <h3>Content Creation</h3>
+            <p>Blog posts, web copy, newsletters and email campaigns that convert.</p>
+            <div class="price">$35 <small style="color:var(--muted)">/ hour</small></div>
+          </div>
+          <div class="service-footer"><button class="btn btn-primary service-book" data-usd="35" data-service="Content Creation">Book</button></div>
+        </div>
+
+        <div class="service-card" role="listitem" data-aos="fade-up" data-aos-delay="220">
+          <div>
+            <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Social Media Management</h3>
+            <p>Content calendars, post scheduling, engagement and basic reporting.</p>
+            <div class="price">$40 <small style="color:var(--muted)">/ hour</small></div>
+          </div>
+          <div class="service-footer"><button class="btn btn-primary service-book" data-usd="40" data-service="Social Media Management">Book</button></div>
+        </div>
+
+        <div class="service-card" role="listitem" data-aos="fade-up" data-aos-delay="260">
+          <div>
+            <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
+            <h3>E-commerce Support</h3>
+            <p>Product listings, inventory updates, order handling and customer messages.</p>
+            <div class="price">$30 <small style="color:var(--muted)">/ hour</small></div>
+          </div>
+          <div class="service-footer"><button class="btn btn-primary service-book" data-usd="30" data-service="E-commerce Support">Book</button></div>
+        </div>
+
+        <div class="service-card" role="listitem" data-aos="fade-up" data-aos-delay="300">
+          <div>
+            <div class="service-icon"><i class="fas fa-video"></i></div>
+            <h3>Video Editing</h3>
+            <p>Short-form edits, captions, YouTube & promotional video edits.</p>
+            <div class="price">$50 <small style="color:var(--muted)">/ hour</small></div>
+          </div>
+          <div class="service-footer"><button class="btn btn-primary service-book" data-usd="50" data-service="Video Editing">Book</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Table (Packages) -->
+  <section id="pricing" class="reveal" data-aos="fade-up" data-aos-duration="700">
+    <div class="container pricing-wrap">
+      <div class="section-header" data-aos="fade-up" data-aos-delay="80">
+        <h2>Packages</h2>
+        <p>Choose a monthly retainer for predictable support — or pick yearly and save 20% (billed upfront).</p>
+      </div>
+
+      <div class="pricing-controls" data-aos="fade-up" data-aos-delay="120">
+        <div class="pricing-toggle" role="tablist" aria-label="Pricing options">
+          <button class="active" data-mode="monthly" aria-pressed="true">Monthly</button>
+          <button data-mode="yearly" aria-pressed="false">Yearly (Save 20%)</button>
+        </div>
+
+        <div style="margin-left:auto;display:flex;gap:10px;align-items:center">
+          <div style="font-weight:700;color:var(--muted)">Currency</div>
+          <div style="background:#fff;padding:6px 10px;border-radius:8px;border:1px solid rgba(16,24,40,0.04)">USD</div>
+        </div>
+      </div>
+
+      <div id="pricingGrid" class="pricing-grid" role="list">
+        <!-- Starter -->
+        <div class="pack-card" data-plan="starter" role="listitem" data-aos="fade-up" data-aos-delay="140">
+          <div>
+            <h3>Starter</h3>
+            <div class="pack-tagline">Perfect for small businesses and entrepreneurs getting started</div>
+
+            <div class="pack-price" data-monthly="400" data-yearly-total="3840">$400 <small style="color:var(--muted);font-weight:700">/ month</small></div>
+            <div class="pack-sub">What’s included</div>
+            <ul class="pack-features">
+              <li>20 hours of virtual assistance</li>
+              <li>Email and chat support</li>
+              <li>Basic administrative tasks</li>
+              <li>Social media posting (5 posts/week)</li>
+              <li>Data entry and research</li>
+              <li>48-hour response time</li>
+            </ul>
+          </div>
+
+          <div class="pack-cta">
+            <button class="btn btn-primary pack-book" data-plan="starter" data-monthly="400" data-yearly-total="3840">Hire Now</button>
+          </div>
+        </div>
+
+        <!-- Standard (highlighted) -->
+        <div class="pack-card popular" data-plan="standard" role="listitem" data-aos="fade-up" data-aos-delay="180">
+          <div>
+            <div class="pack-badge">Most Popular</div>
+            <h3>Standard</h3>
+            <div class="pack-tagline">For growing teams needing reliable weekly support</div>
+
+            <div class="pack-price" data-monthly="750" data-yearly-total="7200">$750 <small style="color:var(--muted);font-weight:700">/ month</small></div>
+            <div class="pack-sub">What’s included</div>
+            <ul class="pack-features">
+              <li>40 hours of virtual assistance</li>
+              <li>Admin + creative services</li>
+              <li>Social media management & content support</li>
+              <li>Priority support & weekly check-ins</li>
+              <li>Content creation & design support</li>
+              <li>24–48 hour response time</li>
+            </ul>
+          </div>
+
+          <div class="pack-cta">
+            <button class="btn btn-accent pack-book" data-plan="standard" data-monthly="750" data-yearly-total="7200">Hire Now</button>
+          </div>
+        </div>
+
+        <!-- Premium -->
+        <div class="pack-card" data-plan="premium" role="listitem" data-aos="fade-up" data-aos-delay="220">
+          <div>
+            <h3>Premium</h3>
+            <div class="pack-tagline">Dedicated support for high-volume operations and scaling businesses</div>
+
+            <div class="pack-price" data-monthly="1400" data-yearly-total="13440">$1,400 <small style="color:var(--muted);font-weight:700">/ month</small></div>
+            <div class="pack-sub">What’s included</div>
+            <ul class="pack-features">
+              <li>80 hours of virtual assistance</li>
+              <li>Full-service coverage (admin, content, design)</li>
+              <li>Graphic & video editing</li>
+              <li>Dedicated weekly calls & priority turnaround</li>
+              <li>Advanced reporting & workflow support</li>
+              <li>&lt; 24-hour response time</li>
+            </ul>
+          </div>
+
+          <div class="pack-cta">
+            <button class="btn btn-primary pack-book" data-plan="premium" data-monthly="1400" data-yearly-total="13440">Hire Now</button>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Testimonials (3x2 grid) -->
-    <section id="testimonials" class="reveal" data-aos="fade-up" data-aos-duration="700">
-      <div class="container">
-        <div class="section-header" data-aos="fade-up" data-aos-delay="80">
-          <h2>What Clients Say</h2>
-          <p>Real feedback from businesses and founders I’ve supported.</p>
-        </div>
+  <!-- About -->
+  <section id="about" class="reveal" data-aos="fade-up" data-aos-duration="700">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up" data-aos-delay="80">
+        <h2>About Me</h2>
+        <p>I’m Salim — a results-driven virtual assistant who helps small businesses and founders reclaim time. I combine administrative efficiency with creative skills so you get polished deliverables and clear communication.</p>
+      </div>
 
-        <div class="testimonials-grid" role="list">
-          <div class="testimonial-card" role="listitem" data-aos="fade-up" data-aos-delay="100">
-            <div class="testimonial-quote">"Salim was a lifesaver during our launch week — handled client emails and scheduling so I could focus on closing deals."</div>
-            <div class="testimonial-meta"><div class="avatar bg1">LM</div><div><strong>Laura M.</strong><div style="color:var(--muted)">Founder, SaaS Startup</div></div></div>
-          </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center;" data-aos="fade-up" data-aos-delay="140">
+        <div><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Workspace" style="width:100%;border-radius:12px;box-shadow:var(--card-shadow)"></div>
+        <div>
+          <h3 style="margin-bottom:8px">What I do</h3>
+          <p>I provide end-to-end support across administration, content, design and digital operations. My focus is on responsiveness, predictable delivery, and helping your business run smoother.</p>
 
-          <div class="testimonial-card" role="listitem" data-aos="fade-up" data-aos-delay="140">
-            <div class="testimonial-quote">"Handled our Instagram and content calendar with clarity — engagement improved within weeks."</div>
-            <div class="testimonial-meta"><div class="avatar bg2">DK</div><div><strong>Daniel K.</strong><div style="color:var(--muted)">Owner, Online Retail</div></div></div>
-          </div>
-
-          <div class="testimonial-card" role="listitem" data-aos="fade-up" data-aos-delay="180">
-            <div class="testimonial-quote">"Very reliable — edited training videos and delivered clean, professional edits on schedule."</div>
-            <div class="testimonial-meta"><div class="avatar bg3">SR</div><div><strong>Sophia R.</strong><div style="color:var(--muted)">HR Manager, Consulting</div></div></div>
-          </div>
-
-          <div class="testimonial-card" role="listitem" data-aos="fade-up" data-aos-delay="220">
-            <div class="testimonial-quote">"Optimized product listings and improved descriptions — we saw better conversions."</div>
-            <div class="testimonial-meta"><div class="avatar bg4">KT</div><div><strong>Kevin T.</strong><div style="color:var(--muted)">E-commerce Entrepreneur</div></div></div>
-          </div>
-
-          <div class="testimonial-card" role="listitem" data-aos="fade-up" data-aos-delay="260">
-            <div class="testimonial-quote">"Attention to detail: invoices and calendar management were handled weekly — saved me hours."</div>
-            <div class="testimonial-meta"><div class="avatar bg5">AM</div><div><strong>Amina M.</strong><div style="color:var(--muted)">Operations Lead</div></div></div>
-          </div>
-
-          <div class="testimonial-card" role="listitem" data-aos="fade-up" data-aos-delay="300">
-            <div class="testimonial-quote">"Consistent communication and reliable delivery across admin + creative tasks. Highly recommended."</div>
-            <div class="testimonial-meta"><div class="avatar bg6">JR</div><div><strong>James R.</strong><div style="color:var(--muted)">Founder, Creative Studio</div></div></div>
+          <div style="display:flex;gap:12px;margin-top:14px">
+            <div style="background:#fff;padding:12px;border-radius:10px;text-align:center;flex:1;box-shadow:0 8px 24px rgba(16,24,40,0.04)"><div style="font-weight:800;color:var(--primary);font-size:1.1rem">5+</div><div style="color:var(--muted)">Years Experience</div></div>
+            <div style="background:#fff;padding:12px;border-radius:10px;text-align:center;flex:1;box-shadow:0 8px 24px rgba(16,24,40,0.04)"><div style="font-weight:800;color:var(--primary);font-size:1.1rem">200+</div><div style="color:var(--muted)">Happy Clients</div></div>
+            <div style="background:#fff;padding:12px;border-radius:10px;text-align:center;flex:1;box-shadow:0 8px 24px rgba(16,24,40,0.04)"><div style="font-weight:800;color:var(--primary);font-size:1.1rem">500+</div><div style="color:var(--muted)">Projects Completed</div></div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Get in Touch (light blue background) -->
-    <section id="contact" class="contact-section" data-aos="fade-up" data-aos-duration="700">
-      <div class="container">
-        <div class="section-header" data-aos="fade-up" data-aos-delay="80">
-          <h2>Get In Touch</h2>
-          <p>Questions, custom proposals or monthly retainers — send a message and I’ll respond within 24 hours.</p>
+  <!-- Testimonials (3x2 grid) -->
+  <section id="testimonials" class="reveal" data-aos="fade-up" data-aos-duration="700">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up" data-aos-delay="80">
+        <h2>What Clients Say</h2>
+        <p>Real feedback from businesses and founders I’ve supported.</p>
+      </div>
+
+      <div class="testimonials-grid" role="list">
+        <div class="testimonial-card" role="listitem" data-aos="fade-up" data-aos-delay="100">
+          <div class="testimonial-quote">"Salim was a lifesaver during our launch week — handled client emails and scheduling so I could focus on closing deals."</div>
+          <div class="testimonial-meta"><div class="avatar bg1">LM</div><div><strong>Laura M.</strong><div style="color:var(--muted)">Founder, SaaS Startup</div></div></div>
         </div>
 
-        <div class="contact-inner" data-aos="fade-up" data-aos-delay="120">
-          <!-- Left: info -->
-          <div class="info-cards">
-            <div class="info-card" data-aos="fade-right" data-aos-delay="140">
-              <div class="info-icon"><i class="fas fa-phone" aria-hidden="true"></i></div>
-              <div>
-                <h4>Phone</h4>
-                <p style="font-weight:700">+1 (555) 123-4567</p>
-                <p class="muted" style="margin-top:8px">Mon–Fri • 9AM–6PM EAT</p>
-              </div>
-            </div>
+        <div class="testimonial-card" role="listitem" data-aos="fade-up" data-aos-delay="140">
+          <div class="testimonial-quote">"Handled our Instagram and content calendar with clarity — engagement improved within weeks."</div>
+          <div class="testimonial-meta"><div class="avatar bg2">DK</div><div><strong>Daniel K.</strong><div style="color:var(--muted)">Owner, Online Retail</div></div></div>
+        </div>
 
-            <div class="info-card" data-aos="fade-right" data-aos-delay="180">
-              <div class="info-icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
-              <div>
-                <h4>Email</h4>
-                <p style="font-weight:700">salim.virtualassistant@gmail.com</p>
-                <p class="muted" style="margin-top:8px">We respond within 24 hours</p>
-              </div>
-            </div>
+        <div class="testimonial-card" role="listitem" data-aos="fade-up" data-aos-delay="180">
+          <div class="testimonial-quote">"Very reliable — edited training videos and delivered clean, professional edits on schedule."</div>
+          <div class="testimonial-meta"><div class="avatar bg3">SR</div><div><strong>Sophia R.</strong><div style="color:var(--muted)">HR Manager, Consulting</div></div></div>
+        </div>
 
-            <div class="info-card" data-aos="fade-right" data-aos-delay="220">
-              <div class="info-icon"><i class="fas fa-stopwatch" aria-hidden="true"></i></div>
-              <div>
-                <h4>Response Time</h4>
-                <p style="font-weight:700">&lt; 2 Hours</p>
-                <p class="muted" style="margin-top:8px">Average response time</p>
-              </div>
-            </div>
+        <div class="testimonial-card" role="listitem" data-aos="fade-up" data-aos-delay="220">
+          <div class="testimonial-quote">"Optimized product listings and improved descriptions — we saw better conversions."</div>
+          <div class="testimonial-meta"><div class="avatar bg4">KT</div><div><strong>Kevin T.</strong><div style="color:var(--muted)">E-commerce Entrepreneur</div></div></div>
+        </div>
 
-            <div class="info-card" data-aos="fade-right" data-aos-delay="260">
-              <div class="info-icon"><i class="fas fa-handshake" aria-hidden="true"></i></div>
-              <div>
-                <h4>Free Consultation</h4>
-                <p class="muted">Schedule a 30-minute session to scope your needs and options.</p>
-                <div style="margin-top:8px"><a href="#" class="btn btn-ghost">Schedule Now</a></div>
-              </div>
+        <div class="testimonial-card" role="listitem" data-aos="fade-up" data-aos-delay="260">
+          <div class="testimonial-quote">"Attention to detail: invoices and calendar management were handled weekly — saved me hours."</div>
+          <div class="testimonial-meta"><div class="avatar bg5">AM</div><div><strong>Amina M.</strong><div style="color:var(--muted)">Operations Lead</div></div></div>
+        </div>
+
+        <div class="testimonial-card" role="listitem" data-aos="fade-up" data-aos-delay="300">
+          <div class="testimonial-quote">"Consistent communication and reliable delivery across admin + creative tasks. Highly recommended."</div>
+          <div class="testimonial-meta"><div class="avatar bg6">JR</div><div><strong>James R.</strong><div style="color:var(--muted)">Founder, Creative Studio</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get in Touch (light blue background) -->
+  <section id="contact" class="contact-section" data-aos="fade-up" data-aos-duration="700">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up" data-aos-delay="80">
+        <h2>Get In Touch</h2>
+        <p>Questions, custom proposals or monthly retainers — send a message and I’ll respond within 24 hours.</p>
+      </div>
+
+      <div class="contact-inner" data-aos="fade-up" data-aos-delay="120">
+        <!-- Left: info -->
+        <div class="info-cards">
+          <div class="info-card" data-aos="fade-right" data-aos-delay="140">
+            <div class="info-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <h4>Phone</h4>
+              <p style="font-weight:700">+1 (555) 123-4567</p>
+              <p class="muted" style="margin-top:8px">Mon–Fri • 9AM–6PM EST</p>
             </div>
           </div>
 
-          <!-- Right: Netlify form -->
-          <div class="form-panel" role="form" aria-label="Contact form" data-aos="fade-left" data-aos-delay="200">
-            <h3 style="margin-bottom:8px">Send us a Message</h3>
+          <div class="info-card" data-aos="fade-right" data-aos-delay="180">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <h4>Email</h4>
+              <p style="font-weight:700">salim.virtualassistant@gmail.com</p>
+              <p class="muted" style="margin-top:8px">We respond within 24 hours</p>
+            </div>
+          </div>
 
-            <form name="get-in-touch" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="contactForm" novalidate>
-              <input type="hidden" name="form-name" value="get-in-touch">
-              <p style="display:none"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+          <div class="info-card" data-aos="fade-right" data-aos-delay="220">
+            <div class="info-icon"><i class="fas fa-stopwatch"></i></div>
+            <div>
+              <h4>Response Time</h4>
+              <p style="font-weight:700">&lt; 2 Hours</p>
+              <p class="muted" style="margin-top:8px">Average response time</p>
+            </div>
+          </div>
 
-              <div class="form-grid">
-                <input class="form-control" type="text" name="fullname" placeholder="Full Name *" required>
-                <input class="form-control" type="email" name="email" placeholder="Email Address *" required>
-                <input class="form-control" type="text" name="company" placeholder="Company Name">
-                <input class="form-control" type="tel" name="phone" placeholder="+1 (555) 123-4567">
-                <select name="service" class="form-control full">
-                  <option value="">Service Interested In</option>
-                  <option value="administrative">Administrative
+          <div class="info-card" data-aos="fade-right" data-aos-delay="260">
+            <div class="info-icon"><i class="fas fa-handshake"></i></div>
+            <div>
+              <h4>Free Consultation</h4>
+              <p class="muted">Schedule a 30-minute session to scope your needs and options.</p>
+              <div style="margin-top:8px"><a href="#" class="btn btn-ghost">Schedule Now</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Netlify form -->
+        <div class="form-panel" role="form" aria-label="Contact form" data-aos="fade-left" data-aos-delay="200">
+          <h3 style="margin-bottom:8px">Send us a Message</h3>
+
+          <form name="get-in-touch" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="contactForm" novalidate>
+            <input type="hidden" name="form-name" value="get-in-touch">
+            <p style="display:none"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+
+            <div class="form-grid">
+              <input class="form-control" type="text" name="fullname" placeholder="Full Name *" required>
+              <input class="form-control" type="email" name="email" placeholder="Email Address *" required>
+              <input class="form-control" type="text" name="company" placeholder="Company Name">
+              <input class="form-control" type="tel" name="phone" placeholder="+1 (555) 123-4567">
+              <select name="service" class="form-control full">
+                <option value="">Service Interested In</option>
+                <option value="administrative">Administrative Support</option>
+                <option value="graphic">Graphic Design</option>
+                <option value="content">Content Creation</option>
+                <option value="social">Social Media Management</option>
+                <option value="ecommerce">E-commerce Support</option>
+                <option value="video">Video Editing</option>
+              </select>
+
+              <textarea name="message" id="messageField" class="form-control full" placeholder="Message * — Tell us about your business needs and how we can help..." maxlength="500" rows="6" required></textarea>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+              <div class="char-counter"><span id="charCount">0</span>/500 characters</div>
+              <div style="text-align:right"><button class="btn btn-primary" type="submit">Send Message</button></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid footer" style="gap:22px">
+      <div>
+        <a class="logo" href="#home" style="color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:10px"><i class="fas fa-headset"></i> Salim-VA</a>
+        <p style="margin-top:12px;color:rgba(255,255,255,0.95)">Professional virtual assistant & creative support — helping businesses scale with reliable, high-quality remote work.</p>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/salim-omar-56b98a277" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:salim.virtualassistant@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Company</h4>
+        <a href="#about">About Us</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div>
+        <h4>Services</h4>
+        <a href="#services">Administrative Support</a>
+        <a href="#services">Graphic Design</a>
+        <a href="#services">Content Creation</a>
+        <a href="#services">Social Media Management</a>
+        <a href="#services">E-commerce Support</a>
+        <a href="#services">Video Editing</a>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="faq.html">FAQ</a>
+        <a href="support.html">Support</a>
+      </div>
+    </div>
+
+    <div class="copyright-bar">© 2025 Salim-VA  •  Built with care • Designed to convert leads into clients</div>
+  </footer>
+
+  <!-- Paystack SDK (inline) -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <script>
+    /***** Initialize AOS *****/
+    AOS.init({ duration: 700, offset: 80, once: true, delay: 80 });
+
+    /* ============================
+       Small UI helpers & interactions
+       ============================ */
+    const $ = s => document.querySelector(s);
+    const $$ = s => Array.from(document.querySelectorAll(s));
+
+    // Mobile nav toggle
+    (function(){
+      const toggle = document.getElementById('menuToggle');
+      const nav = document.getElementById('navLinks');
+      if(toggle && nav){
+        toggle.addEventListener('click', ()=> nav.classList.toggle('active'));
+      }
+    })();
+
+    // Header on scroll
+    (function(){ const header=document.querySelector('header'); window.addEventListener('scroll', ()=> header.classList.toggle('scrolled', window.scrollY>70)); })();
+
+    // Contact char counter
+    (function(){
+      const msg = document.getElementById('messageField');
+      const cnt = document.getElementById('charCount');
+      if(msg && cnt){
+        msg.addEventListener('input', e => cnt.textContent = e.target.value.length);
+      }
+    })();
+
+    /* -------------------------
+       Pricing monthly/yearly toggle
+       ------------------------- */
+    (function(){
+      const toggleButtons = Array.from(document.querySelectorAll('.pricing-toggle button'));
+      const packCards = Array.from(document.querySelectorAll('.pack-card'));
+
+      function setMode(mode){
+        toggleButtons.forEach(btn => {
+          const isActive = btn.dataset.mode === mode || (!btn.dataset.mode && btn.textContent.trim().toLowerCase().includes(mode));
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+
+        packCards.forEach(card => {
+          const priceEl = card.querySelector('.pack-price');
+          const monthly = Number(priceEl.dataset.monthly || priceEl.getAttribute('data-monthly') || 0);
+          const yearlyTotal = Number(priceEl.dataset.yearlyTotal || priceEl.getAttribute('data-yearly-total') || 0);
+          if(mode === 'monthly'){
+            // Show monthly per-month price
+            const displayMonthly = monthly || Number(priceEl.textContent.replace(/[^0-9.]/g,''));
+            priceEl.innerHTML = `$${displayMonthly.toLocaleString(undefined, {minimumFractionDigits:0})} <small style="color:var(--muted);font-weight:700">/ month</small>`;
+          } else {
+            // Show yearly total + Save 20% tag
+            priceEl.innerHTML = `$${yearlyTotal.toLocaleString(undefined, {minimumFractionDigits:0})} <small style="color:var(--muted);font-weight:700">/ year <span style="color:var(--accent);font-weight:800">(Save 20%)</span></small>`;
+          }
+        });
+      }
+
+      document.querySelectorAll('.pricing-toggle button').forEach(b => {
+        if(!b.dataset.mode){
+          const t = b.textContent.toLowerCase();
+          b.dataset.mode = t.includes('year') ? 'yearly' : 'monthly';
+        }
+      });
+
+      toggleButtons.forEach(b => b.addEventListener('click', ()=> setMode(b.dataset.mode)));
+      setMode('monthly');
+    })();
+
+    /* -------------------------
+       Paystack & booking flow
+       ------------------------- */
+    (function(){
+      // Provided test key (you asked it be used)
+      const PAYSTACK_PUBLIC_KEY = 'pk_test_aeb92b1876c92b249172fd6453de18614cbd5381';
+
+      function openPaystackUSD(amountUSD, customerEmail, metaFields = []){
+        if(!PAYSTACK_PUBLIC_KEY || PAYSTACK_PUBLIC_KEY.includes('REPLACE_WITH')){
+          alert('Paystack public key missing. Please provide your public key.');
+          return;
+        }
+        if(!amountUSD || amountUSD <= 0){
+          alert('Invalid amount. Please try again.');
+          return;
+        }
+        const handler = PaystackPop.setup({
+          key: PAYSTACK_PUBLIC_KEY,
+          email: customerEmail || 'customer@example.com',
+          amount: Math.round(amountUSD * 100), // USD -> cents
+          currency: 'USD',
+          metadata: { custom_fields: metaFields },
+          callback: function(response){
+            alert('Payment successful! Reference: ' + response.reference);
+            // Ideally verify server-side then show a success page
+          },
+          onClose: function(){
+            // user closed
+          }
+        });
+        handler.openIframe();
+      }
+
+      // Package booking buttons
+      $$('.pack-book').forEach(btn => {
+        btn.addEventListener('click', () => {
+          // detect active mode
+          const active = document.querySelector('.pricing-toggle button.active');
+          const mode = active ? (active.dataset.mode || active.textContent.toLowerCase().includes('year') ? 'yearly' : 'monthly') : 'monthly';
+          const plan = btn.dataset.plan;
+          const monthly = Number(btn.dataset.monthly || 0);
+          const yearlyTotal = Number(btn.dataset.yearlyTotal || btn.dataset.yearly || 0);
+
+          const email = prompt('Please enter your email for the receipt and onboarding:', '');
+          if(email === null || email.trim() === '') { alert('Email is required to proceed.'); return; }
+          const startDate = prompt('Preferred start date (YYYY-MM-DD) or leave blank:', '');
+
+          if(mode === 'monthly'){
+            const confirmMsg = `You will be charged USD ${monthly.toFixed(2)} now for the ${plan} plan (monthly). Proceed to payment?`;
+            if(!confirm(confirmMsg)) return;
+            openPaystackUSD(monthly, email, [
+              { display_name: 'Plan', variable_name: 'plan', value: plan },
+              { display_name: 'Billing', variable_name: 'billing', value: 'monthly' },
+              { display_name: 'Start Date', variable_name: 'start_date', value: startDate || '' }
+            ]);
+          } else {
+            // Yearly: charge yearly total upfront
+            const confirmMsg = `You will be charged USD ${yearlyTotal.toFixed(2)} now for the ${plan} plan (yearly, 20% off). Proceed to payment?`;
+            if(!confirm(confirmMsg)) return;
+            openPaystackUSD(yearlyTotal, email, [
+              { display_name: 'Plan', variable_name: 'plan', value: plan },
+              { display_name: 'Billing', variable_name: 'billing', value: 'yearly_upfront' },
+              { display_name: 'Start Date', variable_name: 'start_date', value: startDate || '' }
+            ]);
+          }
+        });
+      });
+
+      // Hourly booking buttons inside Services
+      $$('.service-book').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const usdRate = Number(btn.dataset.usd || 0);
+          const service = btn.dataset.service || 'Service';
+          let hours = prompt(`How many hours of "${service}" would you like to purchase? (enter a number)`, '1');
+          if(hours === null) return;
+          hours = Math.max(1, parseInt(hours) || 1);
+          const email = prompt('Please provide your email for the receipt:', '');
+          if(email === null || email.trim() === '') { alert('Email required.'); return; }
+          const total = usdRate * hours;
+          if(!confirm(`You will be charged USD ${total.toFixed(2)} for ${hours} hour(s) of ${service}. Proceed?`)) return;
+          openPaystackUSD(total, email, [
+            { display_name: 'Service', variable_name: 'service', value: service },
+            { display_name: 'Hours', variable_name: 'hours', value: String(hours) }
+          ]);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
+
