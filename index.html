@@ -1,321 +1,966 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Salim-VA | Professional Virtual Assistant</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Salim-VA | Professional Virtual Assistant Services</title>
+  <meta name="description" content="Salim-VA — professional virtual assistant services: admin support, design, content, social media, e-commerce, video editing, and retainers." />
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- AOS (Animate On Scroll) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <style>
+    /* ---------- Brand & Base ---------- */
+    :root{
+      --primary: #4e46e5;
+      --primary-dark: #3730a3;
+      --accent: #f43f5e;
+      --bg: #f8fafc;
+      --muted: #64748b;
+      --text: #0f172a;
+      --card-shadow: 0 18px 50px rgba(16,24,40,0.08);
+      --radius: 12px;
+      --gap: 20px;
+      --transition: all .26s cubic-bezier(.2,.9,.2,1);
+      --getintouch-bg: #eef2ff; /* chosen light-blue tint */
+    }
 
-<!-- Fonts & Icons -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&Montserrat:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
 
-<!-- AOS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    .container { width: 92%; max-width: 1200px; margin: 0 auto; padding: 0 18px; }
 
-<style>
-:root{
-  --primary:#4e46e5;
-  --primary-dark:#3730a3;
-  --accent:#f43f5e;
-  --bg:#f8fafc;
-  --text:#0f172a;
-  --muted:#64748b;
-  --radius:12px;
-  --shadow:0 18px 50px rgba(16,24,40,.08);
-}
+    h1,h2,h3,h4 { font-family: "Montserrat", Inter, sans-serif; color: var(--text); }
+    p { color: var(--muted); }
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Inter,system-ui;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
-}
-.container{max-width:1200px;margin:auto;padding:0 16px}
-h1,h2,h3{font-family:Montserrat}
-a{text-decoration:none;color:inherit}
+    /* ---------- Buttons ---------- */
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:.6rem; padding:10px 18px; border-radius:10px; font-weight:700; cursor:pointer; border:none; transition:var(--transition); text-decoration:none; }
+    .btn-primary { background:var(--primary); color:#fff; }
+    .btn-primary:hover { transform:translateY(-3px); box-shadow:0 12px 36px rgba(78,70,229,0.12); }
+    .btn-accent { background:var(--accent); color:#fff; }
+    .btn-outline { background:transparent; border:2px solid var(--primary); color:var(--primary); padding:8px 16px; border-radius:10px; }
+    .btn-ghost { background:transparent; border:1px solid rgba(16,24,40,0.06); padding:8px 12px; border-radius:10px; }
+    .btn:focus{ outline:3px solid rgba(78,70,229,0.14); outline-offset:2px; }
 
-/* HEADER */
-header{
-  position:fixed;top:0;width:100%;
-  background:#fff;z-index:1000;
-  transition:.3s;
-}
-header.scrolled{box-shadow:0 12px 40px rgba(0,0,0,.08)}
-.navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-.logo{font-weight:800;color:var(--primary)}
-.nav-links{display:flex;gap:18px;list-style:none}
-.nav-links a{font-weight:600}
-.menu-toggle{display:none;cursor:pointer}
+    /* ---------- Header ---------- */
+    header {
+      position: fixed; top:0; left:0; width:100%; z-index:1200;
+      background: rgba(255,255,255,0.98); backdrop-filter: blur(6px);
+      box-shadow: 0 8px 30px rgba(13,17,26,0.06); padding:14px 0;
+      transition: var(--transition);
+    }
+    header.scrolled {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+      transform: translateY(-1px);
+    }
+    .navbar { display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .logo { font-weight:800; color:var(--primary); font-size:1.1rem; text-decoration:none; display:flex; gap:10px; align-items:center; }
+    .nav-links { display:flex; list-style:none; gap:18px; }
+    .nav-links a { font-weight:600; color:var(--text); text-decoration:none; position:relative; padding:6px 0; }
+    .nav-links a::after { content:''; position:absolute; left:0; bottom:-6px; width:0; height:2px; background:var(--accent); transition:var(--transition); }
+    .nav-links a:hover::after{ width:100%; }
+    .menu-toggle { display:none; cursor:pointer; }
 
-/* MOBILE NAV FIX */
-.nav-links.active{
-  display:flex;
-  flex-direction:column;
-  position:absolute;
-  right:20px;
-  top:70px;
-  background:#fff;
-  padding:16px;
-  border-radius:12px;
-  box-shadow:var(--shadow);
-}
+    /* Mobile nav active rule (fix) */
+    .nav-links.active {
+      display: flex;
+      flex-direction: column;
+      background: rgba(255,255,255,0.98);
+      position: absolute;
+      top:64px;
+      right:18px;
+      padding:12px;
+      border-radius:10px;
+      box-shadow: 0 8px 30px rgba(13,17,26,0.06);
+    }
 
-/* HERO */
-.hero{
-  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
-  color:#fff;
-  padding:140px 0 100px;
-  border-radius:0 0 18px 18px;
-  text-align:center;
-}
+    /* ---------- Hero ---------- */
+    .hero { padding:150px 0 100px; background: linear-gradient(135deg,var(--primary),var(--primary-dark)); color:#fff; overflow:hidden; border-bottom-left-radius:18px; border-bottom-right-radius:18px; }
+    .hero-inner { display:flex; gap:28px; align-items:center; }
+    .hero h1 { font-size:2.6rem; line-height:1.02; margin-bottom:8px; }
+    .hero p { margin-bottom:14px; opacity:0.95; max-width:640px; }
+    .hero-visual { margin-left:auto; max-width:480px; border-radius:12px; box-shadow:0 20px 60px rgba(13,17,26,0.16); overflow:hidden; }
+    .hero-visual img { width:100%; height:auto; display:block; }
 
-/* SECTIONS */
-section{padding:80px 0}
-.section-header{text-align:center;margin-bottom:40px}
+    /* ---------- Sections ---------- */
+    section { padding:84px 0; }
+    .section-header { text-align:center; margin-bottom:34px; }
+    .section-header h2 { font-size:1.9rem; display:inline-block; position:relative; }
+    .section-header h2::after { content:''; position:absolute; left:50%; transform:translateX(-50%); bottom:-10px; width:74px; height:4px; background:var(--accent); border-radius:4px; }
+    .section-header p { color: var(--muted); margin-top:10px; }
 
-/* BUTTONS */
-.btn{
-  padding:10px 18px;
-  border-radius:10px;
-  font-weight:700;
-  border:none;
-  cursor:pointer;
-  transition:all 0.3s ease;
-}
-.btn-primary{background:var(--primary);color:#fff}
-.btn-primary:hover{background:var(--primary-dark)}
-.btn-outline{border:2px solid #fff;color:#fff;background:transparent}
-.btn-outline:hover{background:#fff;color:var(--primary)}
+    /* ---------- Services (Hourly) ---------- */
+    .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .service-card { background:#fff; border-radius:12px; padding:22px; text-align:center; box-shadow:var(--card-shadow); border:1px solid rgba(16,24,40,0.03); transition:var(--transition); display:flex; flex-direction:column; justify-content:space-between; }
+    .service-card:hover { transform:translateY(-8px); box-shadow:0 30px 80px rgba(16,24,40,0.12); }
+    .service-icon { width:72px; height:72px; border-radius:14px; background: linear-gradient(135deg,var(--primary),var(--primary-dark)); display:flex; align-items:center; justify-content:center; color:#fff; margin:0 auto 16px; font-size:20px; }
+    .service-card h3 { margin-bottom:8px; font-size:1.05rem; }
+    .service-card p { color:var(--muted); margin-bottom:12px; font-size:0.95rem; }
+    .service-card .price { font-weight:800; color:var(--primary); font-size:1.15rem; margin-bottom:8px; }
 
-/* SERVICES */
-.services-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
-}
-.service-card{
-  background:#fff;
-  padding:22px;
-  border-radius:12px;
-  box-shadow:var(--shadow);
-  transition:transform 0.3s;
-}
-.service-card:hover{transform:translateY(-6px)}
+    /* Append Book button to service cards */
+    .service-footer { display:flex; justify-content:flex-end; margin-top:8px; }
 
-/* CHECKOUT */
-.checkout{
-  background:#eef2ff;
-}
-.checkout-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:24px;
-}
-.form-panel{
-  background:#fff;
-  padding:22px;
-  border-radius:12px;
-  box-shadow:var(--shadow);
-}
-label{font-weight:700;margin-top:12px;display:block}
-input,select{
-  width:100%;
-  padding:10px;
-  border-radius:10px;
-  border:1px solid #e5e7eb;
-  margin-top:6px;
-}
-input:focus,select:focus,button:focus{
-  outline:3px solid rgba(78,70,229,.4);
-}
+    /* ---------- Pricing Table (Packages) ---------- */
+    .pricing-wrap { max-width:1100px; margin:0 auto; }
+    .pricing-controls { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:18px; }
+    .pricing-toggle { display:flex; background:#fff; border-radius:12px; padding:6px; border:1px solid rgba(16,24,40,0.04); box-shadow:0 8px 24px rgba(16,24,40,0.04); }
+    .pricing-toggle button { background:transparent; border:none; padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; }
+    .pricing-toggle button.active { background: linear-gradient(90deg,var(--primary),var(--primary-dark)); color:#fff; box-shadow:0 12px 36px rgba(78,70,229,0.08); }
+    .pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:12px; align-items:stretch; }
 
-/* FOOTER */
-footer{
-  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
-  color:#fff;
-  padding:50px 0;
-  text-align:center;
-}
+    .pack-card { background:#fff; border-radius:12px; padding:20px; box-shadow:var(--card-shadow); border:1px solid rgba(16,24,40,0.03); transition:var(--transition); display:flex; flex-direction:column; justify-content:space-between; }
+    .pack-card:hover { transform:translateY(-8px); }
+    .pack-card.popular { border:2px solid var(--accent); transform: scale(1.03); }
+    .pack-badge { display:inline-block; background:var(--accent); color:#fff; padding:6px 12px; border-radius:999px; font-weight:800; margin-bottom:10px; font-size:0.85rem; }
 
-/* RESPONSIVE */
-@media(max-width:800px){
-  .menu-toggle{display:block}
-  .nav-links{display:none}
-  .checkout-grid{grid-template-columns:1fr}
-}
-</style>
+    .pack-card h3 { margin-bottom:8px; font-size:1.15rem; }
+    .pack-tagline { color:var(--muted); margin-bottom:12px; }
+    .pack-price { font-weight:900; font-size:1.5rem; color:var(--primary); margin:12px 0; }
+    .pack-sub { color:var(--muted); font-weight:700; margin-bottom:6px; }
+    .pack-features { text-align:left; color:var(--muted); list-style:none; padding-left:0; margin-top:10px; line-height:1.5; }
+    .pack-features li { margin-bottom:8px; }
+
+    .pack-cta { margin-top:14px; }
+
+    /* ---------- Testimonials 3x2 ---------- */
+    .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .testimonial-card { background:#fff; border-radius:12px; padding:18px; box-shadow:var(--card-shadow); border:1px solid rgba(16,24,40,0.03); transition:var(--transition); }
+    .testimonial-card:hover { transform:translateY(-8px); }
+    .testimonial-quote { margin-bottom:12px; color:var(--text); font-style:normal; }
+    .testimonial-meta { display:flex; gap:12px; align-items:center; }
+    .avatar { width:56px; height:56px; border-radius:999px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; }
+
+    .avatar.bg1 { background:#f97316; } .avatar.bg2 { background:#06b6d4; } .avatar.bg3 { background:#7c3aed; }
+    .avatar.bg4 { background:#ea580c; } .avatar.bg5 { background:#0ea5a4; } .avatar.bg6 { background:#ef4444; }
+
+    /* ---------- Contact (Get in Touch) ---------- */
+    .contact-section { background: var(--getintouch-bg); padding:48px 0; border-top: 1px solid rgba(78,70,229,0.04); }
+    .contact-inner { display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:start; max-width:1100px; margin:0 auto; }
+    .info-cards { display:grid; gap:14px; }
+    .info-card { background:#fff; border-radius:12px; padding:14px; display:flex; gap:12px; align-items:flex-start; box-shadow:var(--card-shadow); border:1px solid rgba(16,24,40,0.03); }
+    .info-icon { width:48px; height:48px; border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--primary); background: linear-gradient(180deg, rgba(78,70,229,0.08), rgba(78,70,229,0.04)); font-size:18px; }
+    .form-panel { background:#fff; border-radius:12px; padding:20px; box-shadow:var(--card-shadow); border:1px solid rgba(16,24,40,0.03); }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .form-control { width:100%; padding:10px; border-radius:10px; border:1px solid #e7eaf0; }
+    .form-control.full { grid-column: 1/-1; }
+    .char-counter { font-size:13px; color:var(--muted); text-align:right; margin-top:6px; }
+
+    /* ---------- Footer ---------- */
+    .site-footer { background: linear-gradient(135deg,var(--primary),var(--primary-dark)); color:#fff; padding:48px 0; border-top-left-radius:12px; border-top-right-radius:12px; margin-top:40px; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:20px; max-width:1100px; margin:0 auto; }
+    .footer a { color: rgba(255,255,255,0.95); text-decoration:none; display:block; margin-bottom:8px; }
+    .footer a:hover { color: var(--accent); }
+    .socials { display:flex; gap:10px; margin-top:12px; }
+    .socials a { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:10px; background: rgba(255,255,255,0.08); color:#fff; }
+    .copyright-bar { background: rgba(10,13,30,0.12); text-align:center; padding:12px 0; margin-top:18px; color: rgba(255,255,255,0.95); font-weight:700; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width:1100px){
+      .services-grid { grid-template-columns: repeat(2,1fr); }
+      .pricing-grid { grid-template-columns: repeat(2,1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .contact-inner { grid-template-columns:1fr; }
+    }
+    @media (max-width:820px){
+      .hero-inner { flex-direction:column; }
+      .services-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .nav-links { display:none; }
+      .menu-toggle { display:block; }
+    }
+    @media (max-width:520px){
+      .form-grid { grid-template-columns: 1fr; }
+    }
+
+    /* small reveal helpers left for AOS fallback */
+    .reveal { opacity:0; transform:translateY(16px); transition:var(--transition); }
+    .reveal.visible { opacity:1; transform:none; }
+
+    /* Checkout modal styles (improve and responsive) */
+    #checkoutModal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:1500; align-items:center; justify-content:center; padding:20px; }
+    #checkoutModal .modal-panel { background:#fff; width:100%; max-width:520px; border-radius:12px; padding:22px; position:relative; box-shadow:0 30px 70px rgba(2,6,23,0.32); }
+    #checkoutModal label{ display:block; font-weight:700; margin-bottom:6px; color:var(--text); }
+    #checkoutModal .form-control { width:100%; padding:10px 12px; border:1px solid #e7eaf0; border-radius:8px; }
+    #checkoutModal .order-box{ background:#f8fafc; border-radius:8px; padding:12px; margin-top:12px; border:1px solid rgba(16,24,40,0.03); }
+    #checkoutModal .close-btn{ position:absolute; top:12px; right:12px; background:none; border:none; font-size:1.2rem; cursor:pointer; }
+
+    /* Accessibility focus helpers */
+    .sr-only { position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden; }
+  </style>
 </head>
 <body>
+  <!-- Header -->
+  <header>
+    <div class="container navbar">
+      <a href="#home" class="logo"><i class="fas fa-headset"></i> Salim-VA</a>
 
-<header>
-  <div class="container navbar">
-    <a class="logo" href="#">Salim-VA</a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#checkout">Checkout</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="menu-toggle" id="menuToggle">☰</div>
-  </div>
-</header>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
 
-<section class="hero" data-aos="fade-down">
-  <div class="container">
-    <h1>Professional Virtual Assistant Services</h1>
-    <p>Reliable admin, creative & technical support.</p>
-    <a href="#services" class="btn btn-outline">View Services</a>
-  </div>
-</section>
-
-<section id="services" data-aos="fade-up">
-  <div class="container">
-    <div class="section-header">
-      <h2>Hourly Services</h2>
-    </div>
-
-    <div class="services-grid">
-      <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-        <h3>Administrative Support</h3>
-        <p>$25 / hour</p>
-        <button class="btn btn-primary service-book" data-service="Administrative Support" data-rate="25">Book</button>
-      </div>
-
-      <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-        <h3>Graphic Design</h3>
-        <p>$45 / hour</p>
-        <button class="btn btn-primary service-book" data-service="Graphic Design" data-rate="45">Book</button>
-      </div>
-
-      <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-        <h3>Video Editing</h3>
-        <p>$50 / hour</p>
-        <button class="btn btn-primary service-book" data-service="Video Editing" data-rate="50">Book</button>
+      <div class="menu-toggle" id="menuToggle" aria-label="Toggle menu" role="button" tabindex="0">
+        <span style="display:block;width:26px;height:3px;background:var(--primary);margin:4px 0;border-radius:3px"></span>
+        <span style="display:block;width:20px;height:3px;background:var(--primary);margin:4px 0;border-radius:3px"></span>
+        <span style="display:block;width:16px;height:3px;background:var(--primary);margin:4px 0;border-radius:3px"></span>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<section id="checkout" class="checkout" data-aos="fade-up">
-  <div class="container">
-    <div class="section-header">
-      <h2>Checkout</h2>
-      <p>Review your order and complete payment</p>
-    </div>
-
-    <div class="checkout-grid">
-      <div class="form-panel" data-aos="fade-right">
-        <form id="checkoutForm">
-          <label>Service</label>
-          <select id="service"></select>
-
-          <label>Hours</label>
-          <input type="number" id="hours" min="1" value="1">
-
-          <label>Start Date</label>
-          <input type="date" id="date">
-
-          <label>Email</label>
-          <input type="email" id="email">
-
-          <label>Payment Method</label>
-          <select id="payment">
-            <option value="">Select</option>
-            <option value="card">Card</option>
-            <option value="paypal">PayPal</option>
-            <option value="mpesa">M-Pesa</option>
-          </select>
-
-          <button class="btn btn-primary" type="submit">Complete Payment</button>
-        </form>
+  <!-- Hero -->
+  <section class="hero" id="home" data-aos="fade-up" data-aos-duration="700">
+    <div class="container hero-inner">
+      <div>
+        <h1 data-aos="fade-down" data-aos-duration="800" data-aos-delay="100">Professional Virtual Assistant Services</h1>
+        <p data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">Boost your productivity with expert administrative, creative, and technical support tailored to your business needs. Let me handle the details while you focus on growth.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="350">
+          <a class="btn btn-primary" href="#pricing">View Pricing</a>
+          <a class="btn btn-outline" href="#contact">Get in Touch</a>
+        </div>
       </div>
 
-      <div class="form-panel" data-aos="fade-left" data-aos-delay="150">
-        <h3>Order Summary</h3>
-        <p><strong>Service:</strong> <span id="sumService">—</span></p>
-        <p><strong>Hours:</strong> <span id="sumHours">0</span></p>
-        <p><strong>Total USD:</strong> $<span id="sumUSD">0</span></p>
-        <p><strong>Total KES:</strong> KES <span id="sumKES">0</span></p>
+      <div class="hero-visual" aria-hidden="true" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
+        <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Workspace">
+      </div>
+    </div>
+  </section>
+
+  <!-- Services (Hourly) -->
+  <section id="services" class="reveal" data-aos="fade-up" data-aos-duration="700">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up" data-aos-delay="80">
+        <h2>Hourly Services</h2>
+        <p>Choose any of these services on an hourly basis — perfect for one-off tasks or short projects.</p>
+      </div>
+
+      <div class="services-grid" role="list">
+        <div class="service-card" role="listitem" data-aos="fade-up" data-aos-delay="100">
+          <div>
+            <div class="service-icon"><i class="fas fa-calendar-alt"></i></div>
+            <h3>Administrative Support</h3>
+            <p>Email management, calendar scheduling, travel arrangements, and document prep.</p>
+            <div class="price">$25 <small style="color:var(--muted)">/ hour</small></div>
+          </div>
+          <div class="service-footer"><button class="btn btn-primary service-book" data-usd="25" data-service="Administrative Support">Book</button></div>
+        </div>
+
+        <div class="service-card" role="listitem" data-aos="fade-up" data-aos-delay="140">
+          <div>
+            <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+            <h3>Graphic Design</h3>
+            <p>Logo concepts, social graphics, slides and marketing assets.</p>
+            <div class="price">$45 <small style="color:var(--muted)">/ hour</small></div>
+          </div>
+          <div class="service-footer"><button class="btn btn-primary service-book" data-usd="45" data-service="Graphic Design">Book</button></div>
+        </div>
+
+        <div class="service-card" role="listitem" data-aos="fade-up" data-aos-delay="180">
+          <div>
+            <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+            <h3>Content Creation</h3>
+            <p>Blog posts, web copy, newsletters and email campaigns that convert.</p>
+            <div class="price">$35 <small style="color:var(--muted)">/ hour</small></div>
+          </div>
+          <div class="service-footer"><button class="btn btn-primary service-book" data-usd="35" data-service="Content Creation">Book</button></div>
+        </div>
+
+        <div class="service-card" role="listitem" data-aos="fade-up" data-aos-delay="220">
+          <div>
+            <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Social Media Management</h3>
+            <p>Content calendars, post scheduling, engagement and basic reporting.</p>
+            <div class="price">$40 <small style="color:var(--muted)">/ hour</small></div>
+          </div>
+          <div class="service-footer"><button class="btn btn-primary service-book" data-usd="40" data-service="Social Media Management">Book</button></div>
+        </div>
+
+        <div class="service-card" role="listitem" data-aos="fade-up" data-aos-delay="260">
+          <div>
+            <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
+            <h3>E-commerce Support</h3>
+            <p>Product listings, inventory updates, order handling and customer messages.</p>
+            <div class="price">$30 <small style="color:var(--muted)">/ hour</small></div>
+          </div>
+          <div class="service-footer"><button class="btn btn-primary service-book" data-usd="30" data-service="E-commerce Support">Book</button></div>
+        </div>
+
+        <div class="service-card" role="listitem" data-aos="fade-up" data-aos-delay="300">
+          <div>
+            <div class="service-icon"><i class="fas fa-video"></i></div>
+            <h3>Video Editing</h3>
+            <p>Short-form edits, captions, YouTube & promotional video edits.</p>
+            <div class="price">$50 <small style="color:var(--muted)">/ hour</small></div>
+          </div>
+          <div class="service-footer"><button class="btn btn-primary service-book" data-usd="50" data-service="Video Editing">Book</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Table (Packages) -->
+  <section id="pricing" class="reveal" data-aos="fade-up" data-aos-duration="700">
+    <div class="container pricing-wrap">
+      <div class="section-header" data-aos="fade-up" data-aos-delay="80">
+        <h2>Packages</h2>
+        <p>Choose a monthly retainer for predictable support — or pick yearly and save 20% (billed upfront).</p>
+      </div>
+
+      <div class="pricing-controls" data-aos="fade-up" data-aos-delay="120">
+        <div class="pricing-toggle" role="tablist" aria-label="Pricing options">
+          <button class="active" data-mode="monthly" aria-pressed="true">Monthly</button>
+          <button data-mode="yearly" aria-pressed="false">Yearly (Save 20%)</button>
+        </div>
+
+        <div style="margin-left:auto;display:flex;gap:10px;align-items:center">
+          <div style="font-weight:700;color:var(--muted)">Currency</div>
+          <div style="background:#fff;padding:6px 10px;border-radius:8px;border:1px solid rgba(16,24,40,0.04)">USD</div>
+        </div>
+      </div>
+
+      <div id="pricingGrid" class="pricing-grid" role="list">
+        <!-- Starter -->
+        <div class="pack-card" data-plan="starter" role="listitem" data-aos="fade-up" data-aos-delay="140">
+          <div>
+            <h3>Starter</h3>
+            <div class="pack-tagline">Perfect for small businesses and entrepreneurs getting started</div>
+
+            <div class="pack-price" data-monthly="400" data-yearly-total="3840">$400 <small style="color:var(--muted);font-weight:700">/ month</small></div>
+            <div class="pack-sub">What’s included</div>
+            <ul class="pack-features">
+              <li>20 hours of virtual assistance</li>
+              <li>Email and chat support</li>
+              <li>Basic administrative tasks</li>
+              <li>Social media posting (5 posts/week)</li>
+              <li>Data entry and research</li>
+              <li>48-hour response time</li>
+            </ul>
+          </div>
+
+          <div class="pack-cta">
+            <button class="btn btn-primary pack-book" data-plan="Starter" data-monthly="400" data-yearly-total="3840">Hire Now</button>
+          </div>
+        </div>
+
+        <!-- Standard (highlighted) -->
+        <div class="pack-card popular" data-plan="standard" role="listitem" data-aos="fade-up" data-aos-delay="180">
+          <div>
+            <div class="pack-badge">Most Popular</div>
+            <h3>Standard</h3>
+            <div class="pack-tagline">For growing teams needing reliable weekly support</div>
+
+            <div class="pack-price" data-monthly="750" data-yearly-total="7200">$750 <small style="color:var(--muted);font-weight:700">/ month</small></div>
+            <div class="pack-sub">What’s included</div>
+            <ul class="pack-features">
+              <li>40 hours of virtual assistance</li>
+              <li>Admin + creative services</li>
+              <li>Social media management & content support</li>
+              <li>Priority support & weekly check-ins</li>
+              <li>Content creation & design support</li>
+              <li>24–48 hour response time</li>
+            </ul>
+          </div>
+
+          <div class="pack-cta">
+            <button class="btn btn-accent pack-book" data-plan="Standard" data-monthly="750" data-yearly-total="7200">Hire Now</button>
+          </div>
+        </div>
+
+        <!-- Premium -->
+        <div class="pack-card" data-plan="premium" role="listitem" data-aos="fade-up" data-aos-delay="220">
+          <div>
+            <h3>Premium</h3>
+            <div class="pack-tagline">Dedicated support for high-volume operations and scaling businesses</div>
+
+            <div class="pack-price" data-monthly="1400" data-yearly-total="13440">$1,400 <small style="color:var(--muted);font-weight:700">/ month</small></div>
+            <div class="pack-sub">What’s included</div>
+            <ul class="pack-features">
+              <li>80 hours of virtual assistance</li>
+              <li>Full-service coverage (admin, content, design)</li>
+              <li>Graphic & video editing</li>
+              <li>Dedicated weekly calls & priority turnaround</li>
+              <li>Advanced reporting & workflow support</li>
+              <li>&lt; 24-hour response time</li>
+            </ul>
+          </div>
+
+          <div class="pack-cta">
+            <button class="btn btn-primary pack-book" data-plan="Premium" data-monthly="1400" data-yearly-total="13440">Hire Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="reveal" data-aos="fade-up" data-aos-duration="700">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up" data-aos-delay="80">
+        <h2>About Me</h2>
+        <p>I’m Salim — a results-driven virtual assistant who helps small businesses and founders reclaim time. I combine administrative efficiency with creative skills so you get polished deliverables and clear communication.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center;" data-aos="fade-up" data-aos-delay="140">
+        <div><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Workspace" style="width:100%;border-radius:12px;box-shadow:var(--card-shadow)"></div>
+        <div>
+          <h3 style="margin-bottom:8px">What I do</h3>
+          <p>I provide end-to-end support across administration, content, design and digital operations. My focus is on responsiveness, predictable delivery, and helping your business run smoother.</p>
+
+          <div style="display:flex;gap:12px;margin-top:14px">
+            <div style="background:#fff;padding:12px;border-radius:10px;text-align:center;flex:1;box-shadow:0 8px 24px rgba(16,24,40,0.04)"><div style="font-weight:800;color:var(--primary);font-size:1.1rem">5+</div><div style="color:var(--muted)">Years Experience</div></div>
+            <div style="background:#fff;padding:12px;border-radius:10px;text-align:center;flex:1;box-shadow:0 8px 24px rgba(16,24,40,0.04)"><div style="font-weight:800;color:var(--primary);font-size:1.1rem">200+</div><div style="color:var(--muted)">Happy Clients</div></div>
+            <div style="background:#fff;padding:12px;border-radius:10px;text-align:center;flex:1;box-shadow:0 8px 24px rgba(16,24,40,0.04)"><div style="font-weight:800;color:var(--primary);font-size:1.1rem">500+</div><div style="color:var(--muted)">Projects Completed</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials (3x2 grid) -->
+  <section id="testimonials" class="reveal" data-aos="fade-up" data-aos-duration="700">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up" data-aos-delay="80">
+        <h2>What Clients Say</h2>
+        <p>Real feedback from businesses and founders I’ve supported.</p>
+      </div>
+
+      <div class="testimonials-grid" role="list">
+        <div class="testimonial-card" role="listitem" data-aos="fade-up" data-aos-delay="100">
+          <div class="testimonial-quote">"Salim was a lifesaver during our launch week — handled client emails and scheduling so I could focus on closing deals."</div>
+          <div class="testimonial-meta"><div class="avatar bg1">LM</div><div><strong>Laura M.</strong><div style="color:var(--muted)">Founder, SaaS Startup</div></div></div>
+        </div>
+
+        <div class="testimonial-card" role="listitem" data-aos="fade-up" data-aos-delay="140">
+          <div class="testimonial-quote">"Handled our Instagram and content calendar with clarity — engagement improved within weeks."</div>
+          <div class="testimonial-meta"><div class="avatar bg2">DK</div><div><strong>Daniel K.</strong><div style="color:var(--muted)">Owner, Online Retail</div></div></div>
+        </div>
+
+        <div class="testimonial-card" role="listitem" data-aos="fade-up" data-aos-delay="180">
+          <div class="testimonial-quote">"Very reliable — edited training videos and delivered clean, professional edits on schedule."</div>
+          <div class="testimonial-meta"><div class="avatar bg3">SR</div><div><strong>Sophia R.</strong><div style="color:var(--muted)">HR Manager, Consulting</div></div></div>
+        </div>
+
+        <div class="testimonial-card" role="listitem" data-aos="fade-up" data-aos-delay="220">
+          <div class="testimonial-quote">"Optimized product listings and improved descriptions — we saw better conversions."</div>
+          <div class="testimonial-meta"><div class="avatar bg4">KT</div><div><strong>Kevin T.</strong><div style="color:var(--muted)">E-commerce Entrepreneur</div></div></div>
+        </div>
+
+        <div class="testimonial-card" role="listitem" data-aos="fade-up" data-aos-delay="260">
+          <div class="testimonial-quote">"Attention to detail: invoices and calendar management were handled weekly — saved me hours."</div>
+          <div class="testimonial-meta"><div class="avatar bg5">AM</div><div><strong>Amina M.</strong><div style="color:var(--muted)">Operations Lead</div></div></div>
+        </div>
+
+        <div class="testimonial-card" role="listitem" data-aos="fade-up" data-aos-delay="300">
+          <div class="testimonial-quote">"Consistent communication and reliable delivery across admin + creative tasks. Highly recommended."</div>
+          <div class="testimonial-meta"><div class="avatar bg6">JR</div><div><strong>James R.</strong><div style="color:var(--muted)">Founder, Creative Studio</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get in Touch (light blue background) -->
+  <section id="contact" class="contact-section" data-aos="fade-up" data-aos-duration="700">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up" data-aos-delay="80">
+        <h2>Get In Touch</h2>
+        <p>Questions, custom proposals or monthly retainers — send a message and I’ll respond within 24 hours.</p>
+      </div>
+
+      <div class="contact-inner" data-aos="fade-up" data-aos-delay="120">
+        <!-- Left: info -->
+        <div class="info-cards">
+          <div class="info-card" data-aos="fade-right" data-aos-delay="140">
+            <div class="info-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <h4>Phone</h4>
+              <p style="font-weight:700">+1 (555) 123-4567</p>
+              <p class="muted" style="margin-top:8px">Mon–Fri • 9AM–6PM EST</p>
+            </div>
+          </div>
+
+          <div class="info-card" data-aos="fade-right" data-aos-delay="180">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <h4>Email</h4>
+              <p style="font-weight:700">salim.virtualassistant@gmail.com</p>
+              <p class="muted" style="margin-top:8px">We respond within 24 hours</p>
+            </div>
+          </div>
+
+          <div class="info-card" data-aos="fade-right" data-aos-delay="220">
+            <div class="info-icon"><i class="fas fa-stopwatch"></i></div>
+            <div>
+              <h4>Response Time</h4>
+              <p style="font-weight:700">&lt; 2 Hours</p>
+              <p class="muted" style="margin-top:8px">Average response time</p>
+            </div>
+          </div>
+
+          <div class="info-card" data-aos="fade-right" data-aos-delay="260">
+            <div class="info-icon"><i class="fas fa-handshake"></i></div>
+            <div>
+              <h4>Free Consultation</h4>
+              <p class="muted">Schedule a 30-minute session to scope your needs and options.</p>
+              <div style="margin-top:8px"><a href="#" class="btn btn-ghost">Schedule Now</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Netlify form -->
+        <div class="form-panel" role="form" aria-label="Contact form" data-aos="fade-left" data-aos-delay="200">
+          <h3 style="margin-bottom:8px">Send us a Message</h3>
+
+          <form name="get-in-touch" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="contactForm" novalidate>
+            <input type="hidden" name="form-name" value="get-in-touch">
+            <p style="display:none"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+
+            <div class="form-grid">
+              <input class="form-control" type="text" name="fullname" placeholder="Full Name *" required>
+              <input class="form-control" type="email" name="email" placeholder="Email Address *" required>
+              <input class="form-control" type="text" name="company" placeholder="Company Name">
+              <input class="form-control" type="tel" name="phone" placeholder="+1 (555) 123-4567">
+              <select name="service" class="form-control full">
+                <option value="">Service Interested In</option>
+                <option value="administrative">Administrative Support</option>
+                <option value="graphic">Graphic Design</option>
+                <option value="content">Content Creation</option>
+                <option value="social">Social Media Management</option>
+                <option value="ecommerce">E-commerce Support</option>
+                <option value="video">Video Editing</option>
+              </select>
+
+              <textarea name="message" id="messageField" class="form-control full" placeholder="Message * — Tell us about your business needs and how we can help..." maxlength="500" rows="6" required></textarea>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+              <div class="char-counter"><span id="charCount">0</span>/500 characters</div>
+              <div style="text-align:right"><button class="btn btn-primary" type="submit">Send Message</button></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid footer" style="gap:22px">
+      <div>
+        <a class="logo" href="#home" style="color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:10px"><i class="fas fa-headset"></i> Salim-VA</a>
+        <p style="margin-top:12px;color:rgba(255,255,255,0.95)">Professional virtual assistant & creative support — helping businesses scale with reliable, high-quality remote work.</p>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/salim-omar-56b98a277" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:salim.virtualassistant@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Company</h4>
+        <a href="#about">About Us</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div>
+        <h4>Services</h4>
+        <a href="#services">Administrative Support</a>
+        <a href="#services">Graphic Design</a>
+        <a href="#services">Content Creation</a>
+        <a href="#services">Social Media Management</a>
+        <a href="#services">E-commerce Support</a>
+        <a href="#services">Video Editing</a>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="faq.html">FAQ</a>
+        <a href="support.html">Support</a>
+      </div>
+    </div>
+
+    <div class="copyright-bar">© 2025 Salim-VA  •  Built with care • Designed to convert leads into clients</div>
+  </footer>
+
+  <!-- ================== BOOKING & CHECKOUT MODAL ================== -->
+  <div id="checkoutModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-panel" role="document" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+      <button class="close-btn" id="closeModal" aria-label="Close dialog">&times;</button>
+      <h3 id="modalTitle">Complete Your Booking</h3>
+      <p id="modalDesc" style="color:var(--muted);margin-bottom:8px">Fill the details and choose payment method to complete the booking.</p>
+
+      <div style="margin:12px 0;">
+        <label for="serviceSelect">Service / Plan</label>
+        <select id="serviceSelect" class="form-control full" aria-label="Service or plan"></select>
+      </div>
+
+      <div style="margin:12px 0;">
+        <label for="hoursInput">Hours (for hourly services)</label>
+        <input type="number" id="hoursInput" class="form-control" min="1" value="1" aria-label="Number of hours">
+      </div>
+
+      <div style="margin:12px 0;">
+        <label for="dateInput">Preferred Start Date</label>
+        <input type="date" id="dateInput" class="form-control" aria-label="Preferred start date">
+      </div>
+
+      <div style="margin:12px 0;">
+        <label for="emailInput">Email</label>
+        <input type="email" id="emailInput" class="form-control" placeholder="you@example.com" aria-label="Email for receipt">
+      </div>
+
+      <div style="margin:12px 0;">
+        <label for="paymentMethod">Payment Method</label>
+        <select id="paymentMethod" class="form-control" aria-label="Payment method">
+          <option value="card">Credit / Debit Card (Paystack)</option>
+          <option value="paypal">PayPal</option>
+        </select>
+      </div>
+
+      <div class="order-box" aria-live="polite">
+        <strong>Order Summary</strong>
+        <p style="margin:.25rem 0">Service: <span id="summaryService">-</span></p>
+        <p style="margin:.25rem 0">Hours: <span id="summaryHours">-</span></p>
+        <p style="margin:.25rem 0">Rate: $<span id="summaryRate">0</span></p>
+        <p style="margin:.25rem 0;font-weight:800">Total: $<span id="summaryTotal">0</span></p>
+      </div>
+
+      <div style="margin-top:14px;display:flex;gap:8px;">
+        <button id="completePayment" class="btn btn-primary" style="flex:1">Complete Payment</button>
+        <button id="saveDraft" class="btn btn-ghost" style="flex:1">Save (local)</button>
       </div>
     </div>
   </div>
-</section>
 
-<footer id="contact">
-  <div class="container">
-    <p>© 2025 Salim-VA | Contact: omarsalim7507@gmail.com</p>
-  </div>
-</footer>
+  <!-- Paystack SDK (inline) -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
-<script src="https://js.paystack.co/v1/inline.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>
-/* Initialize AOS */
-AOS.init({
-  duration:800,
-  once:true,
-  easing:'ease-out-cubic'
-});
+  <script>
+    /***** Initialize AOS *****/
+    AOS.init({ duration: 700, offset: 80, once: true, delay: 80 });
 
-/* NAV */
-menuToggle.onclick=()=>navLinks.classList.toggle('active');
-window.addEventListener('scroll',()=>document.querySelector('header')
-.classList.toggle('scrolled',scrollY>60));
+    /* ============================
+       Small UI helpers & interactions
+       ============================ */
+    const $ = s => document.querySelector(s);
+    const $$ = s => Array.from(document.querySelectorAll(s));
 
-/* STATE */
-const USD_KES=160;
-const order={service:'',rate:0,hours:1};
+    // Mobile nav toggle
+    (function(){
+      const toggle = document.getElementById('menuToggle');
+      const nav = document.getElementById('navLinks');
+      if(toggle && nav){
+        toggle.addEventListener('click', ()=> nav.classList.toggle('active'));
+        // keyboard accessibility
+        toggle.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); nav.classList.toggle('active'); } });
+      }
+    })();
 
-/* SERVICES */
-const services={
-  "Administrative Support":25,
-  "Graphic Design":45,
-  "Video Editing":50
-};
+    // Header on scroll (adds .scrolled that now has CSS)
+    (function(){ const header=document.querySelector('header'); window.addEventListener('scroll', ()=> header.classList.toggle('scrolled', window.scrollY>70)); })();
 
-const serviceSelect=document.getElementById('service');
-Object.keys(services).forEach(s=>{
-  serviceSelect.innerHTML+=`<option value="${s}">${s}</option>`;
-});
+    // Contact char counter
+    (function(){
+      const msg = document.getElementById('messageField');
+      const cnt = document.getElementById('charCount');
+      if(msg && cnt){
+        msg.addEventListener('input', e => cnt.textContent = e.target.value.length);
+      }
+    })();
 
-document.querySelectorAll('.service-book').forEach(b=>{
-  b.onclick=()=>{
-    serviceSelect.value=b.dataset.service;
-    order.rate=b.dataset.rate;
-    document.getElementById('checkout').scrollIntoView({behavior:'smooth'});
-    update();
-  };
-});
+    /* -------------------------
+       Pricing monthly/yearly toggle
+       ------------------------- */
+    (function(){
+      const toggleButtons = Array.from(document.querySelectorAll('.pricing-toggle button'));
+      const packCards = Array.from(document.querySelectorAll('.pack-card'));
 
-/* UPDATE */
-function update(){
-  order.service=serviceSelect.value;
-  order.rate=services[order.service];
-  order.hours=+hours.value;
-  const total=order.rate*order.hours;
-  sumService.textContent=order.service;
-  sumHours.textContent=order.hours;
-  sumUSD.textContent=total.toFixed(2);
-  sumKES.textContent=(total*USD_KES).toLocaleString();
-}
-serviceSelect.onchange=hours.oninput=update;
+      function setMode(mode){
+        toggleButtons.forEach(btn => {
+          const isActive = btn.dataset.mode === mode || (!btn.dataset.mode && btn.textContent.trim().toLowerCase().includes(mode));
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
 
-/* PAY */
-checkoutForm.onsubmit=e=>{
-  e.preventDefault();
-  if(!email.value||!payment.value)return alert("Fill all fields");
+        packCards.forEach(card => {
+          const priceEl = card.querySelector('.pack-price');
+          const monthly = Number(priceEl.dataset.monthly || priceEl.getAttribute('data-monthly') || 0);
+          const yearlyTotal = Number(priceEl.dataset.yearlyTotal || priceEl.getAttribute('data-yearly-total') || priceEl.dataset.yearly || 0);
+          if(mode === 'monthly'){
+            const displayMonthly = monthly || Number(String(priceEl.textContent).replace(/[^0-9.]/g,''));
+            priceEl.innerHTML = `$${displayMonthly.toLocaleString(undefined, {minimumFractionDigits:0})} <small style="color:var(--muted);font-weight:700">/ month</small>`;
+          } else {
+            priceEl.innerHTML = `$${yearlyTotal.toLocaleString(undefined, {minimumFractionDigits:0})} <small style="color:var(--muted);font-weight:700">/ year <span style="color:var(--accent);font-weight:800">(Save 20%)</span></small>`;
+          }
+        });
+      }
 
-  if(payment.value==="card"){
-    PaystackPop.setup({
-      key:"pk_test_REPLACE",
-      email:email.value,
-      amount:(order.rate*order.hours)*100,
-      currency:"USD",
-      callback:()=>location.href="/thank-you.html"
-    }).openIframe();
-  }
-};
-</script>
+      document.querySelectorAll('.pricing-toggle button').forEach(b => {
+        if(!b.dataset.mode){
+          const t = b.textContent.toLowerCase();
+          b.dataset.mode = t.includes('year') ? 'yearly' : 'monthly';
+        }
+      });
+
+      toggleButtons.forEach(b => b.addEventListener('click', ()=> setMode(b.dataset.mode)));
+      setMode('monthly');
+    })();
+  </script>
+
+  <!-- ================== BOOKING / CHECKOUT SCRIPT ================== -->
+  <script>
+    (function(){
+      // -------- DOM elements --------
+      const modal = document.getElementById('checkoutModal');
+      const closeBtn = document.getElementById('closeModal');
+      const serviceSelect = document.getElementById('serviceSelect');
+      const hoursInput = document.getElementById('hoursInput');
+      const emailInput = document.getElementById('emailInput');
+      const dateInput = document.getElementById('dateInput');
+      const paymentMethod = document.getElementById('paymentMethod');
+      const summaryService = document.getElementById('summaryService');
+      const summaryHours = document.getElementById('summaryHours');
+      const summaryRate = document.getElementById('summaryRate');
+      const summaryTotal = document.getElementById('summaryTotal');
+      const completePayment = document.getElementById('completePayment');
+      const saveDraftBtn = document.getElementById('saveDraft');
+
+      // Booking state (persisted to sessionStorage)
+      let order = { service:'', hours:1, rate:0, total:0, type:'hourly', date:'', email:'' };
+
+      // Utility: select all
+      const $$ = selector => Array.from(document.querySelectorAll(selector));
+
+      // Populate services from existing site elements
+      function populateServices(){
+        const options = [];
+        // Hourly services
+        $$('.service-card').forEach(card => {
+          const title = card.querySelector('h3')?.textContent?.trim() || 'Service';
+          // price element text may include currency and small tag
+          const priceEl = card.querySelector('.price');
+          let rate = 0;
+          if(priceEl) rate = Number(String(priceEl.textContent).replace(/[^0-9.]/g,'') || 0);
+          options.push({ name:title, rate, type:'hourly' });
+        });
+        // Package plans
+        $$('.pack-card').forEach(card => {
+          const title = card.querySelector('h3')?.textContent?.trim() || 'Package';
+          const priceEl = card.querySelector('.pack-price');
+          let rate = 0;
+          if(priceEl) rate = Number(priceEl.dataset.monthly || priceEl.getAttribute('data-monthly') || 0);
+          options.push({ name:title, rate, type:'package' });
+        });
+
+        // remove duplicates if any (keep first occurrence)
+        const seen = new Set();
+        const unique = options.filter(o => {
+          if(seen.has(o.name)) return false;
+          seen.add(o.name);
+          return true;
+        });
+
+        serviceSelect.innerHTML = unique.map(o=>`<option value="${o.name}" data-rate="${o.rate}" data-type="${o.type}">${o.name} ${o.type==='hourly' ? '- $'+o.rate : ''}</option>`).join('');
+        // if there's saved state, restore selection
+        restoreDraft();
+        updateOrder();
+      }
+
+      // Update order summary and persist to sessionStorage
+      function updateOrder(){
+        const selectedOption = serviceSelect.selectedOptions[0];
+        order.service = selectedOption ? selectedOption.value : '';
+        order.rate = Number(selectedOption?.dataset.rate || 0);
+        order.type = selectedOption?.dataset.type || 'hourly';
+        order.hours = order.type==='hourly' ? Math.max(1, parseInt(hoursInput.value)||1) : 1;
+        order.date = dateInput.value || '';
+        order.email = emailInput.value.trim() || '';
+        order.total = order.type==='hourly' ? order.rate * order.hours : order.rate;
+        // update UI
+        summaryService.textContent = order.service || '-';
+        summaryHours.textContent = order.hours;
+        summaryRate.textContent = order.rate.toFixed(2);
+        summaryTotal.textContent = order.total.toFixed(2);
+        // hide hours for packages
+        if(hoursInput && hoursInput.parentElement) hoursInput.parentElement.style.display = order.type==='hourly' ? 'block' : 'none';
+        // persist to session storage
+        try {
+          sessionStorage.setItem('salim_booking_draft', JSON.stringify(order));
+        } catch(e){}
+      }
+
+      // Restore draft from sessionStorage if exists
+      function restoreDraft(){
+        try {
+          const raw = sessionStorage.getItem('salim_booking_draft');
+          if(!raw) return;
+          const draft = JSON.parse(raw);
+          if(draft){
+            // set service if available
+            if(draft.service){
+              const option = Array.from(serviceSelect.options).find(o=>o.value===draft.service);
+              if(option) serviceSelect.value = draft.service;
+            }
+            if(typeof draft.hours !== 'undefined') hoursInput.value = draft.hours;
+            if(draft.date) dateInput.value = draft.date;
+            if(draft.email) emailInput.value = draft.email;
+          }
+        } catch(e){}
+      }
+
+      // Event listeners
+      serviceSelect.addEventListener('change', updateOrder);
+      hoursInput.addEventListener('input', updateOrder);
+      dateInput.addEventListener('change', updateOrder);
+      emailInput.addEventListener('input', updateOrder);
+
+      // Modal open/close helpers
+      function openModal(){
+        populateServices(); // ensure services are in select
+        modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden','false');
+        // focus first input
+        setTimeout(()=> serviceSelect.focus(), 50);
+      }
+      function closeModal(){
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden','true');
+      }
+      closeBtn.addEventListener('click', closeModal);
+      // allow Escape to close
+      window.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && modal.style.display==='flex') closeModal(); });
+
+      // Save draft button (explicit)
+      saveDraftBtn.addEventListener('click', ()=>{
+        try {
+          sessionStorage.setItem('salim_booking_draft', JSON.stringify(order));
+          alert('Booking saved locally. You can continue later on this device.');
+        } catch(e){
+          alert('Could not save draft locally.');
+        }
+      });
+
+      // Payment handler (Paystack + PayPal example)
+      completePayment.addEventListener('click', ()=>{
+        // simple validation
+        if(!order.service){ alert('Please select a service or plan.'); return; }
+        if(!order.email || !/^\S+@\S+\.\S+$/.test(order.email)){ alert('Enter a valid email address.'); emailInput.focus(); return; }
+        if(!order.date){ alert('Please select a preferred start date.'); dateInput.focus(); return; }
+        if(order.type==='hourly' && order.hours < 1){ alert('Hours must be at least 1.'); hoursInput.focus(); return; }
+        if(order.total <= 0){ alert('Invalid order total.'); return; }
+
+        // Disable button to avoid double clicks
+        completePayment.disabled = true;
+        completePayment.textContent = 'Processing...';
+
+        const paymentChoice = paymentMethod.value || 'card';
+
+        if(paymentChoice === 'card'){
+          // Paystack inline
+          const PAYSTACK_PUBLIC_KEY = 'pk_test_aeb92b1876c92b249172fd6453de18614cbd5381'; // replace with live key in production
+          try {
+            const handler = PaystackPop.setup({
+              key: PAYSTACK_PUBLIC_KEY,
+              email: order.email || 'customer@example.com',
+              amount: Math.round(order.total * 100), // in cents
+              currency: 'USD',
+              metadata: {
+                custom_fields: [
+                  { display_name:'Service', variable_name:'service', value: order.service },
+                  { display_name:'Hours', variable_name:'hours', value: String(order.hours) },
+                  { display_name:'Start Date', variable_name:'start_date', value: order.date }
+                ]
+              },
+              callback: function(response){
+                // Ideally verify on server; for now show success
+                try { sessionStorage.removeItem('salim_booking_draft'); } catch(e){}
+                alert('Payment successful! Reference: ' + response.reference);
+                // Optional: redirect to a thank-you page with query params
+                // window.location.href = '/thank-you.html?ref='+encodeURIComponent(response.reference);
+                completePayment.disabled = false;
+                completePayment.textContent = 'Complete Payment';
+                closeModal();
+              },
+              onClose: function(){
+                alert('Payment window closed.');
+                completePayment.disabled = false;
+                completePayment.textContent = 'Complete Payment';
+              }
+            });
+            handler.openIframe();
+          } catch(e){
+            alert('Payment failed to initialize. Please try PayPal or try again later.');
+            completePayment.disabled = false;
+            completePayment.textContent = 'Complete Payment';
+          }
+        } else {
+          // PayPal flow (deep link to PayPal.me or a hosted checkout)
+          // NOTE: Replace YOUR_PAYPAL_LINK with your PayPal.me username or hosted payment link
+          const amount = order.total.toFixed(2);
+          const paypalUrl = `https://www.paypal.com/paypalme/YOUR_PAYPAL_LINK/${amount}`;
+          // We open in a new tab and keep modal open so user can return
+          window.open(paypalUrl, '_blank');
+          // re-enable button
+          completePayment.disabled = false;
+          completePayment.textContent = 'Complete Payment';
+          // Optionally clear draft if you want to assume payment will happen
+          // sessionStorage.removeItem('salim_booking_draft');
+          alert('PayPal window opened — complete payment there, then you will receive confirmation via email.');
+        }
+      });
+
+      // Attach modal openers to original booking buttons
+      $$('.service-book, .pack-book').forEach(btn=>{
+        btn.addEventListener('click', (e)=>{
+          e.preventDefault();
+          // Pre-populate selection after services are loaded
+          populateServices();
+          const serviceName = btn.dataset.service || btn.dataset.plan;
+          // Wait a tick to allow select to be filled
+          setTimeout(()=>{
+            if(serviceName){
+              const opt = Array.from(serviceSelect.options).find(o => o.value === serviceName);
+              if(opt) serviceSelect.value = serviceName;
+            }
+            updateOrder();
+            // Pre-fill email from contact form if available
+            const contactEmail = document.querySelector('#contact input[type="email"]')?.value;
+            if(contactEmail && !emailInput.value) emailInput.value = contactEmail;
+            // open modal
+            modal.style.display = 'flex';
+            modal.setAttribute('aria-hidden','false');
+            // focus the email input after slight delay
+            setTimeout(()=> emailInput.focus(), 150);
+          }, 10);
+        });
+      });
+
+      // On first load, ensure services are populated (so pack-book buttons have effect)
+      document.addEventListener('DOMContentLoaded', () => {
+        populateServices();
+      });
+    })();
+  </script>
 </body>
 </html>
