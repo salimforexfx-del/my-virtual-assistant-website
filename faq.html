@@ -547,189 +547,156 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
   <script>
-    AOS.init({ duration: 700, offset: 80, once: true });
+AOS.init({ duration: 700, offset: 80, once: true });
 
-    // Mobile nav toggle (basic)
-    (function(){
-      const toggle = document.getElementById('menuToggle');
-      const nav = document.getElementById('navLinks');
-      if(toggle && nav){
-        toggle.addEventListener('click', ()=> nav.classList.toggle('active'));
-        toggle.addEventListener('keypress', e => { if(e.key === 'Enter') nav.classList.toggle('active'); });
-      }
-    })();
-
-    // Accordion open/close (keyboard accessible)
-    (function(){
-      const faqQs = document.querySelectorAll('.faq-q');
-      faqQs.forEach(q => {
-        q.addEventListener('click', () => toggleItem(q));
-        q.addEventListener('keypress', e => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleItem(q); } });
-      });
-
-      function toggleItem(q){
-        const item = q.closest('.faq-item');
-        const isOpen = item.classList.contains('open');
-        // close all in same group? We'll allow multiple open. If you want single-open, add code to close others.
-        if(isOpen){
-          item.classList.remove('open');
-          q.setAttribute('aria-expanded','false');
-          item.querySelector('.faq-a').setAttribute('aria-hidden','true');
-        } else {
-          item.classList.add('open');
-          q.setAttribute('aria-expanded','true');
-          item.querySelector('.faq-a').setAttribute('aria-hidden','false');
-        }
-      }
-    })();
-
-    // Tabs filtering
-    (function(){
-      const tabs = Array.from(document.querySelectorAll('.tab'));
-      const items = Array.from(document.querySelectorAll('.faq-item'));
-      const counts = {}; // for per-category counts, including 'all'
-
-      // compute counts based on data-category attributes
-      items.forEach(it => {
-        const cat = it.getAttribute('data-category') || 'uncategorized';
-        counts[cat] = (counts[cat] || 0) + 1;
-        counts['all'] = (counts['all'] || 0) + 1;
-      });
-
-      // fill counts in tab labels
-      tabs.forEach(tab => {
-        const f = tab.dataset.filter;
-        const count = counts[f] || 0;
-        const span = tab.querySelector('.count');
-        if(span) span.textContent = count ? ' • ' + count : '';
-      });
-
-      function setActiveTab(tab){
-        tabs.forEach(t => t.classList.toggle('active', t === tab));
-        // filter items
-        const filter = tab.dataset.filter;
-        if(filter === 'all'){
-          items.forEach(i => i.style.display = '');
-        } else {
-          items.forEach(i => {
-            const cat = i.getAttribute('data-category');
-            i.style.display = cat === filter ? '' : 'none';
-          });
-        }
-        // accessibility focus: scroll to main content
-        const main = document.querySelector('main');
-        if(main) main.scrollIntoView({behavior:'smooth', block: 'start'});
-      }
-
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => setActiveTab(tab));
-        tab.addEventListener('keypress', e => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActiveTab(tab); } });
-      });
-
-      // If URL hash matches a category, open that tab and scroll to it.
-      window.addEventListener('load', () => {
-        const hash = location.hash.replace('#','');
-        if(hash){
-          const targetTab = tabs.find(t => t.dataset.filter === hash);
-          if(targetTab) setActiveTab(targetTab);
-          // if user linked to a specific question anchor, allow the earlier load to open that question:
-          const el = document.querySelector(location.hash);
-          if(el) {
-            setTimeout(()=> {
-              el.scrollIntoView({behavior:'smooth', block:'start'});
-              const firstFaq = el.querySelector('.faq-item, .faq-q');
-              if(firstFaq && firstFaq.classList.contains) {
-                // try open first item inside that section
-                const inside = el.querySelector('.faq-item');
-                if(inside) {
-                  inside.classList.add('open');
-                  const q = inside.querySelector('.faq-q');
-                  if(q) { q.setAttribute('aria-expanded','true'); inside.querySelector('.faq-a').setAttribute('aria-hidden','false'); }
-                }
-              }
-            }, 400);
-          }
-        }
-      });
-
-      // default - ensure All is active
-      const defaultTab = tabs.find(t => t.dataset.filter === 'all');
-      if(defaultTab) defaultTab.classList.add('active');
-    })();
-
-    // Cookie banner simple logic (stores 'cookieConsent' in localStorage)
-    (function(){
-      const banner = document.getElementById('cookieBanner');
-      const accept = document.getElementById('cookieAccept');
-      const reject = document.getElementById('cookieReject');
-      const consent = localStorage.getItem('salimva_cookie_consent');
-
-      function showBanner(){
-        if(!consent){
-          banner.style.display = 'flex';
-          banner.setAttribute('aria-hidden','false');
-        }
-      }
-      function hideBanner(){
-        banner.style.display = 'none';
-        banner.setAttribute('aria-hidden','true');
-      }
-      accept.addEventListener('click', () => {
-        localStorage.setItem('salimva_cookie_consent', 'accepted');
-        // initialize analytics here if you use any (not included)
-        hideBanner();
-      });
-      reject.addEventListener('click', () => {
-        localStorage.setItem('salimva_cookie_consent', 'rejected');
-        hideBanner();
-      });
-
-      // show on load after small delay so it's not jarring
-      window.addEventListener('load', () => setTimeout(showBanner, 600));
-    })();
-
-    // Small accessibility improvement: ensure focus indicator for keyboard users
-    (function(){
-      let body = document.body;
-      window.addEventListener('keydown', function(e){
-        if(e.key === 'Tab'){ body.classList.add('show-focus'); }
-      });
-      window.addEventListener('mousedown', function(){ body.classList.remove('show-focus'); });
-    })();
-  </script>
-
-  <!-- Structured data (FAQPage) - include a small subset for search engines -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How do I start working with Salim-VA?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Choose an hourly or monthly package from the Pricing page, or contact me via the Get In Touch form. I’ll follow up with a short consultation to scope your needs and confirm next steps."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you offer a free consultation?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes — I offer a free 30-minute consultation to understand your needs and recommend the best plan or approach."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What payment methods are accepted?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Payments are processed via secure third-party providers. Exact payment methods are presented during checkout (USD)."
-        }
-      }
-    ]
+/* -------------------------------
+   Mobile nav toggle
+-------------------------------- */
+(function(){
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('navLinks');
+  if(toggle && nav){
+    toggle.addEventListener('click', ()=> nav.classList.toggle('active'));
+    toggle.addEventListener('keypress', e => { if(e.key === 'Enter') nav.classList.toggle('active'); });
   }
-  </script>
+})();
+
+/* -------------------------------
+   FAQ Logic (improved behavior)
+-------------------------------- */
+
+window.refreshFaqDisplay = function(){
+  const activeTab = document.querySelector('.tab.active');
+  const filter = activeTab ? activeTab.dataset.filter : 'all';
+  const items = document.querySelectorAll('.faq-item');
+
+  items.forEach(i => {
+    const cat = i.getAttribute('data-category');
+    if(filter === 'all' || cat === filter){
+      i.style.display = '';
+    } else {
+      i.style.display = 'none';
+    }
+
+    i.classList.remove('open');
+    const q = i.querySelector('.faq-q');
+    const a = i.querySelector('.faq-a');
+    if(q) q.setAttribute('aria-expanded','false');
+    if(a) a.setAttribute('aria-hidden','true');
+  });
+};
+
+(function(){
+  const faqQs = document.querySelectorAll('.faq-q');
+
+  function toggleItem(q){
+    const item = q.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+
+    if(isOpen){
+      item.classList.remove('open');
+      q.setAttribute('aria-expanded','false');
+      const ans = item.querySelector('.faq-a');
+      if(ans) ans.setAttribute('aria-hidden','true');
+      window.refreshFaqDisplay();
+    } else {
+      const all = document.querySelectorAll('.faq-item');
+      all.forEach(i => { if(i !== item) i.style.display = 'none'; });
+
+      item.style.display = '';
+      item.classList.add('open');
+      q.setAttribute('aria-expanded','true');
+      const ans = item.querySelector('.faq-a');
+      if(ans) ans.setAttribute('aria-hidden','false');
+
+      setTimeout(()=> item.scrollIntoView({ behavior: 'smooth', block: 'center' }), 120);
+    }
+  }
+
+  faqQs.forEach(q => {
+    q.addEventListener('click', () => toggleItem(q));
+    q.addEventListener('keypress', e => {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        toggleItem(q);
+      }
+    });
+  });
+})();
+
+/* -------------------------------
+   Tabs filtering (syncs with FAQ)
+-------------------------------- */
+(function(){
+  const tabs = Array.from(document.querySelectorAll('.tab'));
+
+  function setActiveTab(tab){
+    tabs.forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected','false');
+    });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected','true');
+    window.refreshFaqDisplay();
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => setActiveTab(tab));
+  });
+
+  window.addEventListener('load', () => {
+    const hash = location.hash.replace('#','');
+    if(hash){
+      const targetTab = tabs.find(t => t.dataset.filter === hash);
+      if(targetTab) setActiveTab(targetTab);
+    } else {
+      const defaultTab = tabs.find(t => t.dataset.filter === 'all');
+      if(defaultTab) setActiveTab(defaultTab);
+    }
+  });
+})();
+
+/* -------------------------------
+   Cookie banner
+-------------------------------- */
+(function(){
+  const banner = document.getElementById('cookieBanner');
+  const accept = document.getElementById('cookieAccept');
+  const reject = document.getElementById('cookieReject');
+  const consent = localStorage.getItem('salimva_cookie_consent');
+
+  function showBanner(){
+    if(!consent){
+      banner.style.display = 'flex';
+      banner.setAttribute('aria-hidden','false');
+    }
+  }
+  function hideBanner(){
+    banner.style.display = 'none';
+    banner.setAttribute('aria-hidden','true');
+  }
+
+  accept.addEventListener('click', () => {
+    localStorage.setItem('salimva_cookie_consent', 'accepted');
+    hideBanner();
+  });
+
+  reject.addEventListener('click', () => {
+    localStorage.setItem('salimva_cookie_consent', 'rejected');
+    hideBanner();
+  });
+
+  window.addEventListener('load', () => setTimeout(showBanner, 600));
+})();
+
+/* -------------------------------
+   Keyboard focus indicator
+-------------------------------- */
+(function(){
+  let body = document.body;
+  window.addEventListener('keydown', e => { if(e.key === 'Tab') body.classList.add('show-focus'); });
+  window.addEventListener('mousedown', () => body.classList.remove('show-focus'));
+})();
+</script>
 </body>
 </html>
