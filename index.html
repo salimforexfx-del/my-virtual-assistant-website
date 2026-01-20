@@ -157,13 +157,13 @@
     .char-counter { font-size:13px; color:var(--muted); text-align:right; margin-top:6px; }
 
     /* ---------- Footer ---------- */
-    .site-footer { background: linear-gradient(135deg,var(--primary),var(--primary-dark)); color:#fff; padding:48px 0; border-top-left-radius:12px; border-top-right-radius:12px; margin-top:40px; }
-    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:20px; max-width:1100px; margin:0 auto; }
-    .footer a { color: rgba(255,255,255,0.95); text-decoration:none; display:block; margin-bottom:8px; }
-    .footer a:hover { color: var(--accent); }
-    .socials { display:flex; gap:10px; margin-top:12px; }
-    .socials a { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:10px; background: rgba(255,255,255,0.08); color:#fff; }
-    .copyright-bar { background: rgba(10,13,30,0.12); text-align:center; padding:12px 0; margin-top:18px; color: rgba(255,255,255,0.95); font-weight:700; }
+    .site-footer{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:48px 0 24px;margin-top:auto;}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:20px;max-width:1100px;margin:0 auto;}
+    .footer a{color:#fff;margin-bottom:8px;display:block}
+    .footer a:hover{color:#fff;opacity:.8}
+    .socials{display:flex;gap:10px;margin-top:12px}
+    .socials a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.15);color:#fff}
+    .copyright-bar{background:rgba(0,0,0,0.15);text-align:center;padding:14px 0;margin-top:24px;font-weight:600;position:relative;z-index:100;}
 
     /* ---------- Responsive ---------- */
     @media (max-width:1100px){
@@ -559,7 +559,7 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Updated Footer (from fix) -->
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-grid footer">
       <div>
@@ -598,7 +598,7 @@
       </div>
     </div>
 
-    <div class="copyright-bar">© 2025 Salim-VA  •  Built with care • Designed to convert leads into clients</div>
+    <div class="copyright-bar">© 2025 Salim-VA • Built with care • Designed to convert leads into clients</div>
   </footer>
 
   <!-- ================== BOOKING & CHECKOUT MODAL ================== -->
@@ -708,7 +708,7 @@
           const monthly = Number(priceEl.dataset.monthly || priceEl.getAttribute('data-monthly') || 0);
           const yearlyTotal = Number(priceEl.dataset.yearlyTotal || priceEl.getAttribute('data-yearly-total') || priceEl.dataset.yearly || 0);
           if(mode === 'monthly'){
-            const displayMonthly = monthly || Number(String(priceEl.textContent).replace(/[^0-9.]/g,''));
+            const displayMonthly = monthly || Number(String(priceEl.textContent).replace(/[^0-9.]/g,'')); 
             priceEl.innerHTML = `$${displayMonthly.toLocaleString(undefined, {minimumFractionDigits:0})} <small style="color:var(--muted);font-weight:700">/ month</small>`;
           } else {
             priceEl.innerHTML = `$${yearlyTotal.toLocaleString(undefined, {minimumFractionDigits:0})} <small style="color:var(--muted);font-weight:700">/ year <span style="color:var(--accent);font-weight:800">(Save 20%)</span></small>`;
