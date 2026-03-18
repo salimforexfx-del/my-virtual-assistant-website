@@ -822,242 +822,210 @@
     })();
   </script>
 
-  <!-- ================== BOOKING / CHECKOUT SCRIPT ================== -->
   <script>
-    (function(){
-      // -------- DOM elements --------
-      const modal = document.getElementById('checkoutModal');
-      const closeBtn = document.getElementById('closeModal');
-      const serviceSelect = document.getElementById('serviceSelect');
-      const hoursInput = document.getElementById('hoursInput');
-      const emailInput = document.getElementById('emailInput');
-      const dateInput = document.getElementById('dateInput');
-      const paymentMethod = document.getElementById('paymentMethod');
-      const summaryService = document.getElementById('summaryService');
-      const summaryHours = document.getElementById('summaryHours');
-      const summaryRate = document.getElementById('summaryRate');
-      const summaryTotal = document.getElementById('summaryTotal');
-      const completePayment = document.getElementById('completePayment');
-      const saveDraftBtn = document.getElementById('saveDraft');
+/* ============================
+   FULL SaaS FRONTEND SYSTEM
+============================ */
 
-      // Booking state (persisted to sessionStorage)
-      let order = { service:'', hours:1, rate:0, total:0, type:'hourly', date:'', email:'' };
+/* ---------- STATE ---------- */
+const AppState = {
+  order: {
+    service: '',
+    type: 'hourly',
+    hours: 1,
+    rate: 0,
+    total: 0,
+    email: '',
+    date: ''
+  },
 
-      // Utility: select all
-      const $$ = selector => Array.from(document.querySelectorAll(selector));
+  set(key, value) {
+    this.order[key] = value;
+    this.save();
+    this.render();
+  },
 
-      // Populate services from existing site elements
-      function populateServices(){
-        const options = [];
-        // Hourly services
-        $$('.service-card').forEach(card => {
-          const title = card.querySelector('h3')?.textContent?.trim() || 'Service';
-          // price element text may include currency and small tag
-          const priceEl = card.querySelector('.price');
-          let rate = 0;
-          if(priceEl) rate = Number(String(priceEl.textContent).replace(/[^0-9.]/g,'') || 0);
-          options.push({ name:title, rate, type:'hourly' });
-        });
-        // Package plans
-        $$('.pack-card').forEach(card => {
-          const title = card.querySelector('h3')?.textContent?.trim() || 'Package';
-          const priceEl = card.querySelector('.pack-price');
-          let rate = 0;
-          if(priceEl) rate = Number(priceEl.dataset.monthly || priceEl.getAttribute('data-monthly') || 0);
-          options.push({ name:title, rate, type:'package' });
-        });
+  save() {
+    localStorage.setItem('salim_order', JSON.stringify(this.order));
+  },
 
-        // remove duplicates if any (keep first occurrence)
-        const seen = new Set();
-        const unique = options.filter(o => {
-          if(seen.has(o.name)) return false;
-          seen.add(o.name);
-          return true;
-        });
+  load() {
+    const data = localStorage.getItem('salim_order');
+    if (data) this.order = JSON.parse(data);
+  },
 
-        serviceSelect.innerHTML = unique.map(o=>`<option value="${o.name}" data-rate="${o.rate}" data-type="${o.type}">${o.name} ${o.type==='hourly' ? '- $'+o.rate : ''}</option>`).join('');
-        // if there's saved state, restore selection
-        restoreDraft();
-        updateOrder();
-      }
+  clear() {
+    localStorage.removeItem('salim_order');
+  },
 
-      // Update order summary and persist to sessionStorage
-      function updateOrder(){
-        const selectedOption = serviceSelect.selectedOptions[0];
-        order.service = selectedOption ? selectedOption.value : '';
-        order.rate = Number(selectedOption?.dataset.rate || 0);
-        order.type = selectedOption?.dataset.type || 'hourly';
-        order.hours = order.type==='hourly' ? Math.max(1, parseInt(hoursInput.value)||1) : 1;
-        order.date = dateInput.value || '';
-        order.email = emailInput.value.trim() || '';
-        order.total = order.type==='hourly' ? order.rate * order.hours : order.rate;
-        // update UI
-        summaryService.textContent = order.service || '-';
-        summaryHours.textContent = order.hours;
-        summaryRate.textContent = order.rate.toFixed(2);
-        summaryTotal.textContent = order.total.toFixed(2);
-        // hide hours for packages
-        if(hoursInput && hoursInput.parentElement) hoursInput.parentElement.style.display = order.type==='hourly' ? 'block' : 'none';
-        // persist to session storage
-        try {
-          sessionStorage.setItem('salim_booking_draft', JSON.stringify(order));
-        } catch(e){}
-      }
+  render() {
+    document.getElementById('summaryService').textContent = this.order.service || '-';
+    document.getElementById('summaryHours').textContent = this.order.hours;
+    document.getElementById('summaryRate').textContent = this.order.rate.toFixed(2);
+    document.getElementById('summaryTotal').textContent = this.order.total.toFixed(2);
+  }
+};
 
-      // Restore draft from sessionStorage if exists
-      function restoreDraft(){
-        try {
-          const raw = sessionStorage.getItem('salim_booking_draft');
-          if(!raw) return;
-          const draft = JSON.parse(raw);
-          if(draft){
-            // set service if available
-            if(draft.service){
-              const option = Array.from(serviceSelect.options).find(o=>o.value===draft.service);
-              if(option) serviceSelect.value = draft.service;
-            }
-            if(typeof draft.hours !== 'undefined') hoursInput.value = draft.hours;
-            if(draft.date) dateInput.value = draft.date;
-            if(draft.email) emailInput.value = draft.email;
-          }
-        } catch(e){}
-      }
+/* ---------- SERVICES ---------- */
+const Services = [
+  { name:"Administrative Support", rate:25, type:"hourly" },
+  { name:"Graphic Design", rate:45, type:"hourly" },
+  { name:"Content Creation", rate:35, type:"hourly" },
+  { name:"Social Media Management", rate:40, type:"hourly" },
+  { name:"E-commerce Support", rate:30, type:"hourly" },
+  { name:"Video Editing", rate:50, type:"hourly" },
+  { name:"Starter", rate:400, type:"package" },
+  { name:"Standard", rate:750, type:"package" },
+  { name:"Premium", rate:1400, type:"package" }
+];
 
-      // Event listeners
-      serviceSelect.addEventListener('change', updateOrder);
-      hoursInput.addEventListener('input', updateOrder);
-      dateInput.addEventListener('change', updateOrder);
-      emailInput.addEventListener('input', updateOrder);
+/* ---------- LOAD SERVICES ---------- */
+function loadServices() {
+  const select = document.getElementById('serviceSelect');
 
-      // Modal open/close helpers
-      function openModal(){
-        populateServices(); // ensure services are in select
-        modal.style.display = 'flex';
-        modal.setAttribute('aria-hidden','false');
-        // focus first input
-        setTimeout(()=> serviceSelect.focus(), 50);
-      }
-      function closeModal(){
-        modal.style.display = 'none';
-        modal.setAttribute('aria-hidden','true');
-      }
-      closeBtn.addEventListener('click', closeModal);
-      // allow Escape to close
-      window.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && modal.style.display==='flex') closeModal(); });
+  select.innerHTML = Services.map(s =>
+    `<option value="${s.name}" data-rate="${s.rate}" data-type="${s.type}">
+      ${s.name} ${s.type==='hourly' ? '- $'+s.rate+'/hr' : ''}
+    </option>`
+  ).join('');
+}
 
-      // Save draft button (explicit)
-      saveDraftBtn.addEventListener('click', ()=>{
-        try {
-          sessionStorage.setItem('salim_booking_draft', JSON.stringify(order));
-          alert('Booking saved locally. You can continue later on this device.');
-        } catch(e){
-          alert('Could not save draft locally.');
-        }
-      });
+/* ---------- UPDATE ORDER ---------- */
+function updateOrder() {
+  const select = document.getElementById('serviceSelect');
+  const hoursInput = document.getElementById('hoursInput');
 
-      // Payment handler (Paystack + PayPal example)
-      completePayment.addEventListener('click', ()=>{
-        // simple validation
-        if(!order.service){ alert('Please select a service or plan.'); return; }
-        if(!order.email || !/^\S+@\S+\.\S+$/.test(order.email)){ alert('Enter a valid email address.'); emailInput.focus(); return; }
-        if(!order.date){ alert('Please select a preferred start date.'); dateInput.focus(); return; }
-        if(order.type==='hourly' && order.hours < 1){ alert('Hours must be at least 1.'); hoursInput.focus(); return; }
-        if(order.total <= 0){ alert('Invalid order total.'); return; }
+  const selected = select.selectedOptions[0];
+  const rate = Number(selected.dataset.rate);
+  const type = selected.dataset.type;
 
-        // Disable button to avoid double clicks
-        completePayment.disabled = true;
-        completePayment.textContent = 'Processing...';
+  const hours = type==='hourly'
+    ? Math.max(1, parseInt(hoursInput.value)||1)
+    : 1;
 
-        const paymentChoice = paymentMethod.value || 'card';
+  const total = type==='hourly' ? rate * hours : rate;
 
-        if(paymentChoice === 'card'){
-          // Paystack inline
-          const PAYSTACK_PUBLIC_KEY = 'pk_test_aeb92b1876c92b249172fd6453de18614cbd5381'; // replace with live key in production
-          try {
-            const handler = PaystackPop.setup({
-              key: PAYSTACK_PUBLIC_KEY,
-              email: order.email || 'customer@example.com',
-              amount: Math.round(order.total * 100), // in cents
-              currency: 'USD',
-              metadata: {
-                custom_fields: [
-                  { display_name:'Service', variable_name:'service', value: order.service },
-                  { display_name:'Hours', variable_name:'hours', value: String(order.hours) },
-                  { display_name:'Start Date', variable_name:'start_date', value: order.date }
-                ]
-              },
-              callback: function(response){
-                // Ideally verify on server; for now show success
-                try { sessionStorage.removeItem('salim_booking_draft'); } catch(e){}
-                alert('Payment successful! Reference: ' + response.reference);
-                // Optional: redirect to a thank-you page with query params
-                // window.location.href = '/thank-you.html?ref='+encodeURIComponent(response.reference);
-                completePayment.disabled = false;
-                completePayment.textContent = 'Complete Payment';
-                closeModal();
-              },
-              onClose: function(){
-                alert('Payment window closed.');
-                completePayment.disabled = false;
-                completePayment.textContent = 'Complete Payment';
-              }
-            });
-            handler.openIframe();
-          } catch(e){
-            alert('Payment failed to initialize. Please try PayPal or try again later.');
-            completePayment.disabled = false;
-            completePayment.textContent = 'Complete Payment';
-          }
-        } else {
-          // PayPal flow (deep link to PayPal.me or a hosted checkout)
-          // NOTE: Replace YOUR_PAYPAL_LINK with your PayPal.me username or hosted payment link
-          const amount = order.total.toFixed(2);
-          const paypalUrl = `https://www.paypal.com/paypalme/YOUR_PAYPAL_LINK/${amount}`;
-          // We open in a new tab and keep modal open so user can return
-          window.open(paypalUrl, '_blank', 'noopener');
-          // re-enable button
-          completePayment.disabled = false;
-          completePayment.textContent = 'Complete Payment';
-          // Optionally clear draft if you want to assume payment will happen
-          // sessionStorage.removeItem('salim_booking_draft');
-          alert('PayPal window opened — complete payment there, then you will receive confirmation via email.');
-        }
-      });
+  AppState.set('service', selected.value);
+  AppState.set('rate', rate);
+  AppState.set('type', type);
+  AppState.set('hours', hours);
+  AppState.set('total', total);
 
-      // Attach modal openers to original booking buttons
-      $$('.service-book, .pack-book').forEach(btn=>{
-        btn.addEventListener('click', (e)=>{
-          e.preventDefault();
-          // Pre-populate selection after services are loaded
-          populateServices();
-          const serviceName = btn.dataset.service || btn.dataset.plan;
-          // Wait a tick to allow select to be filled
-          setTimeout(()=>{
-            if(serviceName){
-              const opt = Array.from(serviceSelect.options).find(o => o.value === serviceName);
-              if(opt) serviceSelect.value = serviceName;
-            }
-            updateOrder();
-            // Pre-fill email from contact form if available
-            const contactEmail = document.querySelector('#contact input[type="email"]')?.value;
-            if(contactEmail && !emailInput.value) emailInput.value = contactEmail;
-            // open modal
-            modal.style.display = 'flex';
-            modal.setAttribute('aria-hidden','false');
-            // focus the email input after slight delay
-            setTimeout(()=> emailInput.focus(), 150);
-          }, 10);
-        });
-      });
+  hoursInput.parentElement.style.display = type==='hourly' ? 'block':'none';
+}
 
-      // On first load, ensure services are populated (so pack-book buttons have effect)
-      document.addEventListener('DOMContentLoaded', () => {
-        populateServices();
-      });
-    })();
-  </script>
+/* ---------- VALIDATION ---------- */
+function showError(msg) {
+  const panel = document.querySelector('#checkoutModal .modal-panel');
+  const el = document.createElement('div');
+  el.textContent = msg;
+  el.style.cssText = "background:#fee2e2;color:#991b1b;padding:10px;border-radius:8px;margin-bottom:10px;";
+  panel.prepend(el);
+  setTimeout(()=>el.remove(),3000);
+  return false;
+}
+
+function validate() {
+  const {email,service,date,total} = AppState.order;
+
+  if(!service) return showError("Select service");
+  if(!email || !/^\S+@\S+\.\S+$/.test(email)) return showError("Invalid email");
+  if(!date) return showError("Select date");
+  if(total<=0) return showError("Invalid total");
+
+  return true;
+}
+
+/* ---------- LOADING ---------- */
+function setLoading(btn, state){
+  if(state){
+    btn.disabled = true;
+    btn.dataset.txt = btn.textContent;
+    btn.textContent = "Processing...";
+  } else {
+    btn.disabled = false;
+    btn.textContent = btn.dataset.txt;
+  }
+}
+
+/* ---------- PAYMENT ---------- */
+function handlePayment(){
+  if(!validate()) return;
+
+  const btn = document.getElementById('completePayment');
+  setLoading(btn,true);
+
+  const {email,total,service,hours,date} = AppState.order;
+
+  const handler = PaystackPop.setup({
+    key:'pk_test_aeb92b1876c92b249172fd6453de18614cbd5381',
+    email,
+    amount: total * 100,
+    currency:'USD',
+
+    metadata:{
+      custom_fields:[
+        {display_name:"Service", value:service},
+        {display_name:"Hours", value:hours},
+        {display_name:"Date", value:date}
+      ]
+    },
+
+    callback:function(res){
+      AppState.clear();
+      alert("Payment successful: "+res.reference);
+      setLoading(btn,false);
+      closeModal();
+    },
+
+    onClose:function(){
+      setLoading(btn,false);
+    }
+  });
+
+  handler.openIframe();
+}
+
+/* ---------- MODAL ---------- */
+function openModal(serviceName=null){
+  const modal = document.getElementById('checkoutModal');
+  modal.style.display='flex';
+  modal.setAttribute('aria-hidden','false');
+
+  if(serviceName){
+    document.getElementById('serviceSelect').value = serviceName;
+  }
+
+  updateOrder();
+}
+
+function closeModal(){
+  const modal = document.getElementById('checkoutModal');
+  modal.style.display='none';
+  modal.setAttribute('aria-hidden','true');
+}
+
+/* ---------- INIT ---------- */
+document.addEventListener('DOMContentLoaded', ()=>{
+  AppState.load();
+  loadServices();
+
+  document.getElementById('serviceSelect').addEventListener('change', updateOrder);
+  document.getElementById('hoursInput').addEventListener('input', updateOrder);
+  document.getElementById('emailInput').addEventListener('input', e=>AppState.set('email',e.target.value));
+  document.getElementById('dateInput').addEventListener('change', e=>AppState.set('date',e.target.value));
+
+  document.getElementById('completePayment').addEventListener('click', handlePayment);
+  document.getElementById('closeModal').addEventListener('click', closeModal);
+
+  document.querySelectorAll('.service-book, .pack-book').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      openModal(btn.dataset.service || btn.dataset.plan);
+    });
+  });
+
+  updateOrder();
+});
+</script>
 </body>
-</html>
-
-
-
+</html> 
