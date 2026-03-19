@@ -4,14 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Salim-VA | Frequently Asked Questions</title>
-  <meta name="description" content="Frequently asked questions about Salim-VA virtual assistant services. Find answers about pricing, process, and how we work.">
+  <meta name="description" content="Frequently asked questions about Salim-VA virtual assistant services. Find answers about pricing, payment, process, and how we work.">
   
-  <!-- Same head as privacy.html -->
+  <!-- Same head as other pages -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
-    /* Same base CSS as privacy.html plus FAQ-specific styles */
+    /* Same CSS as before */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --primary: #4e46e5;
@@ -20,10 +20,13 @@
       --bg: #ffffff;
       --bg-alt: #f8fafc;
       --text: #0f172a;
+      --text-secondary: #475569;
       --text-muted: #64748b;
       --border: #e2e8f0;
+      --card-bg: #ffffff;
       --card-shadow: 0 8px 30px rgba(0,0,0,0.04);
       --radius: 12px;
+      --transition: all 0.26s cubic-bezier(0.2, 0.9, 0.2, 1);
       --header-height: 64px;
     }
     
@@ -38,6 +41,11 @@
     }
     
     .container { width: min(92%, 1200px); margin: 0 auto; padding: 0 15px; }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-weight: 700;
+    }
     
     /* Header */
     .site-header {
@@ -80,31 +88,75 @@
       text-decoration: none;
       font-weight: 500;
       font-size: 0.9rem;
+      transition: var(--transition);
     }
     
     .nav-link:hover { color: var(--primary); }
     
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--primary);
+      margin: 5px 0;
+      transition: var(--transition);
+    }
+    
     /* Page Header */
     .page-header {
-      padding: calc(var(--header-height) + 40px) 0 20px;
+      padding: calc(var(--header-height) + 40px) 0 30px;
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
     }
     
     .page-header h1 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       color: white;
+      margin-bottom: 10px;
     }
     
     .page-header p {
       color: rgba(255,255,255,0.9);
-      margin-top: 10px;
+      font-size: 1.1rem;
+      max-width: 600px;
     }
     
-    /* Content */
+    /* Page Content */
     .page-content {
-      padding: 50px 0;
+      padding: 60px 0;
       flex: 1;
+    }
+    
+    /* FAQ Categories */
+    .faq-category {
+      margin-bottom: 50px;
+    }
+    
+    .faq-category h2 {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      color: var(--text);
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .faq-category h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
     }
     
     .faq-grid {
@@ -143,39 +195,104 @@
     
     .faq-item p {
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       line-height: 1.6;
+      margin: 0;
     }
     
-    .faq-category {
-      margin-bottom: 30px;
+    .faq-item .highlight {
+      background: #f0f9ff;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      border-left: 3px solid var(--primary);
     }
     
-    .faq-category h2 {
-      font-size: 1.4rem;
-      margin-bottom: 20px;
-      color: var(--text);
+    .payment-badge {
+      display: inline-block;
+      background: #e6f7e6;
+      color: #2e7d32;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-left: 8px;
     }
     
+    .payment-badge.paystack {
+      background: #e6f7e6;
+      color: #00C3B1;
+    }
+    
+    .payment-badge.paypal {
+      background: #e6f0ff;
+      color: #003087;
+    }
+    
+    .currency-note {
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .currency-note i {
+      font-size: 2rem;
+      color: #16a34a;
+    }
+    
+    .currency-note p {
+      margin: 0;
+      color: #166534;
+    }
+    
+    /* Contact CTA */
     .contact-cta {
       margin-top: 50px;
       text-align: center;
-      padding: 40px;
-      background: var(--bg-alt);
+      padding: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       border-radius: var(--radius);
+      color: white;
     }
     
     .contact-cta h3 {
-      font-size: 1.3rem;
+      color: white;
+      font-size: 1.8rem;
       margin-bottom: 15px;
     }
     
     .contact-cta p {
-      margin-bottom: 20px;
-      color: var(--text-muted);
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 25px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
-    /* Footer - Same as privacy */
+    .contact-cta .btn-large {
+      background: white;
+      color: var(--primary);
+      padding: 15px 40px;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-block;
+      transition: var(--transition);
+    }
+    
+    .contact-cta .btn-large:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    /* Footer */
     .site-footer {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
@@ -194,6 +311,7 @@
       color: rgba(255,255,255,0.8);
       font-size: 0.85rem;
       margin: 10px 0;
+      line-height: 1.5;
     }
     
     .footer-social {
@@ -210,7 +328,7 @@
       align-items: center;
       justify-content: center;
       color: white;
-      transition: 0.3s;
+      transition: var(--transition);
     }
     
     .footer-social a:hover {
@@ -236,7 +354,7 @@
       color: rgba(255,255,255,0.8);
       text-decoration: none;
       font-size: 0.8rem;
-      transition: 0.3s;
+      transition: var(--transition);
     }
     
     .footer-links a:hover {
@@ -312,37 +430,110 @@
       50% { transform: scale(1.1); }
     }
     
-    @media (max-width: 768px) {
+    /* Responsive */
+    @media (max-width: 1000px) {
       .faq-grid {
         grid-template-columns: 1fr;
       }
       
       .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      
+      .nav-list {
+        display: none;
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        flex-direction: column;
+        gap: 15px;
+        border-bottom: 1px solid var(--border);
+      }
+      
+      .nav-list.active {
+        display: flex;
       }
       
       .trust-strip {
         flex-direction: column;
+        gap: 8px;
       }
       
       .trust-divider {
         display: none;
       }
+      
+      .trust-item {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+    
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--primary);
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 0 0 6px 0;
+      z-index: 10000;
+    }
+    
+    .skip-link:focus {
+      top: 0;
+    }
+    
+    [data-aos] {
+      opacity: 0;
+      transition-property: opacity, transform;
+    }
+    
+    [data-aos].aos-animate {
+      opacity: 1;
     }
   </style>
+  
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 </head>
 <body>
-  <!-- Same header -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
   <header class="site-header">
     <div class="container header-container">
       <a href="index.html" class="logo">
         <i class="fas fa-headset"></i>
         <span>Salim-VA</span>
       </a>
-      
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
       <nav>
-        <ul class="nav-list">
+        <ul class="nav-list" id="navList">
           <li><a href="index.html#home" class="nav-link">Home</a></li>
           <li><a href="index.html#services" class="nav-link">Services</a></li>
           <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
@@ -357,16 +548,26 @@
   <!-- Page Header -->
   <div class="page-header">
     <div class="container">
-      <h1>Frequently Asked Questions</h1>
-      <p>Find answers to common questions about our services</p>
+      <h1 data-aos="fade-up">Frequently Asked Questions</h1>
+      <p data-aos="fade-up" data-aos-delay="50">Find answers to common questions about my services, pricing, and how we work together.</p>
     </div>
   </div>
 
   <!-- Main Content -->
-  <main class="page-content">
+  <main id="main-content" class="page-content">
     <div class="container">
+      
+      <!-- Currency Note (Important for international clients) -->
+      <div class="currency-note" data-aos="fade-up">
+        <i class="fas fa-coins"></i>
+        <div>
+          <strong>💡 Currency Information:</strong>
+          <p>Payments are processed in KES for Paystack and USD for PayPal. The exchange rate is approximately 1 USD = 131 KES.</p>
+        </div>
+      </div>
+      
       <!-- General Questions -->
-      <div class="faq-category">
+      <div class="faq-category" data-aos="fade-up">
         <h2>General Questions</h2>
         <div class="faq-grid">
           <div class="faq-item">
@@ -381,7 +582,7 @@
           
           <div class="faq-item">
             <h3><i class="fas fa-globe"></i> Do you work with international clients?</h3>
-            <p>Yes! I work with clients from around the world. All communication is conducted in English, and payments are processed in USD.</p>
+            <p>Yes! I work with clients from around the world. All communication is conducted in English, and payments are processed in KES for Paystack and USD for PayPal.</p>
           </div>
           
           <div class="faq-item">
@@ -392,7 +593,7 @@
       </div>
       
       <!-- Pricing & Payment -->
-      <div class="faq-category">
+      <div class="faq-category" data-aos="fade-up">
         <h2>Pricing & Payment</h2>
         <div class="faq-grid">
           <div class="faq-item">
@@ -407,7 +608,11 @@
           
           <div class="faq-item">
             <h3><i class="fas fa-credit-card"></i> What payment methods do you accept?</h3>
-            <p>Payments are Securely processed via Paystack and PayPal, all major credit and debit cards (Visa, Mastercard, American Express) are accepted.</p>
+            <p>Payments are securely processed via Paystack and PayPal. All major credit and debit cards (Visa, Mastercard, American Express) are accepted.</p>
+            <div style="margin-top: 10px; display: flex; gap: 10px;">
+              <span class="payment-badge paystack"><i class="fas fa-credit-card"></i> Paystack (KES)</span>
+              <span class="payment-badge paypal"><i class="fab fa-paypal"></i> PayPal (USD)</span>
+            </div>
           </div>
           
           <div class="faq-item">
@@ -418,7 +623,7 @@
       </div>
       
       <!-- Process & Communication -->
-      <div class="faq-category">
+      <div class="faq-category" data-aos="fade-up">
         <h2>Process & Communication</h2>
         <div class="faq-grid">
           <div class="faq-item">
@@ -444,7 +649,7 @@
       </div>
       
       <!-- Technical Questions -->
-      <div class="faq-category">
+      <div class="faq-category" data-aos="fade-up">
         <h2>Technical Questions</h2>
         <div class="faq-grid">
           <div class="faq-item">
@@ -470,69 +675,93 @@
       </div>
       
       <!-- Contact CTA -->
-      <div class="contact-cta">
+      <div class="contact-cta" data-aos="fade-up">
         <h3>Still have questions?</h3>
         <p>I'm here to help! Reach out and I'll get back to you within 24 hours.</p>
-        <a href="index.html#contact" class="btn btn-primary">Contact Me</a>
+        <a href="index.html#contact" class="btn-large">Contact Me</a>
       </div>
+      
     </div>
   </main>
 
-  <!-- Same footer -->
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
+        <!-- Brand -->
         <div class="footer-brand">
           <a href="index.html" class="logo" style="color: white;">
             <i class="fas fa-headset"></i>
             <span>Salim-VA</span>
           </a>
-          <p>Professional virtual assistant & creative support for scaling businesses.</p>
+          <p>Professional virtual assistant & creative support for scaling businesses. I help entrepreneurs and companies reclaim their time.</p>
+          
+          <!-- Social - Only LinkedIn & Email -->
           <div class="footer-social">
-            <a href="https://www.linkedin.com/in/salim-omar-56b98a277" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-            <a href="mailto:salim.virtualassistant@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/salim-omar-56b98a277" target="_blank" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="mailto:salim.virtualassistant@gmail.com" aria-label="Email">
+              <i class="fas fa-envelope"></i>
+            </a>
           </div>
         </div>
 
+        <!-- Company -->
         <div class="footer-links">
           <h4>Company</h4>
           <ul>
-            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#about">About Me</a></li>
             <li><a href="index.html#pricing">Pricing</a></li>
             <li><a href="index.html#testimonials">Testimonials</a></li>
             <li><a href="index.html#contact">Contact</a></li>
           </ul>
         </div>
 
+        <!-- Services -->
         <div class="footer-links">
           <h4>Services</h4>
           <ul>
             <li><a href="index.html#services">Administrative</a></li>
             <li><a href="index.html#services">Graphic Design</a></li>
-            <li><a href="index.html#services">Content</a></li>
+            <li><a href="index.html#services">Content Creation</a></li>
             <li><a href="index.html#services">Social Media</a></li>
+            <li><a href="index.html#services">E-commerce</a></li>
+            <li><a href="index.html#services">Video Editing</a></li>
           </ul>
         </div>
 
+        <!-- Support Pages -->
         <div class="footer-links">
           <h4>Support</h4>
           <ul>
             <li><a href="privacy.html">Privacy Policy</a></li>
             <li><a href="terms.html">Terms of Service</a></li>
             <li><a href="faq.html">FAQ</a></li>
-            <li><a href="support.html">Support</a></li>
+            <li><a href="support.html">Support Center</a></li>
           </ul>
         </div>
       </div>
 
+      <!-- Signature -->
       <div class="footer-signature">
         <div class="trust-strip">
-          <div class="trust-item"><div class="trust-icon"><i class="fas fa-bolt"></i></div><div class="trust-text"><strong>24h Response</strong></div></div>
+          <div class="trust-item">
+            <div class="trust-icon"><i class="fas fa-bolt"></i></div>
+            <div class="trust-text"><strong>24h Response</strong></div>
+          </div>
           <div class="trust-divider"></div>
-          <div class="trust-item"><div class="trust-icon"><i class="fas fa-check-circle"></i></div><div class="trust-text"><strong>100% Satisfaction</strong></div></div>
+          <div class="trust-item">
+            <div class="trust-icon"><i class="fas fa-check-circle"></i></div>
+            <div class="trust-text"><strong>100% Satisfaction</strong></div>
+          </div>
           <div class="trust-divider"></div>
-          <div class="trust-item"><div class="trust-icon"><i class="fas fa-shield-alt"></i></div><div class="trust-text"><strong>Secure Payment</strong></div></div>
+          <div class="trust-item">
+            <div class="trust-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="trust-text"><strong>Secure Payment</strong></div>
+          </div>
         </div>
+        
         <div class="copyright">
           <p>© 2025 Salim-VA. All rights reserved.</p>
           <p class="built-with">Built with <i class="fas fa-heart"></i> for scale-ups</p>
@@ -540,5 +769,50 @@
       </div>
     </div>
   </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  
+  <script>
+    (function() {
+      'use strict';
+      
+      // Initialize AOS
+      AOS.init({
+        duration: 600,
+        offset: 60,
+        once: true,
+        delay: 50
+      });
+      
+      // Mobile menu
+      const menuToggle = document.getElementById('menuToggle');
+      const navList = document.getElementById('navList');
+      
+      if (menuToggle && navList) {
+        menuToggle.addEventListener('click', () => {
+          navList.classList.toggle('active');
+        });
+        
+        // Close menu when clicking a link
+        navList.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            navList.classList.remove('active');
+          });
+        });
+      }
+      
+      // Header scroll effect
+      const header = document.querySelector('.site-header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+      
+    })();
+  </script>
 </body>
 </html>
