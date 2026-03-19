@@ -18,8 +18,16 @@
   <meta property="og:description" content="Professional virtual assistant services including website maintenance. Let me handle the details while you focus on growth.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
   
-  <!-- Security Headers (meta equivalent) -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.paystack.co https://www.paypal.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://images.unsplash.com; frame-src https://www.paypal.com;">
+  <!-- SECURITY HEADERS (CSP) – Corrected to allow Paystack -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' https://js.paystack.co https://www.paypal.com https://cdnjs.cloudflare.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://paystack.com;
+    font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+    img-src 'self' data: https://images.unsplash.com;
+    frame-src https://www.paypal.com https://checkout.paystack.com https://paystack.com;
+    connect-src 'self' https://api.paystack.co;
+  ">
   
   <!-- Resource Hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,9 +75,9 @@
       --radius-xl: 16px;
       --transition: all 0.26s cubic-bezier(0.2, 0.9, 0.2, 1);
       --header-height: 64px;
-      --section-padding: 60px 0;  /* Original spacing */
-      --gap: 20px;                  /* Original gap */
-      --usd-rate: 131;              /* 1 USD = 131 KES */
+      --section-padding: 60px 0;
+      --gap: 20px;
+      --usd-rate: 131;
     }
 
     html {
@@ -426,7 +434,7 @@
     .section-header {
       text-align: center;
       max-width: 600px;
-      margin: 0 auto 34px;  /* Original spacing */
+      margin: 0 auto 34px;
     }
 
     .section-header h2 {
@@ -873,35 +881,35 @@
       color: var(--text-muted);
     }
 
-    /* ---------- FOOTER (MATCHES OTHER PAGES) ---------- */
+    /* ---------- FOOTER (matches other pages) ---------- */
     .site-footer {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      padding: 40px 0 20px;  /* Reduced top padding to match other pages */
+      padding: 40px 0 20px;
       margin-top: auto;
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 30px;              /* Reduced gap to match other pages */
-      margin-bottom: 25px;     /* Reduced margin to match other pages */
+      gap: 30px;
+      margin-bottom: 25px;
     }
 
     .footer-brand p {
       color: rgba(255,255,255,0.8);
-      font-size: 0.85rem;      /* Smaller to match other pages */
+      font-size: 0.85rem;
       margin: 10px 0;
       line-height: 1.5;
     }
 
     .footer-social {
       display: flex;
-      gap: 8px;                /* Reduced gap */
+      gap: 8px;
     }
 
     .footer-social a {
-      width: 34px;              /* Smaller icons */
+      width: 34px;
       height: 34px;
       border-radius: 8px;
       background: rgba(255,255,255,0.1);
@@ -945,7 +953,7 @@
 
     .footer-signature {
       border-top: 1px solid rgba(255,255,255,0.1);
-      padding: 15px 0 5px;      /* Reduced to match other pages */
+      padding: 15px 0 5px;
       text-align: center;
     }
 
@@ -953,7 +961,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 15px;                /* Reduced gap */
+      gap: 15px;
       flex-wrap: wrap;
       margin-bottom: 12px;
     }
@@ -1624,7 +1632,7 @@
     </section>
   </main>
 
-  <!-- FOOTER (NOW MATCHES OTHER PAGES EXACTLY) -->
+  <!-- FOOTER (matches other pages) -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
@@ -1776,7 +1784,7 @@
 
       // Configuration
       const USD_TO_KES = 131; // Exchange rate
-      const PAYSTACK_PUBLIC_KEY = 'pk_live_4842a6f67cbfb6c50efc62c39d25c65c18c09577'; // live key
+      const PAYSTACK_PUBLIC_KEY = 'pk_test_aeb92b1876c92b249172fd6453de18614cbd5381'; // Test key (provided)
       
       // Initialize AOS
       AOS.init({
@@ -2012,12 +2020,18 @@
 
       // Paystack payment (in KES)
       function processPaystackPayment(email, amountKES, serviceName, hours, startDate) {
+        // Ensure amount is valid
+        if (!amountKES || amountKES <= 0 || isNaN(amountKES)) {
+          alert('Invalid amount');
+          return;
+        }
+
         const handler = PaystackPop.setup({
           key: PAYSTACK_PUBLIC_KEY,
           email: email,
-          amount: amountKES * 100, // Convert to cents
+          amount: Math.round(amountKES) * 100, // Convert to cents
           currency: 'KES',
-          ref: 'VA-' + Math.floor(Math.random() * 1000000000) + 1,
+          ref: 'VA-' + Date.now() + '-' + Math.floor(Math.random() * 1000000),
           metadata: {
             service_name: serviceName,
             hours: hours,
@@ -2037,7 +2051,6 @@
       // PayPal payment (in USD) - simplified for demo
       function processPayPalPayment(email, amountUSD, serviceName, hours, startDate) {
         // In production, you would create an order via your backend
-        // For demo, we'll simulate a redirect
         alert('PayPal integration is ready. In production, you would be redirected to PayPal.');
         // Simulate success
         window.location.href = 'thank-you.html';
