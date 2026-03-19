@@ -7,7 +7,7 @@
   <!-- Primary Meta Tags -->
   <title>Salim-VA | Professional Virtual Assistant Services</title>
   <meta name="title" content="Salim-VA | Professional Virtual Assistant Services">
-  <meta name="description" content="Professional virtual assistant services: administrative support, content creation, design, and technical solutions for ambitious businesses. Let me handle the details while you focus on growth.">
+  <meta name="description" content="Professional virtual assistant services: administrative support, content creation, design, and technical solutions for ambitious businesses.">
   <meta name="author" content="Salim-VA">
   
   <!-- Open Graph / Facebook -->
@@ -17,20 +17,23 @@
   <meta property="og:description" content="Professional virtual assistant services for ambitious businesses. Let me handle the details while you focus on growth.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
   
-  <!-- Security Headers (Meta equivalent) -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.paystack.co https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://api.paystack.co;">
-  <meta http-equiv="X-Frame-Options" content="DENY">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <!-- Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.paystack.co https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://images.unsplash.com;">
   
-  <!-- Resource Hints (Performance) -->
+  <!-- Resource Hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="preconnect" href="https://images.unsplash.com">
-  <link rel="preconnect" href="https://js.paystack.co">
   
-  <!-- Critical CSS Inlined -->
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  
   <style>
     /* ---------- RESET & VARIABLES ---------- */
     * {
@@ -42,7 +45,6 @@
     :root {
       --primary: #4e46e5;
       --primary-dark: #3730a3;
-      --primary-light: #818cf8;
       --accent: #f43f5e;
       --bg: #ffffff;
       --bg-alt: #f8fafc;
@@ -52,15 +54,11 @@
       --border: #e2e8f0;
       --card-bg: #ffffff;
       --card-shadow: 0 8px 30px rgba(0,0,0,0.04);
-      --shadow-sm: 0 4px 12px rgba(0,0,0,0.02);
-      --shadow-md: 0 8px 24px rgba(0,0,0,0.04);
-      --shadow-lg: 0 12px 36px rgba(0,0,0,0.06);
-      --radius-sm: 6px;
-      --radius-md: 8px;
-      --radius-lg: 12px;
+      --radius: 12px;
       --transition: all 0.26s cubic-bezier(0.2, 0.9, 0.2, 1);
       --header-height: 64px;
-      --section-padding: 60px 0;
+      --section-padding: 50px 0;  /* Reduced from 60px */
+      --gap: 20px;  /* Consistent gap like original */
     }
 
     html {
@@ -69,32 +67,20 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
-    /* ---------- TYPOGRAPHY ---------- */
-    @font-face {
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 300 700;
-      font-display: swap;
-      src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2) format('woff2');
-    }
-
-    @font-face {
-      font-family: 'Montserrat';
-      font-style: normal;
-      font-weight: 600 700;
-      font-display: swap;
-      src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM73w5aXo.woff2) format('woff2');
+    .container {
+      width: min(92%, 1200px);
+      margin: 0 auto;
+      padding: 0 15px;
     }
 
     h1, h2, h3, h4 {
@@ -103,21 +89,21 @@
       line-height: 1.2;
     }
 
-    /* ---------- UTILITY CLASSES ---------- */
-    .container {
-      width: min(92%, 1200px);
-      margin: 0 auto;
+    p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
     }
 
+    /* ---------- BUTTONS ---------- */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 10px 20px;
-      border-radius: var(--radius-md);
+      padding: 10px 18px;
+      border-radius: 10px;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       cursor: pointer;
       border: none;
       transition: var(--transition);
@@ -132,7 +118,7 @@
     .btn-primary:hover {
       background: var(--primary-dark);
       transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
+      box-shadow: 0 12px 36px rgba(78,70,229,0.15);
     }
 
     .btn-outline {
@@ -144,41 +130,21 @@
     .btn-outline:hover {
       background: var(--primary);
       color: white;
-      transform: translateY(-2px);
     }
 
-    .btn-large {
-      padding: 12px 28px;
-      font-size: 1rem;
+    .btn-accent {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-accent:hover {
+      background: #e11d48;
+      transform: translateY(-2px);
     }
 
     .btn-sm {
       padding: 8px 16px;
-      font-size: 0.9rem;
-    }
-
-    .btn:focus-visible {
-      outline: 3px solid var(--primary-light);
-      outline-offset: 2px;
-    }
-
-    /* ---------- SKIP LINK (Accessibility) ---------- */
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: var(--primary);
-      color: white;
-      padding: 8px 16px;
-      text-decoration: none;
-      border-radius: 0 0 var(--radius-sm) 0;
-      z-index: 10000;
-      transition: top 0.2s;
-    }
-
-    .skip-link:focus {
-      top: 0;
-      outline: none;
+      font-size: 0.85rem;
     }
 
     /* ---------- HEADER ---------- */
@@ -188,16 +154,16 @@
       left: 0;
       width: 100%;
       background: rgba(255,255,255,0.98);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(6px);
       z-index: 1000;
       transition: var(--transition);
       border-bottom: 1px solid transparent;
-      padding: 12px 0;
+      padding: 10px 0;
     }
 
     .site-header.scrolled {
       border-bottom-color: var(--border);
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
     }
 
     .header-container {
@@ -208,7 +174,7 @@
     }
 
     .logo {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--primary);
       text-decoration: none;
@@ -217,13 +183,9 @@
       gap: 8px;
     }
 
-    .logo i {
-      font-size: 1.4rem;
-    }
-
     .nav-list {
       display: flex;
-      gap: 28px;
+      gap: 24px;
       list-style: none;
     }
 
@@ -231,7 +193,7 @@
       color: var(--text);
       text-decoration: none;
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       padding: 6px 0;
       position: relative;
     }
@@ -269,61 +231,45 @@
       transition: var(--transition);
     }
 
-    /* ---------- HERO SECTION (Enhanced) ---------- */
+    /* ---------- HERO SECTION (Compact & Eye-catching) ---------- */
     .hero {
-      padding: calc(var(--header-height) + 40px) 0 60px;
+      padding: calc(var(--header-height) + 30px) 0 40px;  /* Reduced padding */
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      border-bottom-left-radius: 18px;
-      border-bottom-right-radius: 18px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
-      pointer-events: none;
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
     }
 
     .hero-container {
       display: grid;
       grid-template-columns: 1fr 0.9fr;
-      gap: 40px;
+      gap: 30px;
       align-items: center;
-      position: relative;
-      z-index: 2;
     }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: rgba(255,255,255,0.15);
       backdrop-filter: blur(4px);
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 100px;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: 0.3px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       border: 1px solid rgba(255,255,255,0.2);
     }
 
     .hero-badge i {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: gold;
     }
 
     .hero-title {
-      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
       line-height: 1.2;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       color: white;
     }
 
@@ -342,74 +288,65 @@
 
     .hero-description {
       color: rgba(255,255,255,0.9);
-      font-size: 1rem;
-      margin-bottom: 25px;
-      max-width: 550px;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      max-width: 500px;
     }
 
     .hero-cta {
       display: flex;
-      gap: 16px;
+      gap: 12px;
       flex-wrap: wrap;
-      margin-bottom: 25px;
+      margin-bottom: 15px;
     }
 
     .hero-meta {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       color: rgba(255,255,255,0.8);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     .hero-meta i {
       color: var(--accent);
+      font-size: 0.8rem;
     }
 
     .hero-visual {
-      max-width: 400px;
+      max-width: 380px;  /* Smaller like original */
       margin-left: auto;
-      position: relative;
-    }
-
-    .hero-visual::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: var(--radius-lg);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1);
-      pointer-events: none;
     }
 
     .hero-visual img {
       width: 100%;
       height: auto;
-      border-radius: var(--radius-lg);
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
       display: block;
-      box-shadow: var(--shadow-lg);
     }
 
-    /* ---------- SECTION HEADERS ---------- */
+    /* ---------- SECTION HEADERS (Compact) ---------- */
     .section-header {
       text-align: center;
       max-width: 600px;
-      margin: 0 auto 30px;
+      margin: 0 auto 25px;  /* Reduced margin */
     }
 
     .section-header h2 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;  /* Smaller like original */
       position: relative;
       display: inline-block;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .section-header h2::after {
       content: '';
       position: absolute;
-      bottom: -8px;
+      bottom: -6px;
       left: 50%;
       transform: translateX(-50%);
-      width: 60px;
+      width: 50px;  /* Smaller like original */
       height: 3px;
       background: var(--accent);
       border-radius: 3px;
@@ -417,21 +354,22 @@
 
     .section-header p {
       color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-top: 15px;
+      font-size: 0.9rem;
+      margin-top: 10px;
     }
 
-    /* ---------- SERVICES GRID (3x2) ---------- */
+    /* ---------- SERVICES GRID (3x2 - Perfect spacing) ---------- */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 18px;  /* Reduced gap */
+      margin-bottom: 10px;
     }
 
     .service-card {
       background: var(--card-bg);
-      border-radius: var(--radius-lg);
-      padding: 24px;
+      border-radius: 12px;
+      padding: 20px;  /* Reduced padding */
       box-shadow: var(--card-shadow);
       border: 1px solid var(--border);
       transition: var(--transition);
@@ -440,32 +378,32 @@
     }
 
     .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.06);
     }
 
     .service-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 12px;
+      width: 52px;  /* Smaller */
+      height: 52px;
+      border-radius: 10px;
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 1.2rem;
-      margin-bottom: 16px;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
     }
 
     .service-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
+      font-size: 1rem;  /* Smaller */
+      margin-bottom: 6px;
     }
 
     .service-card p {
       color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 16px;
+      font-size: 0.85rem;  /* Smaller */
+      margin-bottom: 12px;
       line-height: 1.5;
       flex: 1;
     }
@@ -473,39 +411,45 @@
     .service-price {
       font-weight: 700;
       color: var(--primary);
-      font-size: 1.2rem;
-      margin-bottom: 16px;
+      font-size: 1.1rem;  /* Smaller */
+      margin-bottom: 12px;
     }
 
     .service-price small {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
       font-weight: 400;
     }
 
-    /* ---------- PRICING SECTION ---------- */
+    .service-card .btn {
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      width: 100%;
+    }
+
+    /* ---------- PRICING SECTION (Compact) ---------- */
     .pricing-toggle {
       display: flex;
       justify-content: center;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
 
     .toggle-group {
       display: flex;
       background: white;
       border-radius: 50px;
-      padding: 4px;
+      padding: 3px;
       border: 1px solid var(--border);
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
     }
 
     .toggle-btn {
-      padding: 8px 24px;
+      padding: 6px 20px;
       border: none;
       background: none;
       border-radius: 50px;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       cursor: pointer;
       transition: var(--transition);
     }
@@ -518,13 +462,13 @@
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 18px;
     }
 
     .pack-card {
       background: white;
-      border-radius: var(--radius-lg);
-      padding: 28px 20px;
+      border-radius: 12px;
+      padding: 20px 18px;  /* Reduced padding */
       box-shadow: var(--card-shadow);
       border: 1px solid var(--border);
       transition: var(--transition);
@@ -532,13 +476,12 @@
     }
 
     .pack-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.06);
     }
 
     .pack-card.popular {
       border: 2px solid var(--accent);
-      transform: scale(1.02);
     }
 
     .pack-badge {
@@ -548,81 +491,96 @@
       transform: translateX(-50%);
       background: var(--accent);
       color: white;
-      padding: 4px 16px;
+      padding: 3px 12px;
       border-radius: 50px;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
-      letter-spacing: 0.5px;
     }
 
     .pack-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 8px;
+      font-size: 1.1rem;
+      margin-bottom: 5px;
     }
 
     .pack-tagline {
       color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-bottom: 16px;
+      font-size: 0.8rem;
+      margin-bottom: 12px;
     }
 
     .pack-price {
-      font-size: 2rem;
+      font-size: 1.6rem;
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .pack-price small {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       font-weight: 400;
     }
 
     .pack-features {
       list-style: none;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .pack-features li {
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
+      gap: 6px;
+      margin-bottom: 6px;
       color: var(--text-secondary);
-      font-size: 0.9rem;
+      font-size: 0.8rem;  /* Smaller */
     }
 
     .pack-features i {
       color: var(--primary);
+      font-size: 0.75rem;
+    }
+
+    .pack-card .btn {
+      width: 100%;
+      padding: 8px 16px;
       font-size: 0.85rem;
     }
 
-    /* ---------- ABOUT SECTION ---------- */
+    /* ---------- ABOUT SECTION (Compact) ---------- */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      gap: 30px;
       align-items: center;
     }
 
     .about-image img {
       width: 100%;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .about-content .section-header {
+      text-align: left;
+      margin-bottom: 15px;
+    }
+
+    .about-content .section-header h2::after {
+      left: 0;
+      transform: none;
     }
 
     .about-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin-top: 25px;
+      gap: 10px;
+      margin-top: 20px;
     }
 
     .stat-box {
       background: var(--bg-alt);
-      padding: 15px 10px;
-      border-radius: var(--radius-md);
+      padding: 10px;
+      border-radius: 8px;
       text-align: center;
       border: 1px solid var(--border);
     }
@@ -630,59 +588,59 @@
     .stat-number {
       font-weight: 700;
       color: var(--primary);
-      font-size: 1.3rem;
+      font-size: 1.1rem;
     }
 
     .stat-label {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
     }
 
-    /* ---------- TESTIMONIALS (3x2) ---------- */
+    /* ---------- TESTIMONIALS (3x2 - Compact) ---------- */
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 18px;
     }
 
     .testimonial-card {
       background: white;
-      border-radius: var(--radius-lg);
-      padding: 20px;
+      border-radius: 12px;
+      padding: 16px;  /* Reduced padding */
       box-shadow: var(--card-shadow);
       border: 1px solid var(--border);
       transition: var(--transition);
     }
 
     .testimonial-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.06);
     }
 
     .testimonial-quote {
       color: var(--text);
       font-style: italic;
-      margin-bottom: 16px;
-      font-size: 0.9rem;
-      line-height: 1.6;
+      margin-bottom: 12px;
+      font-size: 0.85rem;  /* Smaller */
+      line-height: 1.5;
     }
 
     .testimonial-meta {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .avatar {
-      width: 44px;
-      height: 44px;
+      width: 36px;  /* Smaller */
+      height: 36px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
 
     .avatar.bg1 { background: #f97316; }
@@ -693,96 +651,95 @@
     .avatar.bg6 { background: #ef4444; }
 
     .author-info strong {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       display: block;
     }
 
     .author-info span {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
     }
 
-    /* ---------- CONTACT SECTION (ORIGINAL - PRESERVED EXACTLY) ---------- */
+    /* ---------- CONTACT SECTION (Original - Preserved) ---------- */
     .contact-section {
       background: #f8fafc;
-      padding: 60px 0;
+      padding: 50px 0;
     }
 
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 30px;
+      gap: 25px;
     }
 
     .info-cards {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 12px;
     }
 
     .info-card {
       background: #fff;
       border-radius: 12px;
-      padding: 16px;
+      padding: 14px;
       display: flex;
-      gap: 15px;
+      gap: 12px;
       box-shadow: 0 8px 30px rgba(0,0,0,0.04);
       border: 1px solid #e2e8f0;
     }
 
     .info-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 10px;
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
       background: linear-gradient(135deg, rgba(78,70,229,0.08), rgba(78,70,229,0.02));
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--primary);
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
 
     .info-content h4 {
-      font-size: 1rem;
-      margin-bottom: 4px;
+      font-size: 0.95rem;
+      margin-bottom: 3px;
     }
 
     .info-content p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       margin-bottom: 2px;
     }
 
     .info-content small {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
     }
 
     .form-panel {
       background: #fff;
       border-radius: 12px;
-      padding: 24px;
+      padding: 20px;
       box-shadow: 0 8px 30px rgba(0,0,0,0.04);
       border: 1px solid #e2e8f0;
     }
 
     .form-panel h3 {
-      margin-bottom: 20px;
-      font-size: 1.2rem;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
     }
 
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 10px;
     }
 
     .form-control {
       width: 100%;
-      padding: 10px 12px;
+      padding: 8px 12px;
       border-radius: 8px;
       border: 1px solid #e2e8f0;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       transition: var(--transition);
     }
 
@@ -800,62 +757,63 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 20px;
+      margin-top: 15px;
     }
 
     .char-counter {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
     }
 
-    /* ---------- FOOTER (ENHANCED WITH UNIQUE SIGNATURE) ---------- */
+    /* ---------- FOOTER (Compact & Elegant) ---------- */
     .site-footer {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      padding: 50px 0 0;
+      padding: 40px 0 20px;  /* Reduced padding */
       margin-top: auto;
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 30px;
+      gap: 30px;  /* Reduced gap */
+      margin-bottom: 25px;  /* Reduced margin */
     }
 
     .footer-brand p {
       color: rgba(255,255,255,0.8);
-      font-size: 0.9rem;
-      margin: 15px 0;
-      line-height: 1.6;
+      font-size: 0.85rem;  /* Smaller */
+      margin: 10px 0;
+      line-height: 1.5;
     }
 
     .footer-social {
       display: flex;
-      gap: 12px;
+      gap: 8px;
     }
 
     .footer-social a {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
+      width: 34px;  /* Smaller */
+      height: 34px;
+      border-radius: 8px;
       background: rgba(255,255,255,0.1);
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
+      font-size: 0.9rem;
       transition: var(--transition);
     }
 
     .footer-social a:hover {
       background: var(--accent);
-      transform: translateY(-3px);
+      transform: translateY(-2px);
     }
 
     .footer-links h4 {
       color: white;
-      font-size: 1rem;
-      margin-bottom: 20px;
+      font-size: 0.95rem;  /* Smaller */
+      margin-bottom: 12px;  /* Reduced */
     }
 
     .footer-links ul {
@@ -863,84 +821,71 @@
     }
 
     .footer-links li {
-      margin-bottom: 10px;
+      margin-bottom: 6px;  /* Reduced */
     }
 
     .footer-links a {
       color: rgba(255,255,255,0.8);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.8rem;  /* Smaller */
       transition: var(--transition);
     }
 
     .footer-links a:hover {
       color: var(--accent);
-      padding-left: 5px;
+      padding-left: 3px;
     }
 
-    /* ---------- UNIQUE FOOTER SIGNATURE (THE STANDOUT ELEMENT) ---------- */
+    /* ---------- COMPACT FOOTER SIGNATURE ---------- */
     .footer-signature {
       border-top: 1px solid rgba(255,255,255,0.1);
-      padding: 30px 0;
-      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.1));
+      padding: 15px 0 5px;  /* Reduced padding */
     }
 
     .trust-strip {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 30px;
+      gap: 15px;  /* Reduced gap */
       flex-wrap: wrap;
-      margin-bottom: 25px;
+      margin-bottom: 12px;  /* Reduced */
     }
 
     .trust-item {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 8px 20px;
+      gap: 6px;  /* Reduced */
+      padding: 4px 12px;  /* Reduced */
       background: rgba(255,255,255,0.05);
       border-radius: 50px;
       backdrop-filter: blur(4px);
-      transition: transform 0.3s ease;
-    }
-
-    .trust-item:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.1);
     }
 
     .trust-icon {
-      width: 32px;
-      height: 32px;
+      width: 24px;  /* Smaller */
+      height: 24px;
       border-radius: 50%;
       background: var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 0.9rem;
-    }
-
-    .trust-text {
-      display: flex;
-      flex-direction: column;
+      font-size: 0.7rem;
     }
 
     .trust-text strong {
       color: white;
-      font-size: 0.9rem;
-      line-height: 1.3;
+      font-size: 0.8rem;  /* Smaller */
     }
 
     .trust-text span {
       color: rgba(255,255,255,0.7);
-      font-size: 0.75rem;
+      font-size: 0.65rem;  /* Smaller */
     }
 
     .trust-divider {
-      width: 4px;
-      height: 4px;
+      width: 3px;
+      height: 3px;
       border-radius: 50%;
       background: var(--accent);
       opacity: 0.5;
@@ -952,18 +897,15 @@
 
     .copyright p {
       color: rgba(255,255,255,0.7);
-      font-size: 0.85rem;
-      margin: 5px 0;
-    }
-
-    .built-with {
-      font-size: 0.85rem;
+      font-size: 0.75rem;  /* Smaller */
+      margin: 3px 0;
     }
 
     .built-with i {
       color: var(--accent);
       animation: heartbeat 1.5s ease infinite;
       display: inline-block;
+      font-size: 0.7rem;
     }
 
     @keyframes heartbeat {
@@ -990,26 +932,25 @@
     .modal-panel {
       background: white;
       width: 100%;
-      max-width: 450px;
-      border-radius: var(--radius-lg);
-      padding: 24px;
+      max-width: 400px;
+      border-radius: 12px;
+      padding: 20px;
       position: relative;
-      box-shadow: var(--shadow-lg);
     }
 
     .modal-close {
       position: absolute;
-      top: 12px;
-      right: 12px;
+      top: 10px;
+      right: 10px;
       background: none;
       border: none;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       cursor: pointer;
       color: var(--text-muted);
     }
 
     /* ---------- RESPONSIVE ---------- */
-    @media (max-width: 1024px) {
+    @media (max-width: 1000px) {
       .services-grid,
       .pricing-grid,
       .testimonials-grid {
@@ -1030,7 +971,7 @@
       
       .hero-visual {
         margin: 0 auto;
-        max-width: 350px;
+        max-width: 320px;
       }
       
       .menu-toggle {
@@ -1044,10 +985,10 @@
         left: 0;
         width: 100%;
         background: white;
-        padding: 20px;
-        box-shadow: var(--shadow-md);
+        padding: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
         border-bottom: 1px solid var(--border);
       }
       
@@ -1057,7 +998,7 @@
       
       .trust-strip {
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
       }
       
       .trust-divider {
@@ -1079,6 +1020,7 @@
       
       .footer-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
       }
       
       .form-grid {
@@ -1094,16 +1036,21 @@
       }
     }
 
-    /* ---------- ACCESSIBILITY ---------- */
-    .sr-only {
+    /* Accessibility */
+    .skip-link {
       position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0,0,0,0);
-      border: 0;
+      top: -40px;
+      left: 0;
+      background: var(--primary);
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 0 0 6px 0;
+      z-index: 10000;
+    }
+
+    .skip-link:focus {
+      top: 0;
     }
 
     [data-aos] {
@@ -1115,13 +1062,6 @@
       opacity: 1;
     }
   </style>
-
-  <!-- Non-critical CSS (loaded async) -->
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-  
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"></noscript>
 </head>
 
 <body>
@@ -1135,13 +1075,13 @@
         <span>Salim-VA</span>
       </a>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
-      <nav class="primary-nav" aria-label="Main navigation">
+      <nav>
         <ul class="nav-list" id="navList">
           <li><a href="#home" class="nav-link active">Home</a></li>
           <li><a href="#services" class="nav-link">Services</a></li>
@@ -1155,13 +1095,13 @@
   </header>
 
   <main id="main-content">
-    <!-- HERO SECTION (Enhanced - Option A) -->
+    <!-- HERO SECTION (Eye-catching & Compact) -->
     <section id="home" class="hero">
       <div class="container hero-container">
-        <div class="hero-content" data-aos="fade-up">
+        <div data-aos="fade-up">
           <div class="hero-badge">
             <i class="fas fa-star"></i>
-            <span>Trusted by 200+ businesses worldwide</span>
+            <span>Trusted by 200+ businesses</span>
           </div>
           
           <h1 class="hero-title">
@@ -1172,18 +1112,12 @@
           
           <p class="hero-description">
             Boost your productivity with expert administrative, creative, and technical support 
-            tailored to your business needs. Let me handle the details while you focus on growth.
+            tailored to your business needs.
           </p>
           
           <div class="hero-cta">
-            <a href="#pricing" class="btn btn-primary btn-large">
-              <span>View Pricing</span>
-              <i class="fas fa-arrow-right"></i>
-            </a>
-            <a href="#contact" class="btn btn-outline btn-large">
-              <i class="fas fa-calendar"></i>
-              <span>Get in Touch</span>
-            </a>
+            <a href="#pricing" class="btn btn-primary">View Pricing</a>
+            <a href="#contact" class="btn btn-outline">Get in Touch</a>
           </div>
           
           <div class="hero-meta">
@@ -1194,20 +1128,18 @@
         
         <div class="hero-visual" data-aos="fade-left" data-aos-delay="100">
           <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-               alt="Professional workspace with laptop and coffee" 
-               loading="eager"
-               width="400"
-               height="300">
+               alt="Professional workspace" 
+               loading="eager">
         </div>
       </div>
     </section>
 
-    <!-- SERVICES SECTION (3x2 Grid) -->
+    <!-- SERVICES SECTION (3x2 - Perfect spacing) -->
     <section id="services">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
           <h2>Hourly Services</h2>
-          <p>Choose any service on an hourly basis — perfect for one-off tasks or short projects.</p>
+          <p>Choose any service on an hourly basis — perfect for one-off tasks.</p>
         </div>
 
         <div class="services-grid">
@@ -1216,49 +1148,49 @@
             <div class="service-icon"><i class="fas fa-calendar-alt"></i></div>
             <h3>Administrative Support</h3>
             <p>Email management, calendar scheduling, travel arrangements, and document prep.</p>
-            <div class="service-price">$25 <small>/ hour</small></div>
-            <button class="btn btn-primary service-book" data-service="Administrative Support">Book Now</button>
+            <div class="service-price">$25 <small>/hr</small></div>
+            <button class="btn btn-primary service-book" data-service="Administrative Support">Book</button>
           </div>
 
           <div class="service-card" data-aos="fade-up" data-aos-delay="140">
             <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
             <h3>Graphic Design</h3>
             <p>Logo concepts, social graphics, slides and marketing assets.</p>
-            <div class="service-price">$45 <small>/ hour</small></div>
-            <button class="btn btn-primary service-book" data-service="Graphic Design">Book Now</button>
+            <div class="service-price">$45 <small>/hr</small></div>
+            <button class="btn btn-primary service-book" data-service="Graphic Design">Book</button>
           </div>
 
           <div class="service-card" data-aos="fade-up" data-aos-delay="180">
             <div class="service-icon"><i class="fas fa-file-alt"></i></div>
             <h3>Content Creation</h3>
-            <p>Blog posts, web copy, newsletters and email campaigns that convert.</p>
-            <div class="service-price">$35 <small>/ hour</small></div>
-            <button class="btn btn-primary service-book" data-service="Content Creation">Book Now</button>
+            <p>Blog posts, web copy, newsletters and email campaigns.</p>
+            <div class="service-price">$35 <small>/hr</small></div>
+            <button class="btn btn-primary service-book" data-service="Content Creation">Book</button>
           </div>
 
           <!-- Row 2 -->
           <div class="service-card" data-aos="fade-up" data-aos-delay="220">
             <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-            <h3>Social Media Management</h3>
+            <h3>Social Media</h3>
             <p>Content calendars, post scheduling, engagement and basic reporting.</p>
-            <div class="service-price">$40 <small>/ hour</small></div>
-            <button class="btn btn-primary service-book" data-service="Social Media Management">Book Now</button>
+            <div class="service-price">$40 <small>/hr</small></div>
+            <button class="btn btn-primary service-book" data-service="Social Media Management">Book</button>
           </div>
 
           <div class="service-card" data-aos="fade-up" data-aos-delay="260">
             <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
-            <h3>E-commerce Support</h3>
-            <p>Product listings, inventory updates, order handling and customer messages.</p>
-            <div class="service-price">$30 <small>/ hour</small></div>
-            <button class="btn btn-primary service-book" data-service="E-commerce Support">Book Now</button>
+            <h3>E-commerce</h3>
+            <p>Product listings, inventory updates, order handling.</p>
+            <div class="service-price">$30 <small>/hr</small></div>
+            <button class="btn btn-primary service-book" data-service="E-commerce Support">Book</button>
           </div>
 
           <div class="service-card" data-aos="fade-up" data-aos-delay="300">
             <div class="service-icon"><i class="fas fa-video"></i></div>
             <h3>Video Editing</h3>
-            <p>Short-form edits, captions, YouTube & promotional video edits.</p>
-            <div class="service-price">$50 <small>/ hour</small></div>
-            <button class="btn btn-primary service-book" data-service="Video Editing">Book Now</button>
+            <p>Short-form edits, captions, YouTube & promotional videos.</p>
+            <div class="service-price">$50 <small>/hr</small></div>
+            <button class="btn btn-primary service-book" data-service="Video Editing">Book</button>
           </div>
         </div>
       </div>
@@ -1269,7 +1201,7 @@
       <div class="container">
         <div class="section-header" data-aos="fade-up">
           <h2>Packages</h2>
-          <p>Choose a monthly retainer for predictable support — or pick yearly and save 20%.</p>
+          <p>Monthly retainers — or yearly and save 20%.</p>
         </div>
 
         <div class="pricing-toggle" data-aos="fade-up">
@@ -1283,47 +1215,47 @@
           <!-- Starter -->
           <div class="pack-card" data-aos="fade-up" data-aos-delay="100">
             <h3>Starter</h3>
-            <p class="pack-tagline">Perfect for small businesses</p>
-            <div class="pack-price" data-monthly="400" data-yearly="3840">$400 <small>/ month</small></div>
+            <p class="pack-tagline">For small businesses</p>
+            <div class="pack-price" data-monthly="400" data-yearly="3840">$400 <small>/mo</small></div>
             <ul class="pack-features">
               <li><i class="fas fa-check"></i> 20 hours/month</li>
               <li><i class="fas fa-check"></i> Email & chat support</li>
-              <li><i class="fas fa-check"></i> Basic administrative tasks</li>
+              <li><i class="fas fa-check"></i> Basic admin tasks</li>
               <li><i class="fas fa-check"></i> 5 social posts/week</li>
-              <li><i class="fas fa-check"></i> 48h response time</li>
+              <li><i class="fas fa-check"></i> 48h response</li>
             </ul>
-            <button class="btn btn-primary pack-book" data-plan="Starter" style="width: 100%;">Get Started</button>
+            <button class="btn btn-primary pack-book" data-plan="Starter">Choose Plan</button>
           </div>
 
-          <!-- Standard (Popular) -->
+          <!-- Standard -->
           <div class="pack-card popular" data-aos="fade-up" data-aos-delay="140">
             <div class="pack-badge">Most Popular</div>
             <h3>Standard</h3>
             <p class="pack-tagline">For growing teams</p>
-            <div class="pack-price" data-monthly="750" data-yearly="7200">$750 <small>/ month</small></div>
+            <div class="pack-price" data-monthly="750" data-yearly="7200">$750 <small>/mo</small></div>
             <ul class="pack-features">
               <li><i class="fas fa-check"></i> 40 hours/month</li>
-              <li><i class="fas fa-check"></i> Admin + creative services</li>
-              <li><i class="fas fa-check"></i> Social media management</li>
+              <li><i class="fas fa-check"></i> Admin + creative</li>
+              <li><i class="fas fa-check"></i> Social media</li>
               <li><i class="fas fa-check"></i> Weekly check-ins</li>
               <li><i class="fas fa-check"></i> 24-48h response</li>
             </ul>
-            <button class="btn btn-accent pack-book" data-plan="Standard" style="width: 100%;">Get Started</button>
+            <button class="btn btn-accent pack-book" data-plan="Standard">Choose Plan</button>
           </div>
 
           <!-- Premium -->
           <div class="pack-card" data-aos="fade-up" data-aos-delay="180">
             <h3>Premium</h3>
             <p class="pack-tagline">Dedicated support</p>
-            <div class="pack-price" data-monthly="1400" data-yearly="13440">$1,400 <small>/ month</small></div>
+            <div class="pack-price" data-monthly="1400" data-yearly="13440">$1,400 <small>/mo</small></div>
             <ul class="pack-features">
               <li><i class="fas fa-check"></i> 80 hours/month</li>
-              <li><i class="fas fa-check"></i> Full service coverage</li>
-              <li><i class="fas fa-check"></i> Graphic & video editing</li>
+              <li><i class="fas fa-check"></i> Full service</li>
+              <li><i class="fas fa-check"></i> Graphic & video</li>
               <li><i class="fas fa-check"></i> Dedicated calls</li>
               <li><i class="fas fa-check"></i> <24h response</li>
             </ul>
-            <button class="btn btn-primary pack-book" data-plan="Premium" style="width: 100%;">Get Started</button>
+            <button class="btn btn-primary pack-book" data-plan="Premium">Choose Plan</button>
           </div>
         </div>
       </div>
@@ -1333,28 +1265,26 @@
     <section id="about">
       <div class="container">
         <div class="about-grid">
-          <div class="about-image" data-aos="fade-right">
+          <div data-aos="fade-right">
             <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                 alt="Professional workspace with laptop and notebook"
-                 loading="lazy"
-                 width="600"
-                 height="400">
+                 alt="Workspace" 
+                 loading="lazy">
           </div>
           <div class="about-content" data-aos="fade-left">
-            <div class="section-header" style="text-align: left; margin-bottom: 20px;">
-              <h2 style="font-size: 1.8rem;">About Me</h2>
-              <p style="margin-top: 10px;">I'm Salim — a results-driven virtual assistant who helps small businesses and founders reclaim time.</p>
+            <div class="section-header">
+              <h2>About Me</h2>
+              <p>I'm Salim — helping businesses reclaim time with efficient virtual assistance.</p>
             </div>
-            <p style="margin-bottom: 20px; color: var(--text-muted);">I combine administrative efficiency with creative skills so you get polished deliverables and clear communication.</p>
+            <p style="margin-bottom: 15px; font-size: 0.9rem;">I combine administrative efficiency with creative skills for polished deliverables and clear communication.</p>
             
             <div class="about-stats">
               <div class="stat-box">
                 <div class="stat-number">5+</div>
-                <div class="stat-label">Years Experience</div>
+                <div class="stat-label">Years</div>
               </div>
               <div class="stat-box">
                 <div class="stat-number">200+</div>
-                <div class="stat-label">Happy Clients</div>
+                <div class="stat-label">Clients</div>
               </div>
               <div class="stat-box">
                 <div class="stat-number">500+</div>
@@ -1370,13 +1300,13 @@
     <section id="testimonials">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
-          <h2>What Clients Say</h2>
+          <h2>Client Feedback</h2>
           <p>Real feedback from businesses I've supported.</p>
         </div>
 
         <div class="testimonials-grid">
           <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-            <p class="testimonial-quote">"Salim was a lifesaver during our launch week — handled client emails and scheduling perfectly."</p>
+            <p class="testimonial-quote">"Salim was a lifesaver during our launch — handled emails and scheduling perfectly."</p>
             <div class="testimonial-meta">
               <div class="avatar bg1">LM</div>
               <div class="author-info">
@@ -1387,7 +1317,7 @@
           </div>
 
           <div class="testimonial-card" data-aos="fade-up" data-aos-delay="140">
-            <p class="testimonial-quote">"Handled our Instagram and content calendar — engagement improved within weeks."</p>
+            <p class="testimonial-quote">"Instagram engagement improved within weeks. Very reliable."</p>
             <div class="testimonial-meta">
               <div class="avatar bg2">DK</div>
               <div class="author-info">
@@ -1398,7 +1328,7 @@
           </div>
 
           <div class="testimonial-card" data-aos="fade-up" data-aos-delay="180">
-            <p class="testimonial-quote">"Very reliable — edited training videos and delivered professional edits on schedule."</p>
+            <p class="testimonial-quote">"Professional video edits delivered on schedule every time."</p>
             <div class="testimonial-meta">
               <div class="avatar bg3">SR</div>
               <div class="author-info">
@@ -1409,7 +1339,7 @@
           </div>
 
           <div class="testimonial-card" data-aos="fade-up" data-aos-delay="220">
-            <p class="testimonial-quote">"Optimized product listings — we saw better conversions immediately."</p>
+            <p class="testimonial-quote">"Product listings optimized — conversions improved immediately."</p>
             <div class="testimonial-meta">
               <div class="avatar bg4">KT</div>
               <div class="author-info">
@@ -1420,7 +1350,7 @@
           </div>
 
           <div class="testimonial-card" data-aos="fade-up" data-aos-delay="260">
-            <p class="testimonial-quote">"Attention to detail: invoices and calendar management handled weekly — saved me hours."</p>
+            <p class="testimonial-quote">"Saved me hours on invoices and calendar management."</p>
             <div class="testimonial-meta">
               <div class="avatar bg5">AM</div>
               <div class="author-info">
@@ -1431,7 +1361,7 @@
           </div>
 
           <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
-            <p class="testimonial-quote">"Consistent communication and reliable delivery across all tasks. Highly recommended."</p>
+            <p class="testimonial-quote">"Consistent communication and reliable delivery. Highly recommended."</p>
             <div class="testimonial-meta">
               <div class="avatar bg6">JR</div>
               <div class="author-info">
@@ -1444,20 +1374,20 @@
       </div>
     </section>
 
-    <!-- CONTACT SECTION (PRESERVED EXACTLY AS ORIGINAL) -->
+    <!-- CONTACT SECTION (Original - Preserved) -->
     <section id="contact" class="contact-section">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
           <h2>Get In Touch</h2>
-          <p>Questions, custom proposals or monthly retainers — send a message and I'll respond within 24 hours.</p>
+          <p>Questions or custom proposals — I'll respond within 24 hours.</p>
         </div>
 
         <div class="contact-grid">
-          <!-- Left Column - Info Cards (Original) -->
+          <!-- Left Column - Info Cards -->
           <div class="info-cards" data-aos="fade-right">
             <div class="info-card">
               <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
-              <div class="info-content">
+              <div>
                 <h4>Phone</h4>
                 <p>+1 (555) 123-4567</p>
                 <small>Mon–Fri • 9AM–6PM EST</small>
@@ -1466,64 +1396,59 @@
 
             <div class="info-card">
               <div class="info-icon"><i class="fas fa-envelope"></i></div>
-              <div class="info-content">
+              <div>
                 <h4>Email</h4>
                 <p>salim.virtualassistant@gmail.com</p>
-                <small>We respond within 24 hours</small>
+                <small>24h response</small>
               </div>
             </div>
 
             <div class="info-card">
               <div class="info-icon"><i class="fas fa-stopwatch"></i></div>
-              <div class="info-content">
+              <div>
                 <h4>Response Time</h4>
                 <p>&lt; 2 Hours</p>
-                <small>Average response time</small>
+                <small>Average response</small>
               </div>
             </div>
 
             <div class="info-card">
               <div class="info-icon"><i class="fas fa-handshake"></i></div>
-              <div class="info-content">
+              <div>
                 <h4>Free Consultation</h4>
-                <p style="margin-bottom: 10px;">Schedule a 30-minute session to scope your needs and options.</p>
-                <a href="#" class="btn btn-outline btn-sm">Schedule Now</a>
+                <p style="margin-bottom: 8px;">30-min session to scope your needs.</p>
+                <a href="#" class="btn btn-outline btn-sm">Schedule</a>
               </div>
             </div>
           </div>
 
-          <!-- Right Column - Form (Original) -->
+          <!-- Right Column - Form -->
           <div class="form-panel" data-aos="fade-left">
-            <h3>Send us a Message</h3>
+            <h3>Send a Message</h3>
             
             <form name="contact" method="POST" data-netlify="true" id="contactForm">
-              <input type="hidden" name="form-name" value="contact">
-              
               <div class="form-grid">
                 <input type="text" name="name" class="form-control" placeholder="Full Name *" required>
-                <input type="email" name="email" class="form-control" placeholder="Email Address *" required>
-                <input type="text" name="company" class="form-control" placeholder="Company Name">
-                <input type="tel" name="phone" class="form-control" placeholder="+1 (555) 123-4567">
+                <input type="email" name="email" class="form-control" placeholder="Email *" required>
+                <input type="text" name="company" class="form-control" placeholder="Company">
+                <input type="tel" name="phone" class="form-control" placeholder="Phone">
                 
                 <select name="service" class="form-control full-width">
-                  <option value="">Service Interested In</option>
-                  <option value="administrative">Administrative Support</option>
-                  <option value="graphic">Graphic Design</option>
-                  <option value="content">Content Creation</option>
-                  <option value="social">Social Media Management</option>
-                  <option value="ecommerce">E-commerce Support</option>
-                  <option value="video">Video Editing</option>
+                  <option>Service Interested In</option>
+                  <option>Administrative Support</option>
+                  <option>Graphic Design</option>
+                  <option>Content Creation</option>
+                  <option>Social Media</option>
+                  <option>E-commerce</option>
+                  <option>Video Editing</option>
                 </select>
                 
-                <textarea name="message" class="form-control full-width" placeholder="Message * – Tell us about your business needs and how we can help..." rows="5" maxlength="500" required></textarea>
+                <textarea name="message" class="form-control full-width" placeholder="Message *" rows="4" maxlength="500" required></textarea>
               </div>
               
               <div class="form-footer">
-                <span class="char-counter">0/500 characters</span>
-                <button type="submit" class="btn btn-primary">
-                  <span>Send Message</span>
-                  <i class="fas fa-paper-plane"></i>
-                </button>
+                <span class="char-counter">0/500</span>
+                <button type="submit" class="btn btn-primary">Send</button>
               </div>
             </form>
           </div>
@@ -1532,21 +1457,21 @@
     </section>
   </main>
 
-  <!-- FOOTER (Enhanced with Unique Signature) -->
+  <!-- FOOTER (Compact with Unique Signature) -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <!-- Brand Column -->
+        <!-- Brand -->
         <div class="footer-brand">
-          <a href="#home" class="logo" style="color: white; font-size: 1.25rem;">
+          <a href="#home" class="logo" style="color: white;">
             <i class="fas fa-headset"></i>
             <span>Salim-VA</span>
           </a>
-          <p>Professional virtual assistant & creative support — helping businesses scale with reliable, high-quality remote work.</p>
+          <p>Professional virtual assistant & creative support for scaling businesses.</p>
           
-          <!-- Social Links - Only LinkedIn and Email as requested -->
+          <!-- Social - Only LinkedIn & Email -->
           <div class="footer-social">
-            <a href="https://www.linkedin.com/in/salim-omar-56b98a277" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/salim-omar-56b98a277" target="_blank" aria-label="LinkedIn">
               <i class="fab fa-linkedin-in"></i>
             </a>
             <a href="mailto:salim.virtualassistant@gmail.com" aria-label="Email">
@@ -1555,7 +1480,7 @@
           </div>
         </div>
 
-        <!-- Company Links -->
+        <!-- Company -->
         <div class="footer-links">
           <h4>Company</h4>
           <ul>
@@ -1566,39 +1491,35 @@
           </ul>
         </div>
 
-        <!-- Services Links -->
+        <!-- Services -->
         <div class="footer-links">
           <h4>Services</h4>
           <ul>
             <li><a href="#services">Administrative</a></li>
             <li><a href="#services">Graphic Design</a></li>
-            <li><a href="#services">Content Creation</a></li>
+            <li><a href="#services">Content</a></li>
             <li><a href="#services">Social Media</a></li>
-            <li><a href="#services">E-commerce</a></li>
-            <li><a href="#services">Video Editing</a></li>
           </ul>
         </div>
 
-        <!-- Support Links -->
+        <!-- Support -->
         <div class="footer-links">
           <h4>Support</h4>
           <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
             <li><a href="#">FAQ</a></li>
           </ul>
         </div>
       </div>
 
-      <!-- UNIQUE SIGNATURE ELEMENT (The Standout Feature) -->
+      <!-- COMPACT SIGNATURE -->
       <div class="footer-signature">
-        <!-- Trust Indicators Strip -->
         <div class="trust-strip">
           <div class="trust-item">
             <div class="trust-icon"><i class="fas fa-bolt"></i></div>
             <div class="trust-text">
               <strong>24h Response</strong>
-              <span>Guaranteed</span>
             </div>
           </div>
           
@@ -1608,7 +1529,6 @@
             <div class="trust-icon"><i class="fas fa-check-circle"></i></div>
             <div class="trust-text">
               <strong>100% Satisfaction</strong>
-              <span>Or money back</span>
             </div>
           </div>
           
@@ -1618,12 +1538,10 @@
             <div class="trust-icon"><i class="fas fa-shield-alt"></i></div>
             <div class="trust-text">
               <strong>Secure Payment</strong>
-              <span>SSL encrypted</span>
             </div>
           </div>
         </div>
         
-        <!-- Copyright with your exact requested text -->
         <div class="copyright">
           <p>© 2025 Salim-VA. All rights reserved.</p>
           <p class="built-with">Built with <i class="fas fa-heart"></i> for scale-ups</p>
@@ -1636,427 +1554,220 @@
   <div class="modal" id="bookingModal">
     <div class="modal-panel">
       <button class="modal-close" id="closeModal">&times;</button>
-      <h3 style="margin-bottom: 20px;">Complete Your Booking</h3>
+      <h3 style="margin-bottom: 15px;">Complete Booking</h3>
       
-      <div style="margin-bottom: 15px;">
-        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Service</label>
+      <div style="margin-bottom: 12px;">
         <select id="modalService" class="form-control">
           <option value="">Select service</option>
         </select>
       </div>
 
-      <div style="margin-bottom: 15px;" id="hoursField">
-        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Hours</label>
-        <input type="number" id="modalHours" class="form-control" min="1" value="1">
+      <div style="margin-bottom: 12px;" id="hoursField">
+        <input type="number" id="modalHours" class="form-control" min="1" value="1" placeholder="Hours">
+      </div>
+
+      <div style="margin-bottom: 12px;">
+        <input type="email" id="modalEmail" class="form-control" placeholder="Email">
       </div>
 
       <div style="margin-bottom: 15px;">
-        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Email</label>
-        <input type="email" id="modalEmail" class="form-control" placeholder="your@email.com">
-      </div>
-
-      <div style="margin-bottom: 20px;">
-        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Start Date</label>
         <input type="date" id="modalDate" class="form-control">
       </div>
 
-      <div style="background: #f8fafc; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+      <div style="background: #f8fafc; padding: 12px; border-radius: 8px; margin-bottom: 15px;">
         <strong>Total: $<span id="modalTotal">0</span></strong>
       </div>
 
-      <button id="processPayment" class="btn btn-primary" style="width: 100%;">Proceed to Payment</button>
+      <button id="processPayment" class="btn btn-primary" style="width: 100%;">Pay Now</button>
     </div>
   </div>
 
   <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
-  <script src="https://js.paystack.co/v1/inline.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://js.paystack.co/v1/inline.js"></script>
 
   <script>
     (function() {
-      'use strict';
-
-      // ==================== INITIALIZATION ====================
-      document.addEventListener('DOMContentLoaded', function() {
-        initAOS();
-        initMobileMenu();
-        initHeaderScroll();
-        initPricingToggle();
-        initBookingSystem();
-        initFormHandler();
-        initActiveNav();
-        setMinDate();
+      // Initialize AOS
+      AOS.init({
+        duration: 600,
+        offset: 60,
+        once: true,
+        delay: 60
       });
 
-      // ==================== AOS ANIMATION ====================
-      function initAOS() {
-        if (typeof AOS !== 'undefined') {
-          AOS.init({
-            duration: 700,
-            offset: 80,
-            once: true,
-            delay: 80,
-            easing: 'ease-out'
-          });
-        }
-      }
+      // Mobile menu
+      const menuToggle = document.getElementById('menuToggle');
+      const navList = document.getElementById('navList');
+      
+      menuToggle?.addEventListener('click', () => {
+        navList.classList.toggle('active');
+      });
 
-      // ==================== MOBILE MENU ====================
-      function initMobileMenu() {
-        const menuToggle = document.getElementById('menuToggle');
-        const navList = document.getElementById('navList');
-        
-        if (!menuToggle || !navList) return;
+      // Header scroll
+      const header = document.querySelector('.site-header');
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+      });
 
-        menuToggle.addEventListener('click', function() {
-          const expanded = this.getAttribute('aria-expanded') === 'true';
-          this.setAttribute('aria-expanded', !expanded);
-          navList.classList.toggle('active');
-        });
-
-        // Close menu when clicking a link
-        navList.querySelectorAll('.nav-link').forEach(link => {
-          link.addEventListener('click', () => {
-            navList.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          });
-        });
-
-        // Close on outside click
-        document.addEventListener('click', (e) => {
-          if (!navList.contains(e.target) && !menuToggle.contains(e.target) && navList.classList.contains('active')) {
-            navList.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          }
-        });
-      }
-
-      // ==================== HEADER SCROLL EFFECT ====================
-      function initHeaderScroll() {
-        const header = document.querySelector('.site-header');
-        if (!header) return;
-
-        window.addEventListener('scroll', function() {
-          if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-          } else {
-            header.classList.remove('scrolled');
-          }
-        }, { passive: true });
-      }
-
-      // ==================== PRICING TOGGLE ====================
-      function initPricingToggle() {
-        const toggleBtns = document.querySelectorAll('.toggle-btn');
-        const packCards = document.querySelectorAll('.pack-card');
-        
-        if (!toggleBtns.length || !packCards.length) return;
-
-        function setPricingMode(mode) {
-          // Update active state
-          toggleBtns.forEach(btn => {
-            const isActive = btn.dataset.mode === mode;
-            btn.classList.toggle('active', isActive);
-          });
-
-          // Update prices
-          packCards.forEach(card => {
-            const priceEl = card.querySelector('.pack-price');
-            if (!priceEl) return;
-            
-            const monthly = priceEl.dataset.monthly;
-            const yearly = priceEl.dataset.yearly;
-            
-            if (mode === 'yearly') {
-              priceEl.innerHTML = `$${yearly} <small>/ year <span style="color: var(--accent);">(Save 20%)</span></small>`;
-            } else {
-              priceEl.innerHTML = `$${monthly} <small>/ month</small>`;
-            }
-          });
-        }
-
+      // Pricing toggle
+      const toggleBtns = document.querySelectorAll('.toggle-btn');
+      const packCards = document.querySelectorAll('.pack-card');
+      
+      function setPricingMode(mode) {
         toggleBtns.forEach(btn => {
-          btn.addEventListener('click', () => {
-            setPricingMode(btn.dataset.mode);
-          });
+          btn.classList.toggle('active', btn.dataset.mode === mode);
+        });
+
+        packCards.forEach(card => {
+          const priceEl = card.querySelector('.pack-price');
+          const monthly = priceEl?.dataset.monthly;
+          const yearly = priceEl?.dataset.yearly;
+          
+          if (mode === 'yearly') {
+            priceEl.innerHTML = `$${yearly} <small>/yr <span style="color: var(--accent);">Save 20%</span></small>`;
+          } else {
+            priceEl.innerHTML = `$${monthly} <small>/mo</small>`;
+          }
         });
       }
 
-      // ==================== BOOKING SYSTEM ====================
-      function initBookingSystem() {
-        const modal = document.getElementById('bookingModal');
-        const modalService = document.getElementById('modalService');
-        const modalHours = document.getElementById('modalHours');
-        const modalEmail = document.getElementById('modalEmail');
-        const modalDate = document.getElementById('modalDate');
-        const modalTotal = document.getElementById('modalTotal');
-        const hoursField = document.getElementById('hoursField');
-        const closeBtn = document.getElementById('closeModal');
-        const paymentBtn = document.getElementById('processPayment');
+      toggleBtns.forEach(btn => {
+        btn.addEventListener('click', () => setPricingMode(btn.dataset.mode));
+      });
 
-        if (!modal || !modalService) return;
+      // Booking system
+      const services = [
+        { name: 'Administrative Support', rate: 25 },
+        { name: 'Graphic Design', rate: 45 },
+        { name: 'Content Creation', rate: 35 },
+        { name: 'Social Media', rate: 40 },
+        { name: 'E-commerce', rate: 30 },
+        { name: 'Video Editing', rate: 50 },
+        { name: 'Starter Package', rate: 400, type: 'package' },
+        { name: 'Standard Package', rate: 750, type: 'package' },
+        { name: 'Premium Package', rate: 1400, type: 'package' }
+      ];
 
-        // Services data
-        const services = [
-          { name: 'Administrative Support', rate: 25, type: 'hourly' },
-          { name: 'Graphic Design', rate: 45, type: 'hourly' },
-          { name: 'Content Creation', rate: 35, type: 'hourly' },
-          { name: 'Social Media Management', rate: 40, type: 'hourly' },
-          { name: 'E-commerce Support', rate: 30, type: 'hourly' },
-          { name: 'Video Editing', rate: 50, type: 'hourly' },
-          { name: 'Starter Package', rate: 400, type: 'package' },
-          { name: 'Standard Package', rate: 750, type: 'package' },
-          { name: 'Premium Package', rate: 1400, type: 'package' }
-        ];
+      const modal = document.getElementById('bookingModal');
+      const modalService = document.getElementById('modalService');
+      const modalHours = document.getElementById('modalHours');
+      const modalEmail = document.getElementById('modalEmail');
+      const modalDate = document.getElementById('modalDate');
+      const modalTotal = document.getElementById('modalTotal');
+      const hoursField = document.getElementById('hoursField');
 
-        // Populate services
-        modalService.innerHTML = '<option value="">Select service</option>' + 
+      if (modalService) {
+        modalService.innerHTML = '<option value="">Select</option>' + 
           services.map(s => 
-            `<option value="${s.name}" data-rate="${s.rate}" data-type="${s.type}">
-              ${s.name} - $${s.rate}${s.type === 'hourly' ? '/hr' : '/mo'}
+            `<option value="${s.name}" data-rate="${s.rate}" data-type="${s.type || 'hourly'}">
+              ${s.name} - $${s.rate}${s.type !== 'package' ? '/hr' : '/mo'}
             </option>`
           ).join('');
 
-        // Update total when service changes
         modalService.addEventListener('change', function() {
           const selected = this.selectedOptions[0];
           if (!selected) return;
 
           const rate = Number(selected.dataset.rate);
           const type = selected.dataset.type;
-          const hours = type === 'hourly' ? (parseInt(modalHours.value) || 1) : 1;
+          const hours = type === 'hourly' ? (parseInt(modalHours?.value) || 1) : 1;
           const total = type === 'hourly' ? rate * hours : rate;
 
-          modalTotal.textContent = total;
-          hoursField.style.display = type === 'hourly' ? 'block' : 'none';
+          if (modalTotal) modalTotal.textContent = total;
+          if (hoursField) hoursField.style.display = type === 'hourly' ? 'block' : 'none';
         });
 
-        // Update total when hours change
-        if (modalHours) {
-          modalHours.addEventListener('input', function() {
-            const selected = modalService.selectedOptions[0];
-            if (!selected) return;
-
-            const rate = Number(selected.dataset.rate);
-            const type = selected.dataset.type;
-            
-            if (type === 'hourly') {
-              const hours = parseInt(this.value) || 1;
-              modalTotal.textContent = rate * hours;
-            }
-          });
-        }
-
-        // Open modal from book buttons
-        document.querySelectorAll('.service-book, .pack-book').forEach(btn => {
-          btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const service = this.dataset.service || this.dataset.plan;
-            
-            // Find and select the service
-            Array.from(modalService.options).forEach(opt => {
-              if (opt.value === service) {
-                modalService.value = service;
-              }
-            });
-            
-            // Trigger change to update total
-            modalService.dispatchEvent(new Event('change'));
-            
-            // Set min date to today
-            const today = new Date().toISOString().split('T')[0];
-            if (modalDate) {
-              modalDate.min = today;
-              modalDate.value = today;
-            }
-            
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-          });
-        });
-
-        // Close modal
-        if (closeBtn) {
-          closeBtn.addEventListener('click', closeModal);
-        }
-
-        // Close on outside click
-        modal.addEventListener('click', function(e) {
-          if (e.target === modal) {
-            closeModal();
-          }
-        });
-
-        // Close on escape key
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeModal();
-          }
-        });
-
-        function closeModal() {
-          modal.classList.remove('active');
-          document.body.style.overflow = '';
-        }
-
-        // Process payment
-        if (paymentBtn && typeof PaystackPop !== 'undefined') {
-          paymentBtn.addEventListener('click', function() {
-            const selected = modalService.selectedOptions[0];
-            const email = modalEmail?.value;
-            const total = Number(modalTotal?.textContent);
-
-            // Validation
-            if (!selected || !selected.value) {
-              alert('Please select a service');
-              return;
-            }
-
-            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-              alert('Please enter a valid email');
-              return;
-            }
-
-            if (!modalDate?.value) {
-              alert('Please select a start date');
-              return;
-            }
-
-            if (total <= 0) {
-              alert('Invalid total amount');
-              return;
-            }
-
-            // Initialize Paystack
-            const handler = PaystackPop.setup({
-              key: 'pk_test_aeb92b1876c92b249172fd6453de18614cbd5381',
-              email: email,
-              amount: Math.round(total * 100),
-              currency: 'USD',
-              metadata: {
-                service: selected.value,
-                start_date: modalDate.value
-              },
-              callback: function(response) {
-                alert('Payment successful! Reference: ' + response.reference);
-                closeModal();
-                
-                // Clear form
-                if (modalService) modalService.value = '';
-                if (modalEmail) modalEmail.value = '';
-                if (modalDate) modalDate.value = new Date().toISOString().split('T')[0];
-                if (modalHours) modalHours.value = '1';
-              },
-              onClose: function() {
-                alert('Payment cancelled');
-              }
-            });
-
-            handler.openIframe();
-          });
-        }
-      }
-
-      // ==================== FORM HANDLER (Security & Validation) ====================
-      function initFormHandler() {
-        const form = document.getElementById('contactForm');
-        if (!form) return;
-
-        // Character counter
-        const textarea = form.querySelector('textarea');
-        const counter = form.querySelector('.char-counter');
-        
-        if (textarea && counter) {
-          textarea.addEventListener('input', function() {
-            counter.textContent = this.value.length + '/500 characters';
-          });
-        }
-
-        // Form validation and sanitization
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-
-          // Get form data
-          const formData = new FormData(form);
-          const sanitizedData = {};
-
-          // Sanitize inputs (prevent XSS)
-          for (let [key, value] of formData.entries()) {
-            if (typeof value === 'string') {
-              // Basic sanitization - remove script tags
-              sanitizedData[key] = value.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
-            } else {
-              sanitizedData[key] = value;
-            }
-          }
-
-          // Validate required fields
-          if (!sanitizedData.name || !sanitizedData.email || !sanitizedData.message) {
-            alert('Please fill all required fields');
-            return;
-          }
-
-          // Validate email
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailRegex.test(sanitizedData.email)) {
-            alert('Please enter a valid email address');
-            return;
-          }
-
-          // Validate message length
-          if (sanitizedData.message.length < 10) {
-            alert('Message must be at least 10 characters');
-            return;
-          }
-
-          // Show success message
-          alert('Message sent! I\'ll respond within 24 hours.');
-          form.reset();
-          if (counter) counter.textContent = '0/500 characters';
+        modalHours?.addEventListener('input', function() {
+          const selected = modalService.selectedOptions[0];
+          if (!selected) return;
           
-          // In production, you would submit to Netlify:
-          // form.submit();
+          const rate = Number(selected.dataset.rate);
+          const hours = parseInt(this.value) || 1;
+          if (modalTotal) modalTotal.textContent = rate * hours;
         });
       }
 
-      // ==================== ACTIVE NAVIGATION ====================
-      function initActiveNav() {
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
+      // Open modal
+      document.querySelectorAll('.service-book, .pack-book').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const service = btn.dataset.service || btn.dataset.plan;
+          
+          if (modalService) {
+            modalService.value = service;
+            modalService.dispatchEvent(new Event('change'));
+          }
+          
+          if (modalDate) {
+            modalDate.value = new Date().toISOString().split('T')[0];
+          }
+          
+          modal?.classList.add('active');
+        });
+      });
 
-        if (!sections.length || !navLinks.length) return;
+      // Close modal
+      document.getElementById('closeModal')?.addEventListener('click', () => {
+        modal.classList.remove('active');
+      });
 
-        window.addEventListener('scroll', function() {
-          let current = '';
-          const scrollPos = window.scrollY + 100;
+      modal?.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.remove('active');
+      });
 
-          sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionBottom = sectionTop + section.offsetHeight;
+      // Process payment
+      document.getElementById('processPayment')?.addEventListener('click', () => {
+        const selected = modalService?.selectedOptions[0];
+        const email = modalEmail?.value;
+        const total = Number(modalTotal?.textContent);
 
-            if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
-              current = section.getAttribute('id');
-            }
-          });
+        if (!selected?.value) return alert('Select service');
+        if (!email || !/^\S+@\S+\.\S+$/.test(email)) return alert('Valid email required');
+        if (!modalDate?.value) return alert('Select date');
+        if (total <= 0) return alert('Invalid total');
 
-          navLinks.forEach(link => {
-            link.classList.remove('active');
-            const href = link.getAttribute('href').replace('#', '');
-            if (href === current) {
-              link.classList.add('active');
-            }
-          });
-        }, { passive: true });
-      }
+        const handler = PaystackPop.setup({
+          key: 'pk_test_aeb92b1876c92b249172fd6453de18614cbd5381',
+          email: email,
+          amount: total * 100,
+          currency: 'USD',
+          callback: () => {
+            alert('Payment successful!');
+            modal.classList.remove('active');
+          }
+        });
 
-      // ==================== SET MIN DATE ====================
-      function setMinDate() {
-        const dateInput = document.getElementById('modalDate');
-        if (dateInput) {
-          const today = new Date().toISOString().split('T')[0];
-          dateInput.min = today;
-        }
-      }
+        handler.openIframe();
+      });
+
+      // Character counter
+      const textarea = document.querySelector('textarea');
+      const counter = document.querySelector('.char-counter');
+      
+      textarea?.addEventListener('input', function() {
+        if (counter) counter.textContent = this.value.length + '/500';
+      });
+
+      // Active nav
+      const sections = document.querySelectorAll('section[id]');
+      window.addEventListener('scroll', () => {
+        let current = '';
+        const scrollPos = window.scrollY + 100;
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionBottom = sectionTop + section.offsetHeight;
+
+          if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+        });
+      });
     })();
   </script>
 </body>
