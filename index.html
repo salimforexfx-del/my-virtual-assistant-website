@@ -18,7 +18,7 @@
   <meta property="og:description" content="Professional virtual assistant services including website maintenance. Let me handle the details while you focus on growth.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
   
-  <!-- SECURITY HEADERS (CSP) – Corrected to allow Paystack -->
+  <!-- SECURITY HEADERS (CSP) – Corrected to allow Paystack & PayPal -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     script-src 'self' 'unsafe-inline' https://js.paystack.co https://www.paypal.com https://cdnjs.cloudflare.com;
@@ -1775,8 +1775,8 @@
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script src="https://js.paystack.co/v1/inline.js"></script>
-  <!-- PayPal SDK (Sandbox) -->
-  <script src="https://www.paypal.com/sdk/js?client-id=AZDxjDScFpQtjWTOUtKiNZQsrElahBDA1VuDuDxeB6uWsFf2p2FpBSCi12s9DZyY41oG13ST7TPiR4qX&currency=USD&disable-funding=credit,card"></script>
+  <!-- PayPal SDK (Live) with your client ID -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AaE3fmFimJBo87yyk0YUcfZ7fBoP5GeI__mheZTFfDTVINGGWmmoLDEN9P9P9rBqmyDmbTrt1VxUkX3t&currency=USD&disable-funding=credit,card"></script>
 
   <script>
     (function() {
@@ -1784,7 +1784,7 @@
 
       // Configuration
       const USD_TO_KES = 131; // Exchange rate
-      const PAYSTACK_PUBLIC_KEY = 'pk_live_4842a6f67cbfb6c50efc62c39d25c65c18c09577'; // Live key
+      const PAYSTACK_PUBLIC_KEY = 'pk_live_4842a6f67cbfb6c50efc62c39d25c65c18c09577'; // Your live key
       
       // Initialize AOS
       AOS.init({
@@ -2048,7 +2048,7 @@
         handler.openIframe();
       }
 
-      // PayPal payment (in USD) - simplified for demo
+      // PayPal payment (in USD) - placeholder for live integration
       function processPayPalPayment(email, amountUSD, serviceName, hours, startDate) {
         // In production, you would create an order via your backend
         alert('PayPal integration is ready. In production, you would be redirected to PayPal.');
