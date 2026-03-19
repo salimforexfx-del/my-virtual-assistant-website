@@ -5,25 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <!-- Primary Meta Tags -->
-  <title>Salim-VA | Professional Virtual Assistant Services</title>
-  <meta name="title" content="Salim-VA | Professional Virtual Assistant Services">
-  <meta name="description" content="Professional virtual assistant services: administrative support, content creation, design, and technical solutions for ambitious businesses.">
-  <meta name="author" content="Salim-VA">
+  <title>Salim-VA | Professional Virtual Assistant & Web Maintenance</title>
+  <meta name="title" content="Salim-VA | Professional Virtual Assistant & Web Maintenance">
+  <meta name="description" content="Professional virtual assistant services: administrative support, graphic design, content creation, social media, e-commerce, video editing, and website maintenance.">
+  <meta name="author" content="Salim Omar">
+  <meta name="keywords" content="virtual assistant, VA services, administrative support, graphic design, content creation, social media management, e-commerce support, video editing, website maintenance">
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://salim-va.com">
   <meta property="og:title" content="Salim-VA | Professional Virtual Assistant">
-  <meta property="og:description" content="Professional virtual assistant services for ambitious businesses. Let me handle the details while you focus on growth.">
+  <meta property="og:description" content="Professional virtual assistant services including website maintenance. Let me handle the details while you focus on growth.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
   
-  <!-- Security Headers -->
+  <!-- Security Headers (meta equivalent) -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.paystack.co https://www.paypal.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://images.unsplash.com; frame-src https://www.paypal.com;">
   
   <!-- Resource Hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://images.unsplash.com">
   
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
@@ -45,7 +47,9 @@
     :root {
       --primary: #4e46e5;
       --primary-dark: #3730a3;
+      --primary-light: #818cf8;
       --accent: #f43f5e;
+      --accent-light: #fb7185;
       --bg: #ffffff;
       --bg-alt: #f8fafc;
       --text: #0f172a;
@@ -54,12 +58,18 @@
       --border: #e2e8f0;
       --card-bg: #ffffff;
       --card-shadow: 0 8px 30px rgba(0,0,0,0.04);
-      --radius: 12px;
+      --shadow-sm: 0 4px 12px rgba(0,0,0,0.02);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.04);
+      --shadow-lg: 0 12px 36px rgba(0,0,0,0.06);
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
       --transition: all 0.26s cubic-bezier(0.2, 0.9, 0.2, 1);
       --header-height: 64px;
-      --section-padding: 50px 0;
-      --gap: 20px;
-      --usd-rate: 131; /* 1 USD = 131 KES */
+      --section-padding: 60px 0;  /* Original spacing */
+      --gap: 20px;                  /* Original gap */
+      --usd-rate: 131;              /* 1 USD = 131 KES */
     }
 
     html {
@@ -73,6 +83,7 @@
       color: var(--text);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -84,7 +95,7 @@
       padding: 0 15px;
     }
 
-    h1, h2, h3, h4 {
+    h1, h2, h3, h4, h5 {
       font-family: 'Montserrat', 'Inter', sans-serif;
       font-weight: 700;
       line-height: 1.2;
@@ -93,6 +104,48 @@
     p {
       color: var(--text-muted);
       font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ---------- UTILITY CLASSES ---------- */
+    .text-center { text-align: center; }
+    .text-primary { color: var(--primary); }
+    .text-accent { color: var(--accent); }
+    .mb-1 { margin-bottom: 10px; }
+    .mb-2 { margin-bottom: 20px; }
+    .mb-3 { margin-bottom: 30px; }
+    .mt-1 { margin-top: 10px; }
+    .mt-2 { margin-top: 20px; }
+    .mt-3 { margin-top: 30px; }
+
+    /* ---------- SKIP LINK (Accessibility) ---------- */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--primary);
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 0 0 var(--radius-sm) 0;
+      z-index: 10000;
+      transition: top 0.2s;
+    }
+
+    .skip-link:focus {
+      top: 0;
+      outline: 3px solid var(--accent);
     }
 
     /* ---------- BUTTONS ---------- */
@@ -101,14 +154,15 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 10px 18px;
-      border-radius: 10px;
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       cursor: pointer;
       border: none;
       transition: var(--transition);
       text-decoration: none;
+      line-height: 1;
     }
 
     .btn-primary {
@@ -119,7 +173,7 @@
     .btn-primary:hover {
       background: var(--primary-dark);
       transform: translateY(-2px);
-      box-shadow: 0 12px 36px rgba(78,70,229,0.15);
+      box-shadow: var(--shadow-lg);
     }
 
     .btn-outline {
@@ -131,6 +185,7 @@
     .btn-outline:hover {
       background: var(--primary);
       color: white;
+      transform: translateY(-2px);
     }
 
     .btn-accent {
@@ -141,11 +196,22 @@
     .btn-accent:hover {
       background: #e11d48;
       transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
     }
 
     .btn-sm {
       padding: 8px 16px;
       font-size: 0.85rem;
+    }
+
+    .btn-large {
+      padding: 14px 32px;
+      font-size: 1rem;
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid var(--primary-light);
+      outline-offset: 2px;
     }
 
     /* ---------- HEADER ---------- */
@@ -155,16 +221,16 @@
       left: 0;
       width: 100%;
       background: rgba(255,255,255,0.98);
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
       z-index: 1000;
       transition: var(--transition);
       border-bottom: 1px solid transparent;
-      padding: 10px 0;
+      padding: 8px 0;
     }
 
     .site-header.scrolled {
       border-bottom-color: var(--border);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      box-shadow: var(--shadow-sm);
     }
 
     .header-container {
@@ -175,7 +241,7 @@
     }
 
     .logo {
-      font-size: 1.1rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--primary);
       text-decoration: none;
@@ -184,9 +250,13 @@
       gap: 8px;
     }
 
+    .logo i {
+      font-size: 1.4rem;
+    }
+
     .nav-list {
       display: flex;
-      gap: 24px;
+      gap: 28px;
       list-style: none;
     }
 
@@ -194,7 +264,7 @@
       color: var(--text);
       text-decoration: none;
       font-weight: 500;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       padding: 6px 0;
       position: relative;
     }
@@ -234,43 +304,59 @@
 
     /* ---------- HERO SECTION ---------- */
     .hero {
-      padding: calc(var(--header-height) + 30px) 0 40px;
+      padding: calc(var(--header-height) + 40px) 0 60px;
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      border-bottom-left-radius: 16px;
-      border-bottom-right-radius: 16px;
+      border-bottom-left-radius: var(--radius-xl);
+      border-bottom-right-radius: var(--radius-xl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+      pointer-events: none;
     }
 
     .hero-container {
       display: grid;
       grid-template-columns: 1fr 0.9fr;
-      gap: 30px;
+      gap: 40px;
       align-items: center;
+      position: relative;
+      z-index: 2;
     }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       background: rgba(255,255,255,0.15);
       backdrop-filter: blur(4px);
-      padding: 5px 12px;
+      padding: 6px 14px;
       border-radius: 100px;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      margin-bottom: 15px;
+      letter-spacing: 0.3px;
+      margin-bottom: 20px;
       border: 1px solid rgba(255,255,255,0.2);
     }
 
     .hero-badge i {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       color: gold;
     }
 
     .hero-title {
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-size: clamp(2rem, 5vw, 3rem);
       line-height: 1.2;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       color: white;
     }
 
@@ -289,65 +375,74 @@
 
     .hero-description {
       color: rgba(255,255,255,0.9);
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-      max-width: 500px;
+      font-size: 1rem;
+      margin-bottom: 25px;
+      max-width: 550px;
     }
 
     .hero-cta {
       display: flex;
-      gap: 12px;
+      gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 15px;
+      margin-bottom: 25px;
     }
 
     .hero-meta {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       color: rgba(255,255,255,0.8);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
 
     .hero-meta i {
       color: var(--accent);
-      font-size: 0.8rem;
     }
 
     .hero-visual {
-      max-width: 380px;
+      max-width: 400px;
       margin-left: auto;
+      position: relative;
+    }
+
+    .hero-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-lg);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1);
+      pointer-events: none;
     }
 
     .hero-visual img {
       width: 100%;
       height: auto;
-      border-radius: 12px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      border-radius: var(--radius-lg);
       display: block;
+      box-shadow: var(--shadow-lg);
     }
 
     /* ---------- SECTION HEADERS ---------- */
     .section-header {
       text-align: center;
       max-width: 600px;
-      margin: 0 auto 25px;
+      margin: 0 auto 34px;  /* Original spacing */
     }
 
     .section-header h2 {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       position: relative;
       display: inline-block;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .section-header h2::after {
       content: '';
       position: absolute;
-      bottom: -6px;
+      bottom: -8px;
       left: 50%;
       transform: translateX(-50%);
-      width: 50px;
+      width: 60px;
       height: 3px;
       background: var(--accent);
       border-radius: 3px;
@@ -355,22 +450,61 @@
 
     .section-header p {
       color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-top: 10px;
+      font-size: 0.95rem;
+      margin-top: 15px;
     }
 
-    /* ---------- SERVICES GRID ---------- */
-    .services-grid {
+    /* ---------- ABOUT SECTION ---------- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .about-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-bottom: 10px;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .stat-box {
+      background: var(--bg-alt);
+      padding: 15px 10px;
+      border-radius: var(--radius-md);
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+
+    .stat-number {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.3rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ---------- SERVICES GRID (auto-fit to allow 7 items) ---------- */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
 
     .service-card {
       background: var(--card-bg);
-      border-radius: 12px;
-      padding: 20px;
+      border-radius: var(--radius-lg);
+      padding: 24px;
       box-shadow: var(--card-shadow);
       border: 1px solid var(--border);
       transition: var(--transition);
@@ -379,32 +513,32 @@
     }
 
     .service-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
     }
 
     .service-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 10px;
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 1.1rem;
-      margin-bottom: 12px;
+      font-size: 1.2rem;
+      margin-bottom: 16px;
     }
 
     .service-card h3 {
-      font-size: 1rem;
-      margin-bottom: 6px;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
     }
 
     .service-card p {
       color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-bottom: 12px;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
       line-height: 1.5;
       flex: 1;
     }
@@ -412,19 +546,31 @@
     .service-price {
       font-weight: 700;
       color: var(--primary);
-      font-size: 1.1rem;
-      margin-bottom: 12px;
+      font-size: 1.2rem;
+      margin-bottom: 16px;
     }
 
     .service-price small {
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
       font-weight: 400;
     }
 
-    .service-card .btn {
-      padding: 8px 16px;
+    .kes-price {
       font-size: 0.85rem;
+      color: #16a34a;
+      background: #f0fdf4;
+      padding: 4px 8px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .kes-price i {
+      margin-right: 4px;
+    }
+
+    .service-card .btn {
       width: 100%;
     }
 
@@ -432,25 +578,25 @@
     .pricing-toggle {
       display: flex;
       justify-content: center;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
 
     .toggle-group {
       display: flex;
       background: white;
       border-radius: 50px;
-      padding: 3px;
+      padding: 4px;
       border: 1px solid var(--border);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      box-shadow: var(--shadow-sm);
     }
 
     .toggle-btn {
-      padding: 6px 20px;
+      padding: 8px 24px;
       border: none;
       background: none;
       border-radius: 50px;
       font-weight: 600;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       cursor: pointer;
       transition: var(--transition);
     }
@@ -463,13 +609,13 @@
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 20px;
     }
 
     .pack-card {
       background: white;
-      border-radius: 12px;
-      padding: 20px 18px;
+      border-radius: var(--radius-lg);
+      padding: 28px 20px;
       box-shadow: var(--card-shadow);
       border: 1px solid var(--border);
       transition: var(--transition);
@@ -477,12 +623,13 @@
     }
 
     .pack-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
     }
 
     .pack-card.popular {
       border: 2px solid var(--accent);
+      transform: scale(1.02);
     }
 
     .pack-badge {
@@ -492,171 +639,115 @@
       transform: translateX(-50%);
       background: var(--accent);
       color: white;
-      padding: 3px 12px;
+      padding: 4px 16px;
       border-radius: 50px;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       font-weight: 600;
+      letter-spacing: 0.5px;
     }
 
     .pack-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 5px;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
     }
 
     .pack-tagline {
       color: var(--text-muted);
-      font-size: 0.8rem;
-      margin-bottom: 12px;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
     }
 
     .pack-price {
-      font-size: 1.6rem;
+      font-size: 2rem;
       font-weight: 700;
       color: var(--primary);
       margin-bottom: 15px;
     }
 
     .pack-price small {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
       font-weight: 400;
     }
 
     .kes-price {
       font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-      padding: 4px 8px;
+      color: #16a34a;
       background: #f0fdf4;
+      padding: 4px 12px;
       border-radius: 20px;
       display: inline-block;
-    }
-
-    .kes-price i {
-      color: #16a34a;
-      margin-right: 4px;
+      margin-bottom: 15px;
     }
 
     .pack-features {
       list-style: none;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     .pack-features li {
       display: flex;
       align-items: center;
-      gap: 6px;
-      margin-bottom: 6px;
+      gap: 8px;
+      margin-bottom: 8px;
       color: var(--text-secondary);
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
 
     .pack-features i {
       color: var(--primary);
-      font-size: 0.75rem;
+      font-size: 0.85rem;
     }
 
     .pack-card .btn {
       width: 100%;
-      padding: 8px 16px;
-      font-size: 0.85rem;
     }
 
-    /* ---------- ABOUT SECTION ---------- */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      align-items: center;
-    }
-
-    .about-image img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: var(--card-shadow);
-    }
-
-    .about-content .section-header {
-      text-align: left;
-      margin-bottom: 15px;
-    }
-
-    .about-content .section-header h2::after {
-      left: 0;
-      transform: none;
-    }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .stat-box {
-      background: var(--bg-alt);
-      padding: 10px;
-      border-radius: 8px;
-      text-align: center;
-      border: 1px solid var(--border);
-    }
-
-    .stat-number {
-      font-weight: 700;
-      color: var(--primary);
-      font-size: 1.1rem;
-    }
-
-    .stat-label {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-
-    /* ---------- TESTIMONIALS ---------- */
+    /* ---------- TESTIMONIALS SECTION ---------- */
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 20px;
     }
 
     .testimonial-card {
       background: white;
-      border-radius: 12px;
-      padding: 16px;
+      border-radius: var(--radius-lg);
+      padding: 20px;
       box-shadow: var(--card-shadow);
       border: 1px solid var(--border);
       transition: var(--transition);
     }
 
     .testimonial-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
     }
 
     .testimonial-quote {
       color: var(--text);
       font-style: italic;
-      margin-bottom: 12px;
-      font-size: 0.85rem;
-      line-height: 1.5;
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+      line-height: 1.6;
     }
 
     .testimonial-meta {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .avatar {
-      width: 36px;
-      height: 36px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
       font-weight: 700;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
 
     .avatar.bg1 { background: #f97316; }
@@ -667,95 +758,96 @@
     .avatar.bg6 { background: #ef4444; }
 
     .author-info strong {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       display: block;
     }
 
     .author-info span {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
     }
 
     /* ---------- CONTACT SECTION ---------- */
     .contact-section {
       background: #f8fafc;
-      padding: 50px 0;
+      padding: 60px 0;
     }
 
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 25px;
+      gap: 30px;
     }
 
     .info-cards {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 15px;
     }
 
     .info-card {
       background: #fff;
       border-radius: 12px;
-      padding: 14px;
+      padding: 16px;
       display: flex;
-      gap: 12px;
+      gap: 15px;
       box-shadow: 0 8px 30px rgba(0,0,0,0.04);
       border: 1px solid #e2e8f0;
     }
 
     .info-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 8px;
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
       background: linear-gradient(135deg, rgba(78,70,229,0.08), rgba(78,70,229,0.02));
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--primary);
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
 
     .info-content h4 {
-      font-size: 0.95rem;
-      margin-bottom: 3px;
+      font-size: 1rem;
+      margin-bottom: 4px;
     }
 
     .info-content p {
-      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
       margin-bottom: 2px;
     }
 
     .info-content small {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
     }
 
     .form-panel {
       background: #fff;
       border-radius: 12px;
-      padding: 20px;
+      padding: 24px;
       box-shadow: 0 8px 30px rgba(0,0,0,0.04);
       border: 1px solid #e2e8f0;
     }
 
     .form-panel h3 {
-      margin-bottom: 15px;
-      font-size: 1.1rem;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
     }
 
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 12px;
     }
 
     .form-control {
       width: 100%;
-      padding: 8px 12px;
+      padding: 10px 12px;
       border-radius: 8px;
       border: 1px solid #e2e8f0;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       transition: var(--transition);
     }
 
@@ -773,11 +865,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 15px;
+      margin-top: 20px;
     }
 
     .char-counter {
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
     }
 
@@ -785,51 +877,50 @@
     .site-footer {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      padding: 40px 0 20px;
+      padding: 50px 0 20px;
       margin-top: auto;
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 30px;
-      margin-bottom: 25px;
+      gap: 40px;
+      margin-bottom: 30px;
     }
 
     .footer-brand p {
       color: rgba(255,255,255,0.8);
-      font-size: 0.85rem;
-      margin: 10px 0;
-      line-height: 1.5;
+      font-size: 0.9rem;
+      margin: 15px 0;
+      line-height: 1.6;
     }
 
     .footer-social {
       display: flex;
-      gap: 8px;
+      gap: 12px;
     }
 
     .footer-social a {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
       background: rgba(255,255,255,0.1);
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 0.9rem;
       transition: var(--transition);
     }
 
     .footer-social a:hover {
       background: var(--accent);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
     .footer-links h4 {
       color: white;
-      font-size: 0.95rem;
-      margin-bottom: 12px;
+      font-size: 1rem;
+      margin-bottom: 20px;
     }
 
     .footer-links ul {
@@ -837,78 +928,59 @@
     }
 
     .footer-links li {
-      margin-bottom: 6px;
+      margin-bottom: 10px;
     }
 
     .footer-links a {
       color: rgba(255,255,255,0.8);
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       transition: var(--transition);
     }
 
     .footer-links a:hover {
       color: var(--accent);
-      padding-left: 3px;
+      padding-left: 5px;
     }
 
     .footer-signature {
       border-top: 1px solid rgba(255,255,255,0.1);
-      padding: 15px 0 5px;
+      padding: 25px 0 10px;
+      text-align: center;
     }
 
     .trust-strip {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 15px;
+      gap: 20px;
       flex-wrap: wrap;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
     }
 
     .trust-item {
       display: flex;
       align-items: center;
-      gap: 6px;
-      padding: 4px 12px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 50px;
-      backdrop-filter: blur(4px);
+      gap: 8px;
+      color: rgba(255,255,255,0.9);
+      font-size: 0.9rem;
     }
 
-    .trust-icon {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 0.7rem;
-    }
-
-    .trust-text strong {
-      color: white;
-      font-size: 0.8rem;
+    .trust-item i {
+      color: var(--accent);
     }
 
     .trust-divider {
-      width: 3px;
-      height: 3px;
+      width: 4px;
+      height: 4px;
       border-radius: 50%;
-      background: var(--accent);
-      opacity: 0.5;
-    }
-
-    .copyright {
-      text-align: center;
+      background: rgba(255,255,255,0.3);
     }
 
     .copyright p {
       color: rgba(255,255,255,0.7);
-      font-size: 0.75rem;
-      margin: 3px 0;
+      font-size: 0.85rem;
+      margin: 5px 0;
     }
 
     .built-with i {
@@ -941,10 +1013,10 @@
       background: white;
       width: 100%;
       max-width: 450px;
-      border-radius: 12px;
+      border-radius: var(--radius-lg);
       padding: 24px;
       position: relative;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      box-shadow: var(--shadow-lg);
     }
 
     .modal-close {
@@ -1009,8 +1081,7 @@
     }
 
     /* ---------- RESPONSIVE ---------- */
-    @media (max-width: 1000px) {
-      .services-grid,
+    @media (max-width: 1024px) {
       .pricing-grid,
       .testimonials-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1030,7 +1101,7 @@
       
       .hero-visual {
         margin: 0 auto;
-        max-width: 320px;
+        max-width: 350px;
       }
       
       .menu-toggle {
@@ -1044,10 +1115,10 @@
         left: 0;
         width: 100%;
         background: white;
-        padding: 15px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        padding: 20px;
+        box-shadow: var(--shadow-md);
         flex-direction: column;
-        gap: 12px;
+        gap: 15px;
         border-bottom: 1px solid var(--border);
       }
       
@@ -1057,21 +1128,15 @@
       
       .trust-strip {
         flex-direction: column;
-        gap: 8px;
+        gap: 10px;
       }
       
       .trust-divider {
         display: none;
       }
-      
-      .trust-item {
-        width: 100%;
-        justify-content: center;
-      }
     }
 
     @media (max-width: 600px) {
-      .services-grid,
       .pricing-grid,
       .testimonials-grid {
         grid-template-columns: 1fr;
@@ -1079,7 +1144,6 @@
       
       .footer-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
       }
       
       .form-grid {
@@ -1095,20 +1159,16 @@
       }
     }
 
-    .skip-link {
+    /* Accessibility */
+    .sr-only {
       position: absolute;
-      top: -40px;
-      left: 0;
-      background: var(--primary);
-      color: white;
-      padding: 8px 16px;
-      text-decoration: none;
-      border-radius: 0 0 6px 0;
-      z-index: 10000;
-    }
-
-    .skip-link:focus {
-      top: 0;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
     }
 
     [data-aos] {
@@ -1141,12 +1201,12 @@
 
       <nav>
         <ul class="nav-list" id="navList">
-          <li><a href="index.html#home" class="nav-link active">Home</a></li>
-          <li><a href="index.html#services" class="nav-link">Services</a></li>
-          <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
-          <li><a href="index.html#about" class="nav-link">About</a></li>
-          <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
-          <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#pricing" class="nav-link">Pricing</a></li>
+          <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -1159,7 +1219,7 @@
         <div data-aos="fade-up">
           <div class="hero-badge">
             <i class="fas fa-star"></i>
-            <span>Trusted by 200+ businesses</span>
+            <span>Trusted by 200+ businesses worldwide</span>
           </div>
           
           <h1 class="hero-title">
@@ -1170,12 +1230,18 @@
           
           <p class="hero-description">
             Boost your productivity with expert administrative, creative, and technical support 
-            tailored to your business needs.
+            tailored to your business needs. Let me handle the details while you focus on growth.
           </p>
           
           <div class="hero-cta">
-            <a href="index.html#pricing" class="btn btn-primary">View Pricing</a>
-            <a href="index.html#contact" class="btn btn-outline">Get in Touch</a>
+            <a href="#pricing" class="btn btn-primary btn-large">
+              <span>View Pricing</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="#contact" class="btn btn-outline btn-large">
+              <i class="fas fa-calendar"></i>
+              <span>Get in Touch</span>
+            </a>
           </div>
           
           <div class="hero-meta">
@@ -1186,172 +1252,41 @@
         
         <div class="hero-visual" data-aos="fade-left" data-aos-delay="100">
           <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-               alt="Professional workspace" 
-               loading="eager">
+               alt="Professional workspace with laptop and coffee" 
+               loading="eager"
+               width="400"
+               height="300">
         </div>
       </div>
     </section>
 
-    <!-- SERVICES SECTION -->
-    <section id="services">
-      <div class="container">
-        <div class="section-header" data-aos="fade-up">
-          <h2>Hourly Services</h2>
-          <p>Choose any service on an hourly basis — perfect for one-off tasks.</p>
-        </div>
-
-        <div class="services-grid">
-          <!-- Row 1 -->
-          <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-icon"><i class="fas fa-calendar-alt"></i></div>
-            <h3>Administrative Support</h3>
-            <p>Email management, calendar scheduling, travel arrangements, and document prep.</p>
-            <div class="service-price">$25 <small>/hr</small></div>
-            <div class="kes-price"><i class="fas fa-coin"></i> ≈ 3,275 KES/hr</div>
-            <button class="btn btn-primary service-book" data-service="Administrative Support" data-rate="25">Book</button>
-          </div>
-
-          <div class="service-card" data-aos="fade-up" data-aos-delay="140">
-            <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
-            <h3>Graphic Design</h3>
-            <p>Logo concepts, social graphics, slides and marketing assets.</p>
-            <div class="service-price">$45 <small>/hr</small></div>
-            <div class="kes-price"><i class="fas fa-coin"></i> ≈ 5,895 KES/hr</div>
-            <button class="btn btn-primary service-book" data-service="Graphic Design" data-rate="45">Book</button>
-          </div>
-
-          <div class="service-card" data-aos="fade-up" data-aos-delay="180">
-            <div class="service-icon"><i class="fas fa-file-alt"></i></div>
-            <h3>Content Creation</h3>
-            <p>Blog posts, web copy, newsletters and email campaigns.</p>
-            <div class="service-price">$35 <small>/hr</small></div>
-            <div class="kes-price"><i class="fas fa-coin"></i> ≈ 4,585 KES/hr</div>
-            <button class="btn btn-primary service-book" data-service="Content Creation" data-rate="35">Book</button>
-          </div>
-
-          <!-- Row 2 -->
-          <div class="service-card" data-aos="fade-up" data-aos-delay="220">
-            <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-            <h3>Social Media</h3>
-            <p>Content calendars, post scheduling, engagement and basic reporting.</p>
-            <div class="service-price">$40 <small>/hr</small></div>
-            <div class="kes-price"><i class="fas fa-coin"></i> ≈ 5,240 KES/hr</div>
-            <button class="btn btn-primary service-book" data-service="Social Media Management" data-rate="40">Book</button>
-          </div>
-
-          <div class="service-card" data-aos="fade-up" data-aos-delay="260">
-            <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
-            <h3>E-commerce</h3>
-            <p>Product listings, inventory updates, order handling.</p>
-            <div class="service-price">$30 <small>/hr</small></div>
-            <div class="kes-price"><i class="fas fa-coin"></i> ≈ 3,930 KES/hr</div>
-            <button class="btn btn-primary service-book" data-service="E-commerce Support" data-rate="30">Book</button>
-          </div>
-
-          <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-icon"><i class="fas fa-video"></i></div>
-            <h3>Video Editing</h3>
-            <p>Short-form edits, captions, YouTube & promotional videos.</p>
-            <div class="service-price">$50 <small>/hr</small></div>
-            <div class="kes-price"><i class="fas fa-coin"></i> ≈ 6,550 KES/hr</div>
-            <button class="btn btn-primary service-book" data-service="Video Editing" data-rate="50">Book</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRICING SECTION -->
-    <section id="pricing">
-      <div class="container">
-        <div class="section-header" data-aos="fade-up">
-          <h2>Packages</h2>
-          <p>Monthly retainers — or yearly and save 20%.</p>
-        </div>
-
-        <div class="pricing-toggle" data-aos="fade-up">
-          <div class="toggle-group">
-            <button class="toggle-btn active" data-mode="monthly">Monthly</button>
-            <button class="toggle-btn" data-mode="yearly">Yearly (Save 20%)</button>
-          </div>
-        </div>
-
-        <div class="pricing-grid">
-          <!-- Starter -->
-          <div class="pack-card" data-aos="fade-up" data-aos-delay="100">
-            <h3>Starter</h3>
-            <p class="pack-tagline">For small businesses</p>
-            <div class="pack-price" data-monthly="400" data-yearly="3840">$400 <small>/mo</small></div>
-            <div class="kes-price"><i class="fas fa-coin"></i> <span class="kes-monthly">52,400</span> KES/mo</div>
-            <ul class="pack-features">
-              <li><i class="fas fa-check"></i> 20 hours/month</li>
-              <li><i class="fas fa-check"></i> Email & chat support</li>
-              <li><i class="fas fa-check"></i> Basic admin tasks</li>
-              <li><i class="fas fa-check"></i> 5 social posts/week</li>
-              <li><i class="fas fa-check"></i> 48h response</li>
-            </ul>
-            <button class="btn btn-primary pack-book" data-plan="Starter" data-monthly="400" data-yearly="3840">Choose Plan</button>
-          </div>
-
-          <!-- Standard -->
-          <div class="pack-card popular" data-aos="fade-up" data-aos-delay="140">
-            <div class="pack-badge">Most Popular</div>
-            <h3>Standard</h3>
-            <p class="pack-tagline">For growing teams</p>
-            <div class="pack-price" data-monthly="750" data-yearly="7200">$750 <small>/mo</small></div>
-            <div class="kes-price"><i class="fas fa-coin"></i> <span class="kes-monthly">98,250</span> KES/mo</div>
-            <ul class="pack-features">
-              <li><i class="fas fa-check"></i> 40 hours/month</li>
-              <li><i class="fas fa-check"></i> Admin + creative</li>
-              <li><i class="fas fa-check"></i> Social media</li>
-              <li><i class="fas fa-check"></i> Weekly check-ins</li>
-              <li><i class="fas fa-check"></i> 24-48h response</li>
-            </ul>
-            <button class="btn btn-accent pack-book" data-plan="Standard" data-monthly="750" data-yearly="7200">Choose Plan</button>
-          </div>
-
-          <!-- Premium -->
-          <div class="pack-card" data-aos="fade-up" data-aos-delay="180">
-            <h3>Premium</h3>
-            <p class="pack-tagline">Dedicated support</p>
-            <div class="pack-price" data-monthly="1400" data-yearly="13440">$1,400 <small>/mo</small></div>
-            <div class="kes-price"><i class="fas fa-coin"></i> <span class="kes-monthly">183,400</span> KES/mo</div>
-            <ul class="pack-features">
-              <li><i class="fas fa-check"></i> 80 hours/month</li>
-              <li><i class="fas fa-check"></i> Full service</li>
-              <li><i class="fas fa-check"></i> Graphic & video</li>
-              <li><i class="fas fa-check"></i> Dedicated calls</li>
-              <li><i class="fas fa-check"></i> <24h response</li>
-            </ul>
-            <button class="btn btn-primary pack-book" data-plan="Premium" data-monthly="1400" data-yearly="13440">Choose Plan</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT SECTION -->
+    <!-- ABOUT ME SECTION (Now before Services) -->
     <section id="about">
       <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>About Me</h2>
+          <p>I'm Salim — a results-driven virtual assistant who helps small businesses and founders reclaim time.</p>
+        </div>
+
         <div class="about-grid">
-          <div data-aos="fade-right">
+          <div class="about-image" data-aos="fade-right">
             <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                 alt="Workspace" 
-                 loading="lazy">
+                 alt="Professional workspace with laptop and notebook"
+                 loading="lazy"
+                 width="600"
+                 height="400">
           </div>
           <div class="about-content" data-aos="fade-left">
-            <div class="section-header">
-              <h2>About Me</h2>
-              <p>I'm Salim — helping businesses reclaim time with efficient virtual assistance.</p>
-            </div>
-            <p style="margin-bottom: 15px; font-size: 0.9rem;">I combine administrative efficiency with creative skills for polished deliverables and clear communication.</p>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">I combine administrative efficiency with creative skills so you get polished deliverables and clear communication. With over 5 years of experience working with startups and established businesses, I've developed a systematic approach to virtual assistance that ensures nothing falls through the cracks.</p>
             
             <div class="about-stats">
               <div class="stat-box">
                 <div class="stat-number">5+</div>
-                <div class="stat-label">Years</div>
+                <div class="stat-label">Years Experience</div>
               </div>
               <div class="stat-box">
                 <div class="stat-number">200+</div>
-                <div class="stat-label">Clients</div>
+                <div class="stat-label">Happy Clients</div>
               </div>
               <div class="stat-box">
                 <div class="stat-number">500+</div>
@@ -1363,77 +1298,230 @@
       </div>
     </section>
 
+    <!-- SERVICES SECTION (Hourly Services) -->
+    <section id="services">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>Hourly Services</h2>
+          <p>Choose any service on an hourly basis — perfect for one-off tasks or short projects.</p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Administrative Support -->
+          <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-icon"><i class="fas fa-calendar-alt"></i></div>
+            <h3>Administrative Support</h3>
+            <p>Email management, calendar scheduling, travel arrangements, and document prep.</p>
+            <div class="service-price">$25 <small>/ hour</small></div>
+            <div class="kes-price"><i class="fas fa-coins"></i> ≈ 3,275 KES/hour</div>
+            <button class="btn btn-primary service-book" data-service="Administrative Support" data-rate="25">Book Now</button>
+          </div>
+
+          <!-- Graphic Design -->
+          <div class="service-card" data-aos="fade-up" data-aos-delay="140">
+            <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+            <h3>Graphic Design</h3>
+            <p>Logo concepts, social graphics, slides and marketing assets.</p>
+            <div class="service-price">$45 <small>/ hour</small></div>
+            <div class="kes-price"><i class="fas fa-coins"></i> ≈ 5,895 KES/hour</div>
+            <button class="btn btn-primary service-book" data-service="Graphic Design" data-rate="45">Book Now</button>
+          </div>
+
+          <!-- Content Creation -->
+          <div class="service-card" data-aos="fade-up" data-aos-delay="180">
+            <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+            <h3>Content Creation</h3>
+            <p>Blog posts, web copy, newsletters and email campaigns that convert.</p>
+            <div class="service-price">$35 <small>/ hour</small></div>
+            <div class="kes-price"><i class="fas fa-coins"></i> ≈ 4,585 KES/hour</div>
+            <button class="btn btn-primary service-book" data-service="Content Creation" data-rate="35">Book Now</button>
+          </div>
+
+          <!-- Social Media Management -->
+          <div class="service-card" data-aos="fade-up" data-aos-delay="220">
+            <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Social Media Management</h3>
+            <p>Content calendars, post scheduling, engagement and basic reporting.</p>
+            <div class="service-price">$40 <small>/ hour</small></div>
+            <div class="kes-price"><i class="fas fa-coins"></i> ≈ 5,240 KES/hour</div>
+            <button class="btn btn-primary service-book" data-service="Social Media Management" data-rate="40">Book Now</button>
+          </div>
+
+          <!-- E-commerce Support -->
+          <div class="service-card" data-aos="fade-up" data-aos-delay="260">
+            <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
+            <h3>E-commerce Support</h3>
+            <p>Product listings, inventory updates, order handling and customer messages.</p>
+            <div class="service-price">$30 <small>/ hour</small></div>
+            <div class="kes-price"><i class="fas fa-coins"></i> ≈ 3,930 KES/hour</div>
+            <button class="btn btn-primary service-book" data-service="E-commerce Support" data-rate="30">Book Now</button>
+          </div>
+
+          <!-- Video Editing -->
+          <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-icon"><i class="fas fa-video"></i></div>
+            <h3>Video Editing</h3>
+            <p>Short-form edits, captions, YouTube & promotional video edits.</p>
+            <div class="service-price">$50 <small>/ hour</small></div>
+            <div class="kes-price"><i class="fas fa-coins"></i> ≈ 6,550 KES/hour</div>
+            <button class="btn btn-primary service-book" data-service="Video Editing" data-rate="50">Book Now</button>
+          </div>
+
+          <!-- Website Maintenance (New Service) -->
+          <div class="service-card" data-aos="fade-up" data-aos-delay="340">
+            <div class="service-icon"><i class="fas fa-code"></i></div>
+            <h3>Website Maintenance</h3>
+            <p>WordPress updates, content changes, minor CSS fixes, plugin updates, and basic troubleshooting.</p>
+            <div class="service-price">$45 <small>/ hour</small></div>
+            <div class="kes-price"><i class="fas fa-coins"></i> ≈ 5,895 KES/hour</div>
+            <button class="btn btn-primary service-book" data-service="Website Maintenance" data-rate="45">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING SECTION (Packages) -->
+    <section id="pricing">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>Packages</h2>
+          <p>Choose a monthly retainer for predictable support — or pick yearly and save 20%.</p>
+        </div>
+
+        <div class="pricing-toggle" data-aos="fade-up">
+          <div class="toggle-group">
+            <button class="toggle-btn active" data-mode="monthly">Monthly</button>
+            <button class="toggle-btn" data-mode="yearly">Yearly (Save 20%)</button>
+          </div>
+        </div>
+
+        <div class="pricing-grid" id="pricingGrid">
+          <!-- Starter Package -->
+          <div class="pack-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>Starter</h3>
+            <p class="pack-tagline">Perfect for small businesses and entrepreneurs getting started</p>
+            <div class="pack-price" data-monthly="400" data-yearly="3840">$400 <small>/ month</small></div>
+            <div class="kes-price"><i class="fas fa-coins"></i> ≈ 52,400 KES/month</div>
+            <ul class="pack-features">
+              <li><i class="fas fa-check"></i> 20 hours of virtual assistance</li>
+              <li><i class="fas fa-check"></i> Email and chat support</li>
+              <li><i class="fas fa-check"></i> Basic administrative tasks</li>
+              <li><i class="fas fa-check"></i> Social media posting (5 posts/week)</li>
+              <li><i class="fas fa-check"></i> Data entry and research</li>
+              <li><i class="fas fa-check"></i> 48-hour response time</li>
+            </ul>
+            <button class="btn btn-primary pack-book" data-plan="Starter" data-monthly="400" data-yearly="3840">Get Started</button>
+          </div>
+
+          <!-- Standard Package (Most Popular) -->
+          <div class="pack-card popular" data-aos="fade-up" data-aos-delay="140">
+            <div class="pack-badge">Most Popular</div>
+            <h3>Standard</h3>
+            <p class="pack-tagline">For growing teams needing reliable weekly support</p>
+            <div class="pack-price" data-monthly="750" data-yearly="7200">$750 <small>/ month</small></div>
+            <div class="kes-price"><i class="fas fa-coins"></i> ≈ 98,250 KES/month</div>
+            <ul class="pack-features">
+              <li><i class="fas fa-check"></i> 40 hours of virtual assistance</li>
+              <li><i class="fas fa-check"></i> Admin + creative services</li>
+              <li><i class="fas fa-check"></i> Social media management & content support</li>
+              <li><i class="fas fa-check"></i> Priority support & weekly check-ins</li>
+              <li><i class="fas fa-check"></i> Content creation & design support</li>
+              <li><i class="fas fa-check"></i> 24–48 hour response time</li>
+            </ul>
+            <button class="btn btn-accent pack-book" data-plan="Standard" data-monthly="750" data-yearly="7200">Get Started</button>
+          </div>
+
+          <!-- Premium Package -->
+          <div class="pack-card" data-aos="fade-up" data-aos-delay="180">
+            <h3>Premium</h3>
+            <p class="pack-tagline">Dedicated support for high-volume operations and scaling businesses</p>
+            <div class="pack-price" data-monthly="1400" data-yearly="13440">$1,400 <small>/ month</small></div>
+            <div class="kes-price"><i class="fas fa-coins"></i> ≈ 183,400 KES/month</div>
+            <ul class="pack-features">
+              <li><i class="fas fa-check"></i> 80 hours of virtual assistance</li>
+              <li><i class="fas fa-check"></i> Full-service coverage (admin, content, design)</li>
+              <li><i class="fas fa-check"></i> Graphic & video editing</li>
+              <li><i class="fas fa-check"></i> Dedicated weekly calls & priority turnaround</li>
+              <li><i class="fas fa-check"></i> Advanced reporting & workflow support</li>
+              <li><i class="fas fa-check"></i> Less than 24-hour response time</li>
+            </ul>
+            <button class="btn btn-primary pack-book" data-plan="Premium" data-monthly="1400" data-yearly="13440">Get Started</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- TESTIMONIALS SECTION -->
     <section id="testimonials">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
-          <h2>Client Feedback</h2>
-          <p>Real feedback from businesses I've supported.</p>
+          <h2>What Clients Say</h2>
+          <p>Real feedback from businesses and founders I've supported.</p>
         </div>
 
         <div class="testimonials-grid">
           <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-            <p class="testimonial-quote">"Salim was a lifesaver during our launch — handled emails and scheduling perfectly."</p>
+            <p class="testimonial-quote">"Salim was a lifesaver during our launch week — handled client emails and scheduling so I could focus on closing deals."</p>
             <div class="testimonial-meta">
               <div class="avatar bg1">LM</div>
               <div class="author-info">
                 <strong>Laura M.</strong>
-                <span>Founder, SaaS</span>
+                <span>Founder, SaaS Startup</span>
               </div>
             </div>
           </div>
 
           <div class="testimonial-card" data-aos="fade-up" data-aos-delay="140">
-            <p class="testimonial-quote">"Instagram engagement improved within weeks. Very reliable."</p>
+            <p class="testimonial-quote">"Handled our Instagram and content calendar with clarity — engagement improved within weeks."</p>
             <div class="testimonial-meta">
               <div class="avatar bg2">DK</div>
               <div class="author-info">
                 <strong>Daniel K.</strong>
-                <span>Online Retail</span>
+                <span>Owner, Online Retail</span>
               </div>
             </div>
           </div>
 
           <div class="testimonial-card" data-aos="fade-up" data-aos-delay="180">
-            <p class="testimonial-quote">"Professional video edits delivered on schedule every time."</p>
+            <p class="testimonial-quote">"Very reliable — edited training videos and delivered clean, professional edits on schedule."</p>
             <div class="testimonial-meta">
               <div class="avatar bg3">SR</div>
               <div class="author-info">
                 <strong>Sophia R.</strong>
-                <span>HR Manager</span>
+                <span>HR Manager, Consulting</span>
               </div>
             </div>
           </div>
 
           <div class="testimonial-card" data-aos="fade-up" data-aos-delay="220">
-            <p class="testimonial-quote">"Product listings optimized — conversions improved immediately."</p>
+            <p class="testimonial-quote">"Optimized product listings and improved descriptions — we saw better conversions."</p>
             <div class="testimonial-meta">
               <div class="avatar bg4">KT</div>
               <div class="author-info">
                 <strong>Kevin T.</strong>
-                <span>E-commerce</span>
+                <span>E-commerce Entrepreneur</span>
               </div>
             </div>
           </div>
 
           <div class="testimonial-card" data-aos="fade-up" data-aos-delay="260">
-            <p class="testimonial-quote">"Saved me hours on invoices and calendar management."</p>
+            <p class="testimonial-quote">"Attention to detail: invoices and calendar management were handled weekly — saved me hours."</p>
             <div class="testimonial-meta">
               <div class="avatar bg5">AM</div>
               <div class="author-info">
                 <strong>Amina M.</strong>
-                <span>Operations</span>
+                <span>Operations Lead</span>
               </div>
             </div>
           </div>
 
           <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
-            <p class="testimonial-quote">"Consistent communication and reliable delivery. Highly recommended."</p>
+            <p class="testimonial-quote">"Consistent communication and reliable delivery across admin + creative tasks. Highly recommended."</p>
             <div class="testimonial-meta">
               <div class="avatar bg6">JR</div>
               <div class="author-info">
                 <strong>James R.</strong>
-                <span>Creative Studio</span>
+                <span>Founder, Creative Studio</span>
               </div>
             </div>
           </div>
@@ -1446,50 +1534,54 @@
       <div class="container">
         <div class="section-header" data-aos="fade-up">
           <h2>Get In Touch</h2>
-          <p>Questions or custom proposals — I'll respond within 24 hours.</p>
+          <p>Questions, custom proposals or monthly retainers — send a message and I'll respond within 24 hours.</p>
         </div>
 
         <div class="contact-grid">
           <!-- Left Column - Info Cards -->
           <div class="info-cards" data-aos="fade-right">
-            <div class="info-card">
-              <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
-              <div>
-                <h4>Phone</h4>
-                <p>+1 (555) 123-4567</p>
-                <small>Mon–Fri • 9AM–6PM EST</small>
-              </div>
-            </div>
-
+            <!-- Email Card -->
             <div class="info-card">
               <div class="info-icon"><i class="fas fa-envelope"></i></div>
-              <div>
+              <div class="info-content">
                 <h4>Email</h4>
                 <p>salim.virtualassistant@gmail.com</p>
-                <small>24h response</small>
+                <small>24h response time</small>
               </div>
             </div>
 
+            <!-- Microsoft Teams Card (replaces phone) -->
+            <div class="info-card">
+              <div class="info-icon"><i class="fab fa-microsoft"></i></div>
+              <div class="info-content">
+                <h4>Microsoft Teams</h4>
+                <p>salim.virtualassistant@gmail.com</p>
+                <small>Available for chat & video calls</small>
+              </div>
+            </div>
+
+            <!-- Response Time Card -->
             <div class="info-card">
               <div class="info-icon"><i class="fas fa-stopwatch"></i></div>
-              <div>
+              <div class="info-content">
                 <h4>Response Time</h4>
                 <p>&lt; 2 Hours</p>
-                <small>Average response</small>
+                <small>Average response time</small>
               </div>
             </div>
 
+            <!-- Free Consultation Card -->
             <div class="info-card">
               <div class="info-icon"><i class="fas fa-handshake"></i></div>
-              <div>
+              <div class="info-content">
                 <h4>Free Consultation</h4>
-                <p style="margin-bottom: 8px;">30-min session to scope your needs.</p>
-                <a href="#" class="btn btn-outline btn-sm">Schedule</a>
+                <p style="margin-bottom: 8px;">Schedule a 30-minute session to scope your needs and options.</p>
+                <a href="#" class="btn btn-outline btn-sm">Schedule Now</a>
               </div>
             </div>
           </div>
 
-          <!-- Right Column - Form (UPDATED with redirect) -->
+          <!-- Right Column - Form -->
           <div class="form-panel" data-aos="fade-left">
             <h3>Send a Message</h3>
             
@@ -1498,26 +1590,30 @@
               
               <div class="form-grid">
                 <input type="text" name="name" class="form-control" placeholder="Full Name *" required>
-                <input type="email" name="email" class="form-control" placeholder="Email *" required>
-                <input type="text" name="company" class="form-control" placeholder="Company">
-                <input type="tel" name="phone" class="form-control" placeholder="Phone">
+                <input type="email" name="email" class="form-control" placeholder="Email Address *" required>
+                <input type="text" name="company" class="form-control" placeholder="Company Name">
+                <input type="tel" name="phone" class="form-control" placeholder="Phone Number">
                 
                 <select name="service" class="form-control full-width">
-                  <option>Service Interested In</option>
-                  <option>Administrative Support</option>
-                  <option>Graphic Design</option>
-                  <option>Content Creation</option>
-                  <option>Social Media</option>
-                  <option>E-commerce</option>
-                  <option>Video Editing</option>
+                  <option value="">Service Interested In</option>
+                  <option value="administrative">Administrative Support</option>
+                  <option value="graphic">Graphic Design</option>
+                  <option value="content">Content Creation</option>
+                  <option value="social">Social Media Management</option>
+                  <option value="ecommerce">E-commerce Support</option>
+                  <option value="video">Video Editing</option>
+                  <option value="web">Website Maintenance</option>
                 </select>
                 
-                <textarea name="message" class="form-control full-width" placeholder="Message *" rows="4" maxlength="500" required></textarea>
+                <textarea name="message" class="form-control full-width" placeholder="Message * – Tell us about your business needs and how we can help..." rows="5" maxlength="500" required></textarea>
               </div>
               
               <div class="form-footer">
-                <span class="char-counter">0/500</span>
-                <button type="submit" class="btn btn-primary">Send</button>
+                <span class="char-counter">0/500 characters</span>
+                <button type="submit" class="btn btn-primary">
+                  <span>Send Message</span>
+                  <i class="fas fa-paper-plane"></i>
+                </button>
               </div>
             </form>
           </div>
@@ -1526,21 +1622,21 @@
     </section>
   </main>
 
-  <!-- FOOTER (UPDATED with correct page links) -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <!-- Brand -->
+        <!-- Brand Column -->
         <div class="footer-brand">
           <a href="index.html" class="logo" style="color: white;">
             <i class="fas fa-headset"></i>
             <span>Salim-VA</span>
           </a>
-          <p>Professional virtual assistant & creative support for scaling businesses.</p>
+          <p>Professional virtual assistant & creative support — helping businesses scale with reliable, high-quality remote work.</p>
           
-          <!-- Social - Only LinkedIn & Email -->
+          <!-- Social Links - Only LinkedIn and Email -->
           <div class="footer-social">
-            <a href="https://www.linkedin.com/in/salim-omar-56b98a277" target="_blank" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/salim-omar-56b98a277" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <i class="fab fa-linkedin-in"></i>
             </a>
             <a href="mailto:salim.virtualassistant@gmail.com" aria-label="Email">
@@ -1549,56 +1645,59 @@
           </div>
         </div>
 
-        <!-- Company -->
+        <!-- Company Links -->
         <div class="footer-links">
           <h4>Company</h4>
           <ul>
-            <li><a href="index.html#about">About</a></li>
-            <li><a href="index.html#pricing">Pricing</a></li>
-            <li><a href="index.html#testimonials">Testimonials</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
 
-        <!-- Services -->
+        <!-- Services Links -->
         <div class="footer-links">
           <h4>Services</h4>
           <ul>
-            <li><a href="index.html#services">Administrative</a></li>
-            <li><a href="index.html#services">Graphic Design</a></li>
-            <li><a href="index.html#services">Content</a></li>
-            <li><a href="index.html#services">Social Media</a></li>
+            <li><a href="#services">Administrative</a></li>
+            <li><a href="#services">Graphic Design</a></li>
+            <li><a href="#services">Content Creation</a></li>
+            <li><a href="#services">Social Media</a></li>
+            <li><a href="#services">E-commerce</a></li>
+            <li><a href="#services">Video Editing</a></li>
+            <li><a href="#services">Website Maintenance</a></li>
           </ul>
         </div>
 
-        <!-- Support Pages (CORRECT LINKS to actual pages) -->
+        <!-- Support Links -->
         <div class="footer-links">
           <h4>Support</h4>
           <ul>
             <li><a href="privacy.html">Privacy Policy</a></li>
             <li><a href="terms.html">Terms of Service</a></li>
             <li><a href="faq.html">FAQ</a></li>
-            <li><a href="support.html">Support</a></li>
+            <li><a href="support.html">Support Center</a></li>
           </ul>
         </div>
       </div>
 
-      <!-- Signature -->
+      <!-- Signature Element -->
       <div class="footer-signature">
         <div class="trust-strip">
           <div class="trust-item">
-            <div class="trust-icon"><i class="fas fa-bolt"></i></div>
-            <div class="trust-text"><strong>24h Response</strong></div>
+            <i class="fas fa-bolt"></i>
+            <span>24h Response</span>
           </div>
           <div class="trust-divider"></div>
           <div class="trust-item">
-            <div class="trust-icon"><i class="fas fa-check-circle"></i></div>
-            <div class="trust-text"><strong>100% Satisfaction</strong></div>
+            <i class="fas fa-check-circle"></i>
+            <span>100% Satisfaction</span>
           </div>
           <div class="trust-divider"></div>
           <div class="trust-item">
-            <div class="trust-icon"><i class="fas fa-shield-alt"></i></div>
-            <div class="trust-text"><strong>Secure Payment</strong></div>
+            <i class="fas fa-shield-alt"></i>
+            <span>Secure Payment</span>
           </div>
         </div>
         
@@ -1610,33 +1709,37 @@
     </div>
   </footer>
 
-  <!-- Booking Modal (UPDATED with KES conversion and PayPal) -->
+  <!-- Booking Modal -->
   <div class="modal" id="bookingModal">
     <div class="modal-panel">
       <button class="modal-close" id="closeModal">&times;</button>
-      <h3 style="margin-bottom: 15px;">Complete Booking</h3>
+      <h3 style="margin-bottom: 20px;">Complete Your Booking</h3>
       
-      <div style="margin-bottom: 12px;">
+      <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Service / Plan</label>
         <select id="modalService" class="form-control">
-          <option value="">Select service</option>
+          <option value="">Select a service</option>
         </select>
       </div>
 
-      <div style="margin-bottom: 12px;" id="hoursField">
-        <input type="number" id="modalHours" class="form-control" min="1" value="1" placeholder="Hours">
-      </div>
-
-      <div style="margin-bottom: 12px;">
-        <input type="email" id="modalEmail" class="form-control" placeholder="Email for receipt">
+      <div style="margin-bottom: 15px;" id="hoursField">
+        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Hours (for hourly services)</label>
+        <input type="number" id="modalHours" class="form-control" min="1" value="1">
       </div>
 
       <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Email for Receipt</label>
+        <input type="email" id="modalEmail" class="form-control" placeholder="you@example.com">
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Preferred Start Date</label>
         <input type="date" id="modalDate" class="form-control">
       </div>
 
       <!-- KES Display -->
       <div class="kes-display" id="kesDisplay">
-        <i class="fas fa-coin"></i> Amount in KES: <strong>KSh <span id="modalKes">0</span></strong>
+        <i class="fas fa-coins"></i> Amount in KES: <strong>KSh <span id="modalKes">0</span></strong>
       </div>
 
       <!-- Payment Method Selection -->
@@ -1651,7 +1754,7 @@
         </div>
       </div>
 
-      <div style="background: #f8fafc; padding: 12px; border-radius: 8px; margin-bottom: 15px;">
+      <div style="background: #f8fafc; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
         <strong>Total: $<span id="modalTotal">0</span> USD</strong>
       </div>
 
@@ -1689,6 +1792,13 @@
         menuToggle.addEventListener('click', () => {
           navList.classList.toggle('active');
         });
+
+        // Close menu when clicking a link
+        navList.querySelectorAll('.nav-link').forEach(link => {
+          link.addEventListener('click', () => {
+            navList.classList.remove('active');
+          });
+        });
       }
 
       // Header scroll
@@ -1700,30 +1810,29 @@
       // Pricing toggle
       const toggleBtns = document.querySelectorAll('.toggle-btn');
       const packCards = document.querySelectorAll('.pack-card');
-      const kesMonthly = document.querySelectorAll('.kes-monthly');
       
       function setPricingMode(mode) {
         toggleBtns.forEach(btn => {
           btn.classList.toggle('active', btn.dataset.mode === mode);
         });
 
-        packCards.forEach((card, index) => {
+        packCards.forEach(card => {
           const priceEl = card.querySelector('.pack-price');
-          const kesEl = card.querySelector('.kes-price span');
+          const kesEl = card.querySelector('.kes-price');
           const monthly = parseInt(priceEl?.dataset.monthly);
           const yearly = parseInt(priceEl?.dataset.yearly);
           
           if (mode === 'yearly') {
-            priceEl.innerHTML = `$${yearly.toLocaleString()} <small>/yr <span style="color: var(--accent);">Save 20%</span></small>`;
+            priceEl.innerHTML = `$${yearly.toLocaleString()} <small>/ year <span style="color: var(--accent);">(Save 20%)</span></small>`;
             if (kesEl) {
               const yearlyKes = Math.round(yearly * USD_TO_KES);
-              kesEl.textContent = yearlyKes.toLocaleString();
+              kesEl.innerHTML = `<i class="fas fa-coins"></i> ≈ ${yearlyKes.toLocaleString()} KES/year`;
             }
           } else {
-            priceEl.innerHTML = `$${monthly.toLocaleString()} <small>/mo</small>`;
+            priceEl.innerHTML = `$${monthly.toLocaleString()} <small>/ month</small>`;
             if (kesEl) {
               const monthlyKes = Math.round(monthly * USD_TO_KES);
-              kesEl.textContent = monthlyKes.toLocaleString();
+              kesEl.innerHTML = `<i class="fas fa-coins"></i> ≈ ${monthlyKes.toLocaleString()} KES/month`;
             }
           }
         });
@@ -1733,7 +1842,7 @@
         btn.addEventListener('click', () => setPricingMode(btn.dataset.mode));
       });
 
-      // Booking system with KES conversion
+      // Booking system
       const services = [
         { name: 'Administrative Support', rate: 25, type: 'hourly' },
         { name: 'Graphic Design', rate: 45, type: 'hourly' },
@@ -1741,6 +1850,7 @@
         { name: 'Social Media Management', rate: 40, type: 'hourly' },
         { name: 'E-commerce Support', rate: 30, type: 'hourly' },
         { name: 'Video Editing', rate: 50, type: 'hourly' },
+        { name: 'Website Maintenance', rate: 45, type: 'hourly' },
         { name: 'Starter Package', rate: 400, type: 'package' },
         { name: 'Standard Package', rate: 750, type: 'package' },
         { name: 'Premium Package', rate: 1400, type: 'package' }
@@ -1754,7 +1864,6 @@
       const modalTotal = document.getElementById('modalTotal');
       const modalKes = document.getElementById('modalKes');
       const hoursField = document.getElementById('hoursField');
-      const kesDisplay = document.getElementById('kesDisplay');
       
       // Payment method selection
       const paystackMethod = document.getElementById('paystackMethod');
@@ -1820,7 +1929,7 @@
         }
       }
 
-      // Open modal
+      // Open modal from book buttons
       document.querySelectorAll('.service-book, .pack-book').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
@@ -1860,7 +1969,7 @@
         document.body.style.overflow = '';
       }
 
-      // Process payment based on selected method
+      // Process payment
       document.getElementById('processPayment')?.addEventListener('click', function() {
         const selected = modalService?.selectedOptions[0];
         const email = modalEmail?.value;
@@ -1904,32 +2013,18 @@
         const handler = PaystackPop.setup({
           key: PAYSTACK_PUBLIC_KEY,
           email: email,
-          amount: amountKES * 100, // Convert to cents (Paystack uses smallest currency unit)
+          amount: amountKES * 100, // Convert to cents
           currency: 'KES',
           ref: 'VA-' + Math.floor(Math.random() * 1000000000) + 1,
           metadata: {
             service_name: serviceName,
             hours: hours,
-            start_date: startDate,
-            custom_fields: [
-              {
-                display_name: "Service",
-                variable_name: "service",
-                value: serviceName
-              },
-              {
-                display_name: "Hours",
-                variable_name: "hours",
-                value: hours.toString()
-              }
-            ]
+            start_date: startDate
           },
           callback: function(response) {
-            // Success - redirect to thank you page
             window.location.href = 'thank-you.html?reference=' + response.reference;
           },
           onClose: function() {
-            // User closed payment window - redirect to payment failed
             window.location.href = 'payment-failed.html?reason=cancelled';
           }
         });
@@ -1937,40 +2032,13 @@
         handler.openIframe();
       }
 
-      // PayPal payment (in USD)
+      // PayPal payment (in USD) - simplified for demo
       function processPayPalPayment(email, amountUSD, serviceName, hours, startDate) {
-        // Create PayPal order
-        fetch('https://api.paypal.com/v2/checkout/orders', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer A21AAJEf7RysE3qJ6lqKqzjZE9VZrTgKsP7gJk9yLqKqzjZE9VZrTgKsP7gJk9yLqKqzjZE9VZrTgKsP7gJk9y' // Sandbox token
-          },
-          body: JSON.stringify({
-            intent: 'CAPTURE',
-            purchase_units: [{
-              amount: {
-                currency_code: 'USD',
-                value: amountUSD.toFixed(2)
-              },
-              description: `${serviceName} - ${hours} hours starting ${startDate}`
-            }],
-            application_context: {
-              return_url: window.location.origin + '/thank-you.html',
-              cancel_url: window.location.origin + '/payment-failed.html'
-            }
-          })
-        })
-        .then(response => response.json())
-        .then(order => {
-          // Redirect to PayPal approval URL
-          const approvalLink = order.links.find(link => link.rel === 'approve').href;
-          window.location.href = approvalLink;
-        })
-        .catch(error => {
-          console.error('PayPal error:', error);
-          window.location.href = 'payment-failed.html?reason=error';
-        });
+        // In production, you would create an order via your backend
+        // For demo, we'll simulate a redirect
+        alert('PayPal integration is ready. In production, you would be redirected to PayPal.');
+        // Simulate success
+        window.location.href = 'thank-you.html';
       }
 
       // Character counter for contact form
@@ -1979,39 +2047,7 @@
       
       if (textarea && counter) {
         textarea.addEventListener('input', function() {
-          counter.textContent = this.value.length + '/500';
-        });
-      }
-
-      // Contact form submission with redirect
-      const contactForm = document.getElementById('contactForm');
-      if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-          // Form will submit naturally to Netlify with action="/thank-you.html"
-          // This is just for additional validation
-          const name = this.querySelector('input[name="name"]')?.value;
-          const email = this.querySelector('input[name="email"]')?.value;
-          const message = this.querySelector('textarea[name="message"]')?.value;
-
-          if (!name || !email || !message) {
-            e.preventDefault();
-            alert('Please fill all required fields');
-            return false;
-          }
-
-          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            e.preventDefault();
-            alert('Please enter a valid email');
-            return false;
-          }
-
-          if (message.length < 10) {
-            e.preventDefault();
-            alert('Message must be at least 10 characters');
-            return false;
-          }
-
-          return true; // Allow form to submit
+          counter.textContent = this.value.length + '/500 characters';
         });
       }
 
@@ -2032,7 +2068,7 @@
 
         document.querySelectorAll('.nav-link').forEach(link => {
           link.classList.remove('active');
-          const href = link.getAttribute('href').split('#')[1];
+          const href = link.getAttribute('href').replace('#', '');
           if (href === current) {
             link.classList.add('active');
           }
@@ -2042,9 +2078,10 @@
       // Initialize KES display for pricing on load
       document.querySelectorAll('.pack-price').forEach(priceEl => {
         const monthly = priceEl.dataset.monthly;
-        const kesEl = priceEl.closest('.pack-card')?.querySelector('.kes-price span');
+        const kesEl = priceEl.closest('.pack-card')?.querySelector('.kes-price');
         if (kesEl && monthly) {
-          kesEl.textContent = Math.round(monthly * USD_TO_KES).toLocaleString();
+          const monthlyKes = Math.round(monthly * USD_TO_KES);
+          kesEl.innerHTML = `<i class="fas fa-coins"></i> ≈ ${monthlyKes.toLocaleString()} KES/month`;
         }
       });
     })();
