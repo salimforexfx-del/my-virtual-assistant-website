@@ -7,15 +7,15 @@
   <!-- Primary Meta Tags -->
   <title>Salim-VA | Professional Virtual Assistant & Web Maintenance</title>
   <meta name="title" content="Salim-VA | Professional Virtual Assistant & Web Maintenance">
-  <meta name="description" content="Professional virtual assistant services: administrative support, graphic design, content creation, social media, e-commerce, video editing, and website maintenance.">
+  <meta name="description" content="Professional virtual assistant services: administrative support, graphic design, content creation, social media, e-commerce, video editing, website maintenance, lead generation, and financial services.">
   <meta name="author" content="Salim Omar">
-  <meta name="keywords" content="virtual assistant, VA services, administrative support, graphic design, content creation, social media management, e-commerce support, video editing, website maintenance">
+  <meta name="keywords" content="virtual assistant, VA services, administrative support, graphic design, content creation, social media management, e-commerce support, video editing, website maintenance, lead generation, financial services">
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://salim-va.com">
   <meta property="og:title" content="Salim-VA | Professional Virtual Assistant">
-  <meta property="og:description" content="Professional virtual assistant services including website maintenance. Let me handle the details while you focus on growth.">
+  <meta property="og:description" content="Professional virtual assistant services including website maintenance, lead generation, and financial services. Let me handle the details while you focus on growth.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
   
   <!-- SECURITY HEADERS (CSP) – Corrected to allow Paystack & PayPal -->
@@ -502,7 +502,7 @@
       color: var(--text-muted);
     }
 
-    /* ---------- SERVICES GRID (auto-fit to allow 7 items) ---------- */
+    /* ---------- SERVICES GRID (auto-fit to allow 9 items) ---------- */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1319,7 +1319,7 @@
       </div>
     </section>
 
-    <!-- SERVICES SECTION (Hourly Services) -->
+    <!-- SERVICES SECTION (Hourly Services) – 9 Services -->
     <section id="services">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
@@ -1342,7 +1342,7 @@
           <div class="service-card" data-aos="fade-up" data-aos-delay="140">
             <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
             <h3>Graphic Design</h3>
-            <p>Logo creation, social graphics, slides and marketing assets.</p>
+            <p>Logo concepts, social graphics, slides and marketing assets.</p>
             <div class="service-price">$45 <small>/ hour</small></div>
             <div class="kes-price"><i class="fas fa-coins"></i> ≈ 5,895 KES/hour</div>
             <button class="btn btn-primary service-book" data-service="Graphic Design" data-rate="45">Book Now</button>
@@ -1388,7 +1388,7 @@
             <button class="btn btn-primary service-book" data-service="Video Editing" data-rate="50">Book Now</button>
           </div>
 
-          <!-- Website Maintenance (New Service) -->
+          <!-- Website Maintenance -->
           <div class="service-card" data-aos="fade-up" data-aos-delay="340">
             <div class="service-icon"><i class="fas fa-code"></i></div>
             <h3>Website Maintenance</h3>
@@ -1396,6 +1396,26 @@
             <div class="service-price">$45 <small>/ hour</small></div>
             <div class="kes-price"><i class="fas fa-coins"></i> ≈ 5,895 KES/hour</div>
             <button class="btn btn-primary service-book" data-service="Website Maintenance" data-rate="45">Book Now</button>
+          </div>
+
+          <!-- Lead Generation (New) -->
+          <div class="service-card" data-aos="fade-up" data-aos-delay="380">
+            <div class="service-icon"><i class="fas fa-users"></i></div>
+            <h3>Lead Generation</h3>
+            <p>Research and compile targeted lead lists, verify contacts, and prepare outreach data.</p>
+            <div class="service-price">$35 <small>/ hour</small></div>
+            <div class="kes-price"><i class="fas fa-coins"></i> ≈ 4,585 KES/hour</div>
+            <button class="btn btn-primary service-book" data-service="Lead Generation" data-rate="35">Book Now</button>
+          </div>
+
+          <!-- Financial Services (New) -->
+          <div class="service-card" data-aos="fade-up" data-aos-delay="420">
+            <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
+            <h3>Financial Services</h3>
+            <p>Basic bookkeeping, expense tracking, invoice preparation, and financial report organization.</p>
+            <div class="service-price">$40 <small>/ hour</small></div>
+            <div class="kes-price"><i class="fas fa-coins"></i> ≈ 5,240 KES/hour</div>
+            <button class="btn btn-primary service-book" data-service="Financial Services" data-rate="40">Book Now</button>
           </div>
         </div>
       </div>
@@ -1602,7 +1622,7 @@
             </div>
           </div>
 
-          <!-- Right Column - Form -->
+          <!-- Right Column - Form (Updated with new services) -->
           <div class="form-panel" data-aos="fade-left">
             <h3>Send a Message</h3>
             
@@ -1624,6 +1644,8 @@
                   <option value="ecommerce">E-commerce Support</option>
                   <option value="video">Video Editing</option>
                   <option value="web">Website Maintenance</option>
+                  <option value="lead">Lead Generation</option>
+                  <option value="financial">Financial Services</option>
                 </select>
                 
                 <textarea name="message" class="form-control full-width" placeholder="Message * – Tell us about your business needs and how we can help..." rows="5" maxlength="500" required></textarea>
@@ -1677,7 +1699,7 @@
           </ul>
         </div>
 
-        <!-- Services Links -->
+        <!-- Services Links (Updated) -->
         <div class="footer-links">
           <h4>Services</h4>
           <ul>
@@ -1688,6 +1710,8 @@
             <li><a href="#services">E-commerce</a></li>
             <li><a href="#services">Video Editing</a></li>
             <li><a href="#services">Website Maintenance</a></li>
+            <li><a href="#services">Lead Generation</a></li>
+            <li><a href="#services">Financial Services</a></li>
           </ul>
         </div>
 
@@ -1866,7 +1890,7 @@
         btn.addEventListener('click', () => setPricingMode(btn.dataset.mode));
       });
 
-      // Booking system
+      // Booking system – updated with new services
       const services = [
         { name: 'Administrative Support', rate: 25, type: 'hourly' },
         { name: 'Graphic Design', rate: 45, type: 'hourly' },
@@ -1875,6 +1899,8 @@
         { name: 'E-commerce Support', rate: 30, type: 'hourly' },
         { name: 'Video Editing', rate: 50, type: 'hourly' },
         { name: 'Website Maintenance', rate: 45, type: 'hourly' },
+        { name: 'Lead Generation', rate: 35, type: 'hourly' },
+        { name: 'Financial Services', rate: 40, type: 'hourly' },
         { name: 'Starter Package', rate: 400, type: 'package' },
         { name: 'Standard Package', rate: 750, type: 'package' },
         { name: 'Premium Package', rate: 1400, type: 'package' }
