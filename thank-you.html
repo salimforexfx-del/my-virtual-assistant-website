@@ -2,157 +2,370 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Thank You — Salim Virtual Assistant</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@600&display=swap" rel="stylesheet">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salim-VA | Thank You</title>
+  <meta name="description" content="Thank you for contacting Salim-VA. We'll respond within 24 hours.">
+  
+  <!-- Same head as privacy.html -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
+    /* Same base CSS */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --primary: #4e46e5;
+      --primary-dark: #3730a3;
       --accent: #f43f5e;
-      --dark: #0f172a;
-      --muted: #64748b;
-      --bg: #f8fafc;
+      --bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --header-height: 64px;
     }
-    * { box-sizing: border-box; }
+    
     body {
-      margin: 0;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: linear-gradient(180deg, #ffffff 0%, #f3f4f6 100%);
-      color: var(--dark);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
-
+    
+    .container { width: min(92%, 1200px); margin: 0 auto; padding: 0 15px; }
+    
+    /* Header */
     .site-header {
-      padding: 18px 24px;
-      background: white;
-      box-shadow: 0 2px 10px rgba(16,24,40,0.05);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
     }
-    .container { width: 92%; max-width: 1100px; margin: 0 auto; }
-
-    .brand {
-      font-family: "Montserrat", sans-serif;
+    
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--header-height);
+    }
+    
+    .logo {
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--primary);
-      display: inline-flex;
-      gap: 10px;
-      align-items: center;
       text-decoration: none;
-      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-
-    main {
+    
+    .nav-list {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    
+    .nav-link {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    
+    .nav-link:hover { color: var(--primary); }
+    
+    /* Thank You Content */
+    .thank-you {
+      padding: calc(var(--header-height) + 80px) 0 60px;
       flex: 1;
-      display: grid;
-      place-items: center;
-      padding: 80px 16px;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 760px;
-      background: white;
-      padding: 42px;
-      border-radius: 12px;
-      box-shadow: 0 20px 40px rgba(16,24,40,0.08);
       text-align: center;
     }
-
-    .card h1 {
-      margin: 0 0 12px;
-      font-size: 1.9rem;
-      color: var(--primary);
-      font-family: "Montserrat", sans-serif;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 1.05rem;
-      margin-bottom: 24px;
-      line-height: 1.6;
-    }
-
-    .actions {
-      display:flex;
-      gap:12px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-
-    .btn {
-      display:inline-block;
-      padding: 12px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-primary {
+    
+    .thank-you-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
       background: var(--primary);
       color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 30px;
     }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--dark);
-      border: 1px solid #e6e6e9;
+    
+    .thank-you h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
     }
-
-    footer {
-      text-align:center;
-      padding: 22px 12px;
-      font-size: 0.9rem;
-      color: #6b7280;
-      background: transparent;
+    
+    .thank-you p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 30px;
     }
-
-    @media (max-width:640px) {
-      .card { padding: 28px; }
-      .card h1 { font-size: 1.5rem; }
+    
+    .thank-you .btn {
+      margin: 10px;
+    }
+    
+    /* Footer */
+    .site-footer {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 40px 0 20px;
+      margin-top: auto;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 25px;
+    }
+    
+    .footer-brand p {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.85rem;
+      margin: 10px 0;
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .footer-social a {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: 0.3s;
+    }
+    
+    .footer-social a:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+    
+    .footer-links h4 {
+      color: white;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 6px;
+    }
+    
+    .footer-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent);
+      padding-left: 3px;
+    }
+    
+    .footer-signature {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 15px 0 5px;
+    }
+    
+    .trust-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50px;
+    }
+    
+    .trust-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.7rem;
+    }
+    
+    .trust-text strong {
+      color: white;
+      font-size: 0.8rem;
+    }
+    
+    .trust-divider {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+    
+    .copyright {
+      text-align: center;
+    }
+    
+    .copyright p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.75rem;
+      margin: 3px 0;
+    }
+    
+    .built-with i {
+      color: var(--accent);
+      animation: heartbeat 1.5s ease infinite;
+    }
+    
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .trust-strip {
+        flex-direction: column;
+      }
+      
+      .trust-divider {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Same header -->
   <header class="site-header">
-    <div class="container">
-      <a class="brand" href="/">
-        <!-- small icon -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:block">
-          <circle cx="12" cy="12" r="10" fill="#4e46e5"></circle>
-        </svg>
-        Salim Virtual Assistant
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-headset"></i>
+        <span>Salim-VA</span>
       </a>
+      
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html#home" class="nav-link">Home</a></li>
+          <li><a href="index.html#services" class="nav-link">Services</a></li>
+          <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
+          <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <main>
-    <div class="card" role="main">
-      <h1>Thanks — your message was sent!</h1>
-      <p>I've received your message and will respond as soon as possible. If this was urgent, you can also email me directly at <a href="mailto:salim.virtualassistant@gmail.com">salim.virtualassistant@gmail.com</a>.</p>
-
-      <div class="actions">
-        <a class="btn btn-primary" href="/">Return to Home</a>
-        <a class="btn btn-ghost" href="mailto:salim.virtualassistant@gmail.com">Email Me</a>
+  <!-- Thank You Content -->
+  <main class="thank-you">
+    <div class="container">
+      <div class="thank-you-icon">
+        <i class="fas fa-check"></i>
       </div>
+      <h1>Thank You!</h1>
+      <p>Your message has been sent successfully. I'll respond within 24 hours during business days.</p>
+      <a href="index.html" class="btn btn-primary">Return to Home</a>
+      <a href="index.html#services" class="btn btn-outline">View Services</a>
     </div>
   </main>
 
-  <footer>
-    &copy; <span id="year"></span> Salim Virtual Assistant · All rights reserved.
-  </footer>
+  <!-- Same footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: white;">
+            <i class="fas fa-headset"></i>
+            <span>Salim-VA</span>
+          </a>
+          <p>Professional virtual assistant & creative support for scaling businesses.</p>
+          <div class="footer-social">
+            <a href="https://www.linkedin.com/in/salim-omar-56b98a277" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:salim.virtualassistant@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
 
-  <script>
-    // inject current year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="index.html#services">Administrative</a></li>
+            <li><a href="index.html#services">Graphic Design</a></li>
+            <li><a href="index.html#services">Content</a></li>
+            <li><a href="index.html#services">Social Media</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="support.html">Support</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-signature">
+        <div class="trust-strip">
+          <div class="trust-item"><div class="trust-icon"><i class="fas fa-bolt"></i></div><div class="trust-text"><strong>24h Response</strong></div></div>
+          <div class="trust-divider"></div>
+          <div class="trust-item"><div class="trust-icon"><i class="fas fa-check-circle"></i></div><div class="trust-text"><strong>100% Satisfaction</strong></div></div>
+          <div class="trust-divider"></div>
+          <div class="trust-item"><div class="trust-icon"><i class="fas fa-shield-alt"></i></div><div class="trust-text"><strong>Secure Payment</strong></div></div>
+        </div>
+        <div class="copyright">
+          <p>© 2025 Salim-VA. All rights reserved.</p>
+          <p class="built-with">Built with <i class="fas fa-heart"></i> for scale-ups</p>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
-
