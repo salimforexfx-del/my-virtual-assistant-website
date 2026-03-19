@@ -1969,12 +1969,16 @@
 
       // Function to render PayPal buttons
       function renderPayPalButtons() {
-        if (!paypal) return;
+        if (!paypal) {
+          console.error('PayPal SDK not loaded');
+          return;
+        }
         
         paypal.Buttons({
           createOrder: function(data, actions) {
             // Get the total amount from modal
             const totalUSD = parseFloat(modalTotal?.textContent) || 0;
+            console.log('Creating PayPal order for $' + totalUSD);
             return actions.order.create({
               purchase_units: [{
                 amount: {
@@ -1985,7 +1989,10 @@
             });
           },
           onApprove: function(data, actions) {
+            console.log('Payment approved, capturing order...');
             return actions.order.capture().then(function(details) {
+              console.log('Payment captured successfully', details);
+              alert('Payment successful! Redirecting...');
               // Payment successful – redirect to thank you
               window.location.href = 'thank-you.html?paypal_order_id=' + data.orderID;
             });
@@ -1997,12 +2004,16 @@
             window.location.href = 'payment-failed.html?reason=paypal_error';
           },
           onCancel: function() {
+            console.log('Payment cancelled by user');
             // User cancelled – redirect to payment-failed
             window.location.href = 'payment-failed.html?reason=cancelled';
           }
-        }).render('#paypal-button-container');
-        
-        paypalButtonsRendered = true;
+        }).render('#paypal-button-container').then(() => {
+          console.log('PayPal buttons rendered');
+          paypalButtonsRendered = true;
+        }).catch(err => {
+          console.error('Failed to render PayPal buttons:', err);
+        });
       }
 
       // Open modal from book buttons
