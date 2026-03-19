@@ -4,14 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Salim-VA | Support Center</title>
-  <meta name="description" content="Get support for Salim-VA virtual assistant services. Contact us for help with your account, services, or technical issues.">
+  <meta name="description" content="Get support for Salim-VA virtual assistant services. Contact me for help with your account, services, or any questions.">
   
-  <!-- Same head as privacy.html -->
+  <!-- Same head as other pages -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
-    /* Same base CSS as privacy.html */
+    /* Same base CSS */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --primary: #4e46e5;
@@ -20,10 +20,13 @@
       --bg: #ffffff;
       --bg-alt: #f8fafc;
       --text: #0f172a;
+      --text-secondary: #475569;
       --text-muted: #64748b;
       --border: #e2e8f0;
+      --card-bg: #ffffff;
       --card-shadow: 0 8px 30px rgba(0,0,0,0.04);
       --radius: 12px;
+      --transition: all 0.26s cubic-bezier(0.2, 0.9, 0.2, 1);
       --header-height: 64px;
     }
     
@@ -38,6 +41,11 @@
     }
     
     .container { width: min(92%, 1200px); margin: 0 auto; padding: 0 15px; }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-weight: 700;
+    }
     
     /* Header */
     .site-header {
@@ -80,125 +88,260 @@
       text-decoration: none;
       font-weight: 500;
       font-size: 0.9rem;
+      transition: var(--transition);
     }
     
     .nav-link:hover { color: var(--primary); }
     
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--primary);
+      margin: 5px 0;
+      transition: var(--transition);
+    }
+    
     /* Page Header */
     .page-header {
-      padding: calc(var(--header-height) + 40px) 0 20px;
+      padding: calc(var(--header-height) + 40px) 0 30px;
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
     }
     
     .page-header h1 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       color: white;
+      margin-bottom: 10px;
     }
     
     .page-header p {
       color: rgba(255,255,255,0.9);
-      margin-top: 10px;
+      font-size: 1.1rem;
+      max-width: 600px;
     }
     
-    /* Content */
+    /* Page Content */
     .page-content {
-      padding: 50px 0;
+      padding: 60px 0;
       flex: 1;
     }
     
+    /* Support Grid */
     .support-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-bottom: 50px;
     }
     
     .support-card {
-      background: white;
+      background: var(--card-bg);
       border-radius: var(--radius);
-      padding: 30px;
+      padding: 30px 25px;
       box-shadow: var(--card-shadow);
       border: 1px solid var(--border);
+      transition: var(--transition);
       text-align: center;
     }
     
+    .support-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    }
+    
     .support-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 16px;
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       margin: 0 auto 20px;
     }
     
     .support-card h3 {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       margin-bottom: 10px;
+      color: var(--text);
     }
     
     .support-card p {
       color: var(--text-muted);
       margin-bottom: 20px;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
     }
     
     .support-card .btn {
       width: 100%;
     }
     
-    .contact-info {
-      margin-top: 50px;
+    /* FAQ Preview */
+    .faq-preview {
       background: var(--bg-alt);
       border-radius: var(--radius);
       padding: 40px;
-      text-align: center;
+      margin-bottom: 50px;
     }
     
-    .contact-info h3 {
-      font-size: 1.3rem;
-      margin-bottom: 20px;
+    .faq-preview h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.8rem;
+    }
+    
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    
+    .faq-item {
+      background: white;
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--border);
+    }
+    
+    .faq-item h4 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .faq-item h4 i {
+      color: var(--accent);
+      font-size: 1rem;
+    }
+    
+    .faq-item p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    .view-all-faq {
+      text-align: center;
+      margin-top: 30px;
+    }
+    
+    /* Contact Info */
+    .contact-info {
+      background: white;
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--border);
+    }
+    
+    .contact-info h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.8rem;
     }
     
     .contact-methods {
-      display: flex;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 30px;
-      flex-wrap: wrap;
     }
     
     .contact-method {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
+      text-align: center;
+      padding: 20px;
+      background: var(--bg-alt);
+      border-radius: var(--radius);
+      transition: var(--transition);
     }
     
-    .contact-method i {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
+    .contact-method:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    
+    .method-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 15px;
       background: var(--primary);
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
+      margin: 0 auto 15px;
     }
     
-    .contact-method span {
-      font-weight: 600;
+    .contact-method h4 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    
+    .contact-method p {
       color: var(--text);
+      font-weight: 500;
+      margin-bottom: 5px;
+      font-size: 0.95rem;
     }
     
     .contact-method small {
       color: var(--text-muted);
+      font-size: 0.8rem;
     }
     
-    /* Footer - Same as privacy */
+    /* Quick Support Form */
+    .quick-support {
+      margin-top: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: var(--radius);
+      padding: 50px;
+      color: white;
+      text-align: center;
+    }
+    
+    .quick-support h3 {
+      color: white;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+    
+    .quick-support p {
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .quick-support .btn-large {
+      background: white;
+      color: var(--primary);
+      padding: 15px 40px;
+      font-size: 1.1rem;
+    }
+    
+    .quick-support .btn-large:hover {
+      background: var(--accent);
+      color: white;
+    }
+    
+    /* Footer */
     .site-footer {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
@@ -217,6 +360,7 @@
       color: rgba(255,255,255,0.8);
       font-size: 0.85rem;
       margin: 10px 0;
+      line-height: 1.5;
     }
     
     .footer-social {
@@ -233,7 +377,7 @@
       align-items: center;
       justify-content: center;
       color: white;
-      transition: 0.3s;
+      transition: var(--transition);
     }
     
     .footer-social a:hover {
@@ -259,7 +403,7 @@
       color: rgba(255,255,255,0.8);
       text-decoration: none;
       font-size: 0.8rem;
-      transition: 0.3s;
+      transition: var(--transition);
     }
     
     .footer-links a:hover {
@@ -335,42 +479,126 @@
       50% { transform: scale(1.1); }
     }
     
+    /* Responsive */
+    @media (max-width: 1000px) {
+      .support-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-methods {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
     @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      
+      .nav-list {
+        display: none;
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        flex-direction: column;
+        gap: 15px;
+        border-bottom: 1px solid var(--border);
+      }
+      
+      .nav-list.active {
+        display: flex;
+      }
+      
       .support-grid {
         grid-template-columns: 1fr;
       }
       
-      .footer-grid {
+      .contact-methods {
         grid-template-columns: 1fr;
-        gap: 20px;
       }
       
       .trust-strip {
         flex-direction: column;
+        gap: 8px;
       }
       
       .trust-divider {
         display: none;
       }
       
-      .contact-methods {
-        flex-direction: column;
+      .trust-item {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
         gap: 20px;
       }
     }
+    
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--primary);
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 0 0 6px 0;
+      z-index: 10000;
+    }
+    
+    .skip-link:focus {
+      top: 0;
+    }
+    
+    [data-aos] {
+      opacity: 0;
+      transition-property: opacity, transform;
+    }
+    
+    [data-aos].aos-animate {
+      opacity: 1;
+    }
   </style>
+  
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 </head>
 <body>
-  <!-- Same header -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
   <header class="site-header">
     <div class="container header-container">
       <a href="index.html" class="logo">
         <i class="fas fa-headset"></i>
         <span>Salim-VA</span>
       </a>
-      
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
       <nav>
-        <ul class="nav-list">
+        <ul class="nav-list" id="navList">
           <li><a href="index.html#home" class="nav-link">Home</a></li>
           <li><a href="index.html#services" class="nav-link">Services</a></li>
           <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
@@ -385,124 +613,203 @@
   <!-- Page Header -->
   <div class="page-header">
     <div class="container">
-      <h1>Support Center</h1>
-      <p>How can we help you today?</p>
+      <h1 data-aos="fade-up">Support Center</h1>
+      <p data-aos="fade-up" data-aos-delay="50">How can I help you today? I'm here to answer your questions and resolve any issues.</p>
     </div>
   </div>
 
   <!-- Main Content -->
-  <main class="page-content">
+  <main id="main-content" class="page-content">
     <div class="container">
-      <!-- Support Options -->
+      
+      <!-- Support Options Grid -->
+      <h2 style="text-align: center; margin-bottom: 30px;" data-aos="fade-up">How can we help?</h2>
+      
       <div class="support-grid">
-        <div class="support-card">
-          <div class="support-icon"><i class="fas fa-question-circle"></i></div>
-          <h3>FAQ</h3>
-          <p>Find answers to common questions about our services, pricing, and process.</p>
-          <a href="faq.html" class="btn btn-primary">View FAQ</a>
+        <!-- FAQ Card -->
+        <div class="support-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="support-icon">
+            <i class="fas fa-question-circle"></i>
+          </div>
+          <h3>Frequently Asked Questions</h3>
+          <p>Find answers to common questions about my services, pricing, process, and policies.</p>
+          <a href="faq.html" class="btn btn-primary">Browse FAQ</a>
         </div>
         
-        <div class="support-card">
-          <div class="support-icon"><i class="fas fa-envelope"></i></div>
+        <!-- Email Support Card -->
+        <div class="support-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="support-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
           <h3>Email Support</h3>
-          <p>Get help via email. We respond within 24 hours during business days.</p>
-          <a href="mailto:salim.virtualassistant@gmail.com" class="btn btn-primary">Email Us</a>
+          <p>Send me an email and I'll respond within 24 hours during business days.</p>
+          <a href="mailto:salim.virtualassistant@gmail.com" class="btn btn-primary">Email Me</a>
         </div>
         
-        <div class="support-card">
-          <div class="support-icon"><i class="fas fa-phone-alt"></i></div>
-          <h3>Phone Support</h3>
-          <p>Speak with us directly. Available Mon-Fri, 9AM-6PM EST.</p>
-          <a href="tel:+15551234567" class="btn btn-primary">Call Now</a>
-        </div>
-        
-        <div class="support-card">
-          <div class="support-icon"><i class="fas fa-ticket-alt"></i></div>
-          <h3>Submit a Ticket</h3>
-          <p>For complex issues, submit a support ticket and we'll investigate.</p>
-          <a href="index.html#contact" class="btn btn-primary">Submit Ticket</a>
+        <!-- Teams Support Card -->
+        <div class="support-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="support-icon">
+            <i class="fab fa-microsoft"></i>
+          </div>
+          <h3>Microsoft Teams</h3>
+          <p>Chat with me directly on Teams for quick questions or real-time support.</p>
+          <a href="https://teams.microsoft.com/l/chat/0/0?users=salim.virtualassistant@gmail.com" class="btn btn-primary" target="_blank">Chat on Teams</a>
         </div>
       </div>
       
-      <!-- Contact Information -->
-      <div class="contact-info">
-        <h3>Direct Contact</h3>
+      <!-- FAQ Preview -->
+      <div class="faq-preview" data-aos="fade-up">
+        <h2>Quick Answers to Common Questions</h2>
+        
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h4><i class="fas fa-clock"></i> What are your response times?</h4>
+            <p>I respond to all emails within 24 hours during business days (Monday-Friday). Most messages get a reply within 2-4 hours.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4><i class="fas fa-credit-card"></i> What payment methods do you accept?</h4>
+            <p>I accept payments via Paystack (KES) for cards and mobile money. PayPal (USD) is coming soon.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4><i class="fas fa-clock"></i> How does hourly billing work?</h4>
+            <p>Hourly services are billed based on actual time worked, tracked in 15-minute increments. You get a detailed timesheet.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4><i class="fas fa-file-signature"></i> Do you sign NDAs?</h4>
+            <p>Yes! I'm happy to sign a Non-Disclosure Agreement. Just ask and I'll review and sign it promptly.</p>
+          </div>
+        </div>
+        
+        <div class="view-all-faq">
+          <a href="faq.html" class="btn btn-outline">View All FAQs <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      
+      <!-- Direct Contact Information -->
+      <div class="contact-info" data-aos="fade-up">
+        <h2>Contact Me Directly</h2>
+        
         <div class="contact-methods">
           <div class="contact-method">
-            <i class="fas fa-envelope"></i>
-            <span>Email</span>
-            <small>salim.virtualassistant@gmail.com</small>
+            <div class="method-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h4>Email</h4>
+            <p>salim.virtualassistant@gmail.com</p>
+            <small>24h response time</small>
           </div>
+          
           <div class="contact-method">
-            <i class="fas fa-phone-alt"></i>
-            <span>Phone</span>
-            <small>+1 (555) 123-4567</small>
+            <div class="method-icon">
+              <i class="fab fa-microsoft"></i>
+            </div>
+            <h4>Microsoft Teams</h4>
+            <p>salim.virtualassistant@teams.com</p>
+            <small>Live chat during work hours</small>
           </div>
+          
           <div class="contact-method">
-            <i class="fas fa-clock"></i>
-            <span>Response Time</span>
-            <small>< 24 hours</small>
+            <div class="method-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <h4>Working Hours</h4>
+            <p>Mon-Fri, 9AM-6PM EST</p>
+            <small>Available for urgent requests</small>
           </div>
         </div>
       </div>
+      
+      <!-- Quick Support Form Link -->
+      <div class="quick-support" data-aos="fade-up" data-aos-delay="100">
+        <h3>Still Need Help?</h3>
+        <p>If you couldn't find what you're looking for, send me a message and I'll get back to you personally within 24 hours.</p>
+        <a href="index.html#contact" class="btn btn-large">Send a Message</a>
+      </div>
+      
     </div>
   </main>
 
-  <!-- Same footer -->
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
+        <!-- Brand -->
         <div class="footer-brand">
           <a href="index.html" class="logo" style="color: white;">
             <i class="fas fa-headset"></i>
             <span>Salim-VA</span>
           </a>
-          <p>Professional virtual assistant & creative support for scaling businesses.</p>
+          <p>Professional virtual assistant & creative support for scaling businesses. I help entrepreneurs and companies reclaim their time.</p>
+          
+          <!-- Social - Only LinkedIn & Email -->
           <div class="footer-social">
-            <a href="https://www.linkedin.com/in/salim-omar-56b98a277" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-            <a href="mailto:salim.virtualassistant@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/salim-omar-56b98a277" target="_blank" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="mailto:salim.virtualassistant@gmail.com" aria-label="Email">
+              <i class="fas fa-envelope"></i>
+            </a>
           </div>
         </div>
 
+        <!-- Company -->
         <div class="footer-links">
           <h4>Company</h4>
           <ul>
-            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#about">About Me</a></li>
             <li><a href="index.html#pricing">Pricing</a></li>
             <li><a href="index.html#testimonials">Testimonials</a></li>
             <li><a href="index.html#contact">Contact</a></li>
           </ul>
         </div>
 
+        <!-- Services -->
         <div class="footer-links">
           <h4>Services</h4>
           <ul>
             <li><a href="index.html#services">Administrative</a></li>
             <li><a href="index.html#services">Graphic Design</a></li>
-            <li><a href="index.html#services">Content</a></li>
+            <li><a href="index.html#services">Content Creation</a></li>
             <li><a href="index.html#services">Social Media</a></li>
+            <li><a href="index.html#services">E-commerce</a></li>
+            <li><a href="index.html#services">Video Editing</a></li>
           </ul>
         </div>
 
+        <!-- Support Pages -->
         <div class="footer-links">
           <h4>Support</h4>
           <ul>
             <li><a href="privacy.html">Privacy Policy</a></li>
             <li><a href="terms.html">Terms of Service</a></li>
             <li><a href="faq.html">FAQ</a></li>
-            <li><a href="support.html">Support</a></li>
+            <li><a href="support.html">Support Center</a></li>
           </ul>
         </div>
       </div>
 
+      <!-- Signature -->
       <div class="footer-signature">
         <div class="trust-strip">
-          <div class="trust-item"><div class="trust-icon"><i class="fas fa-bolt"></i></div><div class="trust-text"><strong>24h Response</strong></div></div>
+          <div class="trust-item">
+            <div class="trust-icon"><i class="fas fa-bolt"></i></div>
+            <div class="trust-text"><strong>24h Response</strong></div>
+          </div>
           <div class="trust-divider"></div>
-          <div class="trust-item"><div class="trust-icon"><i class="fas fa-check-circle"></i></div><div class="trust-text"><strong>100% Satisfaction</strong></div></div>
+          <div class="trust-item">
+            <div class="trust-icon"><i class="fas fa-check-circle"></i></div>
+            <div class="trust-text"><strong>100% Satisfaction</strong></div>
+          </div>
           <div class="trust-divider"></div>
-          <div class="trust-item"><div class="trust-icon"><i class="fas fa-shield-alt"></i></div><div class="trust-text"><strong>Secure Payment</strong></div></div>
+          <div class="trust-item">
+            <div class="trust-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="trust-text"><strong>Secure Payment</strong></div>
+          </div>
         </div>
+        
         <div class="copyright">
           <p>© 2025 Salim-VA. All rights reserved.</p>
           <p class="built-with">Built with <i class="fas fa-heart"></i> for scale-ups</p>
@@ -510,5 +817,50 @@
       </div>
     </div>
   </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  
+  <script>
+    (function() {
+      'use strict';
+      
+      // Initialize AOS
+      AOS.init({
+        duration: 600,
+        offset: 60,
+        once: true,
+        delay: 50
+      });
+      
+      // Mobile menu
+      const menuToggle = document.getElementById('menuToggle');
+      const navList = document.getElementById('navList');
+      
+      if (menuToggle && navList) {
+        menuToggle.addEventListener('click', () => {
+          navList.classList.toggle('active');
+        });
+        
+        // Close menu when clicking a link
+        navList.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            navList.classList.remove('active');
+          });
+        });
+      }
+      
+      // Header scroll effect
+      const header = document.querySelector('.site-header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+      
+    })();
+  </script>
 </body>
 </html>
