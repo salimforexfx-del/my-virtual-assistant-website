@@ -1023,7 +1023,7 @@
     .modal-panel {
       background: white;
       width: 100%;
-      max-width: 450px;
+      max-width: 500px;
       border-radius: var(--radius-lg);
       padding: 24px;
       position: relative;
@@ -1089,6 +1089,17 @@
 
     .kes-display i {
       color: #16a34a;
+    }
+
+    /* PayPal button container */
+    #paypal-button-container {
+      margin: 20px 0;
+      min-height: 150px;
+    }
+
+    /* Hide elements */
+    .hidden {
+      display: none !important;
     }
 
     /* ---------- RESPONSIVE ---------- */
@@ -1764,6 +1775,9 @@
         </div>
       </div>
 
+      <!-- PayPal button container (initially hidden) -->
+      <div id="paypal-button-container" class="hidden"></div>
+
       <div style="background: #f8fafc; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
         <strong>Total: $<span id="modalTotal">0</span> USD</strong>
       </div>
@@ -1874,23 +1888,37 @@
       const modalTotal = document.getElementById('modalTotal');
       const modalKes = document.getElementById('modalKes');
       const hoursField = document.getElementById('hoursField');
-      
-      // Payment method selection
       const paystackMethod = document.getElementById('paystackMethod');
       const paypalMethod = document.getElementById('paypalMethod');
+      const processPaymentBtn = document.getElementById('processPayment');
+      const paypalContainer = document.getElementById('paypal-button-container');
+      
       let selectedPaymentMethod = 'paystack';
+      let paypalButtonsRendered = false;
 
+      // Payment method selection
       if (paystackMethod && paypalMethod) {
         paystackMethod.addEventListener('click', () => {
           paystackMethod.classList.add('active');
           paypalMethod.classList.remove('active');
           selectedPaymentMethod = 'paystack';
+          // Hide PayPal container, show process button
+          paypalContainer.classList.add('hidden');
+          processPaymentBtn.classList.remove('hidden');
         });
 
         paypalMethod.addEventListener('click', () => {
           paypalMethod.classList.add('active');
           paystackMethod.classList.remove('active');
           selectedPaymentMethod = 'paypal';
+          // Hide process button, show PayPal container
+          processPaymentBtn.classList.add('hidden');
+          paypalContainer.classList.remove('hidden');
+          
+          // Render PayPal buttons if not already rendered
+          if (!paypalButtonsRendered && typeof paypal !== 'undefined') {
+            renderPayPalButtons();
+          }
         });
       }
 
@@ -1939,6 +1967,44 @@
         }
       }
 
+      // Function to render PayPal buttons
+      function renderPayPalButtons() {
+        if (!paypal) return;
+        
+        paypal.Buttons({
+          createOrder: function(data, actions) {
+            // Get the total amount from modal
+            const totalUSD = parseFloat(modalTotal?.textContent) || 0;
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  value: totalUSD.toFixed(2)
+                },
+                description: modalService?.selectedOptions[0]?.value || 'Service booking'
+              }]
+            });
+          },
+          onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+              // Payment successful – redirect to thank you
+              window.location.href = 'thank-you.html?paypal_order_id=' + data.orderID;
+            });
+          },
+          onError: function(err) {
+            console.error('PayPal error:', err);
+            alert('PayPal payment failed. Please try again.');
+            // Optionally redirect to payment-failed
+            window.location.href = 'payment-failed.html?reason=paypal_error';
+          },
+          onCancel: function() {
+            // User cancelled – redirect to payment-failed
+            window.location.href = 'payment-failed.html?reason=cancelled';
+          }
+        }).render('#paypal-button-container');
+        
+        paypalButtonsRendered = true;
+      }
+
       // Open modal from book buttons
       document.querySelectorAll('.service-book, .pack-book').forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -1955,6 +2021,13 @@
             modalDate.min = today;
             modalDate.value = today;
           }
+          
+          // Reset to Paystack as default
+          paystackMethod?.classList.add('active');
+          paypalMethod?.classList.remove('active');
+          selectedPaymentMethod = 'paystack';
+          processPaymentBtn?.classList.remove('hidden');
+          paypalContainer?.classList.add('hidden');
           
           modal?.classList.add('active');
           document.body.style.overflow = 'hidden';
@@ -1979,8 +2052,10 @@
         document.body.style.overflow = '';
       }
 
-      // Process payment
-      document.getElementById('processPayment')?.addEventListener('click', function() {
+      // Process Paystack payment when "Proceed to Payment" is clicked (only for Paystack)
+      processPaymentBtn?.addEventListener('click', function() {
+        if (selectedPaymentMethod !== 'paystack') return; // should not happen
+        
         const selected = modalService?.selectedOptions[0];
         const email = modalEmail?.value;
         const totalUSD = parseFloat(modalTotal?.textContent);
@@ -2010,17 +2085,11 @@
           return;
         }
 
-        // Process with selected payment method
-        if (selectedPaymentMethod === 'paystack') {
-          processPaystackPayment(email, totalKES, serviceName, hours, startDate);
-        } else {
-          processPayPalPayment(email, totalUSD, serviceName, hours, startDate);
-        }
+        processPaystackPayment(email, totalKES, serviceName, hours, startDate);
       });
 
       // Paystack payment (in KES)
       function processPaystackPayment(email, amountKES, serviceName, hours, startDate) {
-        // Ensure amount is valid
         if (!amountKES || amountKES <= 0 || isNaN(amountKES)) {
           alert('Invalid amount');
           return;
@@ -2046,14 +2115,6 @@
         });
 
         handler.openIframe();
-      }
-
-      // PayPal payment (in USD) - placeholder for live integration
-      function processPayPalPayment(email, amountUSD, serviceName, hours, startDate) {
-        // In production, you would create an order via your backend
-        alert('PayPal integration is ready. In production, you would be redirected to PayPal.');
-        // Simulate success
-        window.location.href = 'thank-you.html';
       }
 
       // Character counter for contact form
