@@ -18,7 +18,7 @@
   <meta property="og:image" content="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
   
   <!-- Security Headers -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.paystack.co https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://images.unsplash.com;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.paystack.co https://www.paypal.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://images.unsplash.com; frame-src https://www.paypal.com;">
   
   <!-- Resource Hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,8 +57,9 @@
       --radius: 12px;
       --transition: all 0.26s cubic-bezier(0.2, 0.9, 0.2, 1);
       --header-height: 64px;
-      --section-padding: 50px 0;  /* Reduced from 60px */
-      --gap: 20px;  /* Consistent gap like original */
+      --section-padding: 50px 0;
+      --gap: 20px;
+      --usd-rate: 131; /* 1 USD = 131 KES */
     }
 
     html {
@@ -231,9 +232,9 @@
       transition: var(--transition);
     }
 
-    /* ---------- HERO SECTION (Compact & Eye-catching) ---------- */
+    /* ---------- HERO SECTION ---------- */
     .hero {
-      padding: calc(var(--header-height) + 30px) 0 40px;  /* Reduced padding */
+      padding: calc(var(--header-height) + 30px) 0 40px;
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
       border-bottom-left-radius: 16px;
@@ -314,7 +315,7 @@
     }
 
     .hero-visual {
-      max-width: 380px;  /* Smaller like original */
+      max-width: 380px;
       margin-left: auto;
     }
 
@@ -326,15 +327,15 @@
       display: block;
     }
 
-    /* ---------- SECTION HEADERS (Compact) ---------- */
+    /* ---------- SECTION HEADERS ---------- */
     .section-header {
       text-align: center;
       max-width: 600px;
-      margin: 0 auto 25px;  /* Reduced margin */
+      margin: 0 auto 25px;
     }
 
     .section-header h2 {
-      font-size: 1.6rem;  /* Smaller like original */
+      font-size: 1.6rem;
       position: relative;
       display: inline-block;
       margin-bottom: 10px;
@@ -346,7 +347,7 @@
       bottom: -6px;
       left: 50%;
       transform: translateX(-50%);
-      width: 50px;  /* Smaller like original */
+      width: 50px;
       height: 3px;
       background: var(--accent);
       border-radius: 3px;
@@ -358,18 +359,18 @@
       margin-top: 10px;
     }
 
-    /* ---------- SERVICES GRID (3x2 - Perfect spacing) ---------- */
+    /* ---------- SERVICES GRID ---------- */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;  /* Reduced gap */
+      gap: 18px;
       margin-bottom: 10px;
     }
 
     .service-card {
       background: var(--card-bg);
       border-radius: 12px;
-      padding: 20px;  /* Reduced padding */
+      padding: 20px;
       box-shadow: var(--card-shadow);
       border: 1px solid var(--border);
       transition: var(--transition);
@@ -383,7 +384,7 @@
     }
 
     .service-icon {
-      width: 52px;  /* Smaller */
+      width: 52px;
       height: 52px;
       border-radius: 10px;
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
@@ -396,13 +397,13 @@
     }
 
     .service-card h3 {
-      font-size: 1rem;  /* Smaller */
+      font-size: 1rem;
       margin-bottom: 6px;
     }
 
     .service-card p {
       color: var(--text-muted);
-      font-size: 0.85rem;  /* Smaller */
+      font-size: 0.85rem;
       margin-bottom: 12px;
       line-height: 1.5;
       flex: 1;
@@ -411,7 +412,7 @@
     .service-price {
       font-weight: 700;
       color: var(--primary);
-      font-size: 1.1rem;  /* Smaller */
+      font-size: 1.1rem;
       margin-bottom: 12px;
     }
 
@@ -427,7 +428,7 @@
       width: 100%;
     }
 
-    /* ---------- PRICING SECTION (Compact) ---------- */
+    /* ---------- PRICING SECTION ---------- */
     .pricing-toggle {
       display: flex;
       justify-content: center;
@@ -468,7 +469,7 @@
     .pack-card {
       background: white;
       border-radius: 12px;
-      padding: 20px 18px;  /* Reduced padding */
+      padding: 20px 18px;
       box-shadow: var(--card-shadow);
       border: 1px solid var(--border);
       transition: var(--transition);
@@ -521,6 +522,21 @@
       font-weight: 400;
     }
 
+    .kes-price {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      padding: 4px 8px;
+      background: #f0fdf4;
+      border-radius: 20px;
+      display: inline-block;
+    }
+
+    .kes-price i {
+      color: #16a34a;
+      margin-right: 4px;
+    }
+
     .pack-features {
       list-style: none;
       margin-bottom: 15px;
@@ -532,7 +548,7 @@
       gap: 6px;
       margin-bottom: 6px;
       color: var(--text-secondary);
-      font-size: 0.8rem;  /* Smaller */
+      font-size: 0.8rem;
     }
 
     .pack-features i {
@@ -546,7 +562,7 @@
       font-size: 0.85rem;
     }
 
-    /* ---------- ABOUT SECTION (Compact) ---------- */
+    /* ---------- ABOUT SECTION ---------- */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -596,7 +612,7 @@
       color: var(--text-muted);
     }
 
-    /* ---------- TESTIMONIALS (3x2 - Compact) ---------- */
+    /* ---------- TESTIMONIALS ---------- */
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -606,7 +622,7 @@
     .testimonial-card {
       background: white;
       border-radius: 12px;
-      padding: 16px;  /* Reduced padding */
+      padding: 16px;
       box-shadow: var(--card-shadow);
       border: 1px solid var(--border);
       transition: var(--transition);
@@ -621,7 +637,7 @@
       color: var(--text);
       font-style: italic;
       margin-bottom: 12px;
-      font-size: 0.85rem;  /* Smaller */
+      font-size: 0.85rem;
       line-height: 1.5;
     }
 
@@ -632,7 +648,7 @@
     }
 
     .avatar {
-      width: 36px;  /* Smaller */
+      width: 36px;
       height: 36px;
       border-radius: 50%;
       display: flex;
@@ -660,7 +676,7 @@
       color: var(--text-muted);
     }
 
-    /* ---------- CONTACT SECTION (Original - Preserved) ---------- */
+    /* ---------- CONTACT SECTION ---------- */
     .contact-section {
       background: #f8fafc;
       padding: 50px 0;
@@ -765,24 +781,24 @@
       color: var(--text-muted);
     }
 
-    /* ---------- FOOTER (Compact & Elegant) ---------- */
+    /* ---------- FOOTER ---------- */
     .site-footer {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      padding: 40px 0 20px;  /* Reduced padding */
+      padding: 40px 0 20px;
       margin-top: auto;
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 30px;  /* Reduced gap */
-      margin-bottom: 25px;  /* Reduced margin */
+      gap: 30px;
+      margin-bottom: 25px;
     }
 
     .footer-brand p {
       color: rgba(255,255,255,0.8);
-      font-size: 0.85rem;  /* Smaller */
+      font-size: 0.85rem;
       margin: 10px 0;
       line-height: 1.5;
     }
@@ -793,7 +809,7 @@
     }
 
     .footer-social a {
-      width: 34px;  /* Smaller */
+      width: 34px;
       height: 34px;
       border-radius: 8px;
       background: rgba(255,255,255,0.1);
@@ -812,8 +828,8 @@
 
     .footer-links h4 {
       color: white;
-      font-size: 0.95rem;  /* Smaller */
-      margin-bottom: 12px;  /* Reduced */
+      font-size: 0.95rem;
+      margin-bottom: 12px;
     }
 
     .footer-links ul {
@@ -821,13 +837,13 @@
     }
 
     .footer-links li {
-      margin-bottom: 6px;  /* Reduced */
+      margin-bottom: 6px;
     }
 
     .footer-links a {
       color: rgba(255,255,255,0.8);
       text-decoration: none;
-      font-size: 0.8rem;  /* Smaller */
+      font-size: 0.8rem;
       transition: var(--transition);
     }
 
@@ -836,33 +852,32 @@
       padding-left: 3px;
     }
 
-    /* ---------- COMPACT FOOTER SIGNATURE ---------- */
     .footer-signature {
       border-top: 1px solid rgba(255,255,255,0.1);
-      padding: 15px 0 5px;  /* Reduced padding */
+      padding: 15px 0 5px;
     }
 
     .trust-strip {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 15px;  /* Reduced gap */
+      gap: 15px;
       flex-wrap: wrap;
-      margin-bottom: 12px;  /* Reduced */
+      margin-bottom: 12px;
     }
 
     .trust-item {
       display: flex;
       align-items: center;
-      gap: 6px;  /* Reduced */
-      padding: 4px 12px;  /* Reduced */
+      gap: 6px;
+      padding: 4px 12px;
       background: rgba(255,255,255,0.05);
       border-radius: 50px;
       backdrop-filter: blur(4px);
     }
 
     .trust-icon {
-      width: 24px;  /* Smaller */
+      width: 24px;
       height: 24px;
       border-radius: 50%;
       background: var(--accent);
@@ -875,12 +890,7 @@
 
     .trust-text strong {
       color: white;
-      font-size: 0.8rem;  /* Smaller */
-    }
-
-    .trust-text span {
-      color: rgba(255,255,255,0.7);
-      font-size: 0.65rem;  /* Smaller */
+      font-size: 0.8rem;
     }
 
     .trust-divider {
@@ -897,15 +907,13 @@
 
     .copyright p {
       color: rgba(255,255,255,0.7);
-      font-size: 0.75rem;  /* Smaller */
+      font-size: 0.75rem;
       margin: 3px 0;
     }
 
     .built-with i {
       color: var(--accent);
       animation: heartbeat 1.5s ease infinite;
-      display: inline-block;
-      font-size: 0.7rem;
     }
 
     @keyframes heartbeat {
@@ -932,21 +940,72 @@
     .modal-panel {
       background: white;
       width: 100%;
-      max-width: 400px;
+      max-width: 450px;
       border-radius: 12px;
-      padding: 20px;
+      padding: 24px;
       position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
     }
 
     .modal-close {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 12px;
+      right: 12px;
       background: none;
       border: none;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       cursor: pointer;
       color: var(--text-muted);
+    }
+
+    .payment-methods {
+      display: flex;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .payment-method {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .payment-method.active {
+      border-color: var(--primary);
+      background: rgba(78,70,229,0.05);
+    }
+
+    .payment-method i {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .payment-method.paystack i {
+      color: #00C3B1;
+    }
+
+    .payment-method.paypal i {
+      color: #003087;
+    }
+
+    .kes-display {
+      background: #f0fdf4;
+      color: #166534;
+      padding: 10px;
+      border-radius: 8px;
+      margin: 10px 0;
+      font-size: 0.9rem;
+      text-align: center;
+      border: 1px solid #86efac;
+    }
+
+    .kes-display i {
+      color: #16a34a;
     }
 
     /* ---------- RESPONSIVE ---------- */
@@ -1036,7 +1095,6 @@
       }
     }
 
-    /* Accessibility */
     .skip-link {
       position: absolute;
       top: -40px;
@@ -1070,7 +1128,7 @@
   <!-- Header -->
   <header class="site-header">
     <div class="container header-container">
-      <a href="#home" class="logo">
+      <a href="index.html" class="logo">
         <i class="fas fa-headset"></i>
         <span>Salim-VA</span>
       </a>
@@ -1083,19 +1141,19 @@
 
       <nav>
         <ul class="nav-list" id="navList">
-          <li><a href="#home" class="nav-link active">Home</a></li>
-          <li><a href="#services" class="nav-link">Services</a></li>
-          <li><a href="#pricing" class="nav-link">Pricing</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="index.html#home" class="nav-link active">Home</a></li>
+          <li><a href="index.html#services" class="nav-link">Services</a></li>
+          <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
+          <li><a href="index.html#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main-content">
-    <!-- HERO SECTION (Eye-catching & Compact) -->
+    <!-- HERO SECTION -->
     <section id="home" class="hero">
       <div class="container hero-container">
         <div data-aos="fade-up">
@@ -1116,8 +1174,8 @@
           </p>
           
           <div class="hero-cta">
-            <a href="#pricing" class="btn btn-primary">View Pricing</a>
-            <a href="#contact" class="btn btn-outline">Get in Touch</a>
+            <a href="index.html#pricing" class="btn btn-primary">View Pricing</a>
+            <a href="index.html#contact" class="btn btn-outline">Get in Touch</a>
           </div>
           
           <div class="hero-meta">
@@ -1134,7 +1192,7 @@
       </div>
     </section>
 
-    <!-- SERVICES SECTION (3x2 - Perfect spacing) -->
+    <!-- SERVICES SECTION -->
     <section id="services">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
@@ -1149,7 +1207,8 @@
             <h3>Administrative Support</h3>
             <p>Email management, calendar scheduling, travel arrangements, and document prep.</p>
             <div class="service-price">$25 <small>/hr</small></div>
-            <button class="btn btn-primary service-book" data-service="Administrative Support">Book</button>
+            <div class="kes-price"><i class="fas fa-coin"></i> ≈ 3,275 KES/hr</div>
+            <button class="btn btn-primary service-book" data-service="Administrative Support" data-rate="25">Book</button>
           </div>
 
           <div class="service-card" data-aos="fade-up" data-aos-delay="140">
@@ -1157,7 +1216,8 @@
             <h3>Graphic Design</h3>
             <p>Logo concepts, social graphics, slides and marketing assets.</p>
             <div class="service-price">$45 <small>/hr</small></div>
-            <button class="btn btn-primary service-book" data-service="Graphic Design">Book</button>
+            <div class="kes-price"><i class="fas fa-coin"></i> ≈ 5,895 KES/hr</div>
+            <button class="btn btn-primary service-book" data-service="Graphic Design" data-rate="45">Book</button>
           </div>
 
           <div class="service-card" data-aos="fade-up" data-aos-delay="180">
@@ -1165,7 +1225,8 @@
             <h3>Content Creation</h3>
             <p>Blog posts, web copy, newsletters and email campaigns.</p>
             <div class="service-price">$35 <small>/hr</small></div>
-            <button class="btn btn-primary service-book" data-service="Content Creation">Book</button>
+            <div class="kes-price"><i class="fas fa-coin"></i> ≈ 4,585 KES/hr</div>
+            <button class="btn btn-primary service-book" data-service="Content Creation" data-rate="35">Book</button>
           </div>
 
           <!-- Row 2 -->
@@ -1174,7 +1235,8 @@
             <h3>Social Media</h3>
             <p>Content calendars, post scheduling, engagement and basic reporting.</p>
             <div class="service-price">$40 <small>/hr</small></div>
-            <button class="btn btn-primary service-book" data-service="Social Media Management">Book</button>
+            <div class="kes-price"><i class="fas fa-coin"></i> ≈ 5,240 KES/hr</div>
+            <button class="btn btn-primary service-book" data-service="Social Media Management" data-rate="40">Book</button>
           </div>
 
           <div class="service-card" data-aos="fade-up" data-aos-delay="260">
@@ -1182,7 +1244,8 @@
             <h3>E-commerce</h3>
             <p>Product listings, inventory updates, order handling.</p>
             <div class="service-price">$30 <small>/hr</small></div>
-            <button class="btn btn-primary service-book" data-service="E-commerce Support">Book</button>
+            <div class="kes-price"><i class="fas fa-coin"></i> ≈ 3,930 KES/hr</div>
+            <button class="btn btn-primary service-book" data-service="E-commerce Support" data-rate="30">Book</button>
           </div>
 
           <div class="service-card" data-aos="fade-up" data-aos-delay="300">
@@ -1190,7 +1253,8 @@
             <h3>Video Editing</h3>
             <p>Short-form edits, captions, YouTube & promotional videos.</p>
             <div class="service-price">$50 <small>/hr</small></div>
-            <button class="btn btn-primary service-book" data-service="Video Editing">Book</button>
+            <div class="kes-price"><i class="fas fa-coin"></i> ≈ 6,550 KES/hr</div>
+            <button class="btn btn-primary service-book" data-service="Video Editing" data-rate="50">Book</button>
           </div>
         </div>
       </div>
@@ -1217,6 +1281,7 @@
             <h3>Starter</h3>
             <p class="pack-tagline">For small businesses</p>
             <div class="pack-price" data-monthly="400" data-yearly="3840">$400 <small>/mo</small></div>
+            <div class="kes-price"><i class="fas fa-coin"></i> <span class="kes-monthly">52,400</span> KES/mo</div>
             <ul class="pack-features">
               <li><i class="fas fa-check"></i> 20 hours/month</li>
               <li><i class="fas fa-check"></i> Email & chat support</li>
@@ -1224,7 +1289,7 @@
               <li><i class="fas fa-check"></i> 5 social posts/week</li>
               <li><i class="fas fa-check"></i> 48h response</li>
             </ul>
-            <button class="btn btn-primary pack-book" data-plan="Starter">Choose Plan</button>
+            <button class="btn btn-primary pack-book" data-plan="Starter" data-monthly="400" data-yearly="3840">Choose Plan</button>
           </div>
 
           <!-- Standard -->
@@ -1233,6 +1298,7 @@
             <h3>Standard</h3>
             <p class="pack-tagline">For growing teams</p>
             <div class="pack-price" data-monthly="750" data-yearly="7200">$750 <small>/mo</small></div>
+            <div class="kes-price"><i class="fas fa-coin"></i> <span class="kes-monthly">98,250</span> KES/mo</div>
             <ul class="pack-features">
               <li><i class="fas fa-check"></i> 40 hours/month</li>
               <li><i class="fas fa-check"></i> Admin + creative</li>
@@ -1240,7 +1306,7 @@
               <li><i class="fas fa-check"></i> Weekly check-ins</li>
               <li><i class="fas fa-check"></i> 24-48h response</li>
             </ul>
-            <button class="btn btn-accent pack-book" data-plan="Standard">Choose Plan</button>
+            <button class="btn btn-accent pack-book" data-plan="Standard" data-monthly="750" data-yearly="7200">Choose Plan</button>
           </div>
 
           <!-- Premium -->
@@ -1248,6 +1314,7 @@
             <h3>Premium</h3>
             <p class="pack-tagline">Dedicated support</p>
             <div class="pack-price" data-monthly="1400" data-yearly="13440">$1,400 <small>/mo</small></div>
+            <div class="kes-price"><i class="fas fa-coin"></i> <span class="kes-monthly">183,400</span> KES/mo</div>
             <ul class="pack-features">
               <li><i class="fas fa-check"></i> 80 hours/month</li>
               <li><i class="fas fa-check"></i> Full service</li>
@@ -1255,7 +1322,7 @@
               <li><i class="fas fa-check"></i> Dedicated calls</li>
               <li><i class="fas fa-check"></i> <24h response</li>
             </ul>
-            <button class="btn btn-primary pack-book" data-plan="Premium">Choose Plan</button>
+            <button class="btn btn-primary pack-book" data-plan="Premium" data-monthly="1400" data-yearly="13440">Choose Plan</button>
           </div>
         </div>
       </div>
@@ -1374,7 +1441,7 @@
       </div>
     </section>
 
-    <!-- CONTACT SECTION (Original - Preserved) -->
+    <!-- CONTACT SECTION -->
     <section id="contact" class="contact-section">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
@@ -1422,11 +1489,13 @@
             </div>
           </div>
 
-          <!-- Right Column - Form -->
+          <!-- Right Column - Form (UPDATED with redirect) -->
           <div class="form-panel" data-aos="fade-left">
             <h3>Send a Message</h3>
             
-            <form name="contact" method="POST" data-netlify="true" id="contactForm">
+            <form name="contact" method="POST" data-netlify="true" action="/thank-you.html" id="contactForm">
+              <input type="hidden" name="form-name" value="contact">
+              
               <div class="form-grid">
                 <input type="text" name="name" class="form-control" placeholder="Full Name *" required>
                 <input type="email" name="email" class="form-control" placeholder="Email *" required>
@@ -1457,13 +1526,13 @@
     </section>
   </main>
 
-  <!-- FOOTER (Compact with Unique Signature) -->
+  <!-- FOOTER (UPDATED with correct page links) -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <!-- Brand -->
         <div class="footer-brand">
-          <a href="#home" class="logo" style="color: white;">
+          <a href="index.html" class="logo" style="color: white;">
             <i class="fas fa-headset"></i>
             <span>Salim-VA</span>
           </a>
@@ -1484,10 +1553,10 @@
         <div class="footer-links">
           <h4>Company</h4>
           <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
           </ul>
         </div>
 
@@ -1495,50 +1564,41 @@
         <div class="footer-links">
           <h4>Services</h4>
           <ul>
-            <li><a href="#services">Administrative</a></li>
-            <li><a href="#services">Graphic Design</a></li>
-            <li><a href="#services">Content</a></li>
-            <li><a href="#services">Social Media</a></li>
+            <li><a href="index.html#services">Administrative</a></li>
+            <li><a href="index.html#services">Graphic Design</a></li>
+            <li><a href="index.html#services">Content</a></li>
+            <li><a href="index.html#services">Social Media</a></li>
           </ul>
         </div>
 
-        <!-- Support -->
+        <!-- Support Pages (CORRECT LINKS to actual pages) -->
         <div class="footer-links">
           <h4>Support</h4>
           <ul>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Terms</a></li>
-            <li><a href="#">FAQ</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="support.html">Support</a></li>
           </ul>
         </div>
       </div>
 
-      <!-- COMPACT SIGNATURE -->
+      <!-- Signature -->
       <div class="footer-signature">
         <div class="trust-strip">
           <div class="trust-item">
             <div class="trust-icon"><i class="fas fa-bolt"></i></div>
-            <div class="trust-text">
-              <strong>24h Response</strong>
-            </div>
+            <div class="trust-text"><strong>24h Response</strong></div>
           </div>
-          
           <div class="trust-divider"></div>
-          
           <div class="trust-item">
             <div class="trust-icon"><i class="fas fa-check-circle"></i></div>
-            <div class="trust-text">
-              <strong>100% Satisfaction</strong>
-            </div>
+            <div class="trust-text"><strong>100% Satisfaction</strong></div>
           </div>
-          
           <div class="trust-divider"></div>
-          
           <div class="trust-item">
             <div class="trust-icon"><i class="fas fa-shield-alt"></i></div>
-            <div class="trust-text">
-              <strong>Secure Payment</strong>
-            </div>
+            <div class="trust-text"><strong>Secure Payment</strong></div>
           </div>
         </div>
         
@@ -1550,7 +1610,7 @@
     </div>
   </footer>
 
-  <!-- Booking Modal -->
+  <!-- Booking Modal (UPDATED with KES conversion and PayPal) -->
   <div class="modal" id="bookingModal">
     <div class="modal-panel">
       <button class="modal-close" id="closeModal">&times;</button>
@@ -1567,27 +1627,52 @@
       </div>
 
       <div style="margin-bottom: 12px;">
-        <input type="email" id="modalEmail" class="form-control" placeholder="Email">
+        <input type="email" id="modalEmail" class="form-control" placeholder="Email for receipt">
       </div>
 
       <div style="margin-bottom: 15px;">
         <input type="date" id="modalDate" class="form-control">
       </div>
 
-      <div style="background: #f8fafc; padding: 12px; border-radius: 8px; margin-bottom: 15px;">
-        <strong>Total: $<span id="modalTotal">0</span></strong>
+      <!-- KES Display -->
+      <div class="kes-display" id="kesDisplay">
+        <i class="fas fa-coin"></i> Amount in KES: <strong>KSh <span id="modalKes">0</span></strong>
       </div>
 
-      <button id="processPayment" class="btn btn-primary" style="width: 100%;">Pay Now</button>
+      <!-- Payment Method Selection -->
+      <div class="payment-methods">
+        <div class="payment-method paystack active" id="paystackMethod">
+          <i class="fas fa-credit-card"></i>
+          <span>Paystack</span>
+        </div>
+        <div class="payment-method paypal" id="paypalMethod">
+          <i class="fab fa-paypal"></i>
+          <span>PayPal</span>
+        </div>
+      </div>
+
+      <div style="background: #f8fafc; padding: 12px; border-radius: 8px; margin-bottom: 15px;">
+        <strong>Total: $<span id="modalTotal">0</span> USD</strong>
+      </div>
+
+      <button id="processPayment" class="btn btn-primary" style="width: 100%;">Proceed to Payment</button>
     </div>
   </div>
 
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script src="https://js.paystack.co/v1/inline.js"></script>
+  <!-- PayPal SDK (Sandbox) -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AZDxjDScFpQtjWTOUtKiNZQsrElahBDA1VuDuDxeB6uWsFf2p2FpBSCi12s9DZyY41oG13ST7TPiR4qX&currency=USD&disable-funding=credit,card"></script>
 
   <script>
     (function() {
+      'use strict';
+
+      // Configuration
+      const USD_TO_KES = 131; // Exchange rate
+      const PAYSTACK_PUBLIC_KEY = 'pk_test_aeb92b1876c92b249172fd6453de18614cbd5381'; // Test key
+      
       // Initialize AOS
       AOS.init({
         duration: 600,
@@ -1600,34 +1685,46 @@
       const menuToggle = document.getElementById('menuToggle');
       const navList = document.getElementById('navList');
       
-      menuToggle?.addEventListener('click', () => {
-        navList.classList.toggle('active');
-      });
+      if (menuToggle && navList) {
+        menuToggle.addEventListener('click', () => {
+          navList.classList.toggle('active');
+        });
+      }
 
       // Header scroll
       const header = document.querySelector('.site-header');
       window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 50);
+        header?.classList.toggle('scrolled', window.scrollY > 50);
       });
 
       // Pricing toggle
       const toggleBtns = document.querySelectorAll('.toggle-btn');
       const packCards = document.querySelectorAll('.pack-card');
+      const kesMonthly = document.querySelectorAll('.kes-monthly');
       
       function setPricingMode(mode) {
         toggleBtns.forEach(btn => {
           btn.classList.toggle('active', btn.dataset.mode === mode);
         });
 
-        packCards.forEach(card => {
+        packCards.forEach((card, index) => {
           const priceEl = card.querySelector('.pack-price');
-          const monthly = priceEl?.dataset.monthly;
-          const yearly = priceEl?.dataset.yearly;
+          const kesEl = card.querySelector('.kes-price span');
+          const monthly = parseInt(priceEl?.dataset.monthly);
+          const yearly = parseInt(priceEl?.dataset.yearly);
           
           if (mode === 'yearly') {
-            priceEl.innerHTML = `$${yearly} <small>/yr <span style="color: var(--accent);">Save 20%</span></small>`;
+            priceEl.innerHTML = `$${yearly.toLocaleString()} <small>/yr <span style="color: var(--accent);">Save 20%</span></small>`;
+            if (kesEl) {
+              const yearlyKes = Math.round(yearly * USD_TO_KES);
+              kesEl.textContent = yearlyKes.toLocaleString();
+            }
           } else {
-            priceEl.innerHTML = `$${monthly} <small>/mo</small>`;
+            priceEl.innerHTML = `$${monthly.toLocaleString()} <small>/mo</small>`;
+            if (kesEl) {
+              const monthlyKes = Math.round(monthly * USD_TO_KES);
+              kesEl.textContent = monthlyKes.toLocaleString();
+            }
           }
         });
       }
@@ -1636,14 +1733,14 @@
         btn.addEventListener('click', () => setPricingMode(btn.dataset.mode));
       });
 
-      // Booking system
+      // Booking system with KES conversion
       const services = [
-        { name: 'Administrative Support', rate: 25 },
-        { name: 'Graphic Design', rate: 45 },
-        { name: 'Content Creation', rate: 35 },
-        { name: 'Social Media', rate: 40 },
-        { name: 'E-commerce', rate: 30 },
-        { name: 'Video Editing', rate: 50 },
+        { name: 'Administrative Support', rate: 25, type: 'hourly' },
+        { name: 'Graphic Design', rate: 45, type: 'hourly' },
+        { name: 'Content Creation', rate: 35, type: 'hourly' },
+        { name: 'Social Media Management', rate: 40, type: 'hourly' },
+        { name: 'E-commerce Support', rate: 30, type: 'hourly' },
+        { name: 'Video Editing', rate: 50, type: 'hourly' },
         { name: 'Starter Package', rate: 400, type: 'package' },
         { name: 'Standard Package', rate: 750, type: 'package' },
         { name: 'Premium Package', rate: 1400, type: 'package' }
@@ -1655,16 +1752,39 @@
       const modalEmail = document.getElementById('modalEmail');
       const modalDate = document.getElementById('modalDate');
       const modalTotal = document.getElementById('modalTotal');
+      const modalKes = document.getElementById('modalKes');
       const hoursField = document.getElementById('hoursField');
+      const kesDisplay = document.getElementById('kesDisplay');
+      
+      // Payment method selection
+      const paystackMethod = document.getElementById('paystackMethod');
+      const paypalMethod = document.getElementById('paypalMethod');
+      let selectedPaymentMethod = 'paystack';
 
+      if (paystackMethod && paypalMethod) {
+        paystackMethod.addEventListener('click', () => {
+          paystackMethod.classList.add('active');
+          paypalMethod.classList.remove('active');
+          selectedPaymentMethod = 'paystack';
+        });
+
+        paypalMethod.addEventListener('click', () => {
+          paypalMethod.classList.add('active');
+          paystackMethod.classList.remove('active');
+          selectedPaymentMethod = 'paypal';
+        });
+      }
+
+      // Populate services
       if (modalService) {
-        modalService.innerHTML = '<option value="">Select</option>' + 
+        modalService.innerHTML = '<option value="">Select service</option>' + 
           services.map(s => 
             `<option value="${s.name}" data-rate="${s.rate}" data-type="${s.type || 'hourly'}">
               ${s.name} - $${s.rate}${s.type !== 'package' ? '/hr' : '/mo'}
             </option>`
           ).join('');
 
+        // Update totals when service changes
         modalService.addEventListener('change', function() {
           const selected = this.selectedOptions[0];
           if (!selected) return;
@@ -1672,20 +1792,32 @@
           const rate = Number(selected.dataset.rate);
           const type = selected.dataset.type;
           const hours = type === 'hourly' ? (parseInt(modalHours?.value) || 1) : 1;
-          const total = type === 'hourly' ? rate * hours : rate;
+          const totalUSD = type === 'hourly' ? rate * hours : rate;
+          const totalKES = Math.round(totalUSD * USD_TO_KES);
 
-          if (modalTotal) modalTotal.textContent = total;
+          if (modalTotal) modalTotal.textContent = totalUSD.toFixed(2);
+          if (modalKes) modalKes.textContent = totalKES.toLocaleString();
           if (hoursField) hoursField.style.display = type === 'hourly' ? 'block' : 'none';
         });
 
-        modalHours?.addEventListener('input', function() {
-          const selected = modalService.selectedOptions[0];
-          if (!selected) return;
-          
-          const rate = Number(selected.dataset.rate);
-          const hours = parseInt(this.value) || 1;
-          if (modalTotal) modalTotal.textContent = rate * hours;
-        });
+        // Update on hours change
+        if (modalHours) {
+          modalHours.addEventListener('input', function() {
+            const selected = modalService.selectedOptions[0];
+            if (!selected) return;
+            
+            const rate = Number(selected.dataset.rate);
+            const type = selected.dataset.type;
+            
+            if (type === 'hourly') {
+              const hours = parseInt(this.value) || 1;
+              const totalUSD = rate * hours;
+              const totalKES = Math.round(totalUSD * USD_TO_KES);
+              if (modalTotal) modalTotal.textContent = totalUSD.toFixed(2);
+              if (modalKes) modalKes.textContent = totalKES.toLocaleString();
+            }
+          });
+        }
       }
 
       // Open modal
@@ -1700,56 +1832,190 @@
           }
           
           if (modalDate) {
-            modalDate.value = new Date().toISOString().split('T')[0];
+            const today = new Date().toISOString().split('T')[0];
+            modalDate.min = today;
+            modalDate.value = today;
           }
           
           modal?.classList.add('active');
+          document.body.style.overflow = 'hidden';
         });
       });
 
       // Close modal
-      document.getElementById('closeModal')?.addEventListener('click', () => {
-        modal.classList.remove('active');
-      });
-
+      document.getElementById('closeModal')?.addEventListener('click', closeModal);
+      
       modal?.addEventListener('click', (e) => {
-        if (e.target === modal) modal.classList.remove('active');
+        if (e.target === modal) closeModal();
       });
 
-      // Process payment
-      document.getElementById('processPayment')?.addEventListener('click', () => {
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal?.classList.contains('active')) {
+          closeModal();
+        }
+      });
+
+      function closeModal() {
+        modal?.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      // Process payment based on selected method
+      document.getElementById('processPayment')?.addEventListener('click', function() {
         const selected = modalService?.selectedOptions[0];
         const email = modalEmail?.value;
-        const total = Number(modalTotal?.textContent);
+        const totalUSD = parseFloat(modalTotal?.textContent);
+        const totalKES = Math.round(totalUSD * USD_TO_KES);
+        const serviceName = selected?.value;
+        const hours = parseInt(modalHours?.value) || 1;
+        const startDate = modalDate?.value;
 
-        if (!selected?.value) return alert('Select service');
-        if (!email || !/^\S+@\S+\.\S+$/.test(email)) return alert('Valid email required');
-        if (!modalDate?.value) return alert('Select date');
-        if (total <= 0) return alert('Invalid total');
+        // Validation
+        if (!selected?.value) {
+          alert('Please select a service');
+          return;
+        }
 
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          alert('Please enter a valid email');
+          return;
+        }
+
+        if (!startDate) {
+          alert('Please select a start date');
+          return;
+        }
+
+        if (totalUSD <= 0) {
+          alert('Invalid total amount');
+          return;
+        }
+
+        // Process with selected payment method
+        if (selectedPaymentMethod === 'paystack') {
+          processPaystackPayment(email, totalKES, serviceName, hours, startDate);
+        } else {
+          processPayPalPayment(email, totalUSD, serviceName, hours, startDate);
+        }
+      });
+
+      // Paystack payment (in KES)
+      function processPaystackPayment(email, amountKES, serviceName, hours, startDate) {
         const handler = PaystackPop.setup({
-          key: 'pk_test_aeb92b1876c92b249172fd6453de18614cbd5381',
+          key: PAYSTACK_PUBLIC_KEY,
           email: email,
-          amount: total * 100,
-          currency: 'USD',
-          callback: () => {
-            alert('Payment successful!');
-            modal.classList.remove('active');
+          amount: amountKES * 100, // Convert to cents (Paystack uses smallest currency unit)
+          currency: 'KES',
+          ref: 'VA-' + Math.floor(Math.random() * 1000000000) + 1,
+          metadata: {
+            service_name: serviceName,
+            hours: hours,
+            start_date: startDate,
+            custom_fields: [
+              {
+                display_name: "Service",
+                variable_name: "service",
+                value: serviceName
+              },
+              {
+                display_name: "Hours",
+                variable_name: "hours",
+                value: hours.toString()
+              }
+            ]
+          },
+          callback: function(response) {
+            // Success - redirect to thank you page
+            window.location.href = 'thank-you.html?reference=' + response.reference;
+          },
+          onClose: function() {
+            // User closed payment window - redirect to payment failed
+            window.location.href = 'payment-failed.html?reason=cancelled';
           }
         });
 
         handler.openIframe();
-      });
+      }
 
-      // Character counter
+      // PayPal payment (in USD)
+      function processPayPalPayment(email, amountUSD, serviceName, hours, startDate) {
+        // Create PayPal order
+        fetch('https://api.paypal.com/v2/checkout/orders', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer A21AAJEf7RysE3qJ6lqKqzjZE9VZrTgKsP7gJk9yLqKqzjZE9VZrTgKsP7gJk9yLqKqzjZE9VZrTgKsP7gJk9y' // Sandbox token
+          },
+          body: JSON.stringify({
+            intent: 'CAPTURE',
+            purchase_units: [{
+              amount: {
+                currency_code: 'USD',
+                value: amountUSD.toFixed(2)
+              },
+              description: `${serviceName} - ${hours} hours starting ${startDate}`
+            }],
+            application_context: {
+              return_url: window.location.origin + '/thank-you.html',
+              cancel_url: window.location.origin + '/payment-failed.html'
+            }
+          })
+        })
+        .then(response => response.json())
+        .then(order => {
+          // Redirect to PayPal approval URL
+          const approvalLink = order.links.find(link => link.rel === 'approve').href;
+          window.location.href = approvalLink;
+        })
+        .catch(error => {
+          console.error('PayPal error:', error);
+          window.location.href = 'payment-failed.html?reason=error';
+        });
+      }
+
+      // Character counter for contact form
       const textarea = document.querySelector('textarea');
       const counter = document.querySelector('.char-counter');
       
-      textarea?.addEventListener('input', function() {
-        if (counter) counter.textContent = this.value.length + '/500';
-      });
+      if (textarea && counter) {
+        textarea.addEventListener('input', function() {
+          counter.textContent = this.value.length + '/500';
+        });
+      }
 
-      // Active nav
+      // Contact form submission with redirect
+      const contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          // Form will submit naturally to Netlify with action="/thank-you.html"
+          // This is just for additional validation
+          const name = this.querySelector('input[name="name"]')?.value;
+          const email = this.querySelector('input[name="email"]')?.value;
+          const message = this.querySelector('textarea[name="message"]')?.value;
+
+          if (!name || !email || !message) {
+            e.preventDefault();
+            alert('Please fill all required fields');
+            return false;
+          }
+
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            e.preventDefault();
+            alert('Please enter a valid email');
+            return false;
+          }
+
+          if (message.length < 10) {
+            e.preventDefault();
+            alert('Message must be at least 10 characters');
+            return false;
+          }
+
+          return true; // Allow form to submit
+        });
+      }
+
+      // Active nav highlighting
       const sections = document.querySelectorAll('section[id]');
       window.addEventListener('scroll', () => {
         let current = '';
@@ -1765,8 +2031,21 @@
         });
 
         document.querySelectorAll('.nav-link').forEach(link => {
-          link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+          link.classList.remove('active');
+          const href = link.getAttribute('href').split('#')[1];
+          if (href === current) {
+            link.classList.add('active');
+          }
         });
+      });
+
+      // Initialize KES display for pricing on load
+      document.querySelectorAll('.pack-price').forEach(priceEl => {
+        const monthly = priceEl.dataset.monthly;
+        const kesEl = priceEl.closest('.pack-card')?.querySelector('.kes-price span');
+        if (kesEl && monthly) {
+          kesEl.textContent = Math.round(monthly * USD_TO_KES).toLocaleString();
+        }
       });
     })();
   </script>
